@@ -1,6 +1,6 @@
 ﻿/* ---------------------------------------------------------------  /
 
-	 ██╗  ██╗  █████╗  ████████╗  █████╗  ███╗   ██╗  █████╗ 
+	 ██╗  ██╗  █████╗  ████████╗  █████╗  ███╗   ██╗  █████╗
 	 ██║ ██╔╝ ██╔══██╗ ╚══██╔══╝ ██╔══██╗ ████╗  ██║ ██╔══██╗
 	 █████╔╝  ███████║    ██║    ███████║ ██╔██╗ ██║ ███████║
 	 ██╔═██╗  ██╔══██║    ██║    ██╔══██║ ██║╚██╗██║ ██╔══██║
@@ -8,7 +8,7 @@
 	 ╚═╝  ╚═╝ ╚═╝  ╚═╝/\  ╚═╝    ╚═╝  ╚═╝ ╚═╝  ╚═══╝ ╚═╝  ╚═╝
    /vvvvvvvvvvvvvvvvvvv \=========================================,
    `^^^^^^^^^^^^^^^^^^^ /---------------------------------------"
-        Katana Engine \/ © 2012 - Shuriken Studios LLC
+		Katana Engine \/ © 2012 - Shuriken Studios LLC
 
 
    Author: Ryan Appel
@@ -40,7 +40,7 @@ MenuScreen::~MenuScreen()
 	}
 }
 
-	
+
 void MenuScreen::HandleInput(InputState *pInput)
 {
 	if (m_displayCount > 0) m_itemListWraps = false;
@@ -50,7 +50,7 @@ void MenuScreen::HandleInput(InputState *pInput)
 		int playerIndexOut;
 
 		const int FIRST_INDEX = 0;
-		const int LAST_INDEX = m_menuItems.size() - 1;
+		const int LAST_INDEX = (int)(m_menuItems.size() - 1);
 
 		if (pInput->IsNewKeyPress(ALLEGRO_KEY_ENTER))
 		{
@@ -86,7 +86,7 @@ void MenuScreen::HandleInput(InputState *pInput)
 			}
 			else if (m_selectedItemIndex >= m_displayStartIndex + m_displayCount)
 			{
-				m_displayStartIndex++; 
+				m_displayStartIndex++;
 			}
 		}
 	}
@@ -103,7 +103,7 @@ void MenuScreen::Update(const GameTime *pGameTime)
 
 		bool displayed = (m_displayCount == 0
 			|| (index >= m_displayStartIndex
-			&& index < m_displayStartIndex + m_displayCount));
+				&& index < m_displayStartIndex + m_displayCount));
 
 		pMenuItem->SetDisplayed(displayed);
 		pMenuItem->SetSelected(index == m_selectedItemIndex);
@@ -118,7 +118,7 @@ void MenuScreen::Update(const GameTime *pGameTime)
 void MenuScreen::Draw(const GameTime *pGameTime)
 {
 	GetSpriteBatch()->Begin();
-	
+
 	std::vector<MenuItem *>::iterator it;
 	for (it = m_menuItems.begin(); it != m_menuItems.end(); ++it)
 	{
