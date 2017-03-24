@@ -149,6 +149,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="MathUtil.cpp" />
     <ClCompile Include="MenuItem.cpp" />
     <ClCompile Include="MenuScreen.cpp" />
     <ClCompile Include="Point.cpp" />

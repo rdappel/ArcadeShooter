@@ -46,15 +46,16 @@ public:
 		return (rand() % range) + min;
 	}
 
-	static double GetRandomDouble()
+	static float GetRandomDouble()
 	{
-		return ((rand() % RAND_MAX) / RAND_MAX);
+		return (float)((rand() % RAND_MAX) / RAND_MAX);
 	}
 
-};
+	static float Clamp(const float min, const float max, const float value)
+	{
+		if (value < min) return min;
+		if (value > max) return max;
 
-//const float Math::PI = 3.14159265359f;
-//const float Math::PI_OVER2 = Math::PI / 2;
-//const float Math::PI_OVER4 = Math::PI / 4;
-//const float Math::INVERSE_PI = 1.0f / Math::PI;
-//const float Math::NORMALIZE_45 = 0.70710678119f;
+		return value;
+	}
+};

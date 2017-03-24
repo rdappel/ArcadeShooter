@@ -8,7 +8,14 @@
 /* Game Objects */
 #pragma message("Game Object Headers...")
 #include "GameObject.h"
+#include "Projectile.h"
+#include "Ship.h"
+#include "PlayerShip.h"
+#include "EnemyShip.h"
 #pragma message("                ... Finished.")
 /* ----------------- */
+
+#include "Level.h"
+
 
 #pragma message("Finished precompiling header files for Shooter Library.")

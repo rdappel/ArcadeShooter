@@ -1,12 +1,18 @@
-#include "ShooterLibrary.h"
-#include "Projectile.h"
 
+#include "ShooterLibrary.h"
 
 Projectile::Projectile()
 {
 }
 
+void Projectile::Update(const GameTime *pGameTime)
+{
+}
 
-Projectile::~Projectile()
+void Projectile::Draw(const GameTime *pGameTime)
+{
+}
+
+void Projectile::Activate(const Vector2 &position, bool isShotByPlayer)
 {
 }

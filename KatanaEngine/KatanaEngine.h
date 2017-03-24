@@ -14,6 +14,7 @@
 #include <sstream>
 #include <vector>
 #include <algorithm>
+#include <limits>
 #include <map>
 #pragma message("                ... Finished.")
 /* ---------------- */
