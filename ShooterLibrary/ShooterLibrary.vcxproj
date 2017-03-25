@@ -154,7 +154,9 @@
     <ClCompile Include="GameObject.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Use</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="GameplayScreen.cpp" />
     <ClCompile Include="Level.cpp" />
+    <ClCompile Include="MainMenuScreen.cpp" />
     <ClCompile Include="PlayerShip.cpp" />
     <ClCompile Include="Projectile.cpp" />
     <ClCompile Include="Ship.cpp" />
@@ -170,7 +172,9 @@
   <ItemGroup>
     <ClInclude Include="EnemyShip.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="GameplayScreen.h" />
     <ClInclude Include="Level.h" />
+    <ClInclude Include="MainMenuScreen.h" />
     <ClInclude Include="PlayerShip.h" />
     <ClInclude Include="Projectile.h" />
     <ClInclude Include="Ship.h" />

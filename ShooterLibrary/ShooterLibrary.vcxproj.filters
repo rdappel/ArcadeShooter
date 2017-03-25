@@ -34,6 +34,12 @@
     <ClCompile Include="PlayerShip.cpp">
       <Filter>Source Files\Game Objects</Filter>
     </ClCompile>
+    <ClCompile Include="GameplayScreen.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MainMenuScreen.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -62,6 +68,10 @@
     </ClInclude>
     <ClInclude Include="PlayerShip.h">
       <Filter>Source Files\Game Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="GameplayScreen.h" />
+    <ClInclude Include="MainMenuScreen.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

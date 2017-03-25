@@ -12,11 +12,13 @@
 #include "Ship.h"
 #include "PlayerShip.h"
 #include "EnemyShip.h"
-#include "ShooterGame.h"
 #pragma message("                ... Finished.")
 /* ----------------- */
 
+#include "ShooterGame.h"
 #include "Level.h"
 
+#include "GameplayScreen.h"
+#include "MainMenuScreen.h"
 
 #pragma message("Finished precompiling header files for Shooter Library.")

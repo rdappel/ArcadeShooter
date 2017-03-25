@@ -1,6 +1,6 @@
 ﻿/* ---------------------------------------------------------------  /
 
-	 ██╗  ██╗  █████╗  ████████╗  █████╗  ███╗   ██╗  █████╗ 
+	 ██╗  ██╗  █████╗  ████████╗  █████╗  ███╗   ██╗  █████╗
 	 ██║ ██╔╝ ██╔══██╗ ╚══██╔══╝ ██╔══██╗ ████╗  ██║ ██╔══██╗
 	 █████╔╝  ███████║    ██║    ███████║ ██╔██╗ ██║ ███████║
 	 ██╔═██╗  ██╔══██║    ██║    ██╔══██║ ██║╚██╗██║ ██╔══██║
@@ -8,7 +8,7 @@
 	 ╚═╝  ╚═╝ ╚═╝  ╚═╝/\  ╚═╝    ╚═╝  ╚═╝ ╚═╝  ╚═══╝ ╚═╝  ╚═╝
    /vvvvvvvvvvvvvvvvvvv \=========================================,
    `^^^^^^^^^^^^^^^^^^^ /---------------------------------------"
-        Katana Engine \/ © 2012 - Shuriken Studios LLC
+		Katana Engine \/ © 2012 - Shuriken Studios LLC
 
 
    Author: Ryan Appel
@@ -52,6 +52,8 @@ public:
 	template <typename T>
 	T *Load(const std::string &path, const bool cache = true, const bool appendContentPath = true)
 	{
+		m_resources;
+
 		if (m_resources.find(path) != m_resources.end())
 		{
 			T *pResource = dynamic_cast<T *>(m_resources[path]);
@@ -59,7 +61,7 @@ public:
 			if (pResource->IsCloneable())
 			{
 				T *pClone = dynamic_cast<T*>(pResource->Clone());
-				
+
 				pClone->SetResourceID(m_nextResourceID);
 
 				m_nextResourceID++;
@@ -86,11 +88,11 @@ public:
 		else fullPath = path;
 
 		//std::cout << fullPath << std::endl;
-			
+
 		if (pT->Load(fullPath, this))
 		{
 			if (cache) m_resources[path] = pT;
-			
+
 			pT->SetResourceID(m_nextResourceID);
 
 			m_nextResourceID++;
@@ -103,7 +105,7 @@ public:
 	}
 
 private:
-	
+
 	std::map<std::string, Resource *> m_resources;
 
 	std::vector<Resource *> m_clones;
