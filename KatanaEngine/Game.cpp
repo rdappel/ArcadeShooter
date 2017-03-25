@@ -125,10 +125,10 @@ int Game::Run()
 	al_inhibit_screensaver(true);
 
 	RenderTarget::SetDisplay(pDisplay);
-
-	// Create and register events
 	bool redraw = true;
 
+
+	// Create and register events
 	ALLEGRO_EVENT_QUEUE *pEventQueue = al_create_event_queue();
 	ALLEGRO_TIMER *pTimer = al_create_timer(m_inverseTargetFrames);
 

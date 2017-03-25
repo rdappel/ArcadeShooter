@@ -7,6 +7,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "KatanaEngine", "KatanaEngin
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ShooterLibrary", "ShooterLibrary\ShooterLibrary.vcxproj", "{B6885345-281C-4C2F-9842-E126812947B2}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ArcadeShooter", "ArcadeShooter\ArcadeShooter.vcxproj", "{31AD8593-F4C9-4B17-B9FB-BA535E2AE31C}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SampleLibrary", "SampleLibrary\SampleLibrary.vcxproj", "{ABD6FE91-E42F-49A4-9004-33A802C4E81B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -31,6 +35,22 @@ Global
 		{B6885345-281C-4C2F-9842-E126812947B2}.Release|x64.Build.0 = Release|x64
 		{B6885345-281C-4C2F-9842-E126812947B2}.Release|x86.ActiveCfg = Release|Win32
 		{B6885345-281C-4C2F-9842-E126812947B2}.Release|x86.Build.0 = Release|Win32
+		{31AD8593-F4C9-4B17-B9FB-BA535E2AE31C}.Debug|x64.ActiveCfg = Debug|x64
+		{31AD8593-F4C9-4B17-B9FB-BA535E2AE31C}.Debug|x64.Build.0 = Debug|x64
+		{31AD8593-F4C9-4B17-B9FB-BA535E2AE31C}.Debug|x86.ActiveCfg = Debug|Win32
+		{31AD8593-F4C9-4B17-B9FB-BA535E2AE31C}.Debug|x86.Build.0 = Debug|Win32
+		{31AD8593-F4C9-4B17-B9FB-BA535E2AE31C}.Release|x64.ActiveCfg = Release|x64
+		{31AD8593-F4C9-4B17-B9FB-BA535E2AE31C}.Release|x64.Build.0 = Release|x64
+		{31AD8593-F4C9-4B17-B9FB-BA535E2AE31C}.Release|x86.ActiveCfg = Release|Win32
+		{31AD8593-F4C9-4B17-B9FB-BA535E2AE31C}.Release|x86.Build.0 = Release|Win32
+		{ABD6FE91-E42F-49A4-9004-33A802C4E81B}.Debug|x64.ActiveCfg = Debug|x64
+		{ABD6FE91-E42F-49A4-9004-33A802C4E81B}.Debug|x64.Build.0 = Debug|x64
+		{ABD6FE91-E42F-49A4-9004-33A802C4E81B}.Debug|x86.ActiveCfg = Debug|Win32
+		{ABD6FE91-E42F-49A4-9004-33A802C4E81B}.Debug|x86.Build.0 = Debug|Win32
+		{ABD6FE91-E42F-49A4-9004-33A802C4E81B}.Release|x64.ActiveCfg = Release|x64
+		{ABD6FE91-E42F-49A4-9004-33A802C4E81B}.Release|x64.Build.0 = Release|x64
+		{ABD6FE91-E42F-49A4-9004-33A802C4E81B}.Release|x86.ActiveCfg = Release|Win32
+		{ABD6FE91-E42F-49A4-9004-33A802C4E81B}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

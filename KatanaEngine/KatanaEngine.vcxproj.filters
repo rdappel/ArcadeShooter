@@ -79,12 +79,10 @@
     <ClCompile Include="MenuItem.cpp">
       <Filter>Source Files\Screens\Menus</Filter>
     </ClCompile>
-    <ClCompile Include="KatanaEngine.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="MathUtil.cpp">
       <Filter>Source Files\Core\Math</Filter>
     </ClCompile>
+    <ClCompile Include="KatanaEngine.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Vector2.h">
@@ -153,9 +151,7 @@
     <ClInclude Include="MenuItem.h">
       <Filter>Source Files\Screens\Menus</Filter>
     </ClInclude>
-    <ClInclude Include="KatanaEngine.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
+    <ClInclude Include="KatanaEngine.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

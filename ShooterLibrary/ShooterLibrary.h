@@ -12,6 +12,7 @@
 #include "Ship.h"
 #include "PlayerShip.h"
 #include "EnemyShip.h"
+#include "ShooterGame.h"
 #pragma message("                ... Finished.")
 /* ----------------- */
 

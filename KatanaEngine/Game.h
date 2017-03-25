@@ -84,8 +84,10 @@ protected:
 	void SetFullScreen(bool isFullScreen) { m_isFullScreen = isFullScreen; }
 
 	void SetOpenGLFlag() { m_requireOpenGL = true; }
+	
+	void SetFullScreen(bool isFullScreen) { m_isFullScreen = isFullScreen; }
 
-
+	
 private:
 
 	static int s_screenWidth;
