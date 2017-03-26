@@ -156,7 +156,6 @@
     </ClCompile>
     <ClCompile Include="GameplayScreen.cpp" />
     <ClCompile Include="Level.cpp" />
-    <ClCompile Include="MainMenuScreen.cpp" />
     <ClCompile Include="PlayerShip.cpp" />
     <ClCompile Include="Projectile.cpp" />
     <ClCompile Include="Ship.cpp" />
@@ -174,7 +173,6 @@
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameplayScreen.h" />
     <ClInclude Include="Level.h" />
-    <ClInclude Include="MainMenuScreen.h" />
     <ClInclude Include="PlayerShip.h" />
     <ClInclude Include="Projectile.h" />
     <ClInclude Include="Ship.h" />

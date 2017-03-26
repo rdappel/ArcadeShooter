@@ -26,7 +26,7 @@ public:
 
 	virtual std::string ToString() const { return "Ship"; }
 
-	virtual int GetCollisionMask() const { return COLLISION_ENEMYSHIP; }
+	virtual CollisionMask GetCollisionMask() const { return CollisionMask::ENEMY_SHIP; }
 
 protected:
 

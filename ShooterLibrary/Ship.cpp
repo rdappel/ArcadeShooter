@@ -3,18 +3,12 @@
 Ship::Ship()
 {
 	// Set starting attributes
-	m_position.X = Game::GetScreenWidth() / 2;
-	m_position.Y = -100.0f;
+	SetPosition(0, 0);
+	SetCollisionRadius(10);
 
-	m_speed = 250.0f;
-	m_collisionRadius = 10.0f;
-	m_gunOffsets.push_back(Vector2(0.0f, -30.0f));
-
-	m_baseHitPoints = 3.0f;
-
-	//m_pBullets = nullptr;
-	//m_pMissiles = nullptr;
-
+	m_speed = 250;
+	m_gunOffsets.push_back(Vector2(0, -30));
+	m_baseHitPoints = 3;
 	m_isInvulnurable = false;
 
 	Initialize();

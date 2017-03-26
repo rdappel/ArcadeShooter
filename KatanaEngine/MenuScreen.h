@@ -42,8 +42,6 @@ public:
 
 	virtual void SetItemListWrapping(const bool wraps) { m_itemListWraps = wraps; }
 
-	virtual SpriteBatch *GetSpriteBatch() const;
-
 
 protected:
 

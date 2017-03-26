@@ -19,8 +19,6 @@ Level::Level()
 {
 	s_pCurrentLevel = this;
 
-	m_pSample = nullptr;
-
 	m_sectorSize.X = 32;
 	m_sectorSize.Y = 32;
 
@@ -231,7 +229,10 @@ void Level::Draw(const GameTime *pGameTime)
 	//al_set_blender(ALLEGRO_ADD, ALLEGRO_ALPHA, ALLEGRO_INVERSE_ALPHA);
 	//m_particleManager.Draw(pGameTime);
 
-	al_set_blender(ALLEGRO_ADD, ALLEGRO_ONE, ALLEGRO_INVERSE_ALPHA);
+	//al_set_blender(ALLEGRO_ADD, ALLEGRO_ONE, ALLEGRO_INVERSE_ALPHA);
+
+	GetSpriteBatch()->Begin();
+
 	m_gameObjectIt = m_gameObjects.begin();
 	for (; m_gameObjectIt != m_gameObjects.end(); m_gameObjectIt++)
 	{
@@ -241,6 +242,8 @@ void Level::Draw(const GameTime *pGameTime)
 			pGameObject->Draw(pGameTime);
 		}
 	}
+
+	GetSpriteBatch()->End();
 
 	/**
 	al_set_blender(ALLEGRO_ADD, ALLEGRO_ONE, ALLEGRO_ONE);
@@ -260,6 +263,7 @@ void Level::Draw(const GameTime *pGameTime)
 
 void Level::AddGameObject(GameObject *pGameObject)
 {
+	pGameObject->SetSpriteBatch(GetSpriteBatch());
 	m_gameObjects.push_back(pGameObject);
 }
 

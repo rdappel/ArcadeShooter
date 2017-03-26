@@ -14,22 +14,27 @@ GameObject::GameObject()
 
 bool GameObject::AreObjectsColliding(GameObject *pObject1, GameObject *pObject2, CollisionInstructions *pIns1, CollisionInstructions *pIns2)
 {
-	int mask1 = pObject1->GetCollisionMask();
-	int mask2 = pObject2->GetCollisionMask();
+	CollisionMask mask1 = pObject1->GetCollisionMask();
+	CollisionMask mask2 = pObject2->GetCollisionMask();
 
-	if (mask1 == COLLISION_NONE || mask2 == COLLISION_NONE) return false;
+	if (mask1 == CollisionMask::NONE || mask2 == CollisionMask::NONE) return false;
 	if (mask1 == mask2) return false;
 
-	int mask = mask1 | mask2;
+	int mask = (int)mask1 | (int)mask2;
 	bool match = false;
-	match |= ((mask & (COLLISION_PLAYERSHIP | COLLISION_ENEMYSHIP)) > 0);
-	match |= ((mask & (COLLISION_PLAYERSHIP | COLLISION_ENEMYPROJECTILE)) > 0);
-	match |= ((mask & (COLLISION_PLAYERSHIP | COLLISION_POWERUP)) > 0);
-	match |= ((mask & (COLLISION_PLAYERPROJECTILE | COLLISION_ENEMYSHIP)) > 0);
+	CheckCollisionMask(mask, match, CollisionMask::PLAYER_SHIP, CollisionMask::ENEMY_SHIP);
+	CheckCollisionMask(mask, match, CollisionMask::PLAYER_SHIP, CollisionMask::ENEMY_PROJECTILE);
+	CheckCollisionMask(mask, match, CollisionMask::PLAYER_SHIP, CollisionMask::POWER_UP);
+	CheckCollisionMask(mask, match, CollisionMask::PLAYER_PROJECTILE, CollisionMask::ENEMY_SHIP);
+
+
+	//match |= ((mask & ((int)CollisionMask::PLAYER_SHIP | (int)CollisionMask::ENEMY_SHIP)) > 0);
+	//match |= ((mask & ((int)CollisionMask::PLAYER_SHIP | (int)CollisionMask::ENEMY_PROJECTILE)) > 0);
+	//match |= ((mask & ((int)CollisionMask::PLAYER_SHIP | (int)CollisionMask::POWER_UP)) > 0);
+	//match |= ((mask & ((int)CollisionMask::PLAYER_PROJECTILE | (int)CollisionMask::ENEMY_SHIP)) > 0);
 
 	if (match)
 	{
-		// Math
 		Vector2 difference = pObject1->m_position - pObject2->m_position;
 
 		float radiiSum = pObject1->m_collisionRadius + pObject2->m_collisionRadius;
@@ -46,26 +51,26 @@ bool GameObject::AreObjectsColliding(GameObject *pObject1, GameObject *pObject2,
 			ResetInstructions(pIns1);
 			ResetInstructions(pIns2);
 
-			if (mask & COLLISION_PLAYERSHIP)
+			if (mask & (int)CollisionMask::PLAYER_SHIP)
 			{
 				pPlayerShip = static_cast<PlayerShip *>(pObject2);
-				if (mask & COLLISION_ENEMYSHIP)
+				if (mask & (int)CollisionMask::ENEMY_SHIP)
 				{
 					pIns2->removeObject = true;
 					pIns2->spawnsExplosion = true;
 					return true;
 				}
 			}
-			else if (mask & COLLISION_ENEMYSHIP)
+			else if (mask & (int)CollisionMask::ENEMY_SHIP)
 			{
 				pEnemyShip = static_cast<EnemyShip *>(pObject1);
-				if (mask & COLLISION_PLAYERPROJECTILE)
+				if (mask & (int)CollisionMask::PLAYER_PROJECTILE)
 				{
 					pProjectile = dynamic_cast<Projectile *>(pObject2);
 					pIns1->damageToObject = pProjectile->GetDamage();
 					pIns1->spawnsExplosion = true;
 					pIns2->removeObject = true;
-					pIns2->spawnsExplosion = (mask & COLLISION_MISSILE);
+					pIns2->spawnsExplosion = (mask & (int)CollisionMask::MISSILE);
 					return true;
 				}
 			}
@@ -88,4 +93,31 @@ void GameObject::ResetInstructions(CollisionInstructions *pInstructions)
 	pInstructions->damageToObject = 0.0f;
 	pInstructions->removeObject = false;
 	pInstructions->spawnsExplosion = false;
+}
+
+void GameObject::SetPosition(const float x, const float y)
+{
+	m_previousPosition = m_position;
+	m_position.Set(x, y);
+}
+
+void GameObject::SetPosition(const Vector2 &position)
+{
+	SetPosition(position.X, position.Y);
+}
+
+void GameObject::TranslatePosition(const float x, const float y)
+{
+	SetPosition(m_position.X + x, m_position.Y + y);
+}
+
+void GameObject::TranslatePosition(const Vector2 &offset)
+{
+	TranslatePosition(offset.X, offset.Y);
+}
+
+void GameObject::CheckCollisionMask(const int mask, bool &match,
+	const CollisionMask mask1, const CollisionMask mask2)
+{
+	match |= ((mask & ((int)mask1 | (int)mask2)) > 0);
 }

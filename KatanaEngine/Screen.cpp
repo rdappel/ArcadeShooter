@@ -137,6 +137,11 @@ ResourceManager *Screen::GetResourceManager() const
 	return m_pScreenManager->GetResourceManager();
 }
 
+SpriteBatch *Screen::GetSpriteBatch() const
+{
+	return GetGame()->GetSpriteBatch();
+}
+
 void Screen::SetPassThroughFlags(const bool handleInput, const bool update, const bool draw)
 {
 	m_handleInputBelow = handleInput;

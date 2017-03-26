@@ -10,8 +10,7 @@ public:
 	PlayerShip();
 	virtual ~PlayerShip();
 
-	static void SetTexture(std::string assetPath);
-	static void SetAudioSample(std::string assetPath);
+	virtual void SetTexture(Texture *pTexture) { m_pTexture = pTexture; }
 
 	virtual void Update(const GameTime *pGameTime);
 
@@ -26,11 +25,13 @@ public:
 
 	virtual std::string ToString() const { return "PlayerShip"; }
 
-	virtual Vector2 GetHalfDimensions() const { return s_textureOrigin; }
-
-	virtual int GetCollisionMask() const;
+	virtual Vector2 GetHalfDimensions() const { return m_textureOrigin; }
 
 	virtual void ToggleInvulnurability() { m_isInvulnurable = !m_isInvulnurable; }
+
+	virtual CollisionMask GetCollisionMask() const {
+		return (IsInvulnurable()) ? CollisionMask::NONE : CollisionMask::PLAYER_SHIP; 
+	}
 
 
 protected:
@@ -38,9 +39,8 @@ protected:
 
 private:
 
-	static ALLEGRO_BITMAP *s_pTexture;
-	static Vector2 s_textureOrigin;
-	static ALLEGRO_SAMPLE *s_pSample;
+	Texture *m_pTexture;
+	Vector2 m_textureOrigin;
 
 	double m_bulletCoolDownTime;
 	double m_missileCoolDownTime;

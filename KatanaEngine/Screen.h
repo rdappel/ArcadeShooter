@@ -65,6 +65,8 @@ public:
 
 	virtual Game *GetGame() const;
 
+	virtual SpriteBatch *GetSpriteBatch() const;
+
 	virtual ResourceManager *GetResourceManager() const;
 
 	virtual void SetScreenManager(ScreenManager *pScreenManager);

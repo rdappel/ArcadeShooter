@@ -34,7 +34,7 @@ MenuItem::MenuItem()
 	m_position = Vector2::Zero;
 	m_textOffset = Vector2::Zero;
 
-	m_textAlign = ALIGN_LEFT;
+	m_textAlign = TextAlign::LEFT;
 	m_isDisplayed = true;
 }
 

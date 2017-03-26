@@ -129,8 +129,3 @@ void MenuScreen::Draw(const GameTime *pGameTime)
 
 	GetSpriteBatch()->End();
 }
-
-SpriteBatch *MenuScreen::GetSpriteBatch() const
-{
-	return GetGame()->GetSpriteBatch();
-}

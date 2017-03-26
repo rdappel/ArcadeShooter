@@ -63,7 +63,7 @@ Game::~Game()
 	m_pResourceManager->UnloadAllResources();
 
 	delete m_pResourceManager;
-	//delete m_pSpriteBatch;
+	delete m_pSpriteBatch;
 	delete m_pInput;
 	delete m_pGameTime;
 }

@@ -1,7 +1,7 @@
 
 #pragma once
 
-#include "MenuScreen.h"
+#include "ShooterLibrary.h"
 
 class MainMenuScreen : public MenuScreen
 {
@@ -9,7 +9,7 @@ class MainMenuScreen : public MenuScreen
 public:
 
 	MainMenuScreen();
-	virtual ~MainMenuScreen();
+	virtual ~MainMenuScreen() { }
 
 	virtual void LoadContent();
 
@@ -19,12 +19,12 @@ public:
 
 private:
 
-	ALLEGRO_COLOR m_selectedColor;
-	ALLEGRO_COLOR m_unselectedColor;
+	Color m_selectedColor;
+	Color m_unselectedColor;
 
 	float m_selectedAlpha;
 
-	ALLEGRO_BITMAP *m_pTexture;
+	Texture *m_pTexture;
 
 	Vector2 m_textureOrigin;
 	Vector2 m_position;

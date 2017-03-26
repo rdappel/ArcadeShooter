@@ -22,11 +22,11 @@
 #pragma once
 
 
-enum TextAlign { ALIGN_LEFT, ALIGN_CENTER, ALIGN_RIGHT };
+enum class TextAlign { LEFT, CENTER, RIGHT };
 
-enum SpriteSortMode { SORTMODE_BACKTOFRONT, SORTMODE_DEFERRED, SORTMODE_FRONTTOBACK, SORTMODE_IMMEDIATE, SORTMODE_TEXTURE };
+enum class SpriteSortMode { BACK_TO_FRONT, DEFERRED, FRONT_TO_BACK, IMMEDIATE, TEXTURE };
 
-enum BlendState { BLEND_ALPHA, BLEND_ADDITIVE };
+enum class BlendState { ALPHA, ADDITIVE };
 
 class SpriteBatch
 {
@@ -36,11 +36,11 @@ public:
 	SpriteBatch() { m_isStarted = false; }
 	~SpriteBatch() { }
 
-	void Begin(SpriteSortMode sortMode = SORTMODE_DEFERRED, BlendState blendState = BLEND_ALPHA, ALLEGRO_TRANSFORM *transformation = NULL);
+	void Begin(SpriteSortMode sortMode = SpriteSortMode::DEFERRED, BlendState blendState = BlendState::ALPHA, ALLEGRO_TRANSFORM *transformation = NULL);
 	void End(bool test = false);
 	
 	void DrawString(Font *pFont, std::string *text, Vector2 position, Color color = Color::White,
-		TextAlign alignment = ALIGN_LEFT, float drawDepth = 0);
+		TextAlign alignment = TextAlign::LEFT, float drawDepth = 0);
 	
 	void Draw(Texture *pTexture, Vector2 position, Region region, Color color = Color::White,
 		Vector2 origin = Vector2::Zero, Vector2 scale = Vector2::One, float rotation = 0, float drawDepth = 0);

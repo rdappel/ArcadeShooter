@@ -28,7 +28,7 @@ void SpriteBatch::Begin(SpriteSortMode sortMode, BlendState blendState, ALLEGRO_
 
 	m_sortMode = sortMode;
 
-	if (sortMode == SORTMODE_IMMEDIATE)
+	if (sortMode == SpriteSortMode::IMMEDIATE)
 	{
 		if (transformation != NULL) al_use_transform(transformation);
 	}
@@ -39,10 +39,10 @@ void SpriteBatch::Begin(SpriteSortMode sortMode, BlendState blendState, ALLEGRO_
 
 	switch (blendState)
 	{
-	case BLEND_ALPHA: 
+	case BlendState::ALPHA: 
 		al_set_blender(ALLEGRO_ADD, ALLEGRO_ALPHA, ALLEGRO_INVERSE_ALPHA);
 		break;
-	case BLEND_ADDITIVE: 
+	case BlendState::ADDITIVE:
 		al_set_blender(ALLEGRO_ADD, ALLEGRO_ONE, ALLEGRO_ONE);
 		break;
 	}
@@ -53,21 +53,21 @@ void SpriteBatch::End(bool test)
 	//double time = al_get_time();
 	
 
-	if (m_sortMode != SORTMODE_IMMEDIATE)
+	if (m_sortMode != SpriteSortMode::IMMEDIATE)
 	{
 		if (m_transformation != NULL) al_use_transform(m_transformation);
 		
 		switch (m_sortMode)
 		{
-		case SORTMODE_BACKTOFRONT:
+		case SpriteSortMode::BACK_TO_FRONT:
 			std::sort(m_drawables.begin(), m_drawables.end(), CompareBackToFront());
 			break;
 
-		case SORTMODE_FRONTTOBACK:
+		case SpriteSortMode::FRONT_TO_BACK:
 			std::sort(m_drawables.begin(), m_drawables.end(), CompareFrontToBack());
 			break;
 
-		case SORTMODE_TEXTURE:
+		case SpriteSortMode::TEXTURE:
 			al_hold_bitmap_drawing(true);
 			break;
 		};
@@ -88,7 +88,7 @@ void SpriteBatch::End(bool test)
 		
 			//if (test) std::cout << "Clear time: " << (float)(al_get_time() - time) * 1000 << std::endl;
 
-	if (m_sortMode == SORTMODE_TEXTURE) al_hold_bitmap_drawing(false);
+	if (m_sortMode == SpriteSortMode::TEXTURE) al_hold_bitmap_drawing(false);
 
 	ALLEGRO_TRANSFORM identity;
 	al_identity_transform(&identity);
@@ -106,7 +106,7 @@ void SpriteBatch::DrawBitmap(Drawable *pDrawable)
 
 void SpriteBatch::DrawFont(Drawable *pDrawable)
 {
-	al_draw_text(pDrawable->Union.pFont, pDrawable->color, pDrawable->x, pDrawable->y, pDrawable->Union.align, pDrawable->Union.text->c_str());
+	al_draw_text(pDrawable->Union.pFont, pDrawable->color, pDrawable->x, pDrawable->y, (int)pDrawable->Union.align, pDrawable->Union.text->c_str());
 }
 
 
@@ -138,7 +138,7 @@ void SpriteBatch::DrawString(Font *pFont, std::string *text, Vector2 position, C
 	pDrawable->y = position.Y;
 	pDrawable->depth = drawDepth;
 
-	if (m_sortMode == SORTMODE_IMMEDIATE)
+	if (m_sortMode == SpriteSortMode::IMMEDIATE)
 	{
 		DrawFont(pDrawable);
 	}
@@ -184,7 +184,7 @@ void SpriteBatch::Draw(Texture *pTexture, Vector2 position, Color color, Vector2
 	pDrawable->y = position.Y;
 	pDrawable->depth = drawDepth;
 
-	if (m_sortMode == SORTMODE_IMMEDIATE)
+	if (m_sortMode == SpriteSortMode::IMMEDIATE)
 	{
 		DrawBitmap(pDrawable);
 	}
@@ -231,7 +231,7 @@ void SpriteBatch::Draw(Texture *pTexture, Vector2 position, Region region, Color
 	pDrawable->Union.sw = (&region)->Width;
 	pDrawable->Union.sh = (&region)->Height;
 
-	if (m_sortMode == SORTMODE_IMMEDIATE)
+	if (m_sortMode == SpriteSortMode::IMMEDIATE)
 	{
 		DrawBitmap(pDrawable);
 	}

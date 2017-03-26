@@ -32,6 +32,10 @@ public:
 
 	virtual PlayerShip *GetPlayerShip() { return &m_playerShip; }
 
+	virtual SpriteBatch *GetSpriteBatch() const { return m_pGameplayScreen->GetSpriteBatch(); }
+
+	virtual void SetGameplayScreen(GameplayScreen *pGameplayscreen) { m_pGameplayScreen = pGameplayscreen; }
+
 	template <typename T>
 	T *GetClosestObject(const Vector2 position, const float range)
 	{
@@ -64,11 +68,14 @@ public:
 
 protected:
 
+	GameplayScreen *GetGameplayScreen() const { return m_pGameplayScreen; }
+
+	ResourceManager *GetResourceManager() const { return m_pGameplayScreen->GetResourceManager(); }
+
 	Vector2 m_sectorCount;
 
 	Vector2 m_sectorSize;
 
-	// Array of vectors!
 	std::vector<GameObject *> *m_pSectors;
 
 	unsigned int m_totalSectorCount;
@@ -81,6 +88,8 @@ protected:
 private:
 
 	static Level *s_pCurrentLevel;
+
+	GameplayScreen *m_pGameplayScreen = nullptr;
 
 	//std::vector<Explosion *> m_explosions;
 	//std::vector<Explosion *>::iterator m_explosionIt;

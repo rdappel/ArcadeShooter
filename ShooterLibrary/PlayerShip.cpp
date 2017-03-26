@@ -2,21 +2,18 @@
 #include "ShooterLibrary.h"
 
 
-ALLEGRO_SAMPLE *PlayerShip::s_pSample = nullptr;
-ALLEGRO_BITMAP *PlayerShip::s_pTexture = nullptr;
-Vector2 PlayerShip::s_textureOrigin = Vector2::Zero;
-
 PlayerShip::PlayerShip()
 {
 	GameObject::Activate();
 
-	// Set the starting position
-	m_position.X = Game::GetScreenWidth() / 2;
-	m_position.Y = Game::GetScreenHeight() - 100.0f;
+	m_pTexture = nullptr;
+	m_textureOrigin = Vector2::Zero;
 
-	m_speed = 300.0f;
-	m_collisionRadius = 50.0f;
+	SetPosition(Game::GetScreenCenter().X, Game::GetScreenHeight() - 100);
+	SetCollisionRadius(50);
 
+	m_speed = 300;
+	
 	m_bulletCoolDownTime = 0;
 	m_missileCoolDownTime = 0;
 	m_maxBulletCoolDownTime = 0.05f;
@@ -42,49 +39,6 @@ PlayerShip::~PlayerShip()
 	//if (m_pThruster) delete m_pThruster;
 }
 
-void PlayerShip::SetTexture(std::string assetPath)
-{
-	if (s_pTexture)
-	{
-		al_destroy_bitmap(s_pTexture);
-		s_pTexture = nullptr;
-	}
-
-	ALLEGRO_BITMAP *pTemp = nullptr;
-
-	//std::string path = Game::GetContentPath();
-	//path.append(assetPath);
-
-	/**
-
-	pTemp = al_load_bitmap(path.c_str());
-	if (pTemp)
-	{
-		s_pTexture = pTemp;
-		s_textureOrigin.X = al_get_bitmap_width(s_pTexture) / 2;
-		s_textureOrigin.Y = al_get_bitmap_height(s_pTexture) / 2;
-	}
-	/**/
-}
-
-void PlayerShip::SetAudioSample(std::string assetPath)
-{
-	if (s_pSample)
-	{
-		al_destroy_sample(s_pSample);
-		s_pSample = nullptr;
-	}
-
-	ALLEGRO_SAMPLE *pTemp = nullptr;
-	/**
-	std::string path = Game::GetContentDirectory();
-	path.append(assetPath);
-
-	pTemp = al_load_sample(path.c_str());
-	if (pTemp) s_pSample = pTemp;
-	/**/
-}
-
 void PlayerShip::Update(const GameTime *pGameTime)
 {
 	// Decrement the cooldown timers
@@ -98,10 +52,9 @@ void PlayerShip::Update(const GameTime *pGameTime)
 	}
 
 	// Update player position
-	m_previousPosition = m_position;
 	Vector2 targetVelocity = m_desiredDirection * m_speed * pGameTime->GetTimeElapsed();
 	m_velocity = Vector2::Lerp(m_velocity, targetVelocity, 0.1f);
-	m_position += m_velocity;
+	TranslatePosition(m_velocity);
 
 	ConfineToScreen();
 
@@ -117,12 +70,9 @@ void PlayerShip::Draw(const GameTime *pGameTime)
 {
 	//if (m_pThruster) m_pThruster->Draw(pGameTime);
 
-	if (s_pTexture)
+	if (m_pTexture)
 	{
-		int x = (int)(m_position.X - s_textureOrigin.X);
-		int y = (int)(m_position.Y - s_textureOrigin.Y);
-
-		al_draw_bitmap(s_pTexture, x, y, 0);
+		GetSpriteBatch()->Draw(m_pTexture, GetPosition(), Color::White, m_textureOrigin);
 	}
 }
 
@@ -179,28 +129,24 @@ void PlayerShip::ConfineToScreen()
 	const int TOP = 0;
 	const int BOTTOM = Game::GetScreenHeight();
 
+	Vector2 position = GetPosition();
+
 	// Check screen edges
-	if (m_position.X - s_textureOrigin.X < LEFT)
+	if (position.X - m_textureOrigin.X < LEFT)
 	{
-		m_position.X = LEFT + s_textureOrigin.X;
+		SetPosition(LEFT + m_textureOrigin.X, position.Y);
 	}
-	if (m_position.X + s_textureOrigin.X > RIGHT)
+	if (position.X + m_textureOrigin.X > RIGHT)
 	{
-		m_position.X = RIGHT - s_textureOrigin.X;
+		SetPosition(RIGHT - m_textureOrigin.X, position.Y);
 	}
-	if (m_position.Y - s_textureOrigin.Y < TOP)
+	if (position.Y - m_textureOrigin.Y < TOP)
 	{
-		m_position.Y = TOP + s_textureOrigin.Y;
+		SetPosition(position.X, TOP + m_textureOrigin.Y);
 	}
-	if (m_position.Y + s_textureOrigin.Y > BOTTOM)
+	if (position.Y + m_textureOrigin.Y > BOTTOM)
 	{
-		m_position.Y = BOTTOM - s_textureOrigin.Y;
+		SetPosition(position.X, BOTTOM - m_textureOrigin.Y);
 	}
 }
 
-
-int PlayerShip::GetCollisionMask() const
-{
-	if (m_isInvulnurable) return COLLISION_NONE;
-	return COLLISION_PLAYERSHIP;
-}

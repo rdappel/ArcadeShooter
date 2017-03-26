@@ -16,15 +16,15 @@ public:
 		bool spawnsExplosion;
 	};
 
-	enum CollisionMasks
+	enum class CollisionMask
 	{
-		COLLISION_NONE = 0,
-		COLLISION_PLAYERSHIP = 1,
-		COLLISION_PLAYERPROJECTILE = 2,
-		COLLISION_ENEMYSHIP = 4,
-		COLLISION_ENEMYPROJECTILE = 8,
-		COLLISION_POWERUP = 16,
-		COLLISION_MISSILE = 32
+		NONE = 0,
+		PLAYER_SHIP = 1,
+		PLAYER_PROJECTILE = 2,
+		ENEMY_SHIP = 4,
+		ENEMY_PROJECTILE = 8,
+		POWER_UP = 16,
+		MISSILE = 32
 	};
 
 
@@ -45,7 +45,7 @@ public:
 
 	virtual void Deactivate() { m_isActive = false; }
 
-	virtual Vector2 &GetPosition() { return m_position; }
+	virtual Vector2 GetPosition() { return m_position; }
 
 	virtual std::string ToString() const { return "GameObject"; }
 
@@ -53,12 +53,28 @@ public:
 
 	virtual int GetIndex() const { return m_index; }
 
-	virtual int GetCollisionMask() const = 0;
+	virtual CollisionMask GetCollisionMask() const = 0;
 
 	virtual void Hit(const float damage) { }
 
+	virtual void SetSpriteBatch(SpriteBatch *pSpriteBatch) { m_pSpriteBatch = pSpriteBatch; }
+
 
 protected:
+
+	virtual SpriteBatch *GetSpriteBatch() const { return m_pSpriteBatch; }
+
+	virtual void SetCollisionRadius(const int radius) { m_collisionRadius = radius; }
+
+	virtual void SetPosition(const float x, const float y);
+
+	virtual void SetPosition(const Vector2 &position);
+	
+	virtual void TranslatePosition(const float x, const float y);
+
+	virtual void TranslatePosition(const Vector2 &offset);
+
+private:
 
 	static Level *s_pCurrentLevel;
 
@@ -73,9 +89,11 @@ protected:
 
 	float m_collisionRadius;
 
-
-private:
+	SpriteBatch *m_pSpriteBatch = nullptr;
 
 	static void ResetInstructions(CollisionInstructions *pInstructions);
+
+	static void CheckCollisionMask(const int collision, bool &match,
+		const CollisionMask mask1, const CollisionMask mask2);
 
 };

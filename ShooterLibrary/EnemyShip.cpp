@@ -3,13 +3,7 @@
 
 EnemyShip::EnemyShip()
 {
-	// Set starting attributes
-	m_position.X = Game::GetScreenWidth() / 2;
-	m_position.Y = -100.0f;
-
-	m_speed = 250.0f;
-
-	m_isActive = false;
+	m_speed = 250;
 }
 
 void EnemyShip::Update(const GameTime *pGameTime)
@@ -29,7 +23,7 @@ void EnemyShip::Update(const GameTime *pGameTime)
 
 void EnemyShip::Initialize(const Vector2 position, const double delaySeconds)
 {
-	m_position = position;
+	SetPosition(position);
 	m_delaySeconds = delaySeconds;
 
 	Ship::Initialize();

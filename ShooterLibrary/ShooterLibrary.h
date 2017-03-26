@@ -16,9 +16,8 @@
 /* ----------------- */
 
 #include "ShooterGame.h"
+#include "GameplayScreen.h"
 #include "Level.h"
 
-#include "GameplayScreen.h"
-#include "MainMenuScreen.h"
 
 #pragma message("Finished precompiling header files for Shooter Library.")
