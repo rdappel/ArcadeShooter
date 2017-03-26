@@ -3,7 +3,7 @@
 
 EnemyShip::EnemyShip()
 {
-	m_speed = 250;
+	SetMaxHitPoints(250);
 }
 
 void EnemyShip::Update(const GameTime *pGameTime)
@@ -27,9 +27,4 @@ void EnemyShip::Initialize(const Vector2 position, const double delaySeconds)
 	m_delaySeconds = delaySeconds;
 
 	Ship::Initialize();
-}
-
-void EnemyShip::Fire()
-{
-	// TODO: Make enemies fire?
 }

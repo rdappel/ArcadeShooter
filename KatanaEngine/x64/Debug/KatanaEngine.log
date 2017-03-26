@@ -1,4 +1,24 @@
-﻿  Vector2.cpp
+﻿  KatanaEngine.cpp
+  Started precompiling header files for Katana Engine.
+  Standard Headers...
+                  ... Finished.
+  Allegro Specific Headers...
+                  ... Finished.
+  Math Specific Headers...
+                  ... Finished.
+  Input Specific Headers...
+                  ... Finished.
+  Resource Management Headers...
+                  ... Finished.
+  Graphics Management Headers...
+                  ... Finished.
+  Screen Management Headers...
+                  ... Finished.
+  Game Engine Headers...
+                  ... Finished.
+  Finished precompiling header files for Katana Engine.
+  Skipping... (no relevant changes detected)
+  Vector2.cpp
   Texture.cpp
   SpriteBatch.cpp
   ScreenManager.cpp
@@ -15,5 +35,4 @@
   Font.cpp
   Color.cpp
   Animation.cpp
-  Generating Code...
   KatanaEngine.vcxproj -> C:\Users\Ryan Appel\Desktop\ArcadeShooter\x64\Debug\KatanaEngine.lib

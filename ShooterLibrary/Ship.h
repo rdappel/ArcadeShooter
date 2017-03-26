@@ -16,10 +16,6 @@ public:
 
 	virtual void Fire() = 0;
 
-	//virtual void SetBulletPool(std::vector<Bullet *> *pBullets) { m_pBullets = pBullets; }
-
-	//virtual void SetMissilePool(std::vector<Missile *> *pMissiles) { m_pMissiles = pMissiles; }
-
 	virtual void Hit(const float damage);
 
 	virtual bool IsInvulnurable() const { return m_isInvulnurable; }
@@ -28,34 +24,26 @@ public:
 
 	virtual CollisionMask GetCollisionMask() const { return CollisionMask::ENEMY_SHIP; }
 
+
 protected:
+
+	virtual void Initialize();
+
+	virtual int GetSpeed() const { return m_speed; }
+
+	virtual void SetSpeed(const float speed) { m_speed = speed; }
+
+	virtual void SetMaxHitPoints(const float hitPoints) { m_maxHitPoints = hitPoints; }
+
+
+private:
 
 	float m_speed;
 
 	float m_hitPoints;
 
-	float m_baseHitPoints;
+	float m_maxHitPoints;
 
 	bool m_isInvulnurable;
-
-	int m_gunIndex;
-
-	std::vector<Vector2> m_gunOffsets;
-
-	//virtual Bullet *GetInactiveBullet();
-
-	//virtual Missile *GetInactiveMissile();
-
-	virtual void Initialize();
-
-
-private:
-	/**
-	std::vector<Bullet *>::iterator m_bulletIt;
-	std::vector<Bullet *> *m_pBullets = nullptr;
-
-	std::vector<Missile *>::iterator m_missileIt;
-	std::vector<Missile *> *m_pMissiles = nullptr;
-	/**/
 
 };

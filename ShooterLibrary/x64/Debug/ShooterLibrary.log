@@ -1,2 +1,33 @@
-﻿  PlayerShip.cpp
+﻿  ShooterLibrary.cpp
+  Started precompiling header files for Shooter Library.
+  Started precompiling header files for Katana Engine.
+  Standard Headers...
+                  ... Finished.
+  Allegro Specific Headers...
+                  ... Finished.
+  Math Specific Headers...
+                  ... Finished.
+  Input Specific Headers...
+                  ... Finished.
+  Resource Management Headers...
+                  ... Finished.
+  Graphics Management Headers...
+                  ... Finished.
+  Screen Management Headers...
+                  ... Finished.
+  Game Engine Headers...
+                  ... Finished.
+  Finished precompiling header files for Katana Engine.
+  Game Object Headers...
+                  ... Finished.
+  Finished precompiling header files for Shooter Library.
+  ShooterGame.cpp
+  Ship.cpp
+  Projectile.cpp
+  PlayerShip.cpp
+  Level.cpp
+  GameplayScreen.cpp
+  GameObject.cpp
+  EnemyShip.cpp
+  Generating Code...
   ShooterLibrary.vcxproj -> C:\Users\Ryan Appel\Desktop\ArcadeShooter\x64\Debug\ShooterLibrary.lib

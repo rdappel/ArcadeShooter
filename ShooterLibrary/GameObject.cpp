@@ -2,6 +2,7 @@
 #include "ShooterLibrary.h"
 
 int GameObject::s_count = 0;
+Level *GameObject::s_pCurrentLevel = nullptr;
 
 GameObject::GameObject()
 {
@@ -57,7 +58,6 @@ bool GameObject::AreObjectsColliding(GameObject *pObject1, GameObject *pObject2,
 				if (mask & (int)CollisionMask::ENEMY_SHIP)
 				{
 					pIns2->removeObject = true;
-					pIns2->spawnsExplosion = true;
 					return true;
 				}
 			}
@@ -68,9 +68,7 @@ bool GameObject::AreObjectsColliding(GameObject *pObject1, GameObject *pObject2,
 				{
 					pProjectile = dynamic_cast<Projectile *>(pObject2);
 					pIns1->damageToObject = pProjectile->GetDamage();
-					pIns1->spawnsExplosion = true;
 					pIns2->removeObject = true;
-					pIns2->spawnsExplosion = (mask & (int)CollisionMask::MISSILE);
 					return true;
 				}
 			}
@@ -82,9 +80,9 @@ bool GameObject::AreObjectsColliding(GameObject *pObject1, GameObject *pObject2,
 
 void GameObject::Update(const GameTime *pGameTime)
 {
-	if (IsActive() && Level::GetCurrentLevel())
+	if (IsActive() && s_pCurrentLevel)
 	{
-		Level::GetCurrentLevel()->UpdateSectorPosition(this);
+		s_pCurrentLevel->UpdateSectorPosition(this);
 	}
 }
 
@@ -92,7 +90,6 @@ void GameObject::ResetInstructions(CollisionInstructions *pInstructions)
 {
 	pInstructions->damageToObject = 0.0f;
 	pInstructions->removeObject = false;
-	pInstructions->spawnsExplosion = false;
 }
 
 void GameObject::SetPosition(const float x, const float y)

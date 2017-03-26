@@ -1,24 +1,10 @@
-/* ------------------------------------------------
 
-Space Fighter Game
-
-Ryan Appel
-9/17/14
-
-
-Level.cpp: Source file for game levels.
-
-------------------------------------------------- */
 
 #include "ShooterLibrary.h"
 
 
-Level *Level::s_pCurrentLevel = nullptr;
-
 Level::Level()
 {
-	s_pCurrentLevel = this;
-
 	m_sectorSize.X = 32;
 	m_sectorSize.Y = 32;
 
@@ -28,81 +14,16 @@ Level::Level()
 	m_totalSectorCount = m_sectorCount.X * m_sectorCount.Y;
 
 	m_pSectors = new std::vector<GameObject *>[m_totalSectorCount];
-
-	/**
-	m_playerShip.SetBulletPool(&m_bullets);
-	m_playerShip.SetMissilePool(&m_missiles);
-
-	m_pBackground = nullptr;
-	/**/
 }
 
 Level::~Level()
 {
-	FadeOutAudio();
-
-	s_pCurrentLevel = nullptr;
-
 	delete[] m_pSectors;
-	/**
-	m_explosionIt = m_explosions.begin();
-	for (; m_explosionIt != m_explosions.end(); ++m_explosionIt)
-	{
-		delete (*m_explosionIt);
-	}
-
-	if (m_pSmokeTemplate) delete m_pSmokeTemplate;
-	if (m_pBackground) delete m_pBackground;
-
-	// bullets
-	m_bulletIt = m_bullets.begin();
-	for (; m_bulletIt != m_bullets.end(); ++m_bulletIt)
-	{
-		delete (*m_bulletIt);
-	}
-
-	// missiles
-	m_missileIt = m_missiles.begin();
-	for (; m_missileIt != m_missiles.end(); ++m_missileIt)
-	{
-		delete (*m_missileIt);
-	}
-	/**/
 }
 
 void Level::LoadContent()
 {
-	/**
-	SetAudioSample("Audio\\LevelLoop.ogg");
-	PlayAudio();
-
-	for (unsigned int i = 0; i < 20; i++)
-	{
-		Explosion *pExplosion = new Explosion;
-		m_explosions.push_back(pExplosion);
-	}
-
-	for (unsigned int i = 0; i < 100; i++)
-	{
-		Bullet *pBullet = new Bullet;
-		m_bullets.push_back(pBullet);
-		AddGameObject(pBullet);
-	}
-
-	m_pSmokeTemplate = new SmokeTemplate<SmokeParticle>();
-	m_pSmokeTemplate->SetTexture("Textures\\Particle.png");
-
-	for (unsigned int i = 0; i < 60; i++)
-	{
-		Emitter *pEmitter = new	Emitter(&m_particleManager, m_pSmokeTemplate);
-		Missile *pMissile = new DropMissile(pEmitter);
-		m_missiles.push_back(pMissile);
-		AddGameObject(pMissile);
-	}
-
-	/**/
-
-	AddGameObject(&m_playerShip);
+	AddGameObject(GetPlayerShip());
 }
 
 void Level::HandleInput(InputState *pInput)
@@ -123,18 +44,13 @@ void Level::HandleInput(InputState *pInput)
 	//Vector2 thumbstick = pInput->GetGamePadState(0).Thumbsticks.Left;
 	//if (thumbstick != Vector2::Zero()) direction = thumbstick;
 
-	m_playerShip.SetDesiredDirection(direction);
+	GetPlayerShip()->SetDesiredDirection(direction);
 
-	if (pInput->IsKeyDown(ALLEGRO_KEY_SPACE))
-	{
-		m_playerShip.Fire();
-	}
+	if (pInput->IsKeyDown(ALLEGRO_KEY_SPACE)) GetPlayerShip()->Fire();
 }
 
 void Level::Update(const GameTime *pGameTime)
 {
-	//if (m_pBackground) m_pBackground->Update(pGameTime);
-
 	//m_particleManager.Update(pGameTime);
 
 	for (unsigned int i = 0; i < m_totalSectorCount; i++)
@@ -156,15 +72,6 @@ void Level::Update(const GameTime *pGameTime)
 			CheckCollisions(m_pSectors[i]);
 		}
 	}
-
-	/**
-	m_explosionIt = m_explosions.begin();
-	for (; m_explosionIt != m_explosions.end(); m_explosionIt++)
-	{
-		Explosion *pExplosion = (*m_explosionIt);
-		pExplosion->Update(pGameTime);
-	}
-	/**/
 }
 
 void Level::CheckCollisions(std::vector<GameObject *> &gameObjects)
@@ -194,9 +101,6 @@ void Level::CheckCollisions(std::vector<GameObject *> &gameObjects)
 
 						if (inst1.damageToObject) pI->Hit(inst1.damageToObject);
 						if (inst2.damageToObject) pJ->Hit(inst2.damageToObject);
-
-						if (!pI->IsActive() && inst1.spawnsExplosion) SpawnExplosion(pI->GetPosition());
-						if (!pJ->IsActive() && inst2.spawnsExplosion) SpawnExplosion(pJ->GetPosition());
 					}
 				}
 			}
@@ -204,22 +108,6 @@ void Level::CheckCollisions(std::vector<GameObject *> &gameObjects)
 	}
 }
 
-
-void Level::SpawnExplosion(const Vector2 &position)
-{
-	/**
-	m_explosionIt = m_explosions.begin();
-	for (; m_explosionIt != m_explosions.end(); m_explosionIt++)
-	{
-		Explosion *pExplosion = (*m_explosionIt);
-		if (!pExplosion->IsActive())
-		{
-			pExplosion->Activate(position);
-			break;
-		}
-	}
-	/**/
-}
 
 void Level::Draw(const GameTime *pGameTime)
 {
@@ -258,7 +146,7 @@ void Level::Draw(const GameTime *pGameTime)
 	}
 	/**/
 
-	al_set_blender(ALLEGRO_ADD, ALLEGRO_ALPHA, ALLEGRO_INVERSE_ALPHA);
+	//al_set_blender(ALLEGRO_ADD, ALLEGRO_ALPHA, ALLEGRO_INVERSE_ALPHA);
 }
 
 void Level::AddGameObject(GameObject *pGameObject)

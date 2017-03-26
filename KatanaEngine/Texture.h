@@ -38,6 +38,8 @@ public:
 
 	int GetHeight() const { return m_height; }
 
+	Vector2 GetSize() const { return Vector2(m_width, m_height); }
+
 
 protected:
 

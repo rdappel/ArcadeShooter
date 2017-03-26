@@ -14,13 +14,13 @@ public:
 
 	virtual void Initialize(const Vector2 position, const double delaySeconds);
 
-	virtual void Fire();
-
-	virtual double GetDelaySeconds() const { return m_delaySeconds; }
+	virtual void Fire() { }
 
 	virtual std::string ToString() const { return "EnemyShip"; }
 
 protected:
+
+	virtual double GetDelaySeconds() const { return m_delaySeconds; }
 
 private:
 

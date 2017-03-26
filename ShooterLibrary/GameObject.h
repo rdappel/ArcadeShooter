@@ -13,7 +13,6 @@ public:
 	{
 		float damageToObject;
 		bool removeObject;
-		bool spawnsExplosion;
 	};
 
 	enum class CollisionMask
@@ -31,7 +30,7 @@ public:
 	GameObject();
 	virtual ~GameObject() { }
 
-	static void SetCurrentLevel(Level *pLevel) { s_pCurrentLevel = pLevel; }
+	//static void SetCurrentLevel(Level *pLevel) { s_pCurrentLevel = pLevel; }
 
 	static bool AreObjectsColliding(GameObject *pObject1, GameObject *pObject2, CollisionInstructions *pIns1, CollisionInstructions *pIns2);
 
@@ -73,6 +72,12 @@ protected:
 	virtual void TranslatePosition(const float x, const float y);
 
 	virtual void TranslatePosition(const Vector2 &offset);
+
+
+protected:
+
+	static Level *GetCurrentLevel() { return s_pCurrentLevel; }
+
 
 private:
 

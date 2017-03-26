@@ -12,8 +12,6 @@ public:
 	Level();
 	virtual ~Level();
 
-	static Level *GetCurrentLevel() { return s_pCurrentLevel; }
-
 	virtual void LoadContent();
 
 	virtual void UnloadContent() { };
@@ -30,7 +28,7 @@ public:
 
 	//virtual ParticleManager *GetParticleManager() { return &m_particleManager; }
 
-	virtual PlayerShip *GetPlayerShip() { return &m_playerShip; }
+	virtual PlayerShip *GetPlayerShip() = 0;// { return m_pPlayerShip; }
 
 	virtual SpriteBatch *GetSpriteBatch() const { return m_pGameplayScreen->GetSpriteBatch(); }
 
@@ -80,29 +78,11 @@ protected:
 
 	unsigned int m_totalSectorCount;
 
-	//Background *m_pBackground;
-
-	//void SetAudioSample(std::string assetPath);
-
 
 private:
 
-	static Level *s_pCurrentLevel;
-
 	GameplayScreen *m_pGameplayScreen = nullptr;
-
-	//std::vector<Explosion *> m_explosions;
-	//std::vector<Explosion *>::iterator m_explosionIt;
-
-	PlayerShip m_playerShip;
-	/**ParticleManager m_particleManager;
-
-	std::vector<Bullet *> m_bullets;
-	std::vector<Bullet *>::iterator m_bulletIt;
-
-	std::vector<Missile *> m_missiles;
-	std::vector<Missile *>::iterator m_missileIt;/**/
-
+	
 	std::vector<GameObject *> m_gameObjects;
 	std::vector<GameObject *>::iterator m_gameObjectIt;
 
@@ -111,9 +91,4 @@ private:
 
 	void CheckCollisions(std::vector<GameObject *> &sector);
 
-	//SmokeTemplate<SmokeParticle> *m_pSmokeTemplate;
-
-	void SpawnExplosion(const Vector2 &position);
-
-	void FadeOutAudio() { if (m_pSample) al_stop_sample(&m_sampleID); }
 };
