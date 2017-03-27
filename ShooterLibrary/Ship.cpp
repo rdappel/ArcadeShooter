@@ -5,7 +5,7 @@ Ship::Ship()
 	SetPosition(0, 0);
 	SetCollisionRadius(10);
 
-	m_speed = 250;
+	m_speed = 300;
 	m_maxHitPoints = 3;
 	m_isInvulnurable = false;
 

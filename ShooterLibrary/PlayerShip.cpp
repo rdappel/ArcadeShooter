@@ -9,6 +9,8 @@ PlayerShip::PlayerShip()
 	m_pTexture = nullptr;
 	m_textureOrigin = Vector2::Zero;
 
+	m_responsiveness = 0.1f;
+
 	SetPosition(Game::GetScreenCenter().X, Game::GetScreenHeight() - 100);
 	SetCollisionRadius(50);
 }
@@ -17,7 +19,7 @@ void PlayerShip::Update(const GameTime *pGameTime)
 {
 	// Update player position
 	Vector2 targetVelocity = m_desiredDirection * GetSpeed() * pGameTime->GetTimeElapsed();
-	m_velocity = Vector2::Lerp(m_velocity, targetVelocity, 0.1f);
+	m_velocity = Vector2::Lerp(m_velocity, targetVelocity, GetResponsiveness());
 	TranslatePosition(m_velocity);
 	ConfineToScreen();
 
@@ -35,10 +37,11 @@ void PlayerShip::Draw(const GameTime *pGameTime)
 void PlayerShip::ConfineToScreen()
 {
 	// Screen edges
-	const int LEFT = 0;
-	const int RIGHT = Game::GetScreenWidth();
-	const int TOP = 0;
-	const int BOTTOM = Game::GetScreenHeight();
+	const int PADDING = 16;
+	const int LEFT = PADDING;
+	const int RIGHT = Game::GetScreenWidth() - PADDING;
+	const int TOP = PADDING;
+	const int BOTTOM = Game::GetScreenHeight() - PADDING;
 
 	Vector2 position = GetPosition();
 
@@ -66,4 +69,9 @@ void PlayerShip::SetTexture(Texture *pTexture)
 {
 	m_pTexture = pTexture;
 	m_textureOrigin.Set(m_pTexture->GetSize() / 2);
+}
+
+void PlayerShip::SetResponsiveness(const float responsiveness)
+{
+	m_responsiveness = Math::Clamp(0, 1, responsiveness);
 }

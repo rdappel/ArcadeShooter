@@ -29,7 +29,7 @@ protected:
 
 	virtual void Initialize();
 
-	virtual int GetSpeed() const { return m_speed; }
+	virtual float GetSpeed() const { return m_speed; }
 
 	virtual void SetSpeed(const float speed) { m_speed = speed; }
 
