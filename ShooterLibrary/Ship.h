@@ -9,9 +9,7 @@ public:
 
 	Ship();
 	virtual ~Ship() { }
-
-	virtual void Update(const GameTime *pGameTime);
-
+	
 	virtual void Draw(const GameTime *pGameTime) = 0;
 
 	virtual void Fire() = 0;
@@ -19,6 +17,8 @@ public:
 	virtual void Hit(const float damage);
 
 	virtual bool IsInvulnurable() const { return m_isInvulnurable; }
+
+	virtual void SetInvulnurable(bool isInvulnurable = true) { m_isInvulnurable = isInvulnurable; }
 
 	virtual std::string ToString() const { return "Ship"; }
 

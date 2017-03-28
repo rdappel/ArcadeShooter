@@ -18,9 +18,11 @@ public:
 
 	virtual std::string ToString() const { return "EnemyShip"; }
 
+
 protected:
 
 	virtual double GetDelaySeconds() const { return m_delaySeconds; }
+
 
 private:
 

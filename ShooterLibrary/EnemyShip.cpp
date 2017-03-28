@@ -3,7 +3,8 @@
 
 EnemyShip::EnemyShip()
 {
-	SetMaxHitPoints(250);
+	SetMaxHitPoints(1);
+	SetCollisionRadius(20);
 }
 
 void EnemyShip::Update(const GameTime *pGameTime)

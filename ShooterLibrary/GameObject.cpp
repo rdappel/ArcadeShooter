@@ -23,28 +23,26 @@ bool GameObject::AreObjectsColliding(GameObject *pObject1, GameObject *pObject2,
 
 	int mask = (int)mask1 | (int)mask2;
 	bool match = false;
-	CheckCollisionMask(mask, match, CollisionMask::PLAYER_SHIP, CollisionMask::ENEMY_SHIP);
-	CheckCollisionMask(mask, match, CollisionMask::PLAYER_SHIP, CollisionMask::ENEMY_PROJECTILE);
-	CheckCollisionMask(mask, match, CollisionMask::PLAYER_SHIP, CollisionMask::POWER_UP);
-	CheckCollisionMask(mask, match, CollisionMask::PLAYER_PROJECTILE, CollisionMask::ENEMY_SHIP);
-
-
-	//match |= ((mask & ((int)CollisionMask::PLAYER_SHIP | (int)CollisionMask::ENEMY_SHIP)) > 0);
-	//match |= ((mask & ((int)CollisionMask::PLAYER_SHIP | (int)CollisionMask::ENEMY_PROJECTILE)) > 0);
-	//match |= ((mask & ((int)CollisionMask::PLAYER_SHIP | (int)CollisionMask::POWER_UP)) > 0);
-	//match |= ((mask & ((int)CollisionMask::PLAYER_PROJECTILE | (int)CollisionMask::ENEMY_SHIP)) > 0);
+	match |= CheckCollisionMask(mask, CollisionMask::PLAYER_SHIP, CollisionMask::ENEMY_SHIP);
+	match |= CheckCollisionMask(mask, CollisionMask::PLAYER_SHIP, CollisionMask::ENEMY_PROJECTILE);
+	match |= CheckCollisionMask(mask, CollisionMask::PLAYER_SHIP, CollisionMask::POWER_UP);
+	match |= CheckCollisionMask(mask, CollisionMask::PLAYER_PROJECTILE, CollisionMask::ENEMY_SHIP);
 
 	if (match)
 	{
+		std::cout << "MATCH === " << pObject1->m_index << "--" << pObject2->m_index << std::endl;
+
 		Vector2 difference = pObject1->m_position - pObject2->m_position;
 
 		float radiiSum = pObject1->m_collisionRadius + pObject2->m_collisionRadius;
 		float radiiSumSquared = radiiSum * radiiSum;
 
 		bool colliding = (difference.DistanceSquared() <= radiiSumSquared);
-
+		
 		if (colliding)
 		{
+			std::cout << "colliding----------" << std::endl;
+
 			PlayerShip *pPlayerShip;
 			EnemyShip *pEnemyShip;
 			Projectile *pProjectile;
@@ -66,12 +64,18 @@ bool GameObject::AreObjectsColliding(GameObject *pObject1, GameObject *pObject2,
 				pEnemyShip = static_cast<EnemyShip *>(pObject1);
 				if (mask & (int)CollisionMask::PLAYER_PROJECTILE)
 				{
+					std::cout << "HIT----------" << std::endl;
+
 					pProjectile = dynamic_cast<Projectile *>(pObject2);
 					pIns1->damageToObject = pProjectile->GetDamage();
 					pIns2->removeObject = true;
 					return true;
 				}
 			}
+		}
+		else
+		{
+			std::cout << difference.Distance() << " > " << radiiSum << "???" << std::endl;
 		}
 	}
 
@@ -113,8 +117,7 @@ void GameObject::TranslatePosition(const Vector2 &offset)
 	TranslatePosition(offset.X, offset.Y);
 }
 
-void GameObject::CheckCollisionMask(const int mask, bool &match,
-	const CollisionMask mask1, const CollisionMask mask2)
+bool GameObject::CheckCollisionMask(const int mask,	const CollisionMask mask1, const CollisionMask mask2)
 {
-	match |= ((mask & ((int)mask1 | (int)mask2)) > 0);
+	return ((mask & ((int)mask1 | (int)mask2)) > 0);
 }

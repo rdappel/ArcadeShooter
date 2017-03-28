@@ -37,6 +37,8 @@ Game::Game()
 	al_install_audio();
 	al_init_acodec_addon();
 
+	srand(time(nullptr));
+
 	m_requireOpenGL = false;
 
 	m_pInput = nullptr;

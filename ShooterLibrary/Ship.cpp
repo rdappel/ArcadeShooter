@@ -12,16 +12,12 @@ Ship::Ship()
 	Initialize();
 }
 
-void Ship::Update(const GameTime *pGameTime)
-{
-	GameObject::Update(pGameTime);
-}
-
 void Ship::Hit(const float damage)
 {
 	if (!m_isInvulnurable)
 	{
 		m_hitPoints -= damage;
+		std::cout << "HIT! >> HP: " << m_hitPoints << std::endl;
 
 		if (m_hitPoints <= 0)
 		{

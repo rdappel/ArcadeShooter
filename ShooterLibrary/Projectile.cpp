@@ -6,10 +6,10 @@ Vector2 Projectile::s_textureOrigin = Vector2::Zero;
 
 Projectile::Projectile()
 {
-	m_speed = 500;
+	m_speed = 400;
 	m_damage = 1;
 	m_direction.Set(0, -1);
-	SetCollisionRadius(8);
+	SetCollisionRadius(9);
 }
 
 void Projectile::Update(const GameTime *pGameTime)
@@ -21,6 +21,8 @@ void Projectile::Update(const GameTime *pGameTime)
 
 		if (GetPosition().Y < s_textureOrigin.Y) Deactivate();
 	}
+
+	GameObject::Update(pGameTime);
 }
 
 void Projectile::Draw(const GameTime *pGameTime)

@@ -1,4 +1,4 @@
-﻿  SamplePlayerShip.cpp
+﻿  Level01.cpp
   Started precompiling header files for Shooter Library.
   Started precompiling header files for Katana Engine.
   Standard Headers...
@@ -21,6 +21,4 @@
   Game Object Headers...
                   ... Finished.
   Finished precompiling header files for Shooter Library.
-c:\users\ryan appel\desktop\arcadeshooter\samplelibrary\samplelevel.h(13): warning C4150: deletion of pointer to incomplete type 'SamplePlayerShip'; no destructor called
-  c:\users\ryan appel\desktop\arcadeshooter\samplelibrary\samplelevel.h(5): note: see declaration of 'SamplePlayerShip'
   SampleLibrary.vcxproj -> C:\Users\Ryan Appel\Desktop\ArcadeShooter\x64\Debug\SampleLibrary.lib

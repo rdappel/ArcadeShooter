@@ -30,7 +30,7 @@ public:
 	GameObject();
 	virtual ~GameObject() { }
 
-	//static void SetCurrentLevel(Level *pLevel) { s_pCurrentLevel = pLevel; }
+	static void SetCurrentLevel(Level *pLevel) { s_pCurrentLevel = pLevel; }
 
 	static bool AreObjectsColliding(GameObject *pObject1, GameObject *pObject2, CollisionInstructions *pIns1, CollisionInstructions *pIns2);
 
@@ -45,6 +45,8 @@ public:
 	virtual void Deactivate() { m_isActive = false; }
 
 	virtual Vector2 GetPosition() { return m_position; }
+
+	virtual Vector2 GetPreviousPosition() { return m_previousPosition; }
 
 	virtual std::string ToString() const { return "GameObject"; }
 
@@ -72,17 +74,14 @@ protected:
 	virtual void TranslatePosition(const float x, const float y);
 
 	virtual void TranslatePosition(const Vector2 &offset);
-
-
-protected:
-
+	
 	static Level *GetCurrentLevel() { return s_pCurrentLevel; }
 
 
 private:
 
 	static Level *s_pCurrentLevel;
-
+	
 	static int s_count;
 
 	int m_index;
@@ -98,7 +97,8 @@ private:
 
 	static void ResetInstructions(CollisionInstructions *pInstructions);
 
-	static void CheckCollisionMask(const int collision, bool &match,
-		const CollisionMask mask1, const CollisionMask mask2);
+	static void AddCollisionPair(const CollisionMask type1, const CollisionMask type2);
+
+	static bool CheckCollisionMask(const int collision, const CollisionMask type1, const CollisionMask type2);
 
 };
