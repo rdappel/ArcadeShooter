@@ -131,6 +131,7 @@ void Level::Draw(const GameTime *pGameTime)
 
 	//al_set_blender(ALLEGRO_ADD, ALLEGRO_ONE, ALLEGRO_INVERSE_ALPHA);
 
+	/**/
 	for (unsigned int i = 0; i < m_totalSectorCount; i++)
 	{
 		if (m_pSectors[i].size() > 0)
@@ -141,6 +142,7 @@ void Level::Draw(const GameTime *pGameTime)
 			al_draw_filled_rectangle(x, y, x + m_sectorSize.X, y + m_sectorSize.Y, al_map_rgba_f(1, 1, 1, 0.2f));
 		}
 	}
+	/**/
 
 	GetSpriteBatch()->Begin();
 

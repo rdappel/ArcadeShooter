@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Levels">
+      <UniqueIdentifier>{043d66e5-5e3a-44c9-a0a0-8d053447cac4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game Objects">
+      <UniqueIdentifier>{2e1ab3af-27a0-4f26-8904-f49f9427bcbe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Screens">
+      <UniqueIdentifier>{a474304d-5b5d-4033-9638-1f33104d3117}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="SampleGame.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MainMenuScreen.cpp">
+      <Filter>Source Files\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="SampleLevel.cpp">
+      <Filter>Source Files\Levels</Filter>
+    </ClCompile>
+    <ClCompile Include="SamplePlayerShip.cpp">
+      <Filter>Source Files\Game Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="BioEnemyShip.cpp">
+      <Filter>Source Files\Game Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Level01.cpp">
+      <Filter>Source Files\Levels</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="SampleGame.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SampleLevel.h">
+      <Filter>Source Files\Levels</Filter>
+    </ClInclude>
+    <ClInclude Include="MainMenuScreen.h">
+      <Filter>Source Files\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="SamplePlayerShip.h">
+      <Filter>Source Files\Game Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="BioEnemyShip.h">
+      <Filter>Source Files\Game Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Level01.h">
+      <Filter>Source Files\Levels</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+</Project>
