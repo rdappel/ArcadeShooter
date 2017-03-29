@@ -50,7 +50,7 @@ public:
 
 	virtual std::string ToString() const { return "GameObject"; }
 
-	virtual Vector2 GetHalfDimensions() const { return Vector2(); }
+	virtual Vector2 GetHalfDimensions() const;
 
 	virtual int GetIndex() const { return m_index; }
 

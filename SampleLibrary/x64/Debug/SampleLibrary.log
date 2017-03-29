@@ -1,4 +1,4 @@
-﻿  Level01.cpp
+﻿  BioEnemyShip.cpp
   Started precompiling header files for Shooter Library.
   Started precompiling header files for Katana Engine.
   Standard Headers...
@@ -21,4 +21,7 @@
   Game Object Headers...
                   ... Finished.
   Finished precompiling header files for Shooter Library.
+  Generating Code...
+  Skipping... (no relevant changes detected)
+  Level01.cpp
   SampleLibrary.vcxproj -> C:\Users\Ryan Appel\Desktop\ArcadeShooter\x64\Debug\SampleLibrary.lib

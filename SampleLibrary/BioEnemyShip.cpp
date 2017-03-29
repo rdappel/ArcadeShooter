@@ -2,6 +2,7 @@
 #include "BioEnemyShip.h"
 
 Texture *BioEnemyShip::s_pTexture = nullptr;
+Vector2 BioEnemyShip::s_textureOrigin;
 
 BioEnemyShip::BioEnemyShip()
 {
@@ -27,6 +28,6 @@ void BioEnemyShip::Draw(const GameTime *pGameTime)
 {
 	if (IsActive())
 	{
-		GetSpriteBatch()->Draw(s_pTexture, GetPosition());
+		GetSpriteBatch()->Draw(s_pTexture, GetPosition(), Color::White, s_pTexture->GetSize() / 2);
 	}
 }

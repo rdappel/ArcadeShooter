@@ -21,5 +21,7 @@ private:
 
 	static Texture *s_pTexture;
 
+	static Vector2 s_textureOrigin;
+
 };
 

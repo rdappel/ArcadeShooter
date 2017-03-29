@@ -131,7 +131,7 @@ void Level::Draw(const GameTime *pGameTime)
 
 	//al_set_blender(ALLEGRO_ADD, ALLEGRO_ONE, ALLEGRO_INVERSE_ALPHA);
 
-	/**/
+	/**
 	for (unsigned int i = 0; i < m_totalSectorCount; i++)
 	{
 		if (m_pSectors[i].size() > 0)
@@ -183,7 +183,7 @@ void Level::AddGameObject(GameObject *pGameObject)
 void Level::UpdateSectorPosition(GameObject *pGameObject)
 {
 	Vector2 position = pGameObject->GetPosition();
-	Vector2 previousPosition = pGameObject->GetPreviousPosition();
+	//Vector2 previousPosition = pGameObject->GetPreviousPosition();
 	Vector2 halfDimensions = pGameObject->GetHalfDimensions();
 
 	int minX = (int)(position.X - halfDimensions.X - 0.5f);
@@ -191,20 +191,22 @@ void Level::UpdateSectorPosition(GameObject *pGameObject)
 	int minY = (int)(position.Y - halfDimensions.Y - 0.5f);
 	int maxY = (int)(position.Y + halfDimensions.Y + 0.5f);
 
-	if (position.X != previousPosition.X)
-	{
-		if (position.X < previousPosition.X)
-			maxX = (int)(previousPosition.X + halfDimensions.X);
-		else
-			minX = (int)(previousPosition.X - halfDimensions.X);
-	}
+	/**
+	if (position.X < previousPosition.X)
+		maxX = (int)(previousPosition.X + halfDimensions.X);
+	else if (position.X > previousPosition.X)
+		minX = (int)(previousPosition.X - halfDimensions.X);
 
-	if (position.Y != previousPosition.Y)
+	if (position.Y < previousPosition.Y)
+		maxY = (int)(previousPosition.Y + halfDimensions.Y);
+	else if (position.Y > previousPosition.Y)
+		minY = (int)(previousPosition.Y - halfDimensions.Y);
+	/**/
+
+	if (pGameObject->GetIndex() == 1)
 	{
-		if (position.Y < previousPosition.Y)
-			maxY = (int)(previousPosition.Y + halfDimensions.Y);
-		else
-			minY = (int)(previousPosition.Y - halfDimensions.Y);
+		//std::cout << minX << " - " << maxX << std::endl;
+		pGameObject->GetPosition().Display();
 	}
 
 	minX /= (int)m_sectorSize.X;
@@ -216,6 +218,7 @@ void Level::UpdateSectorPosition(GameObject *pGameObject)
 	maxX = (int)Math::Clamp(0, m_sectorCount.X - 1, maxX);
 	minY = (int)Math::Clamp(0, m_sectorCount.Y - 1, minY);
 	maxY = (int)Math::Clamp(0, m_sectorCount.Y - 1, maxY);
+
 
 	for (int x = minX; x <= maxX; x++)
 	{

@@ -38,7 +38,7 @@ bool GameObject::AreObjectsColliding(GameObject *pObject1, GameObject *pObject2,
 		float radiiSumSquared = radiiSum * radiiSum;
 
 		bool colliding = (difference.DistanceSquared() <= radiiSumSquared);
-		
+
 		if (colliding)
 		{
 			std::cout << "colliding----------" << std::endl;
@@ -90,6 +90,11 @@ void GameObject::Update(const GameTime *pGameTime)
 	}
 }
 
+Vector2 GameObject::GetHalfDimensions() const 
+{
+	return Vector2(m_collisionRadius, m_collisionRadius);
+}
+
 void GameObject::ResetInstructions(CollisionInstructions *pInstructions)
 {
 	pInstructions->damageToObject = 0.0f;
@@ -117,7 +122,7 @@ void GameObject::TranslatePosition(const Vector2 &offset)
 	TranslatePosition(offset.X, offset.Y);
 }
 
-bool GameObject::CheckCollisionMask(const int mask,	const CollisionMask mask1, const CollisionMask mask2)
+bool GameObject::CheckCollisionMask(const int mask, const CollisionMask mask1, const CollisionMask mask2)
 {
 	return ((mask & ((int)mask1 | (int)mask2)) > 0);
 }
