@@ -14,6 +14,11 @@ public:
 
 	virtual void LoadContent();
 
+	virtual void Update(const GameTime *pGameTime);
+
+private:
+
+	float m_POWERUPTEST = 1;
 
 };
 

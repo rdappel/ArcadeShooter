@@ -126,6 +126,7 @@
     <ClInclude Include="BioEnemyShip.h" />
     <ClInclude Include="Level01.h" />
     <ClInclude Include="MainMenuScreen.h" />
+    <ClInclude Include="PowerUp.h" />
     <ClInclude Include="SampleGame.h" />
     <ClInclude Include="SampleLevel.h" />
     <ClInclude Include="SamplePlayerShip.h" />
@@ -134,6 +135,7 @@
     <ClCompile Include="BioEnemyShip.cpp" />
     <ClCompile Include="Level01.cpp" />
     <ClCompile Include="MainMenuScreen.cpp" />
+    <ClCompile Include="PowerUp.cpp" />
     <ClCompile Include="SampleGame.cpp" />
     <ClCompile Include="SampleLevel.cpp" />
     <ClCompile Include="SamplePlayerShip.cpp" />

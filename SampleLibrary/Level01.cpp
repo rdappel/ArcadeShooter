@@ -20,5 +20,25 @@ void Level01::LoadContent()
 		AddGameObject(pEnemyShip);
 	}
 	
+	PowerUp::SetTexture(pResource->Load<Texture>("Textures\\PowerUp.png"));
+	PowerUp::SetGlowTexture(pResource->Load<Texture>("Textures\\PowerUpGlow.png"));
+
 	SampleLevel::LoadContent();
+}
+
+
+void Level01::Update(const GameTime *pGameTime)
+{
+	if (m_POWERUPTEST > 0)
+	{
+		m_POWERUPTEST -= pGameTime->GetTimeElapsed();
+		if (m_POWERUPTEST <= 0)
+		{
+			PowerUp *pPU = new PowerUp();
+			pPU->Activate(Game::GetScreenCenter());
+			AddGameObject(pPU);
+		}
+	}
+
+	SampleLevel::Update(pGameTime);
 }

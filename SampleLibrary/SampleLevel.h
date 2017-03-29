@@ -1,6 +1,8 @@
 #pragma once
 
 #include "ShooterLibrary.h"
+#include "PowerUp.h"
+
 
 class SamplePlayerShip;
 
@@ -27,5 +29,8 @@ private:
 
 	std::vector<Projectile *> m_projectiles;
 	std::vector<Projectile *>::iterator m_projectileIt;
+
+	std::vector<PowerUp *> m_powerUps;
+	std::vector<PowerUp *>::iterator m_powerUpIt;
 
 };

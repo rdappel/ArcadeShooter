@@ -46,9 +46,9 @@ public:
 		return (rand() % range) + min;
 	}
 
-	static float GetRandomDouble()
+	static float GetRandomFloat()
 	{
-		return (float)((rand() % RAND_MAX) / RAND_MAX);
+		return ((float)rand() / RAND_MAX);
 	}
 
 	static float Clamp(const float min, const float max, const float value)

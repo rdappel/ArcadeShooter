@@ -34,6 +34,9 @@
     <ClCompile Include="Level01.cpp">
       <Filter>Source Files\Levels</Filter>
     </ClCompile>
+    <ClCompile Include="PowerUp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SampleGame.h">
@@ -54,6 +57,7 @@
     <ClInclude Include="Level01.h">
       <Filter>Source Files\Levels</Filter>
     </ClInclude>
+    <ClInclude Include="PowerUp.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

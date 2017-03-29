@@ -1,2 +1,20 @@
-﻿  Game.cpp
+﻿  SpriteBatch.cpp
+  Generating Code...
+  Skipping... (no relevant changes detected)
+  Vector2.cpp
+  Texture.cpp
+  ScreenManager.cpp
+  Screen.cpp
+  Resource.cpp
+  RenderTarget.cpp
+  Point.cpp
+  MenuScreen.cpp
+  MenuItem.cpp
+  MathUtil.cpp
+  InputState.cpp
+  GameTime.cpp
+  Game.cpp
+  Font.cpp
+  Color.cpp
+  Animation.cpp
   KatanaEngine.vcxproj -> C:\Users\Ryan Appel\Desktop\ArcadeShooter\x64\Debug\KatanaEngine.lib
