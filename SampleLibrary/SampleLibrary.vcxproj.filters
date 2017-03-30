@@ -37,6 +37,9 @@
     <ClCompile Include="SampleGameplayScreen.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="PowerUp.cpp">
+      <Filter>Source Files\Game Objects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SampleGame.h">
@@ -57,8 +60,10 @@
     <ClInclude Include="Level01.h">
       <Filter>Source Files\Levels</Filter>
     </ClInclude>
-    <ClInclude Include="PowerUp.h" />
     <ClInclude Include="SampleGameplayScreen.h" />
+    <ClInclude Include="PowerUp.h">
+      <Filter>Source Files\Game Objects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

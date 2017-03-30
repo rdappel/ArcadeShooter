@@ -53,6 +53,8 @@ public:
 	static float Distance(const Vector2 &v1, const Vector2 &v2);
 	static Vector2 Lerp(const Vector2 &v1, const Vector2 &v2, const float value);
 
+	static Vector2 GetRandom(bool normalize = false);
+
 	Vector2 &operator= (const Vector2 &v2);
 
 	Vector2 &operator+=(const Vector2 &v2);

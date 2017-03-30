@@ -84,12 +84,21 @@ float Vector2::Distance(const Vector2 &v1, const Vector2 &v2)
 
 Vector2 Vector2::Lerp(const Vector2 &v1, const Vector2 &v2, const float value)
 {
-	float v = value;
+	if (value > 1) return 1;
+	if (value < 0) return 0;
 
-	if (v > 1) v = 1.0f;
-	if (v < 0) v = 0.0f;
+	return (v1 * (1 - value) + v2 * value);
+}
 
-	return (v1 * (1 - v) + v2 * v);
+Vector2 Vector2::GetRandom(bool normalize)
+{
+	float x = Math::GetRandomFloat() * 2 - 1;
+	float y = Math::GetRandomFloat() * 2 - 1;
+
+	Vector2 result(x, y);
+	if (normalize) result.Normalize();
+
+	return result;
 }
 
 Vector2 &Vector2::operator=(const Vector2 &v2)

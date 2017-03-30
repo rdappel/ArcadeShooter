@@ -1,6 +1,7 @@
 
 #include "Level01.h"
 #include "BioEnemyShip.h"
+#include "PowerUp.h"
 
 Level01::Level01()
 {
@@ -20,8 +21,8 @@ void Level01::LoadContent()
 		AddGameObject(pEnemyShip);
 	}
 	
-	//PowerUp::SetTexture(pResource->Load<Texture>("Textures\\PowerUp.png"));
-	//PowerUp::SetGlowTexture(pResource->Load<Texture>("Textures\\PowerUpGlow.png"));
+	PowerUp::SetTexture(pResource->Load<Texture>("Textures\\PowerUp.png"));
+	PowerUp::SetGlowTexture(pResource->Load<Texture>("Textures\\PowerUpGlow.png"));
 
 	SampleLevel::LoadContent();
 }
@@ -29,7 +30,7 @@ void Level01::LoadContent()
 
 void Level01::Update(const GameTime *pGameTime)
 {
-	/**
+	/**/
 	if (m_POWERUPTEST > 0)
 	{
 		m_POWERUPTEST -= pGameTime->GetTimeElapsed();
