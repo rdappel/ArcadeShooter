@@ -14,19 +14,14 @@ menu.
 
 #include "MainMenuScreen.h"
 #include "Level01.h"
+#include "SampleGameplayScreen.h"
 
 
-// Removal Functions
-void GameplayScreenRemove(Screen *pScreen)
-{
-	pScreen->GetScreenManager()->AddScreen(new MainMenuScreen);
-}
-
+// Removal Function
 void MainMenuScreenRemove(Screen *pScreen)
 {
-	GameplayScreen *pGameplayScreen = new GameplayScreen();
+	SampleGameplayScreen *pGameplayScreen = new SampleGameplayScreen();
 
-	pGameplayScreen->OnRemove = GameplayScreenRemove;
 	pGameplayScreen->SetLevel(new Level01());
 	
 	pScreen->GetScreenManager()->AddScreen(pGameplayScreen);

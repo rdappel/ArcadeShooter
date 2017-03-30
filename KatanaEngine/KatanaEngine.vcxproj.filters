@@ -83,6 +83,18 @@
       <Filter>Source Files\Core\Math</Filter>
     </ClCompile>
     <ClCompile Include="KatanaEngine.cpp" />
+    <ClCompile Include="ParticleManager.cpp">
+      <Filter>Source Files\Particles</Filter>
+    </ClCompile>
+    <ClCompile Include="Particle.cpp">
+      <Filter>Source Files\Particles</Filter>
+    </ClCompile>
+    <ClCompile Include="Emitter.cpp">
+      <Filter>Source Files\Particles</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleTemplate.cpp">
+      <Filter>Source Files\Particles</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Vector2.h">
@@ -152,6 +164,18 @@
       <Filter>Source Files\Screens\Menus</Filter>
     </ClInclude>
     <ClInclude Include="KatanaEngine.h" />
+    <ClInclude Include="ParticleManager.h">
+      <Filter>Source Files\Particles</Filter>
+    </ClInclude>
+    <ClInclude Include="Particle.h">
+      <Filter>Source Files\Particles</Filter>
+    </ClInclude>
+    <ClInclude Include="Emitter.h">
+      <Filter>Source Files\Particles</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleTemplate.h">
+      <Filter>Source Files\Particles</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

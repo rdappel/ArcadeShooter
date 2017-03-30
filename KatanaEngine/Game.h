@@ -45,7 +45,7 @@ public:
 
 	ScreenManager *GetScreenManager() const { return m_pScreenManager; }
 
-	//ParticleManager *GetParticleManager() const { return m_pParticleManager; }
+	ParticleManager *GetParticleManager() const { return m_pParticleManager; }
 
 	SpriteBatch *GetSpriteBatch() const { return m_pSpriteBatch; }
 
@@ -77,7 +77,7 @@ protected:
 
 	void InitializeScreenManager() { m_pScreenManager = new ScreenManager(this); }
 
-	//void InitializeParticleManager() { m_pParticleManager = new ParticleManager(this); }
+	void InitializeParticleManager() { m_pParticleManager = new ParticleManager(this); }
 
 	void DisplayFrameRate();
 
@@ -112,7 +112,7 @@ private:
 	SpriteBatch *m_pSpriteBatch;
 
 	ScreenManager *m_pScreenManager;
-	//ParticleManager *m_pParticleManager;
+	ParticleManager *m_pParticleManager;
 	ResourceManager *m_pResourceManager;
 
 	Font *m_pFrameCounterFont;

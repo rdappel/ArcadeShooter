@@ -52,7 +52,7 @@ Game::Game()
 
 	m_pResourceManager = new ResourceManager;
 	m_pScreenManager = nullptr;
-	//m_pParticleManager = nullptr;
+	m_pParticleManager = nullptr;
 
 	m_pSpriteBatch = new SpriteBatch;
 
@@ -79,10 +79,10 @@ void Game::Update(const GameTime *pGameTime)
 		GetScreenManager()->Update(m_pGameTime);
 	}
 
-	/*if (GetParticleManager())
+	if (GetParticleManager())
 	{
 		GetParticleManager()->Update(m_pGameTime);
-	}*/
+	}
 }
 
 void Game::Draw(const GameTime *pGameTime)
@@ -92,10 +92,10 @@ void Game::Draw(const GameTime *pGameTime)
 		GetScreenManager()->Draw(m_pGameTime);
 	}
 
-	/*if (GetParticleManager())
+	if (GetParticleManager())
 	{
 		GetParticleManager()->Draw(m_pGameTime);
-	}*/
+	}
 }
 
 

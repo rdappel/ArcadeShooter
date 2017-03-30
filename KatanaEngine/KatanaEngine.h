@@ -74,11 +74,12 @@
 /* ------------------- */
 
 
-/* Particle Management *
+/* Particle Management */
 #pragma message("Particle Management Headers...")
 #include "Particle.h"
-#include "Emitter.h"
+#include "ParticleTemplate.h"
 #include "ParticleManager.h"
+#include "Emitter.h"
 #pragma message("                ... Finished.")
 /* ------------------- */
 

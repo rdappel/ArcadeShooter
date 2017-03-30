@@ -13,6 +13,8 @@
                   ... Finished.
   Graphics Management Headers...
                   ... Finished.
+  Particle Management Headers...
+                  ... Finished.
   Screen Management Headers...
                   ... Finished.
   Game Engine Headers...
@@ -21,7 +23,6 @@
   Game Object Headers...
                   ... Finished.
   Finished precompiling header files for Shooter Library.
-  Skipping... (no relevant changes detected)
   ShooterGame.cpp
   Ship.cpp
   Projectile.cpp
@@ -30,4 +31,5 @@
   GameplayScreen.cpp
   GameObject.cpp
   EnemyShip.cpp
-  ShooterLibrary.vcxproj -> C:\Users\Ryan Appel\Desktop\ArcadeShooter\x64\Debug\ShooterLibrary.lib
+  Generating Code...
+  ShooterLibrary.vcxproj -> C:\Users\appel\Desktop\ArcadeShooter\x64\Debug\ShooterLibrary.lib
