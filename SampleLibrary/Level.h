@@ -21,7 +21,7 @@ namespace Sample
 
 		virtual void AddGameObject(GameObject *pGameObject);
 
-		virtual ShooterLibrary::PlayerShip *GetPlayerShip();
+		virtual ShooterLibrary::PlayerShip *GetPlayerShip() { return m_pPlayerShip; }
 
 		virtual Projectile *GetInactiveProjectile();
 

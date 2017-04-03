@@ -5,6 +5,9 @@
 
 #include "ShooterLibrary.h"
 
+#include "CollisionTypes.h"
+
+
 /* Game Objects */
 #pragma message("Game Object Headers...")
 #include "PlayerShip.h"

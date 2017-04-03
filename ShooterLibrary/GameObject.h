@@ -12,31 +12,13 @@ namespace ShooterLibrary
 		friend class Game;
 
 	public:
-
-		struct CollisionInstructions
-		{
-			float damageToObject;
-			bool removeObject;
-		};
-
-		enum class CollisionMask
-		{
-			NONE = 0,
-			PLAYER_SHIP = 1,
-			PLAYER_PROJECTILE = 2,
-			ENEMY_SHIP = 4,
-			ENEMY_PROJECTILE = 8,
-			POWER_UP = 16,
-			MISSILE = 32
-		};
-
-
+		
 		GameObject();
 		virtual ~GameObject() { }
 
 		static void SetCurrentLevel(Level *pLevel) { s_pCurrentLevel = pLevel; }
 
-		static bool AreObjectsColliding(GameObject *pObject1, GameObject *pObject2, CollisionInstructions *pIns1, CollisionInstructions *pIns2);
+		//static bool AreObjectsColliding(GameObject *pObject1, GameObject *pObject2, CollisionInstructions *pIns1, CollisionInstructions *pIns2);
 
 		virtual void Update(const GameTime *pGameTime);
 
@@ -58,14 +40,22 @@ namespace ShooterLibrary
 
 		virtual int GetIndex() const { return m_index; }
 
-		virtual CollisionMask GetCollisionMask() const = 0;
+		virtual uint32_t GetCollisionMask() const = 0;
+
+		virtual float GetCollisionRadius() const { return m_collisionRadius; }
 
 		virtual void Hit(const float damage) { }
 
 		virtual void SetSpriteBatch(SpriteBatch *pSpriteBatch) { m_pSpriteBatch = pSpriteBatch; }
 
+		virtual bool HasMask(uint32_t mask) const { return (GetCollisionMask() & mask) > 0; }
+
+		virtual bool IsMask(uint32_t mask) const { return (GetCollisionMask() == mask); }
+
 
 	protected:
+
+		static Level *GetCurrentLevel() { return s_pCurrentLevel; }
 
 		virtual SpriteBatch *GetSpriteBatch() const { return m_pSpriteBatch; }
 
@@ -78,8 +68,6 @@ namespace ShooterLibrary
 		virtual void TranslatePosition(const float x, const float y);
 
 		virtual void TranslatePosition(const Vector2 &offset);
-
-		static Level *GetCurrentLevel() { return s_pCurrentLevel; }
 
 
 	private:
@@ -98,12 +86,6 @@ namespace ShooterLibrary
 		float m_collisionRadius;
 
 		SpriteBatch *m_pSpriteBatch = nullptr;
-
-		static void ResetInstructions(CollisionInstructions *pInstructions);
-
-		//static void AddCollisionPair(const CollisionMask type1, const CollisionMask type2);
-
-		static bool CheckCollisionMask(const int collision, const CollisionMask type1, const CollisionMask type2);
 
 	};
 }

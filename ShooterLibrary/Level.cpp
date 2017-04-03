@@ -21,11 +21,18 @@ namespace ShooterLibrary
 	Level::~Level()
 	{
 		delete[] m_pSectors;
+
+		if (GetCollisionManager())
+		{
+			delete m_pCollisionManager;
+		}
 	}
 
 	void Level::LoadContent()
 	{
 		AddGameObject(GetPlayerShip());
+
+		InitializeCollisionManager();
 	}
 
 	void Level::HandleInput(InputState *pInput)
@@ -65,11 +72,14 @@ namespace ShooterLibrary
 			pGameObject->Update(pGameTime);
 		}
 
-		for (unsigned int i = 0; i < m_totalSectorCount; i++)
+		if (m_pCollisionManager)
 		{
-			if (m_pSectors[i].size() > 1)
+			for (unsigned int i = 0; i < m_totalSectorCount; i++)
 			{
-				CheckCollisions(m_pSectors[i]);
+				if (m_pSectors[i].size() > 1)
+				{
+					CheckCollisions(m_pSectors[i]);
+				}
 			}
 		}
 	}
@@ -78,7 +88,7 @@ namespace ShooterLibrary
 	{
 		const unsigned int objectCount = (unsigned int)gameObjects.size();
 
-		GameObject::CollisionInstructions inst1, inst2;
+		//GameObject::CollisionInstructions inst1, inst2;
 
 		GameObject *pI, *pJ;
 
@@ -94,23 +104,22 @@ namespace ShooterLibrary
 					pJ = gameObjects[j];
 					if (pJ->IsActive())
 					{
-						if (pJ->GetIndex() > 0)
-						{
-							//std::cout << "PCHK: " << pI->GetIndex() << " --- " << pJ->GetIndex() << std::endl;
+						//std::cout << "PCHK: " << pI->GetIndex() << " --- " << pJ->GetIndex() << std::endl;
 
-							if (GameObject::AreObjectsColliding(pI, pJ, &inst1, &inst2))
-							{
-								if (inst1.removeObject) pI->Deactivate();
-								if (inst2.removeObject) pJ->Deactivate();
-
-								if (inst1.damageToObject) pI->Hit(inst1.damageToObject);
-								if (inst2.damageToObject) pJ->Hit(inst2.damageToObject);
-							}
-						}
-						else
+						/**
+						if (GameObject::AreObjectsColliding(pI, pJ, &inst1, &inst2))
 						{
-							int i = 1;
+							if (inst1.removeObject) pI->Deactivate();
+							if (inst2.removeObject) pJ->Deactivate();
+
+							if (inst1.damageToObject) pI->Hit(inst1.damageToObject);
+							if (inst2.damageToObject) pJ->Hit(inst2.damageToObject);
 						}
+						/**/
+
+						//std::cout << "CHK: " << pI->ToString() << " --- " << pJ->ToString() << std::endl;
+
+						m_pCollisionManager->CheckCollision(pI, pJ);
 					}
 				}
 			}
@@ -199,13 +208,7 @@ namespace ShooterLibrary
 		else if (position.Y > previousPosition.Y)
 			minY = (int)(previousPosition.Y - halfDimensions.Y);
 		/**/
-
-		if (pGameObject->GetIndex() == 1)
-		{
-			//std::cout << minX << " - " << maxX << std::endl;
-			pGameObject->GetPosition().Display();
-		}
-
+		
 		minX /= (int)m_sectorSize.X;
 		maxX /= (int)m_sectorSize.X;
 		minY /= (int)m_sectorSize.Y;

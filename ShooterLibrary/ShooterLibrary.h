@@ -5,6 +5,8 @@
 
 #include "KatanaEngine.h"
 
+#include "CollisionTypes.h"
+
 /* Game Objects */
 #pragma message("Game Object Headers...")
 #include "GameObject.h"
@@ -14,6 +16,14 @@
 #include "EnemyShip.h"
 #pragma message("                ... Finished.")
 /* ----------------- */
+
+
+/* Collision Management */
+#pragma message("Collision Management Headers...")
+#include "CollisionManager.h"
+#pragma message("                ... Finished.")
+/* ----------------- */
+
 
 /* Core */
 #pragma message("Core Headers...")

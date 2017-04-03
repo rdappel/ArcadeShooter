@@ -77,4 +77,10 @@ namespace ShooterLibrary
 	{
 		m_responsiveness = Math::Clamp(0, 1, responsiveness);
 	}
+	
+	PlayerShip *PlayerShip::Resolve(GameObject *pGameObject1, GameObject *pGameObject2)
+	{
+		if (pGameObject1->IsMask(PLAYER | SHIP)) return static_cast<PlayerShip *>(pGameObject1);
+		if (pGameObject2->IsMask(PLAYER | SHIP)) return static_cast<PlayerShip *>(pGameObject2);
+	}
 }

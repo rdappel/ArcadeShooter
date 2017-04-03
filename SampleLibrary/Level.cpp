@@ -2,10 +2,35 @@
 #include "Sample.h"
 
 using ShooterLibrary::Projectile;
+using ShooterLibrary::EnemyShip;
 using ShooterLibrary::GameObject;
+using ShooterLibrary::CollisionManager;
 
 namespace Sample
 {
+	// Collision Callbacks
+	void PlayerShootsEnemy(GameObject *pGameObject1, GameObject *pGameObject2)
+	{
+		Projectile *pProjectile = Projectile::Resolve(pGameObject1, pGameObject2);
+		EnemyShip *pEnemyShip = EnemyShip::Resolve(pGameObject1, pGameObject2);
+		pEnemyShip->Hit(pProjectile->GetDamage());
+		pProjectile->Deactivate();
+	}
+
+	void PlayerCollectsPowerUp(GameObject *pGameObject1, GameObject *pGameObject2)
+	{
+		PowerUp *pPowerUp = PowerUp::Resolve(pGameObject1, pGameObject2);
+		PlayerShip *pPlayerShip = PlayerShip::Resolve(pGameObject1, pGameObject2);
+		pPowerUp->Deactivate();
+	}
+
+	void PlayerCollidesWithEnemy(GameObject *pGameObject1, GameObject *pGameObject2)
+	{
+		PlayerShip *pPlayerShip = PlayerShip::Resolve(pGameObject1, pGameObject2);
+		pPlayerShip->Hit(1000);
+	}
+
+
 	Level::Level()
 	{
 		m_pPlayerShip = new	PlayerShip();
@@ -36,6 +61,13 @@ namespace Sample
 
 		ShooterLibrary::Level::LoadContent();
 
+		InitializeCollisionManager();
+
+		CollisionManager *pC = GetCollisionManager();
+		pC->AddCollisionType((PLAYER | PROJECTILE), (ENEMY | SHIP), PlayerShootsEnemy);
+		pC->AddCollisionType((PLAYER | SHIP), (POWER_UP), PlayerCollectsPowerUp);
+		pC->AddCollisionType((PLAYER | SHIP), (ENEMY | SHIP), PlayerCollidesWithEnemy);
+
 		m_pPlayerShip->SetLevel(this);
 	}
 
@@ -53,11 +85,5 @@ namespace Sample
 		}
 
 		return nullptr;
-	}
-
-
-	ShooterLibrary::PlayerShip *Level::GetPlayerShip()
-	{
-		return m_pPlayerShip;
 	}
 }

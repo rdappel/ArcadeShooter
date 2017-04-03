@@ -11,7 +11,7 @@ namespace Sample
 
 		SetSpeed(450);
 		SetResponsiveness(0.1);
-		SetInvulnurable();
+		//SetInvulnurable();
 	}
 
 	void PlayerShip::Update(const GameTime *pGameTime)
@@ -52,5 +52,11 @@ namespace Sample
 		float firingDrag = 0.2f;
 		if (CanFire()) firingDrag = 1;
 		return ShooterLibrary::PlayerShip::GetResponsiveness() * firingDrag;
+	}
+
+	PlayerShip *PlayerShip::Resolve(GameObject *pGameObject1, GameObject *pGameObject2)
+	{
+		if (pGameObject1->IsMask(PLAYER | SHIP)) return static_cast<PlayerShip *>(pGameObject1);
+		if (pGameObject2->IsMask(PLAYER | SHIP)) return static_cast<PlayerShip *>(pGameObject2);
 	}
 }

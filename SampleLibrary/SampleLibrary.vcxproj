@@ -125,6 +125,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="BioEnemyShip.h" />
+    <ClInclude Include="CollisionTypes.h" />
     <ClInclude Include="Level01.h" />
     <ClInclude Include="MainMenuScreen.h" />
     <ClInclude Include="PowerUp.h" />

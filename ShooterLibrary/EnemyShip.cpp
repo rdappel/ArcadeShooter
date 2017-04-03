@@ -31,4 +31,10 @@ namespace ShooterLibrary
 
 		Ship::Initialize();
 	}
+
+	EnemyShip *EnemyShip::Resolve(GameObject *pGameObject1, GameObject *pGameObject2)
+	{
+		if (pGameObject1->IsMask(ENEMY | SHIP)) return static_cast<EnemyShip *>(pGameObject1);
+		if (pGameObject2->IsMask(ENEMY | SHIP)) return static_cast<EnemyShip *>(pGameObject2);
+	}
 }

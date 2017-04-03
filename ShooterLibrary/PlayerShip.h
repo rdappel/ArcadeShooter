@@ -11,6 +11,8 @@ namespace ShooterLibrary
 		PlayerShip();
 		virtual ~PlayerShip() { }
 
+		static PlayerShip *Resolve(GameObject *pGameObject1, GameObject *pGameObject2);
+
 		virtual void SetTexture(Texture *pTexture);
 
 		virtual void Update(const GameTime *pGameTime);
@@ -25,7 +27,7 @@ namespace ShooterLibrary
 
 		virtual Vector2 GetHalfDimensions() const { return m_textureOrigin; }
 
-		virtual CollisionMask GetCollisionMask() const { return (CollisionMask)(IsInvulnurable() ? 0 : 1); }
+		virtual uint32_t GetCollisionMask() const { return (IsInvulnurable() ? NONE : (PLAYER | SHIP)); }
 
 
 	protected:

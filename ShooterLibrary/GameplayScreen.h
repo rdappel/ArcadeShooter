@@ -9,7 +9,9 @@ namespace ShooterLibrary
 	{
 
 	public:
+
 		virtual ~GameplayScreen();
+
 
 		virtual void LoadContent();
 
@@ -25,6 +27,11 @@ namespace ShooterLibrary
 	protected:
 
 		GameplayScreen();
+
+		virtual Level *GetLevel() { return m_pLevel; }
+
+
+	private: 
 
 		Level *m_pLevel = nullptr;
 

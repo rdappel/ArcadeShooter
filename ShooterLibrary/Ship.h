@@ -23,7 +23,7 @@ namespace ShooterLibrary
 
 		virtual std::string ToString() const { return "Ship"; }
 
-		virtual CollisionMask GetCollisionMask() const { return CollisionMask::ENEMY_SHIP; }
+		virtual uint32_t GetCollisionMask() const = 0;
 
 
 	protected:

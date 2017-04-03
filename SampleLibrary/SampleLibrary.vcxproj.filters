@@ -75,6 +75,9 @@
     <ClInclude Include="Sample.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="CollisionTypes.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

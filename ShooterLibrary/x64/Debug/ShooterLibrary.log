@@ -22,6 +22,8 @@
   Finished precompiling header files for Katana Engine.
   Game Object Headers...
                   ... Finished.
+  Collision Management Headers...
+                  ... Finished.
   Core Headers...
                   ... Finished.
   Screen Headers...
@@ -29,13 +31,17 @@
   Level Headers...
                   ... Finished.
   Finished precompiling header files for Shooter Library.
-  Game.cpp
   Ship.cpp
   Projectile.cpp
   PlayerShip.cpp
   Level.cpp
   GameplayScreen.cpp
   GameObject.cpp
+  Game.cpp
   EnemyShip.cpp
+  CollisionManager.cpp
   Generating Code...
+c:\users\ryan appel\desktop\arcadeshooter\shooterlibrary\enemyship.cpp(39): warning C4715: 'ShooterLibrary::EnemyShip::Resolve': not all control paths return a value
+c:\users\ryan appel\desktop\arcadeshooter\shooterlibrary\playership.cpp(85): warning C4715: 'ShooterLibrary::PlayerShip::Resolve': not all control paths return a value
+c:\users\ryan appel\desktop\arcadeshooter\shooterlibrary\projectile.cpp(68): warning C4715: 'ShooterLibrary::Projectile::Resolve': not all control paths return a value
   ShooterLibrary.vcxproj -> C:\Users\Ryan Appel\Desktop\ArcadeShooter\x64\Debug\ShooterLibrary.lib

@@ -11,6 +11,8 @@ namespace ShooterLibrary
 		Projectile();
 		virtual ~Projectile() { }
 
+		static Projectile *Resolve(GameObject *pGameObject1, GameObject *pGameObject2);
+
 		static void SetTexture(Texture *pTexture);
 
 		virtual void Update(const GameTime *pGameTime);
@@ -21,7 +23,9 @@ namespace ShooterLibrary
 
 		virtual float GetDamage() const { return m_damage; }
 
-		virtual CollisionMask GetCollisionMask() const { return CollisionMask::PLAYER_PROJECTILE; }
+		virtual std::string ToString() const;
+
+		virtual uint32_t GetCollisionMask() const;
 
 
 	protected:
@@ -39,6 +43,8 @@ namespace ShooterLibrary
 		float m_speed;
 
 		Vector2 m_direction;
+
+		bool m_isShotByPlayer;
 
 		float m_damage;
 	};

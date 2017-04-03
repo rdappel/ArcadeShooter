@@ -8,7 +8,7 @@ namespace Sample
 
 	PowerUp::PowerUp()
 	{
-		SetCollisionRadius(28);
+		SetCollisionRadius(1);
 	}
 
 	void PowerUp::Update(const GameTime *pGameTime)
@@ -17,6 +17,8 @@ namespace Sample
 		{
 			TranslatePosition(m_velocity);
 		}
+
+		GameObject::Update(pGameTime);
 	}
 
 	void PowerUp::Draw(const GameTime *pGameTime)
@@ -34,5 +36,11 @@ namespace Sample
 
 		GameObject::Activate();
 		SetPosition(position);
+	}
+
+	PowerUp *PowerUp::Resolve(GameObject *pGameObject1, GameObject *pGameObject2)
+	{
+		if (pGameObject1->HasMask(POWER_UP)) return static_cast<PowerUp *>(pGameObject1);
+		if (pGameObject2->HasMask(POWER_UP)) return static_cast<PowerUp *>(pGameObject2);
 	}
 }

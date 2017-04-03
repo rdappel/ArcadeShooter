@@ -70,19 +70,32 @@ namespace ShooterLibrary
 		GameplayScreen *GetGameplayScreen() const { return m_pGameplayScreen; }
 
 		ResourceManager *GetResourceManager() const { return m_pGameplayScreen->GetResourceManager(); }
+		
+		virtual Vector2 GetSectorCount() const { return m_sectorCount; }
 
-		Vector2 m_sectorCount;
+		virtual Vector2 GetSectorSize() const { return m_sectorSize; }
 
-		Vector2 m_sectorSize;
+		virtual unsigned int GetTotalSectorCount() const { return m_totalSectorCount; }
 
-		std::vector<GameObject *> *m_pSectors;
+		virtual std::vector<GameObject *> *GetSectors() { return m_pSectors; }
 
-		unsigned int m_totalSectorCount;
+		virtual void InitializeCollisionManager() { m_pCollisionManager = new CollisionManager(); }
+
+		virtual CollisionManager *GetCollisionManager() { return m_pCollisionManager; }
 
 
 	private:
 
 		GameplayScreen *m_pGameplayScreen = nullptr;
+
+		CollisionManager *m_pCollisionManager = nullptr;;
+
+		std::vector<GameObject *> *m_pSectors;
+
+		Vector2 m_sectorCount;
+		Vector2 m_sectorSize;
+
+		unsigned int m_totalSectorCount;
 
 		std::vector<GameObject *> m_gameObjects;
 		std::vector<GameObject *>::iterator m_gameObjectIt;

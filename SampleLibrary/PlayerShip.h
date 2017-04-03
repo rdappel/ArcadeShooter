@@ -13,6 +13,8 @@ namespace Sample
 		PlayerShip();
 		virtual ~PlayerShip() { }
 
+		static PlayerShip *Resolve(GameObject *pGameObject1, GameObject *pGameObject2);
+
 		virtual void Fire();
 
 		virtual void Update(const GameTime *pGameTime);

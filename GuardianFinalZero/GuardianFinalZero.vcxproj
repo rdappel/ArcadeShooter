@@ -133,6 +133,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CollisionTypes.h" />
     <ClInclude Include="GameplayScreen.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GuardianFinalZero.h" />

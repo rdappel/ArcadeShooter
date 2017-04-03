@@ -37,14 +37,33 @@ namespace ShooterLibrary
 
 	void Projectile::Activate(const Vector2 &position, bool isShotByPlayer)
 	{
-		GameObject::Activate();
-
+		m_isShotByPlayer = isShotByPlayer;
 		SetPosition(position);
+
+		GameObject::Activate();
 	}
 
 	void Projectile::SetTexture(Texture *pTexture)
 	{
 		s_pTexture = pTexture;
 		s_textureOrigin.Set(s_pTexture->GetCenter());
+	}
+
+	std::string Projectile::ToString() const
+	{
+		if (m_isShotByPlayer) return "Player Projectile";
+		return "Enemy Projectile";
+	}
+
+	uint32_t Projectile::GetCollisionMask() const
+	{
+		if (m_isShotByPlayer) return (PLAYER | PROJECTILE);
+		return (ENEMY | PROJECTILE);
+	}
+
+	Projectile *Projectile::Resolve(GameObject *pGameObject1, GameObject *pGameObject2)
+	{
+		if (pGameObject1->HasMask(PROJECTILE)) return static_cast<Projectile *>(pGameObject1);
+		if (pGameObject2->HasMask(PROJECTILE)) return static_cast<Projectile *>(pGameObject2);
 	}
 }

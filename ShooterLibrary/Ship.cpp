@@ -19,7 +19,6 @@ namespace ShooterLibrary
 		if (!m_isInvulnurable)
 		{
 			m_hitPoints -= damage;
-			std::cout << "HIT! >> HP: " << m_hitPoints << std::endl;
 
 			if (m_hitPoints <= 0)
 			{

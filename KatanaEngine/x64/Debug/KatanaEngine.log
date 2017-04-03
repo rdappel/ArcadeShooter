@@ -19,6 +19,7 @@
   Game Engine Headers...
                   ... Finished.
   Finished precompiling header files for Katana Engine.
+  Skipping... (no relevant changes detected)
   Vector2.cpp
   Texture.cpp
   SpriteBatch.cpp
@@ -39,8 +40,5 @@
   Font.cpp
   Emitter.cpp
   Color.cpp
-  Generating Code...
-  Compiling...
   Animation.cpp
-  Generating Code...
   KatanaEngine.vcxproj -> C:\Users\Ryan Appel\Desktop\ArcadeShooter\x64\Debug\KatanaEngine.lib

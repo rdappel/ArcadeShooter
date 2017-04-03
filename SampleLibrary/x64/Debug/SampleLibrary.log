@@ -1,5 +1,5 @@
 ﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(392,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (SampleLibrary.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  Game.cpp
+  PowerUp.cpp
   Started precompiling header files for Sample.
   Started precompiling header files for Shooter Library.
   Started precompiling header files for Katana Engine.
@@ -24,6 +24,8 @@
   Finished precompiling header files for Katana Engine.
   Game Object Headers...
                   ... Finished.
+  Collision Management Headers...
+                  ... Finished.
   Core Headers...
                   ... Finished.
   Screen Headers...
@@ -40,5 +42,6 @@
   Screen Headers...
                   ... Finished.
   Finished precompiling header files for Sample.
+c:\users\ryan appel\desktop\arcadeshooter\samplelibrary\powerup.cpp(45): warning C4715: 'Sample::PowerUp::Resolve': not all control paths return a value
   SampleLibrary.vcxproj -> C:\Users\Ryan Appel\Desktop\ArcadeShooter\x64\Debug\Sample.exe
   SampleLibrary.vcxproj -> C:\Users\Ryan Appel\Desktop\ArcadeShooter\x64\Debug\Sample.pdb (Partial PDB)

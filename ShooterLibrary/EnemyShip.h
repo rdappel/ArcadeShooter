@@ -10,6 +10,8 @@ namespace ShooterLibrary
 		EnemyShip();
 		virtual ~EnemyShip() { }
 
+		static EnemyShip *Resolve(GameObject *pGameObject1, GameObject *pGameObject2);
+
 		virtual void Update(const GameTime *pGameTime);
 
 		virtual void Draw(const GameTime *pGameTime) = 0;
@@ -19,6 +21,8 @@ namespace ShooterLibrary
 		virtual void Fire() { }
 
 		virtual std::string ToString() const { return "EnemyShip"; }
+
+		virtual uint32_t GetCollisionMask() const { return ENEMY | SHIP; }
 
 
 	protected:
