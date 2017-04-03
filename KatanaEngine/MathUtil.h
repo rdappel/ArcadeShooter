@@ -22,40 +22,42 @@
 
 #pragma once
 
-
-class Math
+namespace KatanaEngine
 {
-
-public:
-
-	static const float PI;
-	static const float PI_OVER2;
-	static const float PI_OVER4;
-	static const float INVERSE_PI;
-	static const float NORMALIZE_45;
-
-	static float Lerp(float start, float end, float value)
+	class Math
 	{
-		return (1 - value) * start + value * end;
-	}
 
-	static int GetRandomInt(const int min = 0, const int max = RAND_MAX)
-	{
-		int range = max - min;
+	public:
 
-		return (rand() % range) + min;
-	}
+		static const float PI;
+		static const float PI_OVER2;
+		static const float PI_OVER4;
+		static const float INVERSE_PI;
+		static const float NORMALIZE_45;
 
-	static float GetRandomFloat()
-	{
-		return ((float)rand() / RAND_MAX);
-	}
+		static float Lerp(float start, float end, float value)
+		{
+			return (1 - value) * start + value * end;
+		}
 
-	static float Clamp(const float min, const float max, const float value)
-	{
-		if (value < min) return min;
-		if (value > max) return max;
+		static int GetRandomInt(const int min = 0, const int max = RAND_MAX)
+		{
+			int range = max - min;
 
-		return value;
-	}
-};
+			return (rand() % range) + min;
+		}
+
+		static float GetRandomFloat()
+		{
+			return ((float)rand() / RAND_MAX);
+		}
+
+		static float Clamp(const float min, const float max, const float value)
+		{
+			if (value < min) return min;
+			if (value > max) return max;
+
+			return value;
+		}
+	};
+}

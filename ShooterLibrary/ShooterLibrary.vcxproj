@@ -159,7 +159,7 @@
     <ClCompile Include="PlayerShip.cpp" />
     <ClCompile Include="Projectile.cpp" />
     <ClCompile Include="Ship.cpp" />
-    <ClCompile Include="ShooterGame.cpp" />
+    <ClCompile Include="Game.cpp" />
     <ClCompile Include="ShooterLibrary.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -176,7 +176,7 @@
     <ClInclude Include="PlayerShip.h" />
     <ClInclude Include="Projectile.h" />
     <ClInclude Include="Ship.h" />
-    <ClInclude Include="ShooterGame.h" />
+    <ClInclude Include="Game.h" />
     <ClInclude Include="ShooterLibrary.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

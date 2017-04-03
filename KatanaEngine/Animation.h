@@ -21,55 +21,58 @@
 
 #pragma once
 
-class Animation : public Resource
+namespace KatanaEngine
 {
+	class Animation : public Resource
+	{
 
-public:
+	public:
 
-	Animation();
-	virtual ~Animation();
-
-
-	virtual void Update(const GameTime *pGameTime);
-
-	virtual bool Load(const std::string &path, ResourceManager *pManager);
+		Animation();
+		virtual ~Animation();
 
 
-	virtual bool IsCloneable() { return true; }
+		virtual void Update(const GameTime *pGameTime);
 
-	virtual Resource *Clone();
-
-	virtual Region *GetCurrentFrame() { return m_frames[m_currentIndex]; }
-
-	virtual Texture *GetTexture() { return m_pTexture; }
-
-	virtual void SetTexture(Texture *pTexture) { m_pTexture = pTexture; }
-
-	virtual void SetCurrentFrame(const unsigned int index);
-
-	virtual bool IsPlaying() const { return m_isPlaying; }
-
-	virtual void Play() { m_isPlaying = true; }
-
-	virtual void Pause() { m_isPlaying = false; }
-
-	virtual void Stop();
+		virtual bool Load(const std::string &path, ResourceManager *pManager);
 
 
-private:
+		virtual bool IsCloneable() { return true; }
 
-	std::vector<Region *> m_frames;
+		virtual Resource *Clone();
 
-	Texture *m_pTexture;
-	
-	double m_secondsPerFrame;
+		virtual Region *GetCurrentFrame() { return m_frames[m_currentIndex]; }
 
-	double m_currentFrameTime;
+		virtual Texture *GetTexture() { return m_pTexture; }
 
-	int m_currentIndex;
+		virtual void SetTexture(Texture *pTexture) { m_pTexture = pTexture; }
 
-	int m_loopCounter;
+		virtual void SetCurrentFrame(const unsigned int index);
 
-	bool m_isPlaying;
+		virtual bool IsPlaying() const { return m_isPlaying; }
 
-};
+		virtual void Play() { m_isPlaying = true; }
+
+		virtual void Pause() { m_isPlaying = false; }
+
+		virtual void Stop();
+
+
+	private:
+
+		std::vector<Region *> m_frames;
+
+		Texture *m_pTexture;
+
+		double m_secondsPerFrame;
+
+		double m_currentFrameTime;
+
+		int m_currentIndex;
+
+		int m_loopCounter;
+
+		bool m_isPlaying;
+
+	};
+}

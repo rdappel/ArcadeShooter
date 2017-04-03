@@ -22,6 +22,7 @@
     <ProjectGuid>{ABD6FE91-E42F-49A4-9004-33A802C4E81B}</ProjectGuid>
     <RootNamespace>SampleLibrary</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <ProjectName>Sample</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -38,7 +39,7 @@
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
@@ -127,20 +128,23 @@
     <ClInclude Include="Level01.h" />
     <ClInclude Include="MainMenuScreen.h" />
     <ClInclude Include="PowerUp.h" />
-    <ClInclude Include="SampleGame.h" />
-    <ClInclude Include="SampleGameplayScreen.h" />
-    <ClInclude Include="SampleLevel.h" />
-    <ClInclude Include="SamplePlayerShip.h" />
+    <ClInclude Include="Game.h" />
+    <ClInclude Include="GameplayScreen.h" />
+    <ClInclude Include="Level.h" />
+    <ClInclude Include="Sample.h" />
+    <ClInclude Include="PlayerShip.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BioEnemyShip.cpp" />
     <ClCompile Include="Level01.cpp" />
+    <ClCompile Include="Main.cpp" />
     <ClCompile Include="MainMenuScreen.cpp" />
     <ClCompile Include="PowerUp.cpp" />
-    <ClCompile Include="SampleGame.cpp" />
-    <ClCompile Include="SampleGameplayScreen.cpp" />
-    <ClCompile Include="SampleLevel.cpp" />
-    <ClCompile Include="SamplePlayerShip.cpp" />
+    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="GameplayScreen.cpp" />
+    <ClCompile Include="Level.cpp" />
+    <ClCompile Include="Sample.cpp" />
+    <ClCompile Include="PlayerShip.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\KatanaEngine\KatanaEngine.vcxproj">

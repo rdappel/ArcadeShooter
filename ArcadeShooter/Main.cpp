@@ -1,7 +1,9 @@
 
-#include "SampleGame.h"
+#include "ArcadeShooter.h"
 
 int main()
 {
-	return (new SampleGame())->Run();
+	Game *pGame = new GuardianFinalZero::Game();
+
+	return pGame->Run();
 }

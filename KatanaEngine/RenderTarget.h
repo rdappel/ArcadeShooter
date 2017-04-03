@@ -21,25 +21,27 @@
 
 #pragma once
 
-
-class RenderTarget : public Texture
+namespace KatanaEngine
 {
+	class RenderTarget : public Texture
+	{
 
-public:
+	public:
 
-	RenderTarget(const int width, const int height);
-	virtual ~RenderTarget() { }
-
-	
-	static void Set(RenderTarget *pTarget);
-
-	static void SetDisplay(ALLEGRO_DISPLAY *pDisplay) { s_pDisplay = pDisplay; }
+		RenderTarget(const int width, const int height);
+		virtual ~RenderTarget() { }
 
 
-	virtual bool Load(const std::string &path, ResourceManager *pManager) { return true; }
+		static void Set(RenderTarget *pTarget);
 
-private:
+		static void SetDisplay(ALLEGRO_DISPLAY *pDisplay) { s_pDisplay = pDisplay; }
 
-	static ALLEGRO_DISPLAY *s_pDisplay;
 
-};
+		virtual bool Load(const std::string &path, ResourceManager *pManager) { return true; }
+
+	private:
+
+		static ALLEGRO_DISPLAY *s_pDisplay;
+
+	};
+}

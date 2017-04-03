@@ -21,38 +21,45 @@
 
 #pragma once
 
-
-class Texture : public Resource
+namespace KatanaEngine
 {
+	class Texture : public Resource
+	{
 
-public:
+	public:
 
-	Texture();
-	virtual ~Texture();
-		
-	virtual ALLEGRO_BITMAP *GetBitmap()	{ return m_pBitmap; }
+		Texture();
+		virtual ~Texture();
 
-	virtual bool Load(const std::string &path, ResourceManager *pManager);
+		virtual ALLEGRO_BITMAP *GetBitmap() { return m_pBitmap; }
 
-	int GetWidth() const { return m_width; }
+		virtual bool Load(const std::string &path, ResourceManager *pManager);
 
-	int GetHeight() const { return m_height; }
+		int GetWidth() const { return m_width; }
 
-	Vector2 GetSize() const { return Vector2(m_width, m_height); }
+		int GetHeight() const { return m_height; }
 
+		Vector2 GetSize() const { return m_size; }
 
-protected:
-
-	virtual void SetTexture(ALLEGRO_BITMAP *pBitmap);
+		Vector2 GetCenter() const { return m_center; }
 
 
-private:
+	protected:
 
-	static bool s_alAddonInitialized;
+		virtual void SetTexture(ALLEGRO_BITMAP *pBitmap);
 
-	ALLEGRO_BITMAP *m_pBitmap;
 
-	int m_width;
-	int m_height;
+	private:
 
-};
+		static bool s_alAddonInitialized;
+
+		ALLEGRO_BITMAP *m_pBitmap;
+
+		int m_width;
+		int m_height;
+
+		Vector2 m_size;
+		Vector2 m_center;
+
+	};
+}

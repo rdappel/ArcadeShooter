@@ -21,57 +21,58 @@
 
 #pragma once
 
-
-class Vector2
+namespace KatanaEngine
 {
+	class Vector2
+	{
 
-public:
+	public:
 
-	float X;
-	float Y;
+		float X;
+		float Y;
 
-	Vector2(const float x = 0, const float y = 0);
-	~Vector2() { };
-
-
-	static const Vector2 Zero;
-	static const Vector2 One;
-	static const Vector2 UnitX;
-	static const Vector2 UnitY;
+		Vector2(const float x = 0, const float y = 0);
+		~Vector2() { };
 
 
-	float DistanceSquared() const;
-	float Distance() const;
+		static const Vector2 Zero;
+		static const Vector2 One;
+		static const Vector2 UnitX;
+		static const Vector2 UnitY;
 
-	void Set(const float x, const float y);
-	void Set(const Vector2 vector);
-	void Normalize();
 
-	float DotProduct(const Vector2 &v2) const;
-	float CrossProduct(const Vector2 &v2) const;
+		float DistanceSquared() const;
+		float Distance() const;
 
-	static float Distance(const Vector2 &v1, const Vector2 &v2);
-	static Vector2 Lerp(const Vector2 &v1, const Vector2 &v2, const float value);
+		void Set(const float x, const float y);
+		void Set(const Vector2 vector);
+		void Normalize();
 
-	static Vector2 GetRandom(bool normalize = false);
+		float DotProduct(const Vector2 &v2) const;
+		float CrossProduct(const Vector2 &v2) const;
 
-	Vector2 &operator= (const Vector2 &v2);
+		static float Distance(const Vector2 &v1, const Vector2 &v2);
+		static Vector2 Lerp(const Vector2 &v1, const Vector2 &v2, const float value);
 
-	Vector2 &operator+=(const Vector2 &v2);
-	Vector2 &operator-=(const Vector2 &v2);
-	Vector2 &operator*=(const float scalar);
-	Vector2 &operator/=(const float scalar);
+		static Vector2 GetRandom(bool normalize = false);
 
-	const Vector2 operator+(const Vector2 &v2) const;
-	const Vector2 operator-(const Vector2 &v2) const;
-	const Vector2 operator*(const float scalar) const;
-	const Vector2 operator/(const float scalar) const;
+		Vector2 &operator= (const Vector2 &v2);
 
-	bool operator==(const Vector2 &v2) const;
-	bool operator!=(const Vector2 &v2) const;
+		Vector2 &operator+=(const Vector2 &v2);
+		Vector2 &operator-=(const Vector2 &v2);
+		Vector2 &operator*=(const float scalar);
+		Vector2 &operator/=(const float scalar);
 
-	const Point ToPoint() const;
+		const Vector2 operator+(const Vector2 &v2) const;
+		const Vector2 operator-(const Vector2 &v2) const;
+		const Vector2 operator*(const float scalar) const;
+		const Vector2 operator/(const float scalar) const;
 
-	void Display() const { std::cout << "{" << X << ", " << Y << "}" << std::endl; }
-};
+		bool operator==(const Vector2 &v2) const;
+		bool operator!=(const Vector2 &v2) const;
 
+		const Point ToPoint() const;
+
+		void Display() const { std::cout << "{" << X << ", " << Y << "}" << std::endl; }
+	};
+}

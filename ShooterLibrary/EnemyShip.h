@@ -1,31 +1,34 @@
 
 #pragma once
 
-class EnemyShip : public Ship
+namespace ShooterLibrary
 {
-public:
+	class EnemyShip : public Ship
+	{
+	public:
 
-	EnemyShip();
-	virtual ~EnemyShip() { }
+		EnemyShip();
+		virtual ~EnemyShip() { }
 
-	virtual void Update(const GameTime *pGameTime);
+		virtual void Update(const GameTime *pGameTime);
 
-	virtual void Draw(const GameTime *pGameTime) = 0;
+		virtual void Draw(const GameTime *pGameTime) = 0;
 
-	virtual void Initialize(const Vector2 position, const double delaySeconds);
+		virtual void Initialize(const Vector2 position, const double delaySeconds);
 
-	virtual void Fire() { }
+		virtual void Fire() { }
 
-	virtual std::string ToString() const { return "EnemyShip"; }
-
-
-protected:
-
-	virtual double GetDelaySeconds() const { return m_delaySeconds; }
+		virtual std::string ToString() const { return "EnemyShip"; }
 
 
-private:
+	protected:
 
-	double m_delaySeconds;
+		virtual double GetDelaySeconds() const { return m_delaySeconds; }
 
-};
+
+	private:
+
+		double m_delaySeconds;
+
+	};
+}

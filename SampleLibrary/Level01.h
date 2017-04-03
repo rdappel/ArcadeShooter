@@ -1,24 +1,23 @@
+
 #pragma once
 
-#include "ShooterLibrary.h"
-#include "SampleLevel.h"
-
-
-class Level01 : public SampleLevel
+namespace Sample
 {
+	class Level01 : public Level
+	{
 
-public:
-	
-	Level01();
-	virtual ~Level01() { }
+	public:
 
-	virtual void LoadContent();
+		Level01();
+		virtual ~Level01() { }
 
-	virtual void Update(const GameTime *pGameTime);
+		virtual void LoadContent();
 
-private:
+		virtual void Update(const GameTime *pGameTime);
 
-	float m_POWERUPTEST = 1;
+	private:
 
-};
+		float m_POWERUPTEST = 1;
 
+	};
+}

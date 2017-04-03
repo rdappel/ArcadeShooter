@@ -21,10 +21,12 @@
 
 #pragma once
 
-
-enum MouseButtons
+namespace KatanaEngine
 {
-	MOUSEBUTTON_LEFT = 1,
-	MOUSEBUTTON_RIGHT = 2,
-	MOUSEBUTTON_CENTER = 4
-};
+	enum MouseButtons
+	{
+		MOUSEBUTTON_LEFT = 1,
+		MOUSEBUTTON_RIGHT = 2,
+		MOUSEBUTTON_CENTER = 4
+	};
+}

@@ -21,20 +21,20 @@
 
 #include "KatanaEngine.h"
 
-
-ALLEGRO_DISPLAY *RenderTarget::s_pDisplay;
-
-
-RenderTarget::RenderTarget(const int width, const int height)
+namespace KatanaEngine
 {
-	ALLEGRO_BITMAP *pBitmap = al_create_bitmap(width, height);
+	ALLEGRO_DISPLAY *RenderTarget::s_pDisplay;
 
-	SetTexture(pBitmap);
-}
+	RenderTarget::RenderTarget(const int width, const int height)
+	{
+		ALLEGRO_BITMAP *pBitmap = al_create_bitmap(width, height);
 
-	
-void RenderTarget::Set(RenderTarget *pTarget)
-{
-	if (pTarget) al_set_target_bitmap(pTarget->GetBitmap());
-	else al_set_target_bitmap(al_get_backbuffer(s_pDisplay));
+		SetTexture(pBitmap);
+	}
+
+	void RenderTarget::Set(RenderTarget *pTarget)
+	{
+		if (pTarget) al_set_target_bitmap(pTarget->GetBitmap());
+		else al_set_target_bitmap(al_get_backbuffer(s_pDisplay));
+	}
 }

@@ -21,79 +21,81 @@
 
 #pragma once
 
-
-class MenuScreen;
-
-class MenuItem
+namespace KatanaEngine
 {
+	class MenuScreen;
 
-public:
+	class MenuItem
+	{
 
-	MenuItem();
-	virtual ~MenuItem() { }
+	public:
 
-	void (*OnSelect)(MenuScreen *menuScreen);
-	
-	virtual void Update(const GameTime *pGameTime) { }
+		MenuItem();
+		virtual ~MenuItem() { }
 
-	virtual void Draw(const GameTime *pGameTime);
+		void(*OnSelect)(MenuScreen *menuScreen);
 
-	virtual void Select(MenuScreen *pMenuScreen);
+		virtual void Update(const GameTime *pGameTime) { }
 
-	virtual void SetText(const std::string text) { m_text = text; }
+		virtual void Draw(const GameTime *pGameTime);
 
-	virtual void SetTextOffset(const Vector2 offset) { m_textOffset = offset; }
+		virtual void Select(MenuScreen *pMenuScreen);
 
-	virtual bool IsSelected() const { return m_isSelected; }
+		virtual void SetText(const std::string text) { m_text = text; }
 
-	virtual void SetSelected(const bool isSelected) { m_isSelected = isSelected; }
+		virtual void SetTextOffset(const Vector2 offset) { m_textOffset = offset; }
 
-	virtual bool IsDisplayed() const { return m_isDisplayed; }
+		virtual bool IsSelected() const { return m_isSelected; }
 
-	virtual void SetDisplayed(const bool isDisplayed) { m_isDisplayed = isDisplayed; }
+		virtual void SetSelected(const bool isSelected) { m_isSelected = isSelected; }
 
-	virtual void SetFont(Font *pFont) { m_pFont = pFont; }
+		virtual bool IsDisplayed() const { return m_isDisplayed; }
 
-	virtual void SetPosition(const Vector2 position) { m_position = position; }
+		virtual void SetDisplayed(const bool isDisplayed) { m_isDisplayed = isDisplayed; }
 
-	virtual void SetColor(const Color color) { m_color = color; }
+		virtual void SetFont(Font *pFont) { m_pFont = pFont; }
 
-	virtual void SetAlpha(const float alpha) { m_alpha = alpha; }
+		virtual void SetPosition(const Vector2 position) { m_position = position; }
 
-	virtual void SetMenuScreen(MenuScreen *pMenuScreen) { m_pMenuScreen = pMenuScreen; }
+		virtual void SetColor(const Color color) { m_color = color; }
 
-	virtual void SetTextAlign(TextAlign textAlign) { m_textAlign = textAlign; }
+		virtual void SetAlpha(const float alpha) { m_alpha = alpha; }
 
+		virtual void SetMenuScreen(MenuScreen *pMenuScreen) { m_pMenuScreen = pMenuScreen; }
 
-protected:
-
-	virtual MenuScreen *GetMenuScreen() const { return m_pMenuScreen; }
-
-	virtual Vector2 GetPosition() const { return m_position; }
-
-	virtual std::string GetText() const { return m_text; }
+		virtual void SetTextAlign(TextAlign textAlign) { m_textAlign = textAlign; }
 
 
-private:
+	protected:
 
-	std::string m_text;
+		virtual MenuScreen *GetMenuScreen() const { return m_pMenuScreen; }
 
-	bool m_isSelected;
+		virtual Vector2 GetPosition() const { return m_position; }
 
-	bool m_isDisplayed;
+		virtual std::string GetText() const { return m_text; }
 
-	Font *m_pFont;
 
-	Color m_color;
+	private:
 
-	float m_alpha;
+		std::string m_text;
 
-	Vector2 m_position;
+		bool m_isSelected;
 
-	Vector2 m_textOffset;
+		bool m_isDisplayed;
 
-	MenuScreen *m_pMenuScreen;
+		Font *m_pFont;
 
-	TextAlign m_textAlign;
+		Color m_color;
 
-};
+		float m_alpha;
+
+		Vector2 m_position;
+
+		Vector2 m_textOffset;
+
+		MenuScreen *m_pMenuScreen;
+
+		TextAlign m_textAlign;
+
+	};
+}

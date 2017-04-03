@@ -1,69 +1,72 @@
 
 #include "ShooterLibrary.h"
 
-GameplayScreen::GameplayScreen()
+namespace ShooterLibrary
 {
-	SetTransitionInTime(1.0);
-	SetTransitionOutTime(0.5);
-
-	//SetUseRenderTarget();
-}
-
-GameplayScreen::~GameplayScreen()
-{
-	if (m_pLevel) delete m_pLevel;
-}
-
-void GameplayScreen::LoadContent()
-{
-	m_pLevel->SetGameplayScreen(this);
-	m_pLevel->LoadContent();
-
-	Show();
-}
-
-
-void GameplayScreen::HandleInput(InputState *pInput)
-{
-	if (pInput->IsNewKeyPress(ALLEGRO_KEY_ESCAPE))
+	GameplayScreen::GameplayScreen()
 	{
-		//GetScreenManager()->AddScreen(new PauseMenu(this));
+		SetTransitionInTime(1.0);
+		SetTransitionOutTime(0.5);
+
+		//SetUseRenderTarget();
 	}
 
-	m_pLevel->HandleInput(pInput);
-}
-
-void GameplayScreen::Update(const GameTime *pGameTime)
-{
-	if (!this->NeedsToBeRemoved())
+	GameplayScreen::~GameplayScreen()
 	{
-		bool isPlayerActive = m_pLevel->GetPlayerShip()->IsActive();
+		if (m_pLevel) delete m_pLevel;
+	}
 
-		m_pLevel->Update(pGameTime);
+	void GameplayScreen::LoadContent()
+	{
+		m_pLevel->SetGameplayScreen(this);
+		m_pLevel->LoadContent();
 
-		if (isPlayerActive && !m_pLevel->GetPlayerShip()->IsActive())
+		Show();
+	}
+
+
+	void GameplayScreen::HandleInput(InputState *pInput)
+	{
+		if (pInput->IsNewKeyPress(Key::ESCAPE))
 		{
-			//GetScreenManager()->AddScreen(new GameOverScreen(this));
+			//GetScreenManager()->AddScreen(new PauseMenu(this));
 		}
 
-		if (GetTransition() == ScreenTransition::SCREENTRANS_OUT)
-		{
-			/**
-			ALLEGRO_SAMPLE_INSTANCE *pSampleInstance = m_pLevel->GetSampleInstance();
+		m_pLevel->HandleInput(pInput);
+	}
 
-			if (pSampleInstance)
+	void GameplayScreen::Update(const GameTime *pGameTime)
+	{
+		if (!this->NeedsToBeRemoved())
+		{
+			bool isPlayerActive = m_pLevel->GetPlayerShip()->IsActive();
+
+			m_pLevel->Update(pGameTime);
+
+			if (isPlayerActive && !m_pLevel->GetPlayerShip()->IsActive())
 			{
-				al_set_sample_instance_gain(pSampleInstance, GetAlpha());
+				//GetScreenManager()->AddScreen(new GameOverScreen(this));
 			}
-			/**/
+
+			if (GetTransition() == ScreenTransition::SCREENTRANS_OUT)
+			{
+				/**
+				ALLEGRO_SAMPLE_INSTANCE *pSampleInstance = m_pLevel->GetSampleInstance();
+
+				if (pSampleInstance)
+				{
+					al_set_sample_instance_gain(pSampleInstance, GetAlpha());
+				}
+				/**/
+			}
 		}
 	}
-}
 
-void GameplayScreen::Draw(const GameTime *pGameTime)
-{
-	if (!this->NeedsToBeRemoved())
+	void GameplayScreen::Draw(const GameTime *pGameTime)
 	{
-		m_pLevel->Draw(pGameTime);
+		if (!this->NeedsToBeRemoved())
+		{
+			m_pLevel->Draw(pGameTime);
+		}
 	}
 }

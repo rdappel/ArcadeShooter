@@ -1,31 +1,34 @@
 
 #include "ShooterLibrary.h"
 
-EnemyShip::EnemyShip()
+namespace ShooterLibrary
 {
-	SetMaxHitPoints(1);
-	SetCollisionRadius(20);
-}
-
-void EnemyShip::Update(const GameTime *pGameTime)
-{
-	if (m_delaySeconds > 0)
+	EnemyShip::EnemyShip()
 	{
-		m_delaySeconds -= pGameTime->GetTimeElapsed();
-
-		if (m_delaySeconds <= 0)
-		{
-			GameObject::Activate();
-		}
+		SetMaxHitPoints(1);
+		SetCollisionRadius(20);
 	}
 
-	Ship::Update(pGameTime);
-}
+	void EnemyShip::Update(const GameTime *pGameTime)
+	{
+		if (m_delaySeconds > 0)
+		{
+			m_delaySeconds -= pGameTime->GetTimeElapsed();
 
-void EnemyShip::Initialize(const Vector2 position, const double delaySeconds)
-{
-	SetPosition(position);
-	m_delaySeconds = delaySeconds;
+			if (m_delaySeconds <= 0)
+			{
+				GameObject::Activate();
+			}
+		}
 
-	Ship::Initialize();
+		Ship::Update(pGameTime);
+	}
+
+	void EnemyShip::Initialize(const Vector2 position, const double delaySeconds)
+	{
+		SetPosition(position);
+		m_delaySeconds = delaySeconds;
+
+		Ship::Initialize();
+	}
 }

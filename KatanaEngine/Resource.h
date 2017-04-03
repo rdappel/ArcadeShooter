@@ -21,43 +21,45 @@
 
 #pragma once
 
-
-class ResourceManager;
-
-class Resource
+namespace KatanaEngine
 {
-	friend class ResourceManager;
+	class ResourceManager;
 
-public:
+	class Resource
+	{
+		friend class ResourceManager;
 
-	virtual ~Resource() { }
+	public:
 
-	virtual bool Load(const std::string &path, ResourceManager *pManager) = 0;
+		virtual ~Resource() { }
 
-	unsigned short GetResourceID() const { return m_id; }
+		virtual bool Load(const std::string &path, ResourceManager *pManager) = 0;
 
-
-protected:
-
-	void Split(const std::string &line, const char delimeter, std::vector<std::string> &elements);
-
-	void ParseComments(std::string &line);
-
-	void TrimLine(std::string &line);
-
-	ResourceManager *GetResourceManager() { return m_pResourceManager; }
+		unsigned short GetResourceID() const { return m_id; }
 
 
-private:
+	protected:
 
-	void SetResourceID(const int id) { m_id = id; }
+		void Split(const std::string &line, const char delimeter, std::vector<std::string> &elements);
 
-	virtual bool IsCloneable() { return false; }
+		void ParseComments(std::string &line);
 
-	virtual Resource *Clone() { return this; };
+		void TrimLine(std::string &line);
 
-	unsigned short m_id;
+		ResourceManager *GetResourceManager() { return m_pResourceManager; }
 
-	ResourceManager *m_pResourceManager;
 
-};
+	private:
+
+		void SetResourceID(const int id) { m_id = id; }
+
+		virtual bool IsCloneable() { return false; }
+
+		virtual Resource *Clone() { return this; };
+
+		unsigned short m_id;
+
+		ResourceManager *m_pResourceManager;
+
+	};
+}

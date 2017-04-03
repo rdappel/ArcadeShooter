@@ -21,97 +21,99 @@
 
 #pragma once
 
-
-class ResourceManager
+namespace KatanaEngine
 {
-
-public:
-
-	ResourceManager() { m_nextResourceID = 0; }
-
-	void SetContentPath(const std::string &path) { m_contentPath = path; }
-
-	void UnloadAllResources()
+	class ResourceManager
 	{
-		std::map<std::string, Resource *>::iterator it;
-		for (it = m_resources.begin(); it != m_resources.end(); ++it)
+
+	public:
+
+		ResourceManager() { m_nextResourceID = 0; }
+
+		void SetContentPath(const std::string &path) { m_contentPath = path; }
+
+		void UnloadAllResources()
 		{
-			Resource *resource = it->second;
-			delete resource;
-		}
-		m_resources.clear();
-
-		std::vector<Resource *>::iterator cloneIt;
-		for (cloneIt = m_clones.begin(); cloneIt != m_clones.end(); ++cloneIt)
-		{
-			delete *cloneIt;
-		}
-		m_clones.clear();
-	}
-
-	template <typename T>
-	T *Load(const std::string &path, const bool cache = true, const bool appendContentPath = true)
-	{
-		m_resources;
-
-		if (m_resources.find(path) != m_resources.end())
-		{
-			T *pResource = dynamic_cast<T *>(m_resources[path]);
-
-			if (pResource->IsCloneable())
+			std::map<std::string, Resource *>::iterator it;
+			for (it = m_resources.begin(); it != m_resources.end(); ++it)
 			{
-				T *pClone = dynamic_cast<T*>(pResource->Clone());
+				Resource *resource = it->second;
+				delete resource;
+			}
+			m_resources.clear();
 
-				pClone->SetResourceID(m_nextResourceID);
+			std::vector<Resource *>::iterator cloneIt;
+			for (cloneIt = m_clones.begin(); cloneIt != m_clones.end(); ++cloneIt)
+			{
+				delete *cloneIt;
+			}
+			m_clones.clear();
+		}
+
+		template <typename T>
+		T *Load(const std::string &path, const bool cache = true, const bool appendContentPath = true)
+		{
+			m_resources;
+
+			if (m_resources.find(path) != m_resources.end())
+			{
+				T *pResource = dynamic_cast<T *>(m_resources[path]);
+
+				if (pResource->IsCloneable())
+				{
+					T *pClone = dynamic_cast<T*>(pResource->Clone());
+
+					pClone->SetResourceID(m_nextResourceID);
+
+					m_nextResourceID++;
+
+					m_clones.push_back(pClone);
+
+					return pClone;
+				}
+
+				return pResource;
+			}
+
+			T *pT = new T;
+
+			pT->m_pResourceManager = this;
+
+			std::string fullPath;
+
+			if (appendContentPath)
+			{
+				fullPath = m_contentPath;
+				fullPath.append(path);
+			}
+			else fullPath = path;
+
+			//std::cout << fullPath << std::endl;
+
+			if (pT->Load(fullPath, this))
+			{
+				if (cache) m_resources[path] = pT;
+
+				pT->SetResourceID(m_nextResourceID);
 
 				m_nextResourceID++;
 
-				m_clones.push_back(pClone);
-
-				return pClone;
+				return pT;
 			}
 
-			return pResource;
+			delete pT;
+			return nullptr;
 		}
 
-		T *pT = new T;
+	private:
 
-		pT->m_pResourceManager = this;
+		std::map<std::string, Resource *> m_resources;
 
-		std::string fullPath;
+		std::vector<Resource *> m_clones;
 
-		if (appendContentPath)
-		{
-			fullPath = m_contentPath;
-			fullPath.append(path);
-		}
-		else fullPath = path;
+		std::string m_contentPath;
 
-		//std::cout << fullPath << std::endl;
+		unsigned short m_nextResourceID;
 
-		if (pT->Load(fullPath, this))
-		{
-			if (cache) m_resources[path] = pT;
-
-			pT->SetResourceID(m_nextResourceID);
-
-			m_nextResourceID++;
-
-			return pT;
-		}
-
-		delete pT;
-		return nullptr;
-	}
-
-private:
-
-	std::map<std::string, Resource *> m_resources;
-
-	std::vector<Resource *> m_clones;
-
-	std::string m_contentPath;
-
-	unsigned short m_nextResourceID;
-
-};
+	};
+}

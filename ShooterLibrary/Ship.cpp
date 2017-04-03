@@ -1,32 +1,35 @@
 #include "ShooterLibrary.h"
 
-Ship::Ship()
+namespace ShooterLibrary
 {
-	SetPosition(0, 0);
-	SetCollisionRadius(10);
-
-	m_speed = 300;
-	m_maxHitPoints = 3;
-	m_isInvulnurable = false;
-
-	Initialize();
-}
-
-void Ship::Hit(const float damage)
-{
-	if (!m_isInvulnurable)
+	Ship::Ship()
 	{
-		m_hitPoints -= damage;
-		std::cout << "HIT! >> HP: " << m_hitPoints << std::endl;
+		SetPosition(0, 0);
+		SetCollisionRadius(10);
 
-		if (m_hitPoints <= 0)
+		m_speed = 300;
+		m_maxHitPoints = 3;
+		m_isInvulnurable = false;
+
+		Initialize();
+	}
+
+	void Ship::Hit(const float damage)
+	{
+		if (!m_isInvulnurable)
 		{
-			GameObject::Deactivate();
+			m_hitPoints -= damage;
+			std::cout << "HIT! >> HP: " << m_hitPoints << std::endl;
+
+			if (m_hitPoints <= 0)
+			{
+				GameObject::Deactivate();
+			}
 		}
 	}
-}
 
-void Ship::Initialize()
-{
-	m_hitPoints = m_maxHitPoints;
+	void Ship::Initialize()
+	{
+		m_hitPoints = m_maxHitPoints;
+	}
 }

@@ -1,49 +1,52 @@
 
 #pragma once
 
-class PlayerShip : public Ship
+namespace ShooterLibrary
 {
+	class PlayerShip : public Ship
+	{
 
-public:
+	public:
 
-	PlayerShip();
-	virtual ~PlayerShip() { }
+		PlayerShip();
+		virtual ~PlayerShip() { }
 
-	virtual void SetTexture(Texture *pTexture);
+		virtual void SetTexture(Texture *pTexture);
 
-	virtual void Update(const GameTime *pGameTime);
+		virtual void Update(const GameTime *pGameTime);
 
-	virtual void Draw(const GameTime *pGameTime);
+		virtual void Draw(const GameTime *pGameTime);
 
-	virtual void Fire() = 0;
+		virtual void Fire() = 0;
 
-	virtual void SetDesiredDirection(const Vector2 direction) { m_desiredDirection.Set(direction); }
+		virtual void SetDesiredDirection(const Vector2 direction) { m_desiredDirection.Set(direction); }
 
-	virtual std::string ToString() const { return "PlayerShip"; }
+		virtual std::string ToString() const { return "PlayerShip"; }
 
-	virtual Vector2 GetHalfDimensions() const { return m_textureOrigin; }
+		virtual Vector2 GetHalfDimensions() const { return m_textureOrigin; }
 
-	virtual CollisionMask GetCollisionMask() const { return (CollisionMask)(IsInvulnurable() ? 0 : 1); }
+		virtual CollisionMask GetCollisionMask() const { return (CollisionMask)(IsInvulnurable() ? 0 : 1); }
 
 
-protected:
+	protected:
 
-	virtual void SetResponsiveness(const float responsiveness);
+		virtual void SetResponsiveness(const float responsiveness);
 
-	virtual float GetResponsiveness() const { return m_responsiveness; }
+		virtual float GetResponsiveness() const { return m_responsiveness; }
 
-	virtual Vector2 GetDesiredDirection() const { return m_desiredDirection; }
+		virtual Vector2 GetDesiredDirection() const { return m_desiredDirection; }
 
-private:
+	private:
 
-	Texture *m_pTexture;
-	Vector2 m_textureOrigin;
+		Texture *m_pTexture;
+		Vector2 m_textureOrigin;
 
-	Vector2 m_desiredDirection;
-	Vector2 m_velocity;
+		Vector2 m_desiredDirection;
+		Vector2 m_velocity;
 
-	float m_responsiveness;
+		float m_responsiveness;
 
-	virtual void ConfineToScreen();
+		virtual void ConfineToScreen();
 
-};
+	};
+}

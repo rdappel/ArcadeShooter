@@ -21,99 +21,101 @@
 
 #pragma once
 
-
-class Game
+namespace KatanaEngine
 {
+	class Game
+	{
 
-public:
+	public:
 
-	Game();
-	virtual ~Game();
-
-
-	int Run();
-
-
-	static int GetScreenWidth() { return s_screenWidth; }
-
-	static int GetScreenHeight() { return s_screenHeight; }
-
-	static Vector2 GetScreenCenter() { return (Vector2(s_screenWidth, s_screenHeight) / 2); }
+		Game();
+		virtual ~Game();
 
 
-	ResourceManager *GetResourceManager() const { return m_pResourceManager; }
-
-	ScreenManager *GetScreenManager() const { return m_pScreenManager; }
-
-	ParticleManager *GetParticleManager() const { return m_pParticleManager; }
-
-	SpriteBatch *GetSpriteBatch() const { return m_pSpriteBatch; }
+		int Run();
 
 
-	virtual void LoadContent() { }
+		static int GetScreenWidth() { return s_screenWidth; }
 
-	virtual void UnloadContent() { }
+		static int GetScreenHeight() { return s_screenHeight; }
 
-	virtual void Update(const GameTime *pGameTime);
-
-	virtual void Draw(const GameTime *pGameTime);
-
-	virtual void Quit() { m_isRunning = false; }
+		static Vector2 GetScreenCenter() { return (Vector2(s_screenWidth, s_screenHeight) / 2); }
 
 
-protected:
+		ResourceManager *GetResourceManager() const { return m_pResourceManager; }
 
-	static void SetScreenResolution(int width, int height) { s_screenWidth = width; s_screenHeight = height; }
+		ScreenManager *GetScreenManager() const { return m_pScreenManager; }
 
-	static void SetWindowTitle(std::string title) { s_windowTitle = title; }
+		ParticleManager *GetParticleManager() const { return m_pParticleManager; }
 
-	void SetResourceDirectory(const std::string &path) { m_pResourceManager->SetContentPath(path); }
+		SpriteBatch *GetSpriteBatch() const { return m_pSpriteBatch; }
 
-	bool IsRunning() { return m_isRunning; }
 
-	void SetTargetFramesPerSecond(int const frames);
+		virtual void LoadContent() { }
 
-	void SetFrameCounterFont(const std::string &path);
+		virtual void UnloadContent() { }
 
-	void InitializeScreenManager() { m_pScreenManager = new ScreenManager(this); }
+		virtual void Update(const GameTime *pGameTime);
 
-	void InitializeParticleManager() { m_pParticleManager = new ParticleManager(this); }
+		virtual void Draw(const GameTime *pGameTime);
 
-	void DisplayFrameRate();
+		virtual void Quit() { m_isRunning = false; }
 
-	void SetFullScreen(bool isFullScreen) { m_isFullScreen = isFullScreen; }
 
-	void SetOpenGLFlag() { m_requireOpenGL = true; }
+	protected:
 
-	
-private:
+		static void SetScreenResolution(int width, int height) { s_screenWidth = width; s_screenHeight = height; }
 
-	static int s_screenWidth;
-	static int s_screenHeight;
+		static void SetWindowTitle(std::string title) { s_windowTitle = title; }
 
-	static std::string s_windowTitle;
-	static std::string s_contentDirectory;
+		void SetResourceDirectory(const std::string &path) { m_pResourceManager->SetContentPath(path); }
 
-	bool m_isInitialized;
-	bool m_isRunning;
-	bool m_isFullScreen;
-	bool m_requireOpenGL;
+		bool IsRunning() { return m_isRunning; }
 
-	double m_targetFramesPerSecond;
-	double m_inverseTargetFrames;
-	double m_actualFramesPerSec;
-	double m_currentTime;
-	double m_previousTime;
-	float m_frameCounter;
+		void SetTargetFramesPerSecond(int const frames);
 
-	GameTime *m_pGameTime;
-	InputState *m_pInput;
+		void SetFrameCounterFont(const std::string &path);
 
-	SpriteBatch *m_pSpriteBatch;
+		void InitializeScreenManager() { m_pScreenManager = new ScreenManager(this); }
 
-	ScreenManager *m_pScreenManager;
-	ParticleManager *m_pParticleManager;
-	ResourceManager *m_pResourceManager;
+		void InitializeParticleManager() { m_pParticleManager = new ParticleManager(this); }
 
-	Font *m_pFrameCounterFont;
-};
+		void DisplayFrameRate();
+
+		void SetFullScreen(bool isFullScreen) { m_isFullScreen = isFullScreen; }
+
+		void SetOpenGLFlag() { m_requireOpenGL = true; }
+
+
+	private:
+
+		static int s_screenWidth;
+		static int s_screenHeight;
+
+		static std::string s_windowTitle;
+		static std::string s_contentDirectory;
+
+		bool m_isInitialized;
+		bool m_isRunning;
+		bool m_isFullScreen;
+		bool m_requireOpenGL;
+
+		double m_targetFramesPerSecond;
+		double m_inverseTargetFrames;
+		double m_actualFramesPerSec;
+		double m_currentTime;
+		double m_previousTime;
+		float m_frameCounter;
+
+		GameTime *m_pGameTime;
+		InputState *m_pInput;
+
+		SpriteBatch *m_pSpriteBatch;
+
+		ScreenManager *m_pScreenManager;
+		ParticleManager *m_pParticleManager;
+		ResourceManager *m_pResourceManager;
+
+		Font *m_pFrameCounterFont;
+	};
+}

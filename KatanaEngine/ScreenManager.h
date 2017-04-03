@@ -21,42 +21,44 @@
 
 #pragma once
 
-
-class Game;
-
-class ScreenManager
+namespace KatanaEngine
 {
-	friend class Game;
+	class Game;
 
-public:
+	class ScreenManager
+	{
+		friend class Game;
 
-	ScreenManager(Game *pGame);
-	virtual ~ScreenManager() { }
+	public:
 
-	bool InTransition() const { return false; }
+		ScreenManager(Game *pGame);
+		virtual ~ScreenManager() { }
 
-	Game *GetGame() const { return m_pGame; }
+		bool InTransition() const { return false; }
 
-	ResourceManager *GetResourceManager() const;
+		Game *GetGame() const { return m_pGame; }
 
-	virtual void AddScreen(Screen *pScreen);
+		ResourceManager *GetResourceManager() const;
 
-	virtual void Update(const GameTime *pGameTime);
+		virtual void AddScreen(Screen *pScreen);
 
-	virtual void Draw(const GameTime *pGameTime);
+		virtual void Update(const GameTime *pGameTime);
+
+		virtual void Draw(const GameTime *pGameTime);
 
 
-private:
+	private:
 
-	Game *m_pGame;
+		Game *m_pGame;
 
-	std::vector<Screen *> m_screens;
-	std::vector<Screen *> m_screensToAdd;
-	std::vector<Screen *> m_screensToRemove;
-	std::vector<Screen *> m_screensToDraw;
-	
-	std::vector<Screen *>::iterator m_it;
-	std::vector<Screen *>::reverse_iterator m_rit;
+		std::vector<Screen *> m_screens;
+		std::vector<Screen *> m_screensToAdd;
+		std::vector<Screen *> m_screensToRemove;
+		std::vector<Screen *> m_screensToDraw;
 
-	virtual void HandleInput(InputState *pInput);
-};
+		std::vector<Screen *>::iterator m_it;
+		std::vector<Screen *>::reverse_iterator m_rit;
+
+		virtual void HandleInput(InputState *pInput);
+	};
+}

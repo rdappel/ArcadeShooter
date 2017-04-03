@@ -21,115 +21,117 @@
 
 #pragma once
 
-
-enum class TextAlign { LEFT, CENTER, RIGHT };
-
-enum class SpriteSortMode { BACK_TO_FRONT, DEFERRED, FRONT_TO_BACK, IMMEDIATE, TEXTURE };
-
-enum class BlendState { ALPHA, ADDITIVE };
-
-class SpriteBatch
+namespace KatanaEngine
 {
+	enum class TextAlign { LEFT, CENTER, RIGHT };
 
-public:
+	enum class SpriteSortMode { BACK_TO_FRONT, DEFERRED, FRONT_TO_BACK, IMMEDIATE, TEXTURE };
 
-	SpriteBatch() { m_isStarted = false; }
-	~SpriteBatch() { }
+	enum class BlendState { ALPHA, ADDITIVE };
 
-	void Begin(SpriteSortMode sortMode = SpriteSortMode::DEFERRED, BlendState blendState = BlendState::ALPHA, ALLEGRO_TRANSFORM *transformation = NULL);
-	void End(bool test = false);
-	
-	void DrawString(Font *pFont, std::string *text, Vector2 position, Color color = Color::White,
-		TextAlign alignment = TextAlign::LEFT, float drawDepth = 0);
-	
-	void Draw(Texture *pTexture, Vector2 position, Region region, Color color = Color::White,
-		Vector2 origin = Vector2::Zero, Vector2 scale = Vector2::One, float rotation = 0, float drawDepth = 0);
-	
-	void Draw(Texture *pTexture, Vector2 position, Color color = Color::White,
-		Vector2 origin = Vector2::Zero, Vector2 scale = Vector2::One, float rotation = 0, float drawDepth = 0);
-
-	void Draw(Animation *pAnimation, Vector2 position, Color color = Color::White,
-		Vector2 origin = Vector2::Zero, Vector2 scale = Vector2::One, float rotation = 0, float drawDepth = 0);
-
-
-private:
-
-	
-
-	struct Drawable
+	class SpriteBatch
 	{
-		bool isBitmap;
-		ALLEGRO_COLOR color;
-		int x, y;
-		float depth;
 
-		union
+	public:
+
+		SpriteBatch() { m_isStarted = false; }
+		~SpriteBatch() { }
+
+		void Begin(SpriteSortMode sortMode = SpriteSortMode::DEFERRED, BlendState blendState = BlendState::ALPHA, ALLEGRO_TRANSFORM *transformation = NULL);
+		void End(bool test = false);
+
+		void DrawString(Font *pFont, std::string *text, Vector2 position, Color color = Color::White,
+			TextAlign alignment = TextAlign::LEFT, float drawDepth = 0);
+
+		void Draw(Texture *pTexture, Vector2 position, Region region, Color color = Color::White,
+			Vector2 origin = Vector2::Zero, Vector2 scale = Vector2::One, float rotation = 0, float drawDepth = 0);
+
+		void Draw(Texture *pTexture, Vector2 position, Color color = Color::White,
+			Vector2 origin = Vector2::Zero, Vector2 scale = Vector2::One, float rotation = 0, float drawDepth = 0);
+
+		void Draw(Animation *pAnimation, Vector2 position, Color color = Color::White,
+			Vector2 origin = Vector2::Zero, Vector2 scale = Vector2::One, float rotation = 0, float drawDepth = 0);
+
+
+	private:
+
+
+
+		struct Drawable
 		{
-			struct
-			{
-				ALLEGRO_FONT *pFont;
-				std::string *text;
-				TextAlign align;
-			};
+			bool isBitmap;
+			ALLEGRO_COLOR color;
+			int x, y;
+			float depth;
 
-			struct
+			union
 			{
-				ALLEGRO_BITMAP *pBitmap;
-				float rotation;
-				int cx, cy;
-				int sx, sy, sw, sh;
-				float scx, scy;
-				unsigned short id;
-			};
+				struct
+				{
+					ALLEGRO_FONT *pFont;
+					std::string *text;
+					TextAlign align;
+				};
 
-		} Union;
-		
-		bool operator<(const Drawable& other) const
-		{
-			return (depth < other.depth);
-		}
-	};
+				struct
+				{
+					ALLEGRO_BITMAP *pBitmap;
+					float rotation;
+					int cx, cy;
+					int sx, sy, sw, sh;
+					float scx, scy;
+					unsigned short id;
+				};
 
-	struct CompareBackToFront
-	{
-		bool operator()(const Drawable* l, const Drawable* r)
-		{
-			if (*l < *r)
+			} Union;
+
+			bool operator<(const Drawable& other) const
 			{
-				return true;
+				return (depth < other.depth);
 			}
+		};
 
-			return false;
-		}
-	};
-
-	struct CompareFrontToBack
-	{
-		bool operator()(const Drawable* l, const Drawable* r)
+		struct CompareBackToFront
 		{
-			if (*r < *l)
+			bool operator()(const Drawable* l, const Drawable* r)
 			{
+				if (*l < *r)
+				{
+					return true;
+				}
 
-				return true;
+				return false;
 			}
+		};
 
-			return false;
-		}
+		struct CompareFrontToBack
+		{
+			bool operator()(const Drawable* l, const Drawable* r)
+			{
+				if (*r < *l)
+				{
+
+					return true;
+				}
+
+				return false;
+			}
+		};
+
+		std::vector<Drawable *> m_drawables;
+		std::vector<Drawable *> m_inactiveDrawables;
+		std::vector<Drawable *>::iterator m_it;
+
+		unsigned short m_lastID;
+
+		SpriteSortMode m_sortMode;
+
+		ALLEGRO_TRANSFORM *m_transformation;
+
+		bool m_isStarted;
+
+		void DrawBitmap(Drawable *drawable);
+		void DrawFont(Drawable *drawable);
+
 	};
-	
-	std::vector<Drawable *> m_drawables;
-	std::vector<Drawable *> m_inactiveDrawables;
-	std::vector<Drawable *>::iterator m_it;
-
-	unsigned short m_lastID;
-
-	SpriteSortMode m_sortMode;
-
-	ALLEGRO_TRANSFORM *m_transformation;
-
-	bool m_isStarted;
-	
-	void DrawBitmap(Drawable *drawable);
-	void DrawFont(Drawable *drawable);
-
-};
+}

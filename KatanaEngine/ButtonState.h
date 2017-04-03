@@ -21,9 +21,11 @@
 
 #pragma once
 
-
-enum ButtonState
+namespace KatanaEngine
 {
-	BUTTONSTATE_PRESSED,
-	BUTTONSTATE_RELEASED
-};
+	enum class ButtonState
+	{
+		PRESSED,
+		RELEASED
+	};
+}

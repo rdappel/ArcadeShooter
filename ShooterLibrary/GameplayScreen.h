@@ -3,27 +3,30 @@
 
 #include "ShooterLibrary.h"
 
-class GameplayScreen : public Screen
+namespace ShooterLibrary
 {
+	class GameplayScreen : public Screen
+	{
 
-public:
+	public:
+		virtual ~GameplayScreen();
 
-	GameplayScreen();
-	virtual ~GameplayScreen();
+		virtual void LoadContent();
 
-	virtual void LoadContent();
+		virtual void HandleInput(InputState *pInput);
 
-	virtual void HandleInput(InputState *pInput);
+		virtual void Update(const GameTime *pGameTime);
 
-	virtual void Update(const GameTime *pGameTime);
+		virtual void Draw(const GameTime *pGameTime);
 
-	virtual void Draw(const GameTime *pGameTime);
-	
-	virtual void SetLevel(Level *pLevel) { m_pLevel = pLevel; }
+		virtual void SetLevel(Level *pLevel) { m_pLevel = pLevel; }
 
 
-protected:
+	protected:
 
-	Level *m_pLevel = nullptr;
+		GameplayScreen();
 
-};
+		Level *m_pLevel = nullptr;
+
+	};
+}

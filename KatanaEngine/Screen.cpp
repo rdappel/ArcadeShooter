@@ -21,130 +21,132 @@
 
 #include "KatanaEngine.h"
 
-
-Screen::Screen()
+namespace KatanaEngine
 {
-	m_isExiting = false;
-	m_needsToBeRemoved = false;
-
-	m_transitionInTime = 0.0;
-	m_transitionOutTime = 0.0;
-
-	m_pScreenManager = nullptr;
-
-	m_transition = SCREENTRANS_NONE;
-
-	m_transitionValue = 0.0f;
-
-	OnExit = nullptr;
-	OnRemove = nullptr;
-
-	SetPassThroughFlags();
-}
-
-void Screen::UpdateTransition(const GameTime *pGameTime)
-{
-	if (m_transition != SCREENTRANS_NONE)
+	Screen::Screen()
 	{
-		m_transitionTime -= pGameTime->GetTimeElapsed();
+		m_isExiting = false;
+		m_needsToBeRemoved = false;
 
-		if (m_transition == SCREENTRANS_IN)
-		{
-			if (m_transitionInTime > 0)
-			{
-				m_transitionValue = 1 - (float)m_transitionTime / (float)m_transitionInTime;
-			}
-			else
-			{
-				m_transitionValue = 0;
-			}
-		}
-		
-		if (m_transition == SCREENTRANS_OUT)
-		{
-			if (m_transitionOutTime > 0)
-			{
-				m_transitionValue = (float)m_transitionTime / (float)m_transitionOutTime;
-			}
-			else
-			{
-				m_transitionValue = 0;
-			}
-		}
+		m_transitionInTime = 0.0;
+		m_transitionOutTime = 0.0;
 
-		if (m_transitionValue < 0) m_transitionValue = 0;
-		if (m_transitionValue > 1) m_transitionValue = 1;
-		
-		if (m_transitionTime <= 0)
-		{
-			m_transitionTime = 0;
-			m_transition = SCREENTRANS_NONE;
+		m_pScreenManager = nullptr;
 
-			if (m_isExiting)
+		m_transition = SCREENTRANS_NONE;
+
+		m_transitionValue = 0.0f;
+
+		OnExit = nullptr;
+		OnRemove = nullptr;
+
+		SetPassThroughFlags();
+	}
+
+	void Screen::UpdateTransition(const GameTime *pGameTime)
+	{
+		if (m_transition != SCREENTRANS_NONE)
+		{
+			m_transitionTime -= pGameTime->GetTimeElapsed();
+
+			if (m_transition == SCREENTRANS_IN)
 			{
-				m_needsToBeRemoved = true;
+				if (m_transitionInTime > 0)
+				{
+					m_transitionValue = 1 - (float)m_transitionTime / (float)m_transitionInTime;
+				}
+				else
+				{
+					m_transitionValue = 0;
+				}
+			}
+
+			if (m_transition == SCREENTRANS_OUT)
+			{
+				if (m_transitionOutTime > 0)
+				{
+					m_transitionValue = (float)m_transitionTime / (float)m_transitionOutTime;
+				}
+				else
+				{
+					m_transitionValue = 0;
+				}
+			}
+
+			if (m_transitionValue < 0) m_transitionValue = 0;
+			if (m_transitionValue > 1) m_transitionValue = 1;
+
+			if (m_transitionTime <= 0)
+			{
+				m_transitionTime = 0;
+				m_transition = SCREENTRANS_NONE;
+
+				if (m_isExiting)
+				{
+					m_needsToBeRemoved = true;
+				}
 			}
 		}
 	}
-}
 
-void Screen::SetScreenManager(ScreenManager *pScreenManager)
-{
-	m_pScreenManager = pScreenManager;
-}
-
-void Screen::Show()
-{
-	TransitionIn();
-}
-
-void Screen::Exit()
-{
-	m_isExiting = true;
-
-	TransitionOut();
-	
-	if (OnExit)	OnExit(this);
-}
-
-void Screen::TransitionIn()
-{
-	if (m_transition == SCREENTRANS_NONE)
+	void Screen::SetScreenManager(ScreenManager *pScreenManager)
 	{
-		m_transitionTime = m_transitionInTime;
-		m_transition = SCREENTRANS_IN;
+		m_pScreenManager = pScreenManager;
 	}
-}
 
-void Screen::TransitionOut()
-{
-	if (m_transition == SCREENTRANS_NONE)
+	void Screen::Show()
 	{
-		m_transitionTime = m_transitionOutTime;
-		m_transition = SCREENTRANS_OUT;
+		TransitionIn();
 	}
-}
 
-Game *Screen::GetGame() const
-{
-	return m_pScreenManager->GetGame();
-}
+	void Screen::Exit()
+	{
+		m_isExiting = true;
 
-ResourceManager *Screen::GetResourceManager() const
-{
-	if (m_pScreenManager == nullptr) return nullptr;
+		TransitionOut();
 
-	return m_pScreenManager->GetResourceManager();
-}
+		if (OnExit)	OnExit(this);
+	}
 
-SpriteBatch *Screen::GetSpriteBatch() const
-{
-	return GetGame()->GetSpriteBatch();
-}
+	void Screen::TransitionIn()
+	{
+		if (m_transition == SCREENTRANS_NONE)
+		{
+			m_transitionTime = m_transitionInTime;
+			m_transition = SCREENTRANS_IN;
+		}
+	}
 
-void Screen::SetPassThroughFlags(const bool handleInput, const bool update, const bool draw)
-{
-	m_handleInputBelow = handleInput;
-	m_updateBelow = update;
-	m_drawBelow = draw;
+	void Screen::TransitionOut()
+	{
+		if (m_transition == SCREENTRANS_NONE)
+		{
+			m_transitionTime = m_transitionOutTime;
+			m_transition = SCREENTRANS_OUT;
+		}
+	}
+
+	Game *Screen::GetGame() const
+	{
+		return m_pScreenManager->GetGame();
+	}
+
+	ResourceManager *Screen::GetResourceManager() const
+	{
+		if (m_pScreenManager == nullptr) return nullptr;
+
+		return m_pScreenManager->GetResourceManager();
+	}
+
+	SpriteBatch *Screen::GetSpriteBatch() const
+	{
+		return GetGame()->GetSpriteBatch();
+	}
+
+	void Screen::SetPassThroughFlags(const bool handleInput, const bool update, const bool draw)
+	{
+		m_handleInputBelow = handleInput;
+		m_updateBelow = update;
+		m_drawBelow = draw;
+	}
 }

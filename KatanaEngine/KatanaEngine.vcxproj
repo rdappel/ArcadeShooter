@@ -176,6 +176,7 @@
     <ClInclude Include="GameTime.h" />
     <ClInclude Include="InputState.h" />
     <ClInclude Include="KatanaEngine.h" />
+    <ClInclude Include="KeyState.h" />
     <ClInclude Include="MathUtil.h" />
     <ClInclude Include="MenuItem.h" />
     <ClInclude Include="MenuScreen.h" />

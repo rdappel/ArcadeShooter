@@ -21,40 +21,42 @@
 
 #pragma once
 
-
-class Font : public Resource
+namespace KatanaEngine
 {
+	class Font : public Resource
+	{
 
-public:
+	public:
 
-	Font() { }
-	virtual ~Font() { al_destroy_font(m_pFont); }
-
-
-	static void SetLoadSize(const int size, const bool restore = false);
-
-	static void SetCharacterRange(const int rangeCount, int ranges[]);
+		Font() { }
+		virtual ~Font() { al_destroy_font(m_pFont); }
 
 
-	virtual ALLEGRO_FONT *Get() { return m_pFont; }
+		static void SetLoadSize(const int size, const bool restore = false);
 
-	virtual bool Load(const std::string &path, ResourceManager *pManager);
-
-	virtual int GetHeight() const { return al_get_font_line_height(m_pFont); }
-
-	virtual int GetTextWidth(const char *text) const { return al_get_text_width(m_pFont, text); }
+		static void SetCharacterRange(const int rangeCount, int ranges[]);
 
 
-private:
+		virtual ALLEGRO_FONT *Get() { return m_pFont; }
 
-	static int s_fontSize;
-	static int s_restoreSize;
+		virtual bool Load(const std::string &path, ResourceManager *pManager);
 
-	static bool s_alAddonInitialized;
+		virtual int GetHeight() const { return al_get_font_line_height(m_pFont); }
 
-	static int s_rangeCount;
-	static int *s_ranges;
+		virtual int GetTextWidth(const char *text) const { return al_get_text_width(m_pFont, text); }
 
-	ALLEGRO_FONT *m_pFont;
 
-};
+	private:
+
+		static int s_fontSize;
+		static int s_restoreSize;
+
+		static bool s_alAddonInitialized;
+
+		static int s_rangeCount;
+		static int *s_ranges;
+
+		ALLEGRO_FONT *m_pFont;
+
+	};
+}

@@ -48,6 +48,7 @@
 /* Input Specific */
 #pragma message("Input Specific Headers...")
 #include "ButtonState.h"
+#include "KeyState.h"
 #include "GamepadState.h"
 #include "MouseState.h"
 #include "InputState.h"

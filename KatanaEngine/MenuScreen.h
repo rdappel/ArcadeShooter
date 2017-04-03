@@ -21,57 +21,59 @@
 
 #pragma once
 
-
-class SpriteBatch;
-
-class MenuScreen : public Screen
+namespace KatanaEngine
 {
+	class SpriteBatch;
 
-public:
+	class MenuScreen : public Screen
+	{
 
-	MenuScreen();
-	virtual ~MenuScreen();
+	public:
 
-	virtual void LoadContent() { Screen::LoadContent(); }
+		MenuScreen();
+		virtual ~MenuScreen();
 
-	virtual void HandleInput(InputState *pInput);
+		virtual void LoadContent() { Screen::LoadContent(); }
 
-	virtual void Update(const GameTime *pGameTime);
+		virtual void HandleInput(InputState *pInput);
 
-	virtual void Draw(const GameTime *pGameTime);
+		virtual void Update(const GameTime *pGameTime);
 
-	virtual void SetItemListWrapping(const bool wraps) { m_itemListWraps = wraps; }
+		virtual void Draw(const GameTime *pGameTime);
 
-
-protected:
-
-	virtual void AddMenuItem(MenuItem *item) { m_menuItems.push_back(item); item->SetMenuScreen(this); }
-
-	MenuItem *GetSelectedItem() const { return m_menuItems[m_selectedItemIndex]; }
-
-	MenuItem *GetMenuItem(const int itemIndex) const { return m_menuItems[itemIndex]; }
-
-	void SetSelectedItem(const int itemIndex) { m_selectedItemIndex = itemIndex; }
-
-	void SetDisplayCount(const unsigned int count) { m_displayCount = count; }
-
-	int GetDisplayCount() const { return m_displayCount; }
-
-	int GetDisplayStartIndex() const { return m_displayStartIndex; }
-
-	virtual void UpdateItem(MenuItem *pItem, const int index) { }
+		virtual void SetItemListWrapping(const bool wraps) { m_itemListWraps = wraps; }
 
 
-private:
+	protected:
 
-	std::vector<MenuItem *> m_menuItems;
+		virtual void AddMenuItem(MenuItem *item) { m_menuItems.push_back(item); item->SetMenuScreen(this); }
 
-	unsigned int m_selectedItemIndex;
+		MenuItem *GetSelectedItem() const { return m_menuItems[m_selectedItemIndex]; }
 
-	unsigned int m_displayCount;
+		MenuItem *GetMenuItem(const int itemIndex) const { return m_menuItems[itemIndex]; }
 
-	unsigned int m_displayStartIndex;
+		void SetSelectedItem(const int itemIndex) { m_selectedItemIndex = itemIndex; }
 
-	bool m_itemListWraps;
+		void SetDisplayCount(const unsigned int count) { m_displayCount = count; }
 
-};
+		int GetDisplayCount() const { return m_displayCount; }
+
+		int GetDisplayStartIndex() const { return m_displayStartIndex; }
+
+		virtual void UpdateItem(MenuItem *pItem, const int index) { }
+
+
+	private:
+
+		std::vector<MenuItem *> m_menuItems;
+
+		unsigned int m_selectedItemIndex;
+
+		unsigned int m_displayCount;
+
+		unsigned int m_displayStartIndex;
+
+		bool m_itemListWraps;
+
+	};
+}

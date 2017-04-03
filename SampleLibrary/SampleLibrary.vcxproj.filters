@@ -16,17 +16,8 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="SampleGame.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="MainMenuScreen.cpp">
       <Filter>Source Files\Screens</Filter>
-    </ClCompile>
-    <ClCompile Include="SampleLevel.cpp">
-      <Filter>Source Files\Levels</Filter>
-    </ClCompile>
-    <ClCompile Include="SamplePlayerShip.cpp">
-      <Filter>Source Files\Game Objects</Filter>
     </ClCompile>
     <ClCompile Include="BioEnemyShip.cpp">
       <Filter>Source Files\Game Objects</Filter>
@@ -34,25 +25,31 @@
     <ClCompile Include="Level01.cpp">
       <Filter>Source Files\Levels</Filter>
     </ClCompile>
-    <ClCompile Include="SampleGameplayScreen.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="PowerUp.cpp">
       <Filter>Source Files\Game Objects</Filter>
     </ClCompile>
+    <ClCompile Include="PlayerShip.cpp">
+      <Filter>Source Files\Game Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Level.cpp">
+      <Filter>Source Files\Levels</Filter>
+    </ClCompile>
+    <ClCompile Include="GameplayScreen.cpp">
+      <Filter>Source Files\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Sample.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="SampleGame.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SampleLevel.h">
-      <Filter>Source Files\Levels</Filter>
-    </ClInclude>
     <ClInclude Include="MainMenuScreen.h">
       <Filter>Source Files\Screens</Filter>
-    </ClInclude>
-    <ClInclude Include="SamplePlayerShip.h">
-      <Filter>Source Files\Game Objects</Filter>
     </ClInclude>
     <ClInclude Include="BioEnemyShip.h">
       <Filter>Source Files\Game Objects</Filter>
@@ -60,9 +57,23 @@
     <ClInclude Include="Level01.h">
       <Filter>Source Files\Levels</Filter>
     </ClInclude>
-    <ClInclude Include="SampleGameplayScreen.h" />
     <ClInclude Include="PowerUp.h">
       <Filter>Source Files\Game Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerShip.h">
+      <Filter>Source Files\Game Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Level.h">
+      <Filter>Source Files\Levels</Filter>
+    </ClInclude>
+    <ClInclude Include="GameplayScreen.h">
+      <Filter>Source Files\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Sample.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

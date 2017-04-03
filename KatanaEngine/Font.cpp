@@ -21,71 +21,72 @@ Description: Source file for font resources.
 
 #include "KatanaEngine.h"
 
-
-// Static Members
-int Font::s_fontSize = 16;
-int Font::s_restoreSize = 0;
-bool Font::s_alAddonInitialized = false;
-int Font::s_rangeCount = 0;
-int *Font::s_ranges = nullptr;
-
-
-void Font::SetLoadSize(const int size, const bool restore)
+namespace KatanaEngine
 {
-	if (restore) s_restoreSize = s_fontSize;
+	int Font::s_fontSize = 16;
+	int Font::s_restoreSize = 0;
+	bool Font::s_alAddonInitialized = false;
+	int Font::s_rangeCount = 0;
+	int *Font::s_ranges = nullptr;
 
-	s_fontSize = size;
-}
 
-void Font::SetCharacterRange(const int rangeCount, int ranges[])
-{
-	s_rangeCount = rangeCount;
-	s_ranges = ranges;
-}
-
-bool Font::Load(const std::string &path, ResourceManager *pManager)
-{
-	if (!s_alAddonInitialized)
+	void Font::SetLoadSize(const int size, const bool restore)
 	{
-		al_init_font_addon();
-		al_init_ttf_addon();
+		if (restore) s_restoreSize = s_fontSize;
 
-		s_alAddonInitialized = true;
+		s_fontSize = size;
 	}
 
-	bool isTTF = (path.find(".ttf") != std::string::npos);
-	bool isPNG = (path.find(".png") != std::string::npos);
-	if (isTTF)
+	void Font::SetCharacterRange(const int rangeCount, int ranges[])
 	{
-		m_pFont = al_load_ttf_font(path.c_str(), s_fontSize, 0);
+		s_rangeCount = rangeCount;
+		s_ranges = ranges;
 	}
-	else if (isPNG)
-	{
-		int ranges[] = {
-			32, 126 };  // ASCII
-						//0x00A1, 0x00FF,  // Latin 1
-						//0x0100, 0x017F};  // Extended-A
 
-		if (s_ranges == nullptr)
+	bool Font::Load(const std::string &path, ResourceManager *pManager)
+	{
+		if (!s_alAddonInitialized)
 		{
-			s_ranges = ranges;
-			s_rangeCount = 1;
+			al_init_font_addon();
+			al_init_ttf_addon();
+
+			s_alAddonInitialized = true;
 		}
 
-		Texture *pTexture = pManager->Load<Texture>(path, true, false);
-		if (pTexture)
+		bool isTTF = (path.find(".ttf") != std::string::npos);
+		bool isPNG = (path.find(".png") != std::string::npos);
+		if (isTTF)
 		{
-			m_pFont = al_grab_font_from_bitmap(pTexture->GetBitmap(), s_rangeCount, s_ranges);
+			m_pFont = al_load_ttf_font(path.c_str(), s_fontSize, 0);
 		}
-			
-		s_ranges = nullptr;
-	}
-	else
-	{
-		m_pFont = al_load_font(path.c_str(), s_fontSize, 0);
-	}
+		else if (isPNG)
+		{
+			int ranges[] = {
+				32, 126 };  // ASCII
+							//0x00A1, 0x00FF,  // Latin 1
+							//0x0100, 0x017F};  // Extended-A
 
-	if (s_restoreSize > 0) s_fontSize = s_restoreSize;
+			if (s_ranges == nullptr)
+			{
+				s_ranges = ranges;
+				s_rangeCount = 1;
+			}
 
-	return (m_pFont != nullptr);
+			Texture *pTexture = pManager->Load<Texture>(path, true, false);
+			if (pTexture)
+			{
+				m_pFont = al_grab_font_from_bitmap(pTexture->GetBitmap(), s_rangeCount, s_ranges);
+			}
+
+			s_ranges = nullptr;
+		}
+		else
+		{
+			m_pFont = al_load_font(path.c_str(), s_fontSize, 0);
+		}
+
+		if (s_restoreSize > 0) s_fontSize = s_restoreSize;
+
+		return (m_pFont != nullptr);
+	}
 }

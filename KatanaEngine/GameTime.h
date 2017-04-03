@@ -21,28 +21,30 @@
 
 #pragma once
 
-
-class GameTime
+namespace KatanaEngine
 {
-	friend class Game;
+	class GameTime
+	{
+		friend class Game;
 
-public:
+	public:
 
-	GameTime();
-	virtual ~GameTime() { }
+		GameTime();
+		virtual ~GameTime() { }
 
-	// Gets the time in seconds since last frame.
-	double GetTimeElapsed() const { return m_elapsedTime; }
+		// Gets the time in seconds since last frame.
+		double GetTimeElapsed() const { return m_elapsedTime; }
 
-	// Gets the time in seconds since the game started.
-	double GetTotalTime() const { return m_currentTotalTime; }
+		// Gets the time in seconds since the game started.
+		double GetTotalTime() const { return m_currentTotalTime; }
 
 
-private:
+	private:
 
-	void Update();
+		void Update();
 
-	double m_currentTotalTime;
-	double m_previousTotalTime;
-	double m_elapsedTime;
-};
+		double m_currentTotalTime;
+		double m_previousTotalTime;
+		double m_elapsedTime;
+	};
+}

@@ -15,9 +15,25 @@
 #pragma message("                ... Finished.")
 /* ----------------- */
 
-#include "ShooterGame.h"
+/* Core */
+#pragma message("Core Headers...")
+#include "Game.h"
+#pragma message("                ... Finished.")
+/* ----------------- */
+
+
+/* Screens */
+#pragma message("Screen Headers...")
 #include "GameplayScreen.h"
+#pragma message("                ... Finished.")
+/* ----------------- */
+
+
+/* Levels */
+#pragma message("Level Headers...")
 #include "Level.h"
+#pragma message("                ... Finished.")
+/* ----------------- */
 
 
 #pragma message("Finished precompiling header files for Shooter Library.")

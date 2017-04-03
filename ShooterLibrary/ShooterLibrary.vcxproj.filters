@@ -16,9 +16,6 @@
     <ClCompile Include="ShooterLibrary.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ShooterGame.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="EnemyShip.cpp">
       <Filter>Source Files\Game Objects</Filter>
     </ClCompile>
@@ -37,6 +34,9 @@
     <ClCompile Include="GameplayScreen.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -46,9 +46,6 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="ShooterLibrary.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ShooterGame.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="EnemyShip.h">
@@ -67,6 +64,9 @@
       <Filter>Source Files\Game Objects</Filter>
     </ClInclude>
     <ClInclude Include="GameplayScreen.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

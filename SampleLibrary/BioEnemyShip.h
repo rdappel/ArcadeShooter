@@ -1,27 +1,25 @@
 #pragma once
 
-#include "ShooterLibrary.h"
-
-class BioEnemyShip : public EnemyShip
+namespace Sample
 {
+	class BioEnemyShip : public ShooterLibrary::EnemyShip
+	{
 
-public:
+	public:
 
-	BioEnemyShip();
-	virtual ~BioEnemyShip() { }
+		BioEnemyShip();
+		virtual ~BioEnemyShip() { }
 
-	static void SetTexture(Texture *pTexture) { s_pTexture = pTexture; }
+		static void SetTexture(Texture *pTexture) { s_pTexture = pTexture; }
 
-	virtual void Update(const GameTime *pGameTime);
+		virtual void Update(const GameTime *pGameTime);
 
-	virtual void Draw(const GameTime *pGameTime);
+		virtual void Draw(const GameTime *pGameTime);
 
 
-private:
+	private:
 
-	static Texture *s_pTexture;
+		static Texture *s_pTexture;
 
-	static Vector2 s_textureOrigin;
-
-};
-
+	};
+}
