@@ -10,10 +10,13 @@ namespace GuardianFinalZero
 	}
 
 
-	GameplayScreen::GameplayScreen(Level *pLevel)
+	GameplayScreen::GameplayScreen(const uint32_t levelIndex)
 	{
-		SetLevel(pLevel);
-
+		switch (levelIndex)
+		{			
+		case 1: SetLevel(new Level01()); break;
+		}
+		
 		OnRemove = GameplayScreenRemove;
 	}
 }

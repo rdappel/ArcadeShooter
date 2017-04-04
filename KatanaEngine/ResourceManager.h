@@ -53,8 +53,6 @@ namespace KatanaEngine
 		template <typename T>
 		T *Load(const std::string &path, const bool cache = true, const bool appendContentPath = true)
 		{
-			m_resources;
-
 			if (m_resources.find(path) != m_resources.end())
 			{
 				T *pResource = dynamic_cast<T *>(m_resources[path]);

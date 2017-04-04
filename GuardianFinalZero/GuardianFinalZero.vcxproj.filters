@@ -11,13 +11,16 @@
     <Filter Include="Source Files\Levels">
       <UniqueIdentifier>{5480f911-3055-4459-908d-2d02e3d27e68}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\GameObjects">
+    <Filter Include="Packages">
+      <UniqueIdentifier>{8e2c8839-c515-477d-8330-1410d5325bed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game Objects">
       <UniqueIdentifier>{81610b07-fdd4-4a6e-8a63-6239378ba0d1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PlayerShip.cpp">
-      <Filter>Source Files\GameObjects</Filter>
+      <Filter>Source Files\Game Objects</Filter>
     </ClCompile>
     <ClCompile Include="Level.cpp">
       <Filter>Source Files\Levels</Filter>
@@ -42,11 +45,8 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="PlayerShip.h">
-      <Filter>Source Files\GameObjects</Filter>
+      <Filter>Source Files\Game Objects</Filter>
     </ClInclude>
     <ClInclude Include="Level.h">
       <Filter>Source Files\Levels</Filter>
@@ -67,7 +67,12 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="CollisionTypes.h">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Game Objects</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config">
+      <Filter>Packages</Filter>
+    </None>
   </ItemGroup>
 </Project>

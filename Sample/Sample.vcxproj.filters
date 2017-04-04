@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="Game.cpp">
+      <Filter>SourceFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>SourceFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="Sample.cpp">
+      <Filter>SourceFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="BioEnemyShip.cpp">
+      <Filter>SourceFiles\Game Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="GameplayScreen.cpp">
+      <Filter>SourceFiles\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="MainMenuScreen.cpp">
+      <Filter>SourceFiles\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="Level.cpp">
+      <Filter>SourceFiles\Levels</Filter>
+    </ClCompile>
+    <ClCompile Include="Level01.cpp">
+      <Filter>SourceFiles\Levels</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerShip.cpp">
+      <Filter>SourceFiles\Game Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="PowerUp.cpp">
+      <Filter>SourceFiles\Game Objects</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Game.h">
+      <Filter>SourceFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="Sample.h">
+      <Filter>SourceFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="BioEnemyShip.h">
+      <Filter>SourceFiles\Game Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="GameplayScreen.h">
+      <Filter>SourceFiles\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="MainMenuScreen.h">
+      <Filter>SourceFiles\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="Level.h">
+      <Filter>SourceFiles\Levels</Filter>
+    </ClInclude>
+    <ClInclude Include="Level01.h">
+      <Filter>SourceFiles\Levels</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerShip.h">
+      <Filter>SourceFiles\Game Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="PowerUp.h">
+      <Filter>SourceFiles\Game Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionTypes.h">
+      <Filter>SourceFiles\Game Objects</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="SourceFiles">
+      <UniqueIdentifier>{6624bcfd-2c35-4ee8-9927-2b3abf9be287}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Packages">
+      <UniqueIdentifier>{a233f1d2-4440-4dda-92dc-eea5169338b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFiles\Game Objects">
+      <UniqueIdentifier>{bb3400a0-99b5-4fff-8784-d1d5b03543f6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFiles\Screens">
+      <UniqueIdentifier>{1ebbaf5e-5da1-4de3-90f6-7ee446675ed0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFiles\Levels">
+      <UniqueIdentifier>{7eeac002-5895-4220-81d7-44bf40b7dead}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config">
+      <Filter>Packages</Filter>
+    </None>
+  </ItemGroup>
+</Project>

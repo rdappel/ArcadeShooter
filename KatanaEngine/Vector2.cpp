@@ -83,6 +83,11 @@ namespace KatanaEngine
 		return sqrtf(pow((v2.X - v1.X), 2) + pow((v2.Y - v1.Y), 2));
 	}
 
+	float Vector2::DistanceSquared(const Vector2 &v1, const Vector2 &v2)
+	{
+		return pow((v2.X - v1.X), 2) + pow((v2.Y - v1.Y), 2);
+	}
+
 	Vector2 Vector2::Lerp(const Vector2 &v1, const Vector2 &v2, const float value)
 	{
 		if (value > 1) return 1;

@@ -42,7 +42,7 @@ namespace KatanaEngine
 
 		static int GetRandomInt(const int min = 0, const int max = RAND_MAX)
 		{
-			int range = max - min;
+			int range = max - min + 1;
 
 			return (rand() % range) + min;
 		}

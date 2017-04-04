@@ -8,6 +8,9 @@
     <Filter Include="Source Files\Game Objects">
       <UniqueIdentifier>{7ac570fa-533d-4fe1-aa00-19cad70f9279}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Packages">
+      <UniqueIdentifier>{17e5c652-ed6c-453a-b3f2-ef56d10edaf7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Level.cpp">
@@ -42,9 +45,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="Level.h">
       <Filter>Source Files</Filter>
     </ClInclude>
@@ -75,6 +75,13 @@
     <ClInclude Include="CollisionManager.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="CollisionTypes.h" />
+    <ClInclude Include="CollisionTypes.h">
+      <Filter>Source Files\Game Objects</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config">
+      <Filter>Packages</Filter>
+    </None>
   </ItemGroup>
 </Project>

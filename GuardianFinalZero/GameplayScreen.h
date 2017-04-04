@@ -7,8 +7,11 @@ namespace GuardianFinalZero
 	{
 
 	public:
-		GameplayScreen(Level *pLevel);
+		GameplayScreen(const uint32_t levelIndex);
 
 		virtual ~GameplayScreen() { }
+
+	private:
+
 	};
 }

@@ -86,6 +86,9 @@ namespace KatanaEngine
 		void SetTransitionInTime(double seconds) { m_transitionInTime = seconds; }
 		void SetTransitionOutTime(double seconds) { m_transitionOutTime = seconds; }
 
+		double GetTransitionInTime() const { return m_transitionInTime; }
+		double GetTransitionOutTime() const { return m_transitionOutTime; }
+
 		ScreenTransition GetTransition() const { return m_transition; }
 
 		float GetTransitionValue() const { return m_transitionValue; }

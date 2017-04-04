@@ -12,11 +12,13 @@ namespace ShooterLibrary
 
 		m_collisions.push_back(c);
 	}
-
+	
 	void CollisionManager::CheckCollision(GameObject *pGameObject1, GameObject *pGameObject2)
 	{
 		uint32_t t1 = pGameObject1->GetCollisionMask();
 		uint32_t t2 = pGameObject2->GetCollisionMask();
+
+		static int idx = 0;
 
 		if (t1 == NONE || t2 == NONE || t1 == t2) return;
 
@@ -42,7 +44,6 @@ namespace ShooterLibrary
 				{
 					c.Callback(pGameObject1, pGameObject2);
 				}
-				
 				return;
 			}
 		}

@@ -6,7 +6,7 @@ namespace GuardianFinalZero
 	// Removal Function
 	void MainMenuScreenRemove(Screen *pScreen)
 	{
-		pScreen->GetScreenManager()->AddScreen(new GameplayScreen(new Level01()));
+		pScreen->GetScreenManager()->AddScreen(new GameplayScreen(1));
 	}
 
 	// Menu Item Functions
@@ -31,8 +31,12 @@ namespace GuardianFinalZero
 
 		m_pLogoTexture = nullptr;
 
-		SetTransitionInTime(3.0);
-		SetTransitionOutTime(0.5);
+		SetTransitionInTime(3);
+		SetTransitionOutTime(0.5f);
+
+		m_menuFadeInTime = 1;
+		m_menuFadeValue = 0;
+		m_menuAlpha = 0;
 
 		//SetUseRenderTarget();
 		Show();
@@ -56,7 +60,7 @@ namespace GuardianFinalZero
 			pMenuItem->SetFont(pFont);
 			pMenuItem->SetText(items[i]);
 			pMenuItem->SetTextAlign(TextAlign::CENTER);
-			pMenuItem->SetPosition(Vector2(x, 600 + (40 * i)));
+			pMenuItem->SetPosition(Vector2(x, 560 + (40 * i)));
 
 			AddMenuItem(pMenuItem);
 		}
@@ -64,7 +68,6 @@ namespace GuardianFinalZero
 		GetMenuItem(0)->OnSelect = StartSelect;
 		//m_menuItems[1]->OnSelect = nullptr;
 		GetMenuItem(1)->OnSelect = ExitSelect;
-
 
 
 		m_pLogoTexture = GetResourceManager()->Load<Texture>("Textures\\LogoText.png");
@@ -78,8 +81,21 @@ namespace GuardianFinalZero
 	void MainMenuScreen::Update(const GameTime *pGameTime)
 	{
 		// Calculations to make the selected menu item pulse
-		float sinValue = (float)((1.0f + sin(pGameTime->GetTotalTime() * 6)) * 0.5);
+		const static float pulseSpeed = 6;
+		const static float startOffset = (float)GetTransitionInTime();
+		float sinParam = pGameTime->GetTotalTime() * pulseSpeed + startOffset;
+		float sinValue = (float)((1.0f + sin(sinParam)) * 0.5);
 		m_selectedAlpha = 0.5f + 0.5f * sinValue;
+
+
+		// Delay the menu items until the logo has faded in
+		if (GetAlpha() == 1 && m_menuFadeValue < 1)
+		{
+			m_menuFadeValue += pGameTime->GetTimeElapsed();
+			float value = m_menuFadeValue / m_menuFadeInTime;
+			if (value >= 1) m_menuAlpha = 1;
+			else m_menuAlpha = Math::Lerp(0, 1, value);
+		}
 
 		// Set the menu item colors
 		for (int i = 0; i < GetDisplayCount(); i++)
@@ -92,7 +108,7 @@ namespace GuardianFinalZero
 			}
 
 			GetMenuItem(i)->SetColor(color);
-			GetMenuItem(i)->SetAlpha(GetAlpha());
+			GetMenuItem(i)->SetAlpha(GetAlpha() * m_menuAlpha);
 		}
 
 		if (GetAlpha() > 0.4f)

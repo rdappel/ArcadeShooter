@@ -1,12 +1,13 @@
 
 #include "ShooterLibrary.h"
+#include <allegro5\allegro_primitives.h>
 
 namespace ShooterLibrary
 {
 	Level::Level()
 	{
-		m_sectorSize.X = 128;
-		m_sectorSize.Y = 128;
+		m_sectorSize.X = 64;
+		m_sectorSize.Y = 64;
 
 		m_sectorCount.X = (Game::GetScreenWidth() / (int)m_sectorSize.X) + 1;
 		m_sectorCount.Y = (Game::GetScreenHeight() / (int)m_sectorSize.Y) + 1;
@@ -33,6 +34,8 @@ namespace ShooterLibrary
 		AddGameObject(GetPlayerShip());
 
 		InitializeCollisionManager();
+
+		al_init_primitives_addon();
 	}
 
 	void Level::HandleInput(InputState *pInput)
@@ -72,6 +75,7 @@ namespace ShooterLibrary
 			pGameObject->Update(pGameTime);
 		}
 
+
 		if (m_pCollisionManager)
 		{
 			for (unsigned int i = 0; i < m_totalSectorCount; i++)
@@ -84,11 +88,11 @@ namespace ShooterLibrary
 		}
 	}
 
+
+
 	void Level::CheckCollisions(std::vector<GameObject *> &gameObjects)
 	{
 		const unsigned int objectCount = (unsigned int)gameObjects.size();
-
-		//GameObject::CollisionInstructions inst1, inst2;
 
 		GameObject *pI, *pJ;
 
@@ -97,28 +101,13 @@ namespace ShooterLibrary
 			pI = gameObjects[i];
 			if (pI->IsActive())
 			{
-				for (unsigned int j = i + 1; i < objectCount; i++)
+				for (unsigned int j = i + 1; j < objectCount; j++)
 				{
 					if (!pI->IsActive()) continue;
 
 					pJ = gameObjects[j];
 					if (pJ->IsActive())
 					{
-						//std::cout << "PCHK: " << pI->GetIndex() << " --- " << pJ->GetIndex() << std::endl;
-
-						/**
-						if (GameObject::AreObjectsColliding(pI, pJ, &inst1, &inst2))
-						{
-							if (inst1.removeObject) pI->Deactivate();
-							if (inst2.removeObject) pJ->Deactivate();
-
-							if (inst1.damageToObject) pI->Hit(inst1.damageToObject);
-							if (inst2.damageToObject) pJ->Hit(inst2.damageToObject);
-						}
-						/**/
-
-						//std::cout << "CHK: " << pI->ToString() << " --- " << pJ->ToString() << std::endl;
-
 						m_pCollisionManager->CheckCollision(pI, pJ);
 					}
 				}
@@ -208,7 +197,7 @@ namespace ShooterLibrary
 		else if (position.Y > previousPosition.Y)
 			minY = (int)(previousPosition.Y - halfDimensions.Y);
 		/**/
-		
+
 		minX /= (int)m_sectorSize.X;
 		maxX /= (int)m_sectorSize.X;
 		minY /= (int)m_sectorSize.Y;

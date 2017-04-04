@@ -28,5 +28,9 @@ namespace GuardianFinalZero
 
 		Vector2 m_position;
 		Vector2 m_targetPosition;
+
+		float m_menuFadeInTime;
+		float m_menuFadeValue;
+		float m_menuAlpha;
 	};
 }
