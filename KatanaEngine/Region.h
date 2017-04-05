@@ -21,36 +21,39 @@
 
 #pragma once
 
-class Region
+namespace KatanaEngine
 {
-
-public:
-
-	Region() { X = Y = Width = Height = 0; }
-
-	Region(const int x, const int y, const int width, const int height)
+	class Region
 	{
-		Set(x, y, width, height);
-	}
 
-	void Set(const int x, const int y, const int width, const int height)
-	{
-		X = x;
-		Y = y;
-		Width = width;
-		Height = height;
-	}
+	public:
 
-	virtual ~Region() { }
+		Region() { X = Y = Width = Height = 0; }
 
-	int X;
-	int Y;
-	int Width;
-	int Height;
+		Region(const int x, const int y, const int width, const int height)
+		{
+			Set(x, y, width, height);
+		}
 
-	void Display() { std::cout << "{ X: " << X << ", Y: " << Y << "}" << std::endl; }
+		void Set(const int x, const int y, const int width, const int height)
+		{
+			X = x;
+			Y = y;
+			Width = width;
+			Height = height;
+		}
 
-	int GetRight() { return X + Width; }
-	int GetBottom() { return Y + Height; }
+		virtual ~Region() { }
 
-};
+		int X;
+		int Y;
+		int Width;
+		int Height;
+
+		void Display() { std::cout << "{ X: " << X << ", Y: " << Y << "}" << std::endl; }
+
+		int GetRight() { return X + Width; }
+		int GetBottom() { return Y + Height; }
+
+	};
+}

@@ -29,6 +29,7 @@ namespace KatanaEngine
 
 	enum class BlendState { ALPHA, ADDITIVE };
 
+	/** @brief Enables a group of sprites to be drawn using the same settings. */
 	class SpriteBatch
 	{
 

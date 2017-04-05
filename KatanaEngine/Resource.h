@@ -25,6 +25,7 @@ namespace KatanaEngine
 {
 	class ResourceManager;
 
+	/** @brief Base class for all resource types to be managed by the ResourceManager class. */
 	class Resource
 	{
 		friend class ResourceManager;

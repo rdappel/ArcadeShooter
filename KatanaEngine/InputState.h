@@ -23,6 +23,7 @@
 
 namespace KatanaEngine
 {
+	/** @brief ----- */
 	class InputState
 	{
 		friend class Game;

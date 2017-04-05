@@ -23,6 +23,7 @@
 
 namespace KatanaEngine
 {
+	/** @brief Represents a 2D grid of texels. */
 	class Texture : public Resource
 	{
 

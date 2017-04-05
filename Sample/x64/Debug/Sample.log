@@ -1,3 +1,649 @@
 ﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(392,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (SampleLibrary.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  Sample.vcxproj -> C:\Users\Ryan Appel\Desktop\ArcadeShooter\x64\Debug\Sample.exe
-  Sample.vcxproj -> C:\Users\Ryan Appel\Desktop\ArcadeShooter\x64\Debug\Sample.pdb (Partial PDB)
+  Sample.cpp
+  Started precompiling header files for Sample.
+  Started precompiling header files for Shooter Library.
+  Started precompiling header files for Katana Engine.
+  Standard Headers...
+                  ... Finished.
+  Allegro Specific Headers...
+                  ... Finished.
+  Math Specific Headers...
+                  ... Finished.
+  Input Specific Headers...
+                  ... Finished.
+  Resource Management Headers...
+                  ... Finished.
+  Graphics Management Headers...
+                  ... Finished.
+  Particle Management Headers...
+                  ... Finished.
+  Screen Management Headers...
+                  ... Finished.
+  Game Engine Headers...
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(47): error C2143: syntax error: missing ';' before '*'
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(47): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(47): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(115): error C2143: syntax error: missing ';' before '*'
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(115): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(115): error C2238: unexpected token(s) preceding ';'
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(79): error C2065: 'm_pScreenManager': undeclared identifier
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(79): error C2061: syntax error: identifier 'ScreenManager'
+                  ... Finished.
+  Finished precompiling header files for Katana Engine.
+  Game Object Headers...
+                  ... Finished.
+  Collision Management Headers...
+                  ... Finished.
+  Core Headers...
+                  ... Finished.
+  Screen Headers...
+c:\users\ryan appel\desktop\arcadeshooter\shooterlibrary\gameplayscreen.h(9): error C2504: 'Screen': base class undefined
+                  ... Finished.
+  Level Headers...
+c:\users\ryan appel\desktop\arcadeshooter\shooterlibrary\level.h(34): error C2039: 'GetSpriteBatch': is not a member of 'ShooterLibrary::GameplayScreen'
+  c:\users\ryan appel\desktop\arcadeshooter\shooterlibrary\gameplayscreen.h(8): note: see declaration of 'ShooterLibrary::GameplayScreen'
+c:\users\ryan appel\desktop\arcadeshooter\shooterlibrary\level.h(72): error C2039: 'GetResourceManager': is not a member of 'ShooterLibrary::GameplayScreen'
+  c:\users\ryan appel\desktop\arcadeshooter\shooterlibrary\gameplayscreen.h(8): note: see declaration of 'ShooterLibrary::GameplayScreen'
+                  ... Finished.
+  Finished precompiling header files for Shooter Library.
+  Game Object Headers...
+                  ... Finished.
+  Level Headers...
+                  ... Finished.
+  Core Headers...
+                  ... Finished.
+  Screen Headers...
+c:\users\ryan appel\desktop\arcadeshooter\sample\mainmenuscreen.h(7): error C2504: 'MenuScreen': base class undefined
+                  ... Finished.
+  Finished precompiling header files for Sample.
+  PowerUp.cpp
+  Started precompiling header files for Sample.
+  Started precompiling header files for Shooter Library.
+  Started precompiling header files for Katana Engine.
+  Standard Headers...
+                  ... Finished.
+  Allegro Specific Headers...
+                  ... Finished.
+  Math Specific Headers...
+                  ... Finished.
+  Input Specific Headers...
+                  ... Finished.
+  Resource Management Headers...
+                  ... Finished.
+  Graphics Management Headers...
+                  ... Finished.
+  Particle Management Headers...
+                  ... Finished.
+  Screen Management Headers...
+                  ... Finished.
+  Game Engine Headers...
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(47): error C2143: syntax error: missing ';' before '*'
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(47): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(47): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(115): error C2143: syntax error: missing ';' before '*'
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(115): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(115): error C2238: unexpected token(s) preceding ';'
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(79): error C2065: 'm_pScreenManager': undeclared identifier
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(79): error C2061: syntax error: identifier 'ScreenManager'
+                  ... Finished.
+  Finished precompiling header files for Katana Engine.
+  Game Object Headers...
+                  ... Finished.
+  Collision Management Headers...
+                  ... Finished.
+  Core Headers...
+                  ... Finished.
+  Screen Headers...
+c:\users\ryan appel\desktop\arcadeshooter\shooterlibrary\gameplayscreen.h(9): error C2504: 'Screen': base class undefined
+                  ... Finished.
+  Level Headers...
+c:\users\ryan appel\desktop\arcadeshooter\shooterlibrary\level.h(34): error C2039: 'GetSpriteBatch': is not a member of 'ShooterLibrary::GameplayScreen'
+  c:\users\ryan appel\desktop\arcadeshooter\shooterlibrary\gameplayscreen.h(8): note: see declaration of 'ShooterLibrary::GameplayScreen'
+c:\users\ryan appel\desktop\arcadeshooter\shooterlibrary\level.h(72): error C2039: 'GetResourceManager': is not a member of 'ShooterLibrary::GameplayScreen'
+  c:\users\ryan appel\desktop\arcadeshooter\shooterlibrary\gameplayscreen.h(8): note: see declaration of 'ShooterLibrary::GameplayScreen'
+                  ... Finished.
+  Finished precompiling header files for Shooter Library.
+  Game Object Headers...
+                  ... Finished.
+  Level Headers...
+                  ... Finished.
+  Core Headers...
+                  ... Finished.
+  Screen Headers...
+c:\users\ryan appel\desktop\arcadeshooter\sample\mainmenuscreen.h(7): error C2504: 'MenuScreen': base class undefined
+                  ... Finished.
+  Finished precompiling header files for Sample.
+  PlayerShip.cpp
+  Started precompiling header files for Sample.
+  Started precompiling header files for Shooter Library.
+  Started precompiling header files for Katana Engine.
+  Standard Headers...
+                  ... Finished.
+  Allegro Specific Headers...
+                  ... Finished.
+  Math Specific Headers...
+                  ... Finished.
+  Input Specific Headers...
+                  ... Finished.
+  Resource Management Headers...
+                  ... Finished.
+  Graphics Management Headers...
+                  ... Finished.
+  Particle Management Headers...
+                  ... Finished.
+  Screen Management Headers...
+                  ... Finished.
+  Game Engine Headers...
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(47): error C2143: syntax error: missing ';' before '*'
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(47): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(47): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(115): error C2143: syntax error: missing ';' before '*'
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(115): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(115): error C2238: unexpected token(s) preceding ';'
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(79): error C2065: 'm_pScreenManager': undeclared identifier
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(79): error C2061: syntax error: identifier 'ScreenManager'
+                  ... Finished.
+  Finished precompiling header files for Katana Engine.
+  Game Object Headers...
+                  ... Finished.
+  Collision Management Headers...
+                  ... Finished.
+  Core Headers...
+                  ... Finished.
+  Screen Headers...
+c:\users\ryan appel\desktop\arcadeshooter\shooterlibrary\gameplayscreen.h(9): error C2504: 'Screen': base class undefined
+                  ... Finished.
+  Level Headers...
+c:\users\ryan appel\desktop\arcadeshooter\shooterlibrary\level.h(34): error C2039: 'GetSpriteBatch': is not a member of 'ShooterLibrary::GameplayScreen'
+  c:\users\ryan appel\desktop\arcadeshooter\shooterlibrary\gameplayscreen.h(8): note: see declaration of 'ShooterLibrary::GameplayScreen'
+c:\users\ryan appel\desktop\arcadeshooter\shooterlibrary\level.h(72): error C2039: 'GetResourceManager': is not a member of 'ShooterLibrary::GameplayScreen'
+  c:\users\ryan appel\desktop\arcadeshooter\shooterlibrary\gameplayscreen.h(8): note: see declaration of 'ShooterLibrary::GameplayScreen'
+                  ... Finished.
+  Finished precompiling header files for Shooter Library.
+  Game Object Headers...
+                  ... Finished.
+  Level Headers...
+                  ... Finished.
+  Core Headers...
+                  ... Finished.
+  Screen Headers...
+c:\users\ryan appel\desktop\arcadeshooter\sample\mainmenuscreen.h(7): error C2504: 'MenuScreen': base class undefined
+                  ... Finished.
+  Finished precompiling header files for Sample.
+  MainMenuScreen.cpp
+  Started precompiling header files for Sample.
+  Started precompiling header files for Shooter Library.
+  Started precompiling header files for Katana Engine.
+  Standard Headers...
+                  ... Finished.
+  Allegro Specific Headers...
+                  ... Finished.
+  Math Specific Headers...
+                  ... Finished.
+  Input Specific Headers...
+                  ... Finished.
+  Resource Management Headers...
+                  ... Finished.
+  Graphics Management Headers...
+                  ... Finished.
+  Particle Management Headers...
+                  ... Finished.
+  Screen Management Headers...
+                  ... Finished.
+  Game Engine Headers...
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(47): error C2143: syntax error: missing ';' before '*'
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(47): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(47): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(115): error C2143: syntax error: missing ';' before '*'
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(115): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(115): error C2238: unexpected token(s) preceding ';'
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(79): error C2065: 'm_pScreenManager': undeclared identifier
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(79): error C2061: syntax error: identifier 'ScreenManager'
+                  ... Finished.
+  Finished precompiling header files for Katana Engine.
+  Game Object Headers...
+                  ... Finished.
+  Collision Management Headers...
+                  ... Finished.
+  Core Headers...
+                  ... Finished.
+  Screen Headers...
+c:\users\ryan appel\desktop\arcadeshooter\shooterlibrary\gameplayscreen.h(9): error C2504: 'Screen': base class undefined
+                  ... Finished.
+  Level Headers...
+c:\users\ryan appel\desktop\arcadeshooter\shooterlibrary\level.h(34): error C2039: 'GetSpriteBatch': is not a member of 'ShooterLibrary::GameplayScreen'
+  c:\users\ryan appel\desktop\arcadeshooter\shooterlibrary\gameplayscreen.h(8): note: see declaration of 'ShooterLibrary::GameplayScreen'
+c:\users\ryan appel\desktop\arcadeshooter\shooterlibrary\level.h(72): error C2039: 'GetResourceManager': is not a member of 'ShooterLibrary::GameplayScreen'
+  c:\users\ryan appel\desktop\arcadeshooter\shooterlibrary\gameplayscreen.h(8): note: see declaration of 'ShooterLibrary::GameplayScreen'
+                  ... Finished.
+  Finished precompiling header files for Shooter Library.
+  Game Object Headers...
+                  ... Finished.
+  Level Headers...
+                  ... Finished.
+  Core Headers...
+                  ... Finished.
+  Screen Headers...
+c:\users\ryan appel\desktop\arcadeshooter\sample\mainmenuscreen.h(7): error C2504: 'MenuScreen': base class undefined
+                  ... Finished.
+  Finished precompiling header files for Sample.
+c:\users\ryan appel\desktop\arcadeshooter\sample\mainmenuscreen.cpp(7): error C2065: 'Screen': undeclared identifier
+c:\users\ryan appel\desktop\arcadeshooter\sample\mainmenuscreen.cpp(7): error C2065: 'pScreen': undeclared identifier
+c:\users\ryan appel\desktop\arcadeshooter\sample\mainmenuscreen.cpp(7): error C2182: 'MainMenuScreenRemove': illegal use of type 'void'
+c:\users\ryan appel\desktop\arcadeshooter\sample\mainmenuscreen.cpp(8): error C2448: 'Sample::MainMenuScreenRemove': function-style initializer appears to be a function definition
+c:\users\ryan appel\desktop\arcadeshooter\sample\mainmenuscreen.cpp(13): error C2065: 'MenuScreen': undeclared identifier
+c:\users\ryan appel\desktop\arcadeshooter\sample\mainmenuscreen.cpp(13): error C2065: 'pMenuScreen': undeclared identifier
+c:\users\ryan appel\desktop\arcadeshooter\sample\mainmenuscreen.cpp(13): error C2182: 'StartSelect': illegal use of type 'void'
+c:\users\ryan appel\desktop\arcadeshooter\sample\mainmenuscreen.cpp(14): error C2448: 'Sample::StartSelect': function-style initializer appears to be a function definition
+c:\users\ryan appel\desktop\arcadeshooter\sample\mainmenuscreen.cpp(19): error C2065: 'MenuScreen': undeclared identifier
+c:\users\ryan appel\desktop\arcadeshooter\sample\mainmenuscreen.cpp(19): error C2065: 'pMenuScreen': undeclared identifier
+c:\users\ryan appel\desktop\arcadeshooter\sample\mainmenuscreen.cpp(19): error C2182: 'ExitSelect': illegal use of type 'void'
+c:\users\ryan appel\desktop\arcadeshooter\sample\mainmenuscreen.cpp(20): error C2448: 'Sample::ExitSelect': function-style initializer appears to be a function definition
+c:\users\ryan appel\desktop\arcadeshooter\sample\mainmenuscreen.cpp(30): error C3861: 'SetItemListWrapping': identifier not found
+c:\users\ryan appel\desktop\arcadeshooter\sample\mainmenuscreen.cpp(34): error C3861: 'SetTransitionInTime': identifier not found
+c:\users\ryan appel\desktop\arcadeshooter\sample\mainmenuscreen.cpp(35): error C3861: 'SetTransitionOutTime': identifier not found
+c:\users\ryan appel\desktop\arcadeshooter\sample\mainmenuscreen.cpp(38): error C3861: 'Show': identifier not found
+c:\users\ryan appel\desktop\arcadeshooter\sample\mainmenuscreen.cpp(45): error C3861: 'SetDisplayCount': identifier not found
+c:\users\ryan appel\desktop\arcadeshooter\sample\mainmenuscreen.cpp(50): error C3861: 'GetResourceManager': identifier not found
+c:\users\ryan appel\desktop\arcadeshooter\sample\mainmenuscreen.cpp(50): error C2227: left of '->Load' must point to class/struct/union/generic type
+  c:\users\ryan appel\desktop\arcadeshooter\sample\mainmenuscreen.cpp(50): note: type is 'unknown-type'
+c:\users\ryan appel\desktop\arcadeshooter\sample\mainmenuscreen.cpp(54): error C2065: 'MenuItem': undeclared identifier
+c:\users\ryan appel\desktop\arcadeshooter\sample\mainmenuscreen.cpp(54): error C2065: 'pMenuItem': undeclared identifier
+c:\users\ryan appel\desktop\arcadeshooter\sample\mainmenuscreen.cpp(54): error C2061: syntax error: identifier 'MenuItem'
+c:\users\ryan appel\desktop\arcadeshooter\sample\mainmenuscreen.cpp(56): error C2065: 'pMenuItem': undeclared identifier
+c:\users\ryan appel\desktop\arcadeshooter\sample\mainmenuscreen.cpp(56): error C2227: left of '->SetFont' must point to class/struct/union/generic type
+  c:\users\ryan appel\desktop\arcadeshooter\sample\mainmenuscreen.cpp(56): note: type is 'unknown-type'
+c:\users\ryan appel\desktop\arcadeshooter\sample\mainmenuscreen.cpp(57): error C2065: 'pMenuItem': undeclared identifier
+c:\users\ryan appel\desktop\arcadeshooter\sample\mainmenuscreen.cpp(57): error C2227: left of '->SetText' must point to class/struct/union/generic type
+  c:\users\ryan appel\desktop\arcadeshooter\sample\mainmenuscreen.cpp(57): note: type is 'unknown-type'
+c:\users\ryan appel\desktop\arcadeshooter\sample\mainmenuscreen.cpp(58): error C2065: 'pMenuItem': undeclared identifier
+c:\users\ryan appel\desktop\arcadeshooter\sample\mainmenuscreen.cpp(58): error C2227: left of '->SetTextAlign' must point to class/struct/union/generic type
+  c:\users\ryan appel\desktop\arcadeshooter\sample\mainmenuscreen.cpp(58): note: type is 'unknown-type'
+c:\users\ryan appel\desktop\arcadeshooter\sample\mainmenuscreen.cpp(59): error C2065: 'pMenuItem': undeclared identifier
+c:\users\ryan appel\desktop\arcadeshooter\sample\mainmenuscreen.cpp(59): error C2227: left of '->SetPosition' must point to class/struct/union/generic type
+  c:\users\ryan appel\desktop\arcadeshooter\sample\mainmenuscreen.cpp(59): note: type is 'unknown-type'
+c:\users\ryan appel\desktop\arcadeshooter\sample\mainmenuscreen.cpp(61): error C2065: 'pMenuItem': undeclared identifier
+c:\users\ryan appel\desktop\arcadeshooter\sample\mainmenuscreen.cpp(61): error C3861: 'AddMenuItem': identifier not found
+c:\users\ryan appel\desktop\arcadeshooter\sample\mainmenuscreen.cpp(64): error C3861: 'GetMenuItem': identifier not found
+c:\users\ryan appel\desktop\arcadeshooter\sample\mainmenuscreen.cpp(64): error C2227: left of '->OnSelect' must point to class/struct/union/generic type
+  c:\users\ryan appel\desktop\arcadeshooter\sample\mainmenuscreen.cpp(64): note: type is 'unknown-type'
+c:\users\ryan appel\desktop\arcadeshooter\sample\mainmenuscreen.cpp(66): error C3861: 'GetMenuItem': identifier not found
+c:\users\ryan appel\desktop\arcadeshooter\sample\mainmenuscreen.cpp(66): error C2227: left of '->OnSelect' must point to class/struct/union/generic type
+  c:\users\ryan appel\desktop\arcadeshooter\sample\mainmenuscreen.cpp(66): note: type is 'unknown-type'
+c:\users\ryan appel\desktop\arcadeshooter\sample\mainmenuscreen.cpp(70): error C3861: 'GetResourceManager': identifier not found
+c:\users\ryan appel\desktop\arcadeshooter\sample\mainmenuscreen.cpp(70): error C2227: left of '->Load' must point to class/struct/union/generic type
+  c:\users\ryan appel\desktop\arcadeshooter\sample\mainmenuscreen.cpp(70): note: type is 'unknown-type'
+c:\users\ryan appel\desktop\arcadeshooter\sample\mainmenuscreen.cpp(73): error C2653: 'Screen': is not a class or namespace name
+c:\users\ryan appel\desktop\arcadeshooter\sample\mainmenuscreen.cpp(83): error C3861: 'GetDisplayCount': identifier not found
+c:\users\ryan appel\desktop\arcadeshooter\sample\mainmenuscreen.cpp(87): error C3861: 'GetMenuItem': identifier not found
+c:\users\ryan appel\desktop\arcadeshooter\sample\mainmenuscreen.cpp(87): error C2227: left of '->IsSelected' must point to class/struct/union/generic type
+  c:\users\ryan appel\desktop\arcadeshooter\sample\mainmenuscreen.cpp(87): note: type is 'unknown-type'
+c:\users\ryan appel\desktop\arcadeshooter\sample\mainmenuscreen.cpp(92): error C3861: 'GetMenuItem': identifier not found
+c:\users\ryan appel\desktop\arcadeshooter\sample\mainmenuscreen.cpp(92): error C2227: left of '->SetColor' must point to class/struct/union/generic type
+  c:\users\ryan appel\desktop\arcadeshooter\sample\mainmenuscreen.cpp(92): note: type is 'unknown-type'
+c:\users\ryan appel\desktop\arcadeshooter\sample\mainmenuscreen.cpp(92): error C3861: 'GetAlpha': identifier not found
+c:\users\ryan appel\desktop\arcadeshooter\sample\mainmenuscreen.cpp(95): error C2653: 'MenuScreen': is not a class or namespace name
+c:\users\ryan appel\desktop\arcadeshooter\sample\mainmenuscreen.cpp(102): error C3861: 'GetSpriteBatch': identifier not found
+c:\users\ryan appel\desktop\arcadeshooter\sample\mainmenuscreen.cpp(102): error C2227: left of '->Begin' must point to class/struct/union/generic type
+  c:\users\ryan appel\desktop\arcadeshooter\sample\mainmenuscreen.cpp(102): note: type is 'unknown-type'
+c:\users\ryan appel\desktop\arcadeshooter\sample\mainmenuscreen.cpp(103): error C3861: 'GetSpriteBatch': identifier not found
+c:\users\ryan appel\desktop\arcadeshooter\sample\mainmenuscreen.cpp(103): error C2227: left of '->Draw' must point to class/struct/union/generic type
+  c:\users\ryan appel\desktop\arcadeshooter\sample\mainmenuscreen.cpp(103): note: type is 'unknown-type'
+c:\users\ryan appel\desktop\arcadeshooter\sample\mainmenuscreen.cpp(103): error C3861: 'GetAlpha': identifier not found
+c:\users\ryan appel\desktop\arcadeshooter\sample\mainmenuscreen.cpp(104): error C3861: 'GetSpriteBatch': identifier not found
+c:\users\ryan appel\desktop\arcadeshooter\sample\mainmenuscreen.cpp(104): error C2227: left of '->End' must point to class/struct/union/generic type
+  c:\users\ryan appel\desktop\arcadeshooter\sample\mainmenuscreen.cpp(104): note: type is 'unknown-type'
+c:\users\ryan appel\desktop\arcadeshooter\sample\mainmenuscreen.cpp(107): error C2653: 'MenuScreen': is not a class or namespace name
+  Main.cpp
+  Started precompiling header files for Sample.
+  Started precompiling header files for Shooter Library.
+  Started precompiling header files for Katana Engine.
+  Standard Headers...
+                  ... Finished.
+  Allegro Specific Headers...
+                  ... Finished.
+  Math Specific Headers...
+                  ... Finished.
+  Input Specific Headers...
+                  ... Finished.
+  Resource Management Headers...
+                  ... Finished.
+  Graphics Management Headers...
+                  ... Finished.
+  Particle Management Headers...
+                  ... Finished.
+  Screen Management Headers...
+                  ... Finished.
+  Game Engine Headers...
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(47): error C2143: syntax error: missing ';' before '*'
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(47): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(47): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(115): error C2143: syntax error: missing ';' before '*'
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(115): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(115): error C2238: unexpected token(s) preceding ';'
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(79): error C2065: 'm_pScreenManager': undeclared identifier
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(79): error C2061: syntax error: identifier 'ScreenManager'
+                  ... Finished.
+  Finished precompiling header files for Katana Engine.
+  Game Object Headers...
+                  ... Finished.
+  Collision Management Headers...
+                  ... Finished.
+  Core Headers...
+                  ... Finished.
+  Screen Headers...
+c:\users\ryan appel\desktop\arcadeshooter\shooterlibrary\gameplayscreen.h(9): error C2504: 'Screen': base class undefined
+                  ... Finished.
+  Level Headers...
+c:\users\ryan appel\desktop\arcadeshooter\shooterlibrary\level.h(34): error C2039: 'GetSpriteBatch': is not a member of 'ShooterLibrary::GameplayScreen'
+  c:\users\ryan appel\desktop\arcadeshooter\shooterlibrary\gameplayscreen.h(8): note: see declaration of 'ShooterLibrary::GameplayScreen'
+c:\users\ryan appel\desktop\arcadeshooter\shooterlibrary\level.h(72): error C2039: 'GetResourceManager': is not a member of 'ShooterLibrary::GameplayScreen'
+  c:\users\ryan appel\desktop\arcadeshooter\shooterlibrary\gameplayscreen.h(8): note: see declaration of 'ShooterLibrary::GameplayScreen'
+                  ... Finished.
+  Finished precompiling header files for Shooter Library.
+  Game Object Headers...
+                  ... Finished.
+  Level Headers...
+                  ... Finished.
+  Core Headers...
+                  ... Finished.
+  Screen Headers...
+c:\users\ryan appel\desktop\arcadeshooter\sample\mainmenuscreen.h(7): error C2504: 'MenuScreen': base class undefined
+                  ... Finished.
+  Finished precompiling header files for Sample.
+  Level01.cpp
+  Started precompiling header files for Sample.
+  Started precompiling header files for Shooter Library.
+  Started precompiling header files for Katana Engine.
+  Standard Headers...
+                  ... Finished.
+  Allegro Specific Headers...
+                  ... Finished.
+  Math Specific Headers...
+                  ... Finished.
+  Input Specific Headers...
+                  ... Finished.
+  Resource Management Headers...
+                  ... Finished.
+  Graphics Management Headers...
+                  ... Finished.
+  Particle Management Headers...
+                  ... Finished.
+  Screen Management Headers...
+                  ... Finished.
+  Game Engine Headers...
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(47): error C2143: syntax error: missing ';' before '*'
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(47): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(47): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(115): error C2143: syntax error: missing ';' before '*'
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(115): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(115): error C2238: unexpected token(s) preceding ';'
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(79): error C2065: 'm_pScreenManager': undeclared identifier
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(79): error C2061: syntax error: identifier 'ScreenManager'
+                  ... Finished.
+  Finished precompiling header files for Katana Engine.
+  Game Object Headers...
+                  ... Finished.
+  Collision Management Headers...
+                  ... Finished.
+  Core Headers...
+                  ... Finished.
+  Screen Headers...
+c:\users\ryan appel\desktop\arcadeshooter\shooterlibrary\gameplayscreen.h(9): error C2504: 'Screen': base class undefined
+                  ... Finished.
+  Level Headers...
+c:\users\ryan appel\desktop\arcadeshooter\shooterlibrary\level.h(34): error C2039: 'GetSpriteBatch': is not a member of 'ShooterLibrary::GameplayScreen'
+  c:\users\ryan appel\desktop\arcadeshooter\shooterlibrary\gameplayscreen.h(8): note: see declaration of 'ShooterLibrary::GameplayScreen'
+c:\users\ryan appel\desktop\arcadeshooter\shooterlibrary\level.h(72): error C2039: 'GetResourceManager': is not a member of 'ShooterLibrary::GameplayScreen'
+  c:\users\ryan appel\desktop\arcadeshooter\shooterlibrary\gameplayscreen.h(8): note: see declaration of 'ShooterLibrary::GameplayScreen'
+                  ... Finished.
+  Finished precompiling header files for Shooter Library.
+  Game Object Headers...
+                  ... Finished.
+  Level Headers...
+                  ... Finished.
+  Core Headers...
+                  ... Finished.
+  Screen Headers...
+c:\users\ryan appel\desktop\arcadeshooter\sample\mainmenuscreen.h(7): error C2504: 'MenuScreen': base class undefined
+                  ... Finished.
+  Finished precompiling header files for Sample.
+c:\users\ryan appel\desktop\arcadeshooter\sample\level01.cpp(15): error C2039: 'GetResourceManager': is not a member of 'ShooterLibrary::GameplayScreen'
+  c:\users\ryan appel\desktop\arcadeshooter\shooterlibrary\gameplayscreen.h(8): note: see declaration of 'ShooterLibrary::GameplayScreen'
+  Level.cpp
+  Started precompiling header files for Sample.
+  Started precompiling header files for Shooter Library.
+  Started precompiling header files for Katana Engine.
+  Standard Headers...
+                  ... Finished.
+  Allegro Specific Headers...
+                  ... Finished.
+  Math Specific Headers...
+                  ... Finished.
+  Input Specific Headers...
+                  ... Finished.
+  Resource Management Headers...
+                  ... Finished.
+  Graphics Management Headers...
+                  ... Finished.
+  Particle Management Headers...
+                  ... Finished.
+  Screen Management Headers...
+                  ... Finished.
+  Game Engine Headers...
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(47): error C2143: syntax error: missing ';' before '*'
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(47): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(47): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(115): error C2143: syntax error: missing ';' before '*'
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(115): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(115): error C2238: unexpected token(s) preceding ';'
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(79): error C2065: 'm_pScreenManager': undeclared identifier
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(79): error C2061: syntax error: identifier 'ScreenManager'
+                  ... Finished.
+  Finished precompiling header files for Katana Engine.
+  Game Object Headers...
+                  ... Finished.
+  Collision Management Headers...
+                  ... Finished.
+  Core Headers...
+                  ... Finished.
+  Screen Headers...
+c:\users\ryan appel\desktop\arcadeshooter\shooterlibrary\gameplayscreen.h(9): error C2504: 'Screen': base class undefined
+                  ... Finished.
+  Level Headers...
+c:\users\ryan appel\desktop\arcadeshooter\shooterlibrary\level.h(34): error C2039: 'GetSpriteBatch': is not a member of 'ShooterLibrary::GameplayScreen'
+  c:\users\ryan appel\desktop\arcadeshooter\shooterlibrary\gameplayscreen.h(8): note: see declaration of 'ShooterLibrary::GameplayScreen'
+c:\users\ryan appel\desktop\arcadeshooter\shooterlibrary\level.h(72): error C2039: 'GetResourceManager': is not a member of 'ShooterLibrary::GameplayScreen'
+  c:\users\ryan appel\desktop\arcadeshooter\shooterlibrary\gameplayscreen.h(8): note: see declaration of 'ShooterLibrary::GameplayScreen'
+                  ... Finished.
+  Finished precompiling header files for Shooter Library.
+  Game Object Headers...
+                  ... Finished.
+  Level Headers...
+                  ... Finished.
+  Core Headers...
+                  ... Finished.
+  Screen Headers...
+c:\users\ryan appel\desktop\arcadeshooter\sample\mainmenuscreen.h(7): error C2504: 'MenuScreen': base class undefined
+                  ... Finished.
+  Finished precompiling header files for Sample.
+  GameplayScreen.cpp
+  Started precompiling header files for Sample.
+  Started precompiling header files for Shooter Library.
+  Started precompiling header files for Katana Engine.
+  Standard Headers...
+                  ... Finished.
+  Allegro Specific Headers...
+                  ... Finished.
+  Math Specific Headers...
+                  ... Finished.
+  Input Specific Headers...
+                  ... Finished.
+  Resource Management Headers...
+                  ... Finished.
+  Graphics Management Headers...
+                  ... Finished.
+  Particle Management Headers...
+                  ... Finished.
+  Screen Management Headers...
+                  ... Finished.
+  Game Engine Headers...
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(47): error C2143: syntax error: missing ';' before '*'
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(47): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(47): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(115): error C2143: syntax error: missing ';' before '*'
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(115): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(115): error C2238: unexpected token(s) preceding ';'
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(79): error C2065: 'm_pScreenManager': undeclared identifier
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(79): error C2061: syntax error: identifier 'ScreenManager'
+                  ... Finished.
+  Finished precompiling header files for Katana Engine.
+  Game Object Headers...
+                  ... Finished.
+  Collision Management Headers...
+                  ... Finished.
+  Core Headers...
+                  ... Finished.
+  Screen Headers...
+c:\users\ryan appel\desktop\arcadeshooter\shooterlibrary\gameplayscreen.h(9): error C2504: 'Screen': base class undefined
+                  ... Finished.
+  Level Headers...
+c:\users\ryan appel\desktop\arcadeshooter\shooterlibrary\level.h(34): error C2039: 'GetSpriteBatch': is not a member of 'ShooterLibrary::GameplayScreen'
+  c:\users\ryan appel\desktop\arcadeshooter\shooterlibrary\gameplayscreen.h(8): note: see declaration of 'ShooterLibrary::GameplayScreen'
+c:\users\ryan appel\desktop\arcadeshooter\shooterlibrary\level.h(72): error C2039: 'GetResourceManager': is not a member of 'ShooterLibrary::GameplayScreen'
+  c:\users\ryan appel\desktop\arcadeshooter\shooterlibrary\gameplayscreen.h(8): note: see declaration of 'ShooterLibrary::GameplayScreen'
+                  ... Finished.
+  Finished precompiling header files for Shooter Library.
+  Game Object Headers...
+                  ... Finished.
+  Level Headers...
+                  ... Finished.
+  Core Headers...
+                  ... Finished.
+  Screen Headers...
+c:\users\ryan appel\desktop\arcadeshooter\sample\mainmenuscreen.h(7): error C2504: 'MenuScreen': base class undefined
+                  ... Finished.
+  Finished precompiling header files for Sample.
+c:\users\ryan appel\desktop\arcadeshooter\sample\gameplayscreen.cpp(7): error C2065: 'Screen': undeclared identifier
+c:\users\ryan appel\desktop\arcadeshooter\sample\gameplayscreen.cpp(7): error C2065: 'pScreen': undeclared identifier
+c:\users\ryan appel\desktop\arcadeshooter\sample\gameplayscreen.cpp(7): error C2182: 'GameplayScreenRemove': illegal use of type 'void'
+c:\users\ryan appel\desktop\arcadeshooter\sample\gameplayscreen.cpp(8): error C2448: 'Sample::GameplayScreenRemove': function-style initializer appears to be a function definition
+c:\users\ryan appel\desktop\arcadeshooter\sample\gameplayscreen.cpp(15): error C2065: 'OnRemove': undeclared identifier
+  Game.cpp
+  Started precompiling header files for Sample.
+  Started precompiling header files for Shooter Library.
+  Started precompiling header files for Katana Engine.
+  Standard Headers...
+                  ... Finished.
+  Allegro Specific Headers...
+                  ... Finished.
+  Math Specific Headers...
+                  ... Finished.
+  Input Specific Headers...
+                  ... Finished.
+  Resource Management Headers...
+                  ... Finished.
+  Graphics Management Headers...
+                  ... Finished.
+  Particle Management Headers...
+                  ... Finished.
+  Screen Management Headers...
+                  ... Finished.
+  Game Engine Headers...
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(47): error C2143: syntax error: missing ';' before '*'
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(47): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(47): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(115): error C2143: syntax error: missing ';' before '*'
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(115): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(115): error C2238: unexpected token(s) preceding ';'
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(79): error C2065: 'm_pScreenManager': undeclared identifier
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(79): error C2061: syntax error: identifier 'ScreenManager'
+                  ... Finished.
+  Finished precompiling header files for Katana Engine.
+  Game Object Headers...
+                  ... Finished.
+  Collision Management Headers...
+                  ... Finished.
+  Core Headers...
+                  ... Finished.
+  Screen Headers...
+c:\users\ryan appel\desktop\arcadeshooter\shooterlibrary\gameplayscreen.h(9): error C2504: 'Screen': base class undefined
+                  ... Finished.
+  Level Headers...
+c:\users\ryan appel\desktop\arcadeshooter\shooterlibrary\level.h(34): error C2039: 'GetSpriteBatch': is not a member of 'ShooterLibrary::GameplayScreen'
+  c:\users\ryan appel\desktop\arcadeshooter\shooterlibrary\gameplayscreen.h(8): note: see declaration of 'ShooterLibrary::GameplayScreen'
+c:\users\ryan appel\desktop\arcadeshooter\shooterlibrary\level.h(72): error C2039: 'GetResourceManager': is not a member of 'ShooterLibrary::GameplayScreen'
+  c:\users\ryan appel\desktop\arcadeshooter\shooterlibrary\gameplayscreen.h(8): note: see declaration of 'ShooterLibrary::GameplayScreen'
+                  ... Finished.
+  Finished precompiling header files for Shooter Library.
+  Game Object Headers...
+                  ... Finished.
+  Level Headers...
+                  ... Finished.
+  Core Headers...
+                  ... Finished.
+  Screen Headers...
+c:\users\ryan appel\desktop\arcadeshooter\sample\mainmenuscreen.h(7): error C2504: 'MenuScreen': base class undefined
+                  ... Finished.
+  Finished precompiling header files for Sample.
+c:\users\ryan appel\desktop\arcadeshooter\sample\game.cpp(16): error C3861: 'GetScreenManager': identifier not found
+c:\users\ryan appel\desktop\arcadeshooter\sample\game.cpp(16): error C2227: left of '->AddScreen' must point to class/struct/union/generic type
+  c:\users\ryan appel\desktop\arcadeshooter\sample\game.cpp(16): note: type is 'unknown-type'
+  BioEnemyShip.cpp
+  Started precompiling header files for Sample.
+  Started precompiling header files for Shooter Library.
+  Started precompiling header files for Katana Engine.
+  Standard Headers...
+                  ... Finished.
+  Allegro Specific Headers...
+                  ... Finished.
+  Math Specific Headers...
+                  ... Finished.
+  Input Specific Headers...
+                  ... Finished.
+  Resource Management Headers...
+                  ... Finished.
+  Graphics Management Headers...
+                  ... Finished.
+  Particle Management Headers...
+                  ... Finished.
+  Screen Management Headers...
+                  ... Finished.
+  Game Engine Headers...
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(47): error C2143: syntax error: missing ';' before '*'
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(47): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(47): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(115): error C2143: syntax error: missing ';' before '*'
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(115): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(115): error C2238: unexpected token(s) preceding ';'
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(79): error C2065: 'm_pScreenManager': undeclared identifier
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(79): error C2061: syntax error: identifier 'ScreenManager'
+                  ... Finished.
+  Finished precompiling header files for Katana Engine.
+  Game Object Headers...
+                  ... Finished.
+  Collision Management Headers...
+                  ... Finished.
+  Core Headers...
+                  ... Finished.
+  Screen Headers...
+c:\users\ryan appel\desktop\arcadeshooter\shooterlibrary\gameplayscreen.h(9): error C2504: 'Screen': base class undefined
+                  ... Finished.
+  Level Headers...
+c:\users\ryan appel\desktop\arcadeshooter\shooterlibrary\level.h(34): error C2039: 'GetSpriteBatch': is not a member of 'ShooterLibrary::GameplayScreen'
+  c:\users\ryan appel\desktop\arcadeshooter\shooterlibrary\gameplayscreen.h(8): note: see declaration of 'ShooterLibrary::GameplayScreen'
+c:\users\ryan appel\desktop\arcadeshooter\shooterlibrary\level.h(72): error C2039: 'GetResourceManager': is not a member of 'ShooterLibrary::GameplayScreen'
+  c:\users\ryan appel\desktop\arcadeshooter\shooterlibrary\gameplayscreen.h(8): note: see declaration of 'ShooterLibrary::GameplayScreen'
+                  ... Finished.
+  Finished precompiling header files for Shooter Library.
+  Game Object Headers...
+                  ... Finished.
+  Level Headers...
+                  ... Finished.
+  Core Headers...
+                  ... Finished.
+  Screen Headers...
+c:\users\ryan appel\desktop\arcadeshooter\sample\mainmenuscreen.h(7): error C2504: 'MenuScreen': base class undefined
+                  ... Finished.
+  Finished precompiling header files for Sample.
+  Generating Code...

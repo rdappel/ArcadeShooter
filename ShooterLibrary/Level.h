@@ -50,7 +50,7 @@ namespace ShooterLibrary
 				GameObject *pGameObject = *m_it;
 				if (!pGameObject->IsActive()) continue;
 
-				squaredDistance = (position - pGameObject->GetPosition()).DistanceSquared();
+				squaredDistance = (position - pGameObject->GetPosition()).LengthSquared();
 				if (squaredDistance < squaredRange)
 				{
 					T *pObject = dynamic_cast<T *>(pGameObject);

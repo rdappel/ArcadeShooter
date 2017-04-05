@@ -35,24 +35,24 @@ namespace KatanaEngine
 		Y = y;
 	}
 
-	float Vector2::DistanceSquared() const
+	float Vector2::LengthSquared() const
 	{
 		return ((X * X) + (Y * Y));
 	}
 
-	float Vector2::Distance() const
+	float Vector2::Length() const
 	{
 		return sqrtf(X * X + Y * Y);
 	}
 
 	void Vector2::Normalize()
 	{
-		float dist = Distance();
+		float len = Length();
 
-		if (dist != 0)
+		if (len != 0)
 		{
-			X /= dist;
-			Y /= dist;
+			X /= len;
+			Y /= len;
 		}
 	}
 

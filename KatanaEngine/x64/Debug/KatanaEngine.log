@@ -17,29 +17,13 @@
   Screen Management Headers...
                   ... Finished.
   Game Engine Headers...
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(47): error C2143: syntax error: missing ';' before '*'
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(47): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(47): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(115): error C2143: syntax error: missing ';' before '*'
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(115): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(115): error C2238: unexpected token(s) preceding ';'
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(79): error C2065: 'm_pScreenManager': undeclared identifier
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\game.h(79): error C2061: syntax error: identifier 'ScreenManager'
                   ... Finished.
   Finished precompiling header files for Katana Engine.
-  Vector2.cpp
-  Generating Code...
-  Skipping... (no relevant changes detected)
-  Texture.cpp
-  SpriteBatch.cpp
-  ScreenManager.cpp
-  Screen.cpp
-  Resource.cpp
-  RenderTarget.cpp
-  Point.cpp
-  ParticleTemplate.cpp
-  ParticleManager.cpp
-  Particle.cpp
-  MenuScreen.cpp
-  MenuItem.cpp
-  MathUtil.cpp
-  InputState.cpp
-  GameTime.cpp
-  Game.cpp
-  Font.cpp
-  Emitter.cpp
-  Color.cpp
-  Animation.cpp
-  KatanaEngine.vcxproj -> C:\Users\Ryan Appel\Desktop\ArcadeShooter\x64\Debug\KatanaEngine.lib

@@ -40,7 +40,7 @@ namespace ShooterLibrary
 				float radiiSum = pGameObject1->GetCollisionRadius() + pGameObject2->GetCollisionRadius();
 				float radiiSumSquared = radiiSum * radiiSum;
 
-				if (difference.DistanceSquared() <= radiiSumSquared)
+				if (difference.LengthSquared() <= radiiSumSquared)
 				{
 					c.Callback(pGameObject1, pGameObject2);
 				}

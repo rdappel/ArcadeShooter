@@ -23,6 +23,7 @@
 
 namespace KatanaEngine
 {
+	/** @brief Represents a four-component color using red, green, blue, and alpha data. */
 	class Color
 	{
 

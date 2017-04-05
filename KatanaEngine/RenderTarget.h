@@ -23,6 +23,7 @@
 
 namespace KatanaEngine
 {
+	/** @brief Contains a 2D texture that can be used as a render target. */
 	class RenderTarget : public Texture
 	{
 

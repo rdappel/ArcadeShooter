@@ -23,6 +23,7 @@
 
 namespace KatanaEngine
 {
+	/** @brief Loads and manages the lifespan of objects from external files. */
 	class ResourceManager
 	{
 
@@ -85,8 +86,6 @@ namespace KatanaEngine
 				fullPath.append(path);
 			}
 			else fullPath = path;
-
-			//std::cout << fullPath << std::endl;
 
 			if (pT->Load(fullPath, this))
 			{

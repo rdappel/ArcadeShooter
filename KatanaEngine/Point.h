@@ -25,6 +25,7 @@ namespace KatanaEngine
 {
 	class Vector2;
 
+	/** @brief 	Defines a point in 2D space. */
 	class Point
 	{
 
