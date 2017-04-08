@@ -41,7 +41,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
@@ -134,6 +134,7 @@
     <ClInclude Include="Level.h" />
     <ClInclude Include="Sample.h" />
     <ClInclude Include="PlayerShip.h" />
+    <ClInclude Include="SmokeParticle.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BioEnemyShip.cpp" />
@@ -146,6 +147,7 @@
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="Sample.cpp" />
     <ClCompile Include="PlayerShip.cpp" />
+    <ClCompile Include="SmokeParticle.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\KatanaEngine\KatanaEngine.vcxproj">

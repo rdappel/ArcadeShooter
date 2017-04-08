@@ -10,23 +10,18 @@
    `^^^^^^^^^^^^^^^^^^^ /---------------------------------------"
         Katana Engine \/ © 2012 - Shuriken Studios LLC
 
-
-   Author: Ryan Appel
-   Date: 5/8/2015
-
-   File: MouseState.h
-   Description: Header file for mouse states.
-
 /  --------------------------------------------------------------- */
 
 #pragma once
 
 namespace KatanaEngine
 {
-	enum MouseButtons
+
+	/** @brief Defines the buttons for a mouse. */
+	enum class MouseButton
 	{
-		MOUSEBUTTON_LEFT = 1,
-		MOUSEBUTTON_RIGHT = 2,
-		MOUSEBUTTON_CENTER = 4
+		LEFT = 1,	/**< Represents the Left mouse button. */
+		RIGHT = 2,	/**< Represents the Right mouse button. */
+		CENTER = 4	/**< Represents the Center mouse button. */
 	};
 }

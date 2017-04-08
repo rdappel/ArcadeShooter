@@ -1,13 +1,30 @@
+﻿/* ---------------------------------------------------------------  /
+
+	 ██╗  ██╗  █████╗  ████████╗  █████╗  ███╗   ██╗  █████╗ 
+	 ██║ ██╔╝ ██╔══██╗ ╚══██╔══╝ ██╔══██╗ ████╗  ██║ ██╔══██╗
+	 █████╔╝  ███████║    ██║    ███████║ ██╔██╗ ██║ ███████║
+	 ██╔═██╗  ██╔══██║    ██║    ██╔══██║ ██║╚██╗██║ ██╔══██║
+	 ██║  ██╗ ██║  ██║    ██║    ██║  ██║ ██║ ╚████║ ██║  ██║
+	 ╚═╝  ╚═╝ ╚═╝  ╚═╝/\  ╚═╝    ╚═╝  ╚═╝ ╚═╝  ╚═══╝ ╚═╝  ╚═╝
+   /vvvvvvvvvvvvvvvvvvv \=========================================,
+   `^^^^^^^^^^^^^^^^^^^ /---------------------------------------"
+        Katana Engine \/ © 2012 - Shuriken Studios LLC
+
+/  --------------------------------------------------------------- */
 
 #include "KatanaEngine.h"
 
 namespace KatanaEngine
 {
+
+	SpriteBatch *Particle::s_pSpriteBatch = nullptr;
+
+
 	Particle::Particle()
 	{
 		m_lifeSeconds = 0;
 		m_color = Color::White;
-		m_scale = 1;
+		m_scale = Vector2::One;
 		m_alpha = 1;
 		m_rotation = 0;
 	}
@@ -26,30 +43,10 @@ namespace KatanaEngine
 	{
 		if (IsActive())
 		{
-			int index = 0;
-
-			/**
-			ALLEGRO_BITMAP *pTexture = m_pTemplate->GetTexture();
-			Vector2 textureOrigin = m_pTemplate->GetTextureOrigin();
-			Vector2 textureSize = m_pTemplate->GetTextureSize();
-
-			if (pTexture)
-			{
-				ALLEGRO_COLOR color = m_color;
-				color.a = m_alpha;
-
-				int dx = (int)m_position.X;
-				int dy = (int)m_position.Y;
-				int cx = (int)textureOrigin.X;
-				int cy = (int)textureOrigin.Y;
-				int sw = (int)textureSize.X;
-				int sh = (int)textureSize.Y;
-
-				al_draw_tinted_scaled_rotated_bitmap_region(
-					pTexture, 0, 0, sw, sh, color, cx, cy, dx, dy,
-					m_scale, m_scale, m_rotation, 0);
-			}
-			/**/
+			Texture *pTexture = m_pTemplate->GetTexture();
+			Color color = m_color * m_alpha;
+			Vector2 center = pTexture->GetCenter();
+			GetSpriteBatch()->Draw(pTexture, m_position, color, center, m_scale, m_rotation);
 		}
 	}
 

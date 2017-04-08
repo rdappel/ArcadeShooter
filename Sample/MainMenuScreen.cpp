@@ -3,16 +3,17 @@
 
 namespace Sample
 {
-	// Removal Function
+
+	// Removal Callback Function
 	void MainMenuScreenRemove(Screen *pScreen)
 	{
 		pScreen->GetScreenManager()->AddScreen(new GameplayScreen());
 	}
 
-	// Menu Item Functions
+	// MenuItem Callback Functions
 	void StartSelect(MenuScreen *pMenuScreen)
 	{
-		pMenuScreen->OnRemove = MainMenuScreenRemove;
+		pMenuScreen->SetRemoveCallback(MainMenuScreenRemove);
 		pMenuScreen->Exit();
 	}
 
@@ -61,14 +62,11 @@ namespace Sample
 			AddMenuItem(pMenuItem);
 		}
 
-		GetMenuItem(0)->OnSelect = StartSelect;
-		//m_menuItems[1]->OnSelect = nullptr;
-		GetMenuItem(1)->OnSelect = ExitSelect;
-
-
-
+		GetMenuItem(0)->SetSelectCallback(StartSelect);
+		GetMenuItem(1)->SetSelectCallback(ExitSelect);
+		
 		m_pTexture = GetResourceManager()->Load<Texture>("Textures\\Logo.png", false);
-		m_position = Game::GetScreenCenter() - Vector2(0, 150);
+		m_position = Game::GetScreenCenter().ToVector2() - Vector2(0, 150);
 
 		Screen::LoadContent();
 	}

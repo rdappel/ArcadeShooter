@@ -1,11 +1,20 @@
-
+﻿
 #pragma once
 
-#pragma message("Started precompiling header files for Katana Engine.")
+#pragma message("")
+#pragma message("  ██╗  ██╗  █████╗  ████████╗  █████╗  ███╗   ██╗  █████╗")
+#pragma message("  ██║ ██╔╝ ██╔══██╗ ╚══██╔══╝ ██╔══██╗ ████╗  ██║ ██╔══██╗")
+#pragma message("  █████╔╝  ███████║    ██║    ███████║ ██╔██╗ ██║ ███████║")
+#pragma message("  ██╔═██╗  ██╔══██║    ██║    ██╔══██║ ██║╚██╗██║ ██╔══██║")
+#pragma message("  ██║  ██╗ ██║  ██║    ██║    ██║  ██║ ██║ ╚████║ ██║  ██║")
+#pragma message("  ╚═╝  ╚═╝ ╚═╝  ╚═╝/\\  ╚═╝    ╚═╝  ╚═╝ ╚═╝  ╚═══╝ ╚═╝  ╚═╝")
+#pragma message("/vvvvvvvvvvvvvvvvvvv \\=========================================,")
+#pragma message("`^^^^^^^^^^^^^^^^^^^ /---------------------------------------\"")
+#pragma message("     Katana Engine \\/ © 2012 - Shuriken Studios LLC")
+#pragma message("")
 
 
 /* Standard Headers */
-#pragma message("Standard Headers...")
 #include <stdlib.h>
 #include <malloc.h>
 #include <string>
@@ -16,12 +25,10 @@
 #include <algorithm>
 #include <limits>
 #include <map>
-#pragma message("                ... Finished.")
-/* ---------------- */
+#pragma message("Standard Headers... Finished.")
 
 
 /* Allegro Specific */
-#pragma message("Allegro Specific Headers...")
 #include <allegro5\allegro.h>
 #include <allegro5\allegro_native_dialog.h>
 #include <allegro5\allegro_font.h>
@@ -29,78 +36,62 @@
 #include <allegro5\allegro_image.h>
 #include <allegro5\allegro_audio.h>
 #include <allegro5\allegro_acodec.h>
-#pragma message("                ... Finished.")
-/* ---------------- */
+#pragma message("Allegro Specific Headers... Finished.")
 
 
 /* Math Specific */
-#pragma message("Math Specific Headers...")
 #include "MathUtil.h"
 #include "Point.h"
 #include "Vector2.h"
 #include "GameTime.h"
 #include "Region.h"
 #include "Color.h"
-#pragma message("                ... Finished.")
-/* ------------- */
+#pragma message("Math Specific Headers... Finished.")
 
 
 /* Input Specific */
-#pragma message("Input Specific Headers...")
-#include "ButtonState.h"
 #include "KeyState.h"
 #include "GamepadState.h"
 #include "MouseState.h"
 #include "InputState.h"
-#pragma message("                ... Finished.")
-/* -------------- */
+#pragma message("Input Specific Headers... Finished.")
 
 
 /* Resource Management */
-#pragma message("Resource Management Headers...")
 #include "Resource.h"
 #include "Font.h"
 #include "Texture.h"
 #include "Animation.h"
 #include "ResourceManager.h"
-#pragma message("                ... Finished.")
-/* ------------------- */
+#pragma message("Resource Management Headers... Finished.")
 
 
 /* Graphics Management */
-#pragma message("Graphics Management Headers...")
 #include "RenderTarget.h"
 #include "SpriteBatch.h"
-#pragma message("                ... Finished.")
-/* ------------------- */
+#pragma message("Graphics Management Headers... Finished.")
 
 
 /* Particle Management */
-#pragma message("Particle Management Headers...")
 #include "Particle.h"
 #include "ParticleTemplate.h"
 #include "ParticleManager.h"
 #include "Emitter.h"
-#pragma message("                ... Finished.")
-/* ------------------- */
+#pragma message("Particle Management Headers... Finished.")
 
 
 /* Screen Management */
-#pragma message("Screen Management Headers...")
 #include "MenuItem.h"
 #include "Screen.h"
 #include "MenuScreen.h"
 #include "ScreenManager.h"
-#pragma message("                ... Finished.")
-/* ----------------- */
+#pragma message("Screen Management Headers... Finished.")
 
 
 /* Game Engine */
-#pragma message("Game Engine Headers...")
 #include "GameTime.h"
 #include "Game.h"
-#pragma message("                ... Finished.")
-/* ----------- */
-
+#pragma message("Game Engine Headers... Finished.")
 
 #pragma message("Finished precompiling header files for Katana Engine.")
+#pragma message("")

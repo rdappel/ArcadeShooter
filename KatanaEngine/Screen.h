@@ -10,13 +10,6 @@
    `^^^^^^^^^^^^^^^^^^^ /---------------------------------------"
 		Katana Engine \/ © 2012 - Shuriken Studios LLC
 
-
-   Author: Ryan Appel
-   Date: 5/6/2015
-
-   File: Screen.h
-   Description: Header file for a game screen.
-
 /  --------------------------------------------------------------- */
 
 #pragma once
@@ -24,7 +17,25 @@
 namespace KatanaEngine
 {
 	class ScreenManager;
+	class Screen;
 
+	/** @brief Callback function for when Exit() is called on a screen and
+		it begins to transition out.
+		@remark This callback is run automatically when Exit() is called.
+		@see Screen::Exit()
+		@see OnRemove */
+	typedef void(*OnExit)(Screen *pScreen);
+
+	/** @brief Callback function for when a screen has completely exited
+		and is about to be removed by the screen manager.
+		@remark This callback will be run before UnloadContent(). Therefore
+		resourses can be passed before the screen is removed.
+		@see ScreenManager
+		@see Screen::UnloadContent()
+		@see OnExit */
+	typedef void(*OnRemove)(Screen *pScreen);
+
+	/** @brief Base class for all game screens and menus. */
 	class Screen
 	{
 		friend class ScreenManager;
@@ -35,66 +46,134 @@ namespace KatanaEngine
 		virtual ~Screen() { }
 
 
-		void(*OnExit)(Screen *pScreen);
-
-		void(*OnRemove)(Screen *pScreen);
-
-
+		/** @brief Called when resources need to be loaded. */
 		virtual void LoadContent() { }
 
-		virtual void UnloadContent() {  }
+		/** @brief Called when resources need to be unloaded. Override this method to unload
+			any screen-specific resources. */
+		virtual void UnloadContent() { }
 
+		/** @brief Called when the game has determined that player input needs to be processed.
+			@param pInput The current state of all player input devices. */
 		virtual void HandleInput(InputState *pInput) { }
 
+		/** @brief Called when the game has determined that screen logic needs to be processed.
+			@param pGameTime Timing values including time since last update. */
 		virtual void Update(const GameTime *pGameTime) = 0;
 
+		/** @brief Called when the game determines it is time to draw a frame.
+			@param pGameTime Timing values including time since last update. */
 		virtual void Draw(const GameTime *pGameTime) = 0;
 
-		virtual bool UpdateBelow() const { return m_updateBelow; }
-
-		virtual bool DrawBelow() const { return m_drawBelow; }
-
-		virtual bool HandleInputBelow() const { return m_handleInputBelow; }
-
+		/** @brief Determines if the screen is currently exiting.
+			@return Returns true if the screen is exiting, false otherwise. */
 		virtual bool IsExiting() const { return m_isExiting; }
 
-		virtual bool NeedsToBeRemoved() const { return m_needsToBeRemoved; }
-
+		/** @brief Gets the overall screen transition alpha value (or opacity).
+			This is handy for fading screens in and out.
+			@return Returns the alpha value.
+			@remark This function is an alias for the protected GetTransitionValue().
+			@see GetTransitionValue() */
 		float GetAlpha() const { return m_transitionValue; }
 
+		/** @brief Gets a pointer to the ScreenManager, for managing game screens.
+			@return A pointer to the game's ScreenManager instance. */
 		virtual ScreenManager *GetScreenManager() { return m_pScreenManager; }
 
+		/** @brief Gets a pointer to the Game.
+			@return A pointer to the game instance. */
 		virtual Game *GetGame() const;
 
+		/** @brief Gets a pointer to the SpriteBatch, for rendering.
+			@return A pointer to the game's SpriteBatch instance. */
 		virtual SpriteBatch *GetSpriteBatch() const;
 
+		/** @brief Gets a pointer to the ResourceManager, for loading and managing resources.
+			@return A pointer to the game's ResourceManager instance. */
 		virtual ResourceManager *GetResourceManager() const;
 
+		/** @brief Gets a pointer to the ParticleManager, for creating and managing particles.
+			@return A pointer to the game's ParticleManager instance. */
+		virtual ParticleManager *GetParticleManager() const;
+
+		/** @brief Gets a pointer to the ScreenManager, for managing game screens.
+			@return A pointer to the game's ScreenManager instance. */
 		virtual void SetScreenManager(ScreenManager *pScreenManager);
 
+		/** @brief Tells the screen to transition in. */
 		virtual void Show();
 
+		/** @brief Tells the screen to transition out. When the screen has completed
+			its transition, UnloadContent() will be called, and the ScreenManager 
+			will remove it.
+			@remark SetExitCallback() and SetRemoveCallback() can be used to trigger
+			events involving the exiting process. */
 		virtual void Exit();
+
+		/** @brief Sets the callback function for when the Exit() is called.
+			@param callback The callback function. */
+		virtual void SetExitCallback(OnExit callback) { m_onExit = callback; }
+
+		/** @brief Sets the callback function for when the screen is about to be
+			removed by the screen manager.
+			@param callback The callback function. */
+		virtual void SetRemoveCallback(OnRemove callback) { m_onRemove = callback; }
 
 
 	protected:
 
-		enum ScreenTransition { SCREENTRANS_NONE, SCREENTRANS_IN, SCREENTRANS_OUT };
+		/** @brief Defines the state of the transition between screens. */
+		enum class ScreenTransition
+		{
+			NONE,	/**< @brief The screen is not transitioning. */
+			IN,		/**< @brief The screen is transitioning in. */
+			OUT		/**< @brief The screen is transitioning out. */
+		};
 
-		void SetPassThroughFlags(const bool handleInput = false, const bool update = false, const bool draw = false);
 
+		/** @brief Sets the flags that determine if the underlaying screen should handle input, update,
+			and/or render.
+			@param draw Set this flag to true if the underlaying screen should render.
+			@param update Set this flag to true if the underlaying screen should update.
+			@param handleInput Set this flag to true if the underlaying screen should handle user input. */
+		void SetPassThroughFlags(const bool draw = false, const bool update = false, const bool handleInput = false);
+
+		/** @brief Set the time in seconds that the screen should transition in.
+			@param seconds The transition time. */
 		void SetTransitionInTime(double seconds) { m_transitionInTime = seconds; }
+
+		/** @brief Set the time in seconds that the screen should transition out.
+			@param seconds The transition time. */
 		void SetTransitionOutTime(double seconds) { m_transitionOutTime = seconds; }
 
+
+		/** @brief Get the time in seconds that the screen will transition in.
+			@return Returns the transition time in seconds. */
 		double GetTransitionInTime() const { return m_transitionInTime; }
+
+		/** @brief Get the time in seconds that the screen will transition out.
+			@return Returns the transition time in seconds. */
 		double GetTransitionOutTime() const { return m_transitionOutTime; }
 
+		/** @brief Get the current transition state of the screen.
+			@return Returns the current transition. */
 		ScreenTransition GetTransition() const { return m_transition; }
 
+		/** @brief Get the interpolated value (between zero and one) of the screen transition.
+			@return Returns a value that represents the percentage of the transition. Zero means
+			the screen is entirely transitioned of, and one means it's entirely on. */
 		float GetTransitionValue() const { return m_transitionValue; }
+
+		/** @brief Determines if the screen has completely faded out and needs to be removed by
+			the ScreenManager.
+			@return Returns true if the screen needs to be removed, false otherwise. */
+		bool NeedsToBeRemoved() const { return m_needsToBeRemoved; }
 
 
 	private:
+
+		void *m_onExit;
+		void *m_onRemove;
 
 		bool m_handleInputBelow;
 		bool m_updateBelow;
@@ -107,6 +186,7 @@ namespace KatanaEngine
 		double m_transitionOutTime;
 
 		ScreenTransition m_transition;
+
 		float m_transitionValue;
 		double m_transitionTime;
 
@@ -116,6 +196,10 @@ namespace KatanaEngine
 		void TransitionOut();
 
 		void UpdateTransition(const GameTime *pGameTime);
+
+		bool UpdateBelow() const { return m_updateBelow; }
+		bool DrawBelow() const { return m_drawBelow; }
+		bool HandleInputBelow() const { return m_handleInputBelow; }
 
 	};
 }

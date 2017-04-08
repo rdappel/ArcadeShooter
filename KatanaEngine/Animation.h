@@ -10,19 +10,13 @@
    `^^^^^^^^^^^^^^^^^^^ /---------------------------------------"
         Katana Engine \/ © 2012 - Shuriken Studios LLC
 
-
-   Author: Ryan Appel
-   Date: 5/8/2015
-
-   File: Animation.cpp
-   Description: Source file for animated texture resources.
-
 /  --------------------------------------------------------------- */
 
 #pragma once
 
 namespace KatanaEngine
 {
+	/** @brief Represents timing and framing values for texture animations. */
 	class Animation : public Resource
 	{
 
@@ -32,29 +26,54 @@ namespace KatanaEngine
 		virtual ~Animation();
 
 
+		/** @brief Updates the animation.
+			@param pGameTime Timing values including time since last update. */
 		virtual void Update(const GameTime *pGameTime);
 
+		/** @brief Load the desired animation into memory.
+			@param path The path to the desired animation.
+			@param pManager A pointer to the resource manager that will manage the animation.
+			@return Returns true if the animation was loaded, false otherwise. */
 		virtual bool Load(const std::string &path, ResourceManager *pManager);
 
+		/** @brief Used to determine if the animation is cloneable.
+			@return Returns true if the animation is clonable, false otherwise.
+			@remark Animations should usually be kept as cloneable. Sharing an animation will
+			result in the animations playing syncronized. */
+		virtual bool IsCloneable() const { return true; }
 
-		virtual bool IsCloneable() { return true; }
+		/** @brief Used to create a clone of the animation.
+			@return Returns a clone of the animation. */
+		virtual Resource *Animation::Clone();
 
-		virtual Resource *Clone();
-
+		/** @brief Gets a pointer to the current frame.
+			@return Returns a Region that defines the size and position of the current frame. */
 		virtual Region *GetCurrentFrame() { return m_frames[m_currentIndex]; }
 
-		virtual Texture *GetTexture() { return m_pTexture; }
+		/** @brief Gets a pointer to the texture of the animation.
+			@return Returns a pointer to the texture. */
+		virtual Texture *GetTexture() const { return m_pTexture; }
 
+		/** @brief Sets the texture of the animation.
+			@param pTexture A pointer to the texture resource. */
 		virtual void SetTexture(Texture *pTexture) { m_pTexture = pTexture; }
 
+		/** @brief Sets the current frame of the animation.
+			@param index The index of the frame to set as the current frame.
+			@remark If the indexed frame is invalid it will be ignored. */
 		virtual void SetCurrentFrame(const unsigned int index);
 
+		/** @brief Checks to see if the animation is playing.
+			@return Returns true if the animation is playing, false otherwise. */
 		virtual bool IsPlaying() const { return m_isPlaying; }
 
+		/** @brief Starts or resumes the animation. */
 		virtual void Play() { m_isPlaying = true; }
 
+		/** @brief Pauses the animation. */
 		virtual void Pause() { m_isPlaying = false; }
 
+		/** @brief Stops the animation. */
 		virtual void Stop();
 
 

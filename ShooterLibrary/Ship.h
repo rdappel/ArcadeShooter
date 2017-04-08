@@ -4,6 +4,8 @@
 
 namespace ShooterLibrary
 {
+
+	/** @brief Base class for all ships. */
 	class Ship : public GameObject
 	{
 	public:
@@ -11,29 +13,52 @@ namespace ShooterLibrary
 		Ship();
 		virtual ~Ship() { }
 
+		/** @brief Called when the game determines it is time to draw a frame.
+			@param pGameTime Timing values including time since last update. */
 		virtual void Draw(const GameTime *pGameTime) = 0;
 
+		/** @brief Fires the ships weapons. */
 		virtual void Fire() = 0;
 
+		/** @brief Hits the object, dealing damage to it.
+			@param damage The amount of damage to inflict. */
 		virtual void Hit(const float damage);
 
+		/** @brief Determines if the ship takes damage.
+			@return Returns true if the ship is invulnurable (does not take damage),
+			false otherwise. */
 		virtual bool IsInvulnurable() const { return m_isInvulnurable; }
 
+		/** @brief Sets whether or not the ship takes damage.
+			@param isInvulnurable Pass true to make the ship invulnurable (does not
+			take damage), of false to make the ship take damage. */
 		virtual void SetInvulnurable(bool isInvulnurable = true) { m_isInvulnurable = isInvulnurable; }
 
+		/** @brief Gets a string representation of the ship.
+			@return Returns a string displaying the type of object. */
 		virtual std::string ToString() const { return "Ship"; }
 
-		virtual uint32_t GetCollisionMask() const = 0;
+		/** @brief Gets the collision type mask.
+			@return Returns bit-mask value for the collision type.
+			@see CollisionTypes
+			@see CollisionManager */
+		virtual uint32_t GetCollisionType() const = 0;
 
 
 	protected:
 
+		/** @brief Initializes the ship. */
 		virtual void Initialize();
 
+		/** @brief Gets the speed of the projectile in pixels per second. */
 		virtual float GetSpeed() const { return m_speed; }
 
+		/** @brief Sets the speed of the ship.
+			@param speed The desired speed in pixels per second. */
 		virtual void SetSpeed(const float speed) { m_speed = speed; }
 
+		/** @brief Sets the maximum hit points of the ship.
+			@param hitPoints The desired hit point maximum. */
 		virtual void SetMaxHitPoints(const float hitPoints) { m_maxHitPoints = hitPoints; }
 
 

@@ -66,5 +66,7 @@ namespace Sample
 	{
 		if (pGameObject1->IsMask(PLAYER | SHIP)) return static_cast<PlayerShip *>(pGameObject1);
 		if (pGameObject2->IsMask(PLAYER | SHIP)) return static_cast<PlayerShip *>(pGameObject2);
+
+		return nullptr;
 	}
 }

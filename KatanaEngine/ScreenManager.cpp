@@ -10,13 +10,6 @@
    `^^^^^^^^^^^^^^^^^^^ /---------------------------------------"
 		Katana Engine \/ © 2012 - Shuriken Studios LLC
 
-
-   Author: Ryan Appel
-   Date: 5/6/2015
-
-   File: ScreenManager.cpp
-   Description: Source file for screen management.
-
 /  --------------------------------------------------------------- */
 
 #include "KatanaEngine.h"
@@ -94,7 +87,7 @@ namespace KatanaEngine
 			{
 				pScreen = *m_it;
 
-				if (pScreen->OnRemove) pScreen->OnRemove(pScreen);
+				if (pScreen->m_onRemove) ((OnRemove)pScreen->m_onRemove)(pScreen);
 
 				pScreen->UnloadContent();
 

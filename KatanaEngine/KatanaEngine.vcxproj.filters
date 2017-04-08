@@ -123,9 +123,6 @@
     <ClInclude Include="MouseState.h">
       <Filter>Source Files\Core\Input</Filter>
     </ClInclude>
-    <ClInclude Include="ButtonState.h">
-      <Filter>Source Files\Core\Input</Filter>
-    </ClInclude>
     <ClInclude Include="GamePadState.h">
       <Filter>Source Files\Core\Input</Filter>
     </ClInclude>

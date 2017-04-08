@@ -10,20 +10,14 @@
    `^^^^^^^^^^^^^^^^^^^ /---------------------------------------"
         Katana Engine \/ © 2012 - Shuriken Studios LLC
 
-
-   Author: Ryan Appel
-   Date: 5/8/2015
-
-   File: SpriteBatch.cpp
-   Description: Source file for rendering resources.
-
 /  --------------------------------------------------------------- */
 
 #include "KatanaEngine.h"
 
 namespace KatanaEngine
 {
-	void SpriteBatch::Begin(SpriteSortMode sortMode, BlendState blendState, ALLEGRO_TRANSFORM *transformation)
+	void SpriteBatch::Begin(const SpriteSortMode sortMode, 
+		const BlendState blendState, ALLEGRO_TRANSFORM *transformation)
 	{
 		m_isStarted = true;
 		m_it = m_inactiveDrawables.begin();
@@ -50,7 +44,7 @@ namespace KatanaEngine
 		}
 	}
 
-	void SpriteBatch::End(bool test)
+	void SpriteBatch::End(/*bool test*/)
 	{
 		//double time = al_get_time();
 
@@ -101,19 +95,30 @@ namespace KatanaEngine
 
 	void SpriteBatch::DrawBitmap(Drawable *pDrawable)
 	{
-		al_draw_tinted_scaled_rotated_bitmap_region(pDrawable->Union.pBitmap, pDrawable->Union.sx, pDrawable->Union.sy,
-			pDrawable->Union.sw, pDrawable->Union.sh, pDrawable->color, pDrawable->Union.cx, pDrawable->Union.cy,
-			pDrawable->x, pDrawable->y, pDrawable->Union.scx, pDrawable->Union.scy, pDrawable->Union.rotation, 0);
+		al_draw_tinted_scaled_rotated_bitmap_region(
+			pDrawable->Union.pBitmap,
+			pDrawable->Union.sx, pDrawable->Union.sy,
+			pDrawable->Union.sw, pDrawable->Union.sh,
+			pDrawable->color,
+			pDrawable->Union.cx, pDrawable->Union.cy,
+			pDrawable->x, pDrawable->y,
+			pDrawable->Union.scx, pDrawable->Union.scy,
+			pDrawable->Union.rotation, 0);
 	}
 
 	void SpriteBatch::DrawFont(Drawable *pDrawable)
 	{
-		al_draw_text(pDrawable->Union.pFont, pDrawable->color, pDrawable->x, pDrawable->y, (int)pDrawable->Union.align, pDrawable->Union.text->c_str());
+		al_draw_text(pDrawable->Union.pFont,
+			pDrawable->color, 
+			pDrawable->x, pDrawable->y, 
+			(int)pDrawable->Union.align, 
+			pDrawable->Union.text->c_str());
 	}
 
 
 
-	void SpriteBatch::DrawString(Font *pFont, std::string *text, Vector2 position, Color color, TextAlign alignment, float drawDepth)
+	void SpriteBatch::DrawString(const Font *pFont, std::string *text, const Vector2 position,
+		const Color color, const TextAlign alignment, const float drawDepth)
 	{
 		assert(m_isStarted && "Begin must be called before a Draw function can be run!");
 
@@ -132,10 +137,10 @@ namespace KatanaEngine
 		}
 
 		pDrawable->isBitmap = false;
-		pDrawable->Union.pFont = pFont->Get();
+		pDrawable->Union.pFont = pFont->GetAllegroFont();
 		pDrawable->Union.text = text;
 		pDrawable->Union.align = alignment;
-		pDrawable->color = color.Get();
+		pDrawable->color = color.GetAllegroColor();
 		pDrawable->x = position.X;
 		pDrawable->y = position.Y;
 		pDrawable->depth = drawDepth;
@@ -151,7 +156,10 @@ namespace KatanaEngine
 	}
 
 
-	void SpriteBatch::Draw(Texture *pTexture, Vector2 position, Color color, Vector2 origin, Vector2 scale, float rotation, float drawDepth)
+
+	void SpriteBatch::Draw(const Texture *pTexture, const Vector2 position,
+		const Color color, const Vector2 origin, const Vector2 scale,
+		const float rotation, const float drawDepth)
 	{
 		assert(m_isStarted && "Begin must be called before a Draw function can be run!");
 
@@ -170,7 +178,7 @@ namespace KatanaEngine
 		}
 
 		pDrawable->isBitmap = true;
-		pDrawable->Union.pBitmap = pTexture->GetBitmap();
+		pDrawable->Union.pBitmap = pTexture->GetAllegroBitmap();
 		pDrawable->Union.sx = 0;
 		pDrawable->Union.sy = 0;
 		pDrawable->Union.sw = pTexture->GetWidth();
@@ -181,7 +189,7 @@ namespace KatanaEngine
 		pDrawable->Union.scy = scale.Y;
 		pDrawable->Union.rotation = rotation;
 		pDrawable->Union.id = pTexture->GetResourceID();
-		pDrawable->color = color.Get();
+		pDrawable->color = color.GetAllegroColor();
 		pDrawable->x = position.X;
 		pDrawable->y = position.Y;
 		pDrawable->depth = drawDepth;
@@ -197,7 +205,9 @@ namespace KatanaEngine
 	}
 
 
-	void SpriteBatch::Draw(Texture *pTexture, Vector2 position, Region region, Color color, Vector2 origin, Vector2 scale, float rotation, float drawDepth)
+	void SpriteBatch::Draw(const Texture *pTexture, const Vector2 position,
+		const Region region, const Color color, const Vector2 origin, const Vector2 scale,
+		const float rotation, const float drawDepth)
 	{
 		assert(m_isStarted && "Begin must be called before a Draw function can be run!");
 
@@ -216,14 +226,14 @@ namespace KatanaEngine
 		}
 
 		pDrawable->isBitmap = true;
-		pDrawable->Union.pBitmap = pTexture->GetBitmap();
+		pDrawable->Union.pBitmap = pTexture->GetAllegroBitmap();
 		pDrawable->Union.cx = origin.X;
 		pDrawable->Union.cy = origin.Y;
 		pDrawable->Union.scx = scale.X;
 		pDrawable->Union.scy = scale.Y;
 		pDrawable->Union.rotation = rotation;
 		pDrawable->Union.id = pTexture->GetResourceID();
-		pDrawable->color = color.Get();
+		pDrawable->color = color.GetAllegroColor();
 		pDrawable->x = position.X;
 		pDrawable->y = position.Y;
 		pDrawable->depth = drawDepth;
@@ -243,8 +253,11 @@ namespace KatanaEngine
 		}
 	}
 
-	void SpriteBatch::Draw(Animation *pAnimation, Vector2 position, Color color, Vector2 origin, Vector2 scale, float rotation, float drawDepth)
+	void SpriteBatch::Draw(Animation *pAnimation, const Vector2 position,
+		const Color color, const Vector2 origin, const Vector2 scale,
+		const float rotation, float drawDepth)
 	{
-		Draw(pAnimation->GetTexture(), position, *pAnimation->GetCurrentFrame(), color, origin, scale, rotation, drawDepth);
+		Draw(pAnimation->GetTexture(), position, *pAnimation->GetCurrentFrame(),
+			color, origin, scale, rotation, drawDepth);
 	}
 }

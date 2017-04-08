@@ -13,6 +13,8 @@ namespace GuardianFinalZero
 		Game();
 		virtual ~Game() { }
 
+		virtual std::string GetName() const { return "Guardian FZ"; }
+
 		virtual void LoadContent();
 
 	};

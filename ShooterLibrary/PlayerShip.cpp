@@ -19,7 +19,6 @@ namespace ShooterLibrary
 
 	void PlayerShip::Update(const GameTime *pGameTime)
 	{
-		// Update player position
 		Vector2 targetVelocity = m_desiredDirection * GetSpeed() * pGameTime->GetTimeElapsed();
 		m_velocity = Vector2::Lerp(m_velocity, targetVelocity, GetResponsiveness());
 		TranslatePosition(m_velocity);
@@ -36,18 +35,14 @@ namespace ShooterLibrary
 		}
 	}
 
-	void PlayerShip::ConfineToScreen()
+	void PlayerShip::ConfineToScreen(const int padding)
 	{
-		// Screen edges
-		const int PADDING = 16;
-		const int LEFT = PADDING;
-		const int RIGHT = Game::GetScreenWidth() - PADDING;
-		const int TOP = PADDING;
-		const int BOTTOM = Game::GetScreenHeight() - PADDING;
+		const int LEFT = padding;
+		const int RIGHT = Game::GetScreenWidth() - padding;
+		const int TOP = padding;
+		const int BOTTOM = Game::GetScreenHeight() - padding;
 
 		Vector2 *pPosition = &GetPosition();
-
-		// Check screen edges
 		if (pPosition->X - m_textureOrigin.X < LEFT)
 		{
 			SetPosition(LEFT + m_textureOrigin.X, pPosition->Y);
@@ -82,5 +77,7 @@ namespace ShooterLibrary
 	{
 		if (pGameObject1->IsMask(PLAYER | SHIP)) return static_cast<PlayerShip *>(pGameObject1);
 		if (pGameObject2->IsMask(PLAYER | SHIP)) return static_cast<PlayerShip *>(pGameObject2);
+
+		return nullptr;
 	}
 }

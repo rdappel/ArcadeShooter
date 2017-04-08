@@ -10,13 +10,6 @@
  `^^^^^^^^^^^^^^^^^^^ /---------------------------------------"
 		Katana Engine \/ © 2012 - Shuriken Studios LLC
 
-
-	Author: Ryan Appel
-	Date: 5/6/2015
-
-	File: GameTime.cpp
-	Description: Source file for the game's timing values.
-
 /  --------------------------------------------------------------- */
 
 #include "KatanaEngine.h"

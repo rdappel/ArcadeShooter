@@ -72,5 +72,7 @@ namespace Sample
 	{
 		if (pGameObject1->HasMask(POWER_UP)) return static_cast<PowerUp *>(pGameObject1);
 		if (pGameObject2->HasMask(POWER_UP)) return static_cast<PowerUp *>(pGameObject2);
+
+		return nullptr;
 	}
 }

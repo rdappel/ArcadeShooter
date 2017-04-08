@@ -10,13 +10,6 @@
    `^^^^^^^^^^^^^^^^^^^ /---------------------------------------"
         Katana Engine \/ © 2012 - Shuriken Studios LLC
 
-
-   Author: Ryan Appel
-   Date: 5/6/2015
-
-   File: Game.cpp
-   Description: Source file for the game base class.
-
 /  --------------------------------------------------------------- */
 
 #include "KatanaEngine.h"
@@ -49,6 +42,8 @@ namespace KatanaEngine
 		m_frameCounter = 0;
 		m_actualFramesPerSec = 0;
 		SetTargetFramesPerSecond(60);
+
+		s_windowTitle = "";
 
 		m_pResourceManager = new ResourceManager;
 		m_pScreenManager = nullptr;
@@ -91,11 +86,6 @@ namespace KatanaEngine
 		{
 			GetScreenManager()->Draw(m_pGameTime);
 		}
-
-		if (GetParticleManager())
-		{
-			GetParticleManager()->Draw(m_pGameTime);
-		}
 	}
 
 
@@ -122,6 +112,8 @@ namespace KatanaEngine
 			return -1;
 		}
 
+
+		if (s_windowTitle.length() == 0) s_windowTitle = GetName();
 		al_set_window_title(pDisplay, s_windowTitle.c_str());
 		al_set_blender(ALLEGRO_ADD, ALLEGRO_ALPHA, ALLEGRO_INVERSE_ALPHA);
 		al_inhibit_screensaver(true);
@@ -257,10 +249,5 @@ namespace KatanaEngine
 	{
 		m_targetFramesPerSecond = frames;
 		m_inverseTargetFrames = 1.0 / frames;
-	}
-
-	void Game::SetFrameCounterFont(const std::string &path)
-	{
-		m_pFrameCounterFont = GetResourceManager()->Load<Font>(path, false);
 	}
 }

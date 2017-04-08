@@ -1,6 +1,6 @@
 ﻿/* ---------------------------------------------------------------  /
 
-	 ██╗  ██╗  █████╗  ████████╗  █████╗  ███╗   ██╗  █████╗ 
+	 ██╗  ██╗  █████╗  ████████╗  █████╗  ███╗   ██╗  █████╗
 	 ██║ ██╔╝ ██╔══██╗ ╚══██╔══╝ ██╔══██╗ ████╗  ██║ ██╔══██╗
 	 █████╔╝  ███████║    ██║    ███████║ ██╔██╗ ██║ ███████║
 	 ██╔═██╗  ██╔══██║    ██║    ██╔══██║ ██║╚██╗██║ ██╔══██║
@@ -8,14 +8,7 @@
 	 ╚═╝  ╚═╝ ╚═╝  ╚═╝/\  ╚═╝    ╚═╝  ╚═╝ ╚═╝  ╚═══╝ ╚═╝  ╚═╝
    /vvvvvvvvvvvvvvvvvvv \=========================================,
    `^^^^^^^^^^^^^^^^^^^ /---------------------------------------"
-        Katana Engine \/ © 2012 - Shuriken Studios LLC
-
-
-   Author: Ryan Appel
-   Date: 5/8/2015
-
-   File: SpriteBatch.h
-   Description: Header file for rendering resources.
+		Katana Engine \/ © 2012 - Shuriken Studios LLC
 
 /  --------------------------------------------------------------- */
 
@@ -23,11 +16,30 @@
 
 namespace KatanaEngine
 {
-	enum class TextAlign { LEFT, CENTER, RIGHT };
+	/** @brief Defines the states for text alignment. */
+	enum class TextAlign
+	{
+		LEFT,			/**< Align the text to the left. */
+		CENTER,			/**< Align the text to the center. */
+		RIGHT			/**< Align the text to the right. */
+	};
 
-	enum class SpriteSortMode { BACK_TO_FRONT, DEFERRED, FRONT_TO_BACK, IMMEDIATE, TEXTURE };
+	/** @brief Defines the methods for sorting sprites before rendering. */
+	enum class SpriteSortMode
+	{
+		BACK_TO_FRONT,	/**< Sprites rendered with a lower draw order will render behind those with a higher draw order. */
+		DEFERRED,		/**< Sprites rendered first will appear behind those rendered later. */
+		FRONT_TO_BACK,	/**< Sprites rendered with a higher draw order will render behind those with a lower draw order. */
+		IMMEDIATE,		/**< Sprites will not be batched, and will draw immediately. */
+		TEXTURE			/**< Sprites that share a texture will all be rendered together. */
+	};
 
-	enum class BlendState { ALPHA, ADDITIVE };
+	/** @brief Defines the way in which textures blending will be calculated. */
+	enum class BlendState
+	{
+		ALPHA,			/**< Textures will be blended using premultiplied alpha blending. */
+		ADDITIVE		/**< Textures will be blended using additive blending. */
+	};
 
 	/** @brief Enables a group of sprites to be drawn using the same settings. */
 	class SpriteBatch
@@ -38,25 +50,87 @@ namespace KatanaEngine
 		SpriteBatch() { m_isStarted = false; }
 		~SpriteBatch() { }
 
-		void Begin(SpriteSortMode sortMode = SpriteSortMode::DEFERRED, BlendState blendState = BlendState::ALPHA, ALLEGRO_TRANSFORM *transformation = NULL);
-		void End(bool test = false);
+		/** @brief Begins a sprite batch operation.
+			@param sortMode Defines how to sort the sprites for rendering.
+			@param blendState Defines how to blend overlaping sprites.
+			@param transformation Defines a screen space transformation to use. */
+		void Begin(const SpriteSortMode sortMode = SpriteSortMode::DEFERRED,
+			const BlendState blendState = BlendState::ALPHA,
+			ALLEGRO_TRANSFORM *transformation = NULL);
 
-		void DrawString(Font *pFont, std::string *text, Vector2 position, Color color = Color::White,
-			TextAlign alignment = TextAlign::LEFT, float drawDepth = 0);
+		/** @brief Flushes the sprite batch and restores the device state to how
+		it was before Begin was called. */
+		void End(/*bool test = false*/);
 
-		void Draw(Texture *pTexture, Vector2 position, Region region, Color color = Color::White,
-			Vector2 origin = Vector2::Zero, Vector2 scale = Vector2::One, float rotation = 0, float drawDepth = 0);
+		/** @brief Adds a string to a batch of sprites to be rendered.
+			@param pFont The font used to draw the text.
+			@param text The text to display.
+			@param position The screen position of the text.
+			@param color The color to tint the text. The default is Color::White (no tint).
+			@param alignment The prefered method of aligning the text. The default is
+			TextAlign::LEFT.
+			@param drawDepth The depth at which to render the sprite. This is determined
+			by the SpriteSortMode arguement that is passed to SpriteBatch::Begin(). The
+			default is zero.*/
+		void DrawString(const Font *pFont, std::string *text, const Vector2 position,
+			const Color color = Color::White, const TextAlign alignment = TextAlign::LEFT,
+			const float drawDepth = 0);
 
-		void Draw(Texture *pTexture, Vector2 position, Color color = Color::White,
-			Vector2 origin = Vector2::Zero, Vector2 scale = Vector2::One, float rotation = 0, float drawDepth = 0);
+		/** @brief Adds a sprite to a batch of sprites to be rendered. 
+			@param pTexture A pointer to the texture to render.
+			@param position The screen position of the sprite.
+			@param region The region of the texture to render.
+			@param color The color to tint the sprite. The default is Color::White (no tint).
+			@param origin The sprite's origin. The default is Vector2::Zero, which is the
+			upper left corner of the sprite.
+			@param scale The scale factor of the sprite. The default is Vector2::One.
+			@param rotation The rotation angle in radians. The default is zero.
+			@param drawDepth The depth at which to render the sprite. This is determined
+			by the SpriteSortMode arguement that is passed to SpriteBatch::Begin(). The
+			default is zero.*/
+		void Draw(const Texture *pTexture, const Vector2 position, const Region region,
+			const Color color = Color::White, const Vector2 origin = Vector2::Zero, 
+			const Vector2 scale = Vector2::One, const float rotation = 0, 
+			const float drawDepth = 0);
 
-		void Draw(Animation *pAnimation, Vector2 position, Color color = Color::White,
-			Vector2 origin = Vector2::Zero, Vector2 scale = Vector2::One, float rotation = 0, float drawDepth = 0);
+		/** @brief Adds a sprite to a batch of sprites to be rendered.
+			@param pTexture A pointer to the texture to render.
+			@param position The screen position of the sprite.
+			@param color The color to tint the sprite. The default is Color::White (no tint).
+			@param origin The sprite's origin. The default is Vector2::Zero, which is the
+			upper left corner of the sprite.
+			@param scale The scale factor of the sprite. The default is Vector2::One.
+			@param rotation The rotation angle in radians. The default is zero.
+			@param drawDepth The depth at which to render the sprite. This is determined
+			by the SpriteSortMode arguement that is passed to SpriteBatch::Begin(). The
+			default is zero.
+
+			@overload */
+		void Draw(const Texture *pTexture, const Vector2 position,
+			const Color color = Color::White, const Vector2 origin = Vector2::Zero,
+			const Vector2 scale = Vector2::One, const float rotation = 0,
+			const float drawDepth = 0);
+
+		/** @brief Adds a sprite to a batch of sprites to be rendered.
+			@param pAnimation A pointer to the animation to render.
+			@param position The screen position of the sprite.
+			@param color The color to tint the sprite. The default is Color::White (no tint).
+			@param origin The sprite's origin. The default is Vector2::Zero, which is the
+			upper left corner of the sprite.
+			@param scale The scale factor of the sprite. The default is Vector2::One.
+			@param rotation The rotation angle in radians. The default is zero.
+			@param drawDepth The depth at which to render the sprite. This is determined
+			by the SpriteSortMode arguement that is passed to SpriteBatch::Begin(). The
+			default is zero.
+
+			@overload */
+		void Draw(Animation *pAnimation, const Vector2 position,
+			const Color color = Color::White, const Vector2 origin = Vector2::Zero,
+			const Vector2 scale = Vector2::One, const float rotation = 0,
+			float drawDepth = 0);
 
 
 	private:
-
-
 
 		struct Drawable
 		{

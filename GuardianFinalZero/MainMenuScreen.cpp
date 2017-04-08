@@ -3,16 +3,17 @@
 
 namespace GuardianFinalZero
 {
-	// Removal Function
+
+	// Removal Callback Function
 	void MainMenuScreenRemove(Screen *pScreen)
 	{
 		pScreen->GetScreenManager()->AddScreen(new GameplayScreen(1));
 	}
 
-	// Menu Item Functions
+	// MenuItem Callback Functions
 	void StartSelect(MenuScreen *pMenuScreen)
 	{
-		pMenuScreen->OnRemove = MainMenuScreenRemove;
+		pMenuScreen->SetRemoveCallback(MainMenuScreenRemove);
 		pMenuScreen->Exit();
 	}
 
@@ -21,6 +22,7 @@ namespace GuardianFinalZero
 		pMenuScreen->Exit();
 		pMenuScreen->GetScreenManager()->GetGame()->Quit();
 	}
+
 
 	MainMenuScreen::MainMenuScreen()
 	{
@@ -65,14 +67,12 @@ namespace GuardianFinalZero
 			AddMenuItem(pMenuItem);
 		}
 
-		GetMenuItem(0)->OnSelect = StartSelect;
-		//m_menuItems[1]->OnSelect = nullptr;
-		GetMenuItem(1)->OnSelect = ExitSelect;
-
+		GetMenuItem(0)->SetSelectCallback(StartSelect);
+		GetMenuItem(1)->SetSelectCallback(ExitSelect);
 
 		m_pLogoTexture = GetResourceManager()->Load<Texture>("Textures\\LogoText.png");
 
-		m_targetPosition = Game::GetScreenCenter() - Vector2(0, 150);
+		m_targetPosition = Game::GetScreenCenter().ToVector2() - Vector2(0, 150);
 		m_position = m_targetPosition - Vector2(0, 400);
 
 		Screen::LoadContent();

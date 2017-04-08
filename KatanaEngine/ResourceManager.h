@@ -10,13 +10,6 @@
    `^^^^^^^^^^^^^^^^^^^ /---------------------------------------"
 		Katana Engine \/ © 2012 - Shuriken Studios LLC
 
-
-   Author: Ryan Appel
-   Date: 5/8/2015
-
-   File: ResourceManager.h
-   Description: Header file for resource management.
-
 /  --------------------------------------------------------------- */
 
 #pragma once
@@ -31,8 +24,11 @@ namespace KatanaEngine
 
 		ResourceManager() { m_nextResourceID = 0; }
 
+		/** @brief Sets the location of the folder where game resources are stored.
+			@param path The file path to the content folder. */
 		void SetContentPath(const std::string &path) { m_contentPath = path; }
 
+		/** @brief Unloads all game resources. */
 		void UnloadAllResources()
 		{
 			std::map<std::string, Resource *>::iterator it;
@@ -51,6 +47,13 @@ namespace KatanaEngine
 			m_clones.clear();
 		}
 
+		/** @brief Load and manage a resource.
+			@param path The path to the resource.
+			@param cache Sets whether the resource manager will manage the resource.
+			@param appendContentPath Usually a game's content is kept in a single folder which is
+			set by calling SetContentPath. This allows you to use shorter paths when loading assets.
+			ocasionally a resource is outside of this folder and not using the content path is more
+			convenient. */
 		template <typename T>
 		T *Load(const std::string &path, const bool cache = true, const bool appendContentPath = true)
 		{
@@ -62,8 +65,7 @@ namespace KatanaEngine
 				{
 					T *pClone = dynamic_cast<T*>(pResource->Clone());
 
-					pClone->SetResourceID(m_nextResourceID);
-
+					pClone->m_id = m_nextResourceID;
 					m_nextResourceID++;
 
 					m_clones.push_back(pClone);
@@ -91,8 +93,7 @@ namespace KatanaEngine
 			{
 				if (cache) m_resources[path] = pT;
 
-				pT->SetResourceID(m_nextResourceID);
-
+				pT->m_id = m_nextResourceID;
 				m_nextResourceID++;
 
 				return pT;

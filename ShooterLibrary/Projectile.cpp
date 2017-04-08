@@ -21,7 +21,7 @@ namespace ShooterLibrary
 			Vector2 translation = m_direction * m_speed * pGameTime->GetTimeElapsed();
 			TranslatePosition(translation);
 
-			if (GetPosition().Y < s_textureOrigin.Y) Deactivate();
+			if (GetPosition().Y < -s_textureOrigin.Y) Deactivate();
 		}
 
 		GameObject::Update(pGameTime);
@@ -55,7 +55,7 @@ namespace ShooterLibrary
 		return "Enemy Projectile";
 	}
 
-	uint32_t Projectile::GetCollisionMask() const
+	uint32_t Projectile::GetCollisionType() const
 	{
 		if (m_isShotByPlayer) return (PLAYER | PROJECTILE);
 		return (ENEMY | PROJECTILE);
@@ -65,5 +65,7 @@ namespace ShooterLibrary
 	{
 		if (pGameObject1->HasMask(PROJECTILE)) return static_cast<Projectile *>(pGameObject1);
 		if (pGameObject2->HasMask(PROJECTILE)) return static_cast<Projectile *>(pGameObject2);
+
+		return nullptr;
 	}
 }

@@ -10,13 +10,6 @@
    `^^^^^^^^^^^^^^^^^^^ /---------------------------------------"
         Katana Engine \/ © 2012 - Shuriken Studios LLC
 
-
-   Author: Ryan Appel
-   Date: 5/6/2015
-
-   File: InputState.cpp
-   Description: Source file for handling player input.
-
 /  --------------------------------------------------------------- */
 
 #include "KatanaEngine.h"
@@ -167,9 +160,14 @@ namespace KatanaEngine
 		return IsKeyDown(key) && !al_key_down(&m_previousKeyboardState, (int)key);
 	}
 
+	bool InputState::IsNewKeyRelease(Key key) const
+	{
+		return IsKeyUp(key) && al_key_down(&m_previousKeyboardState, (int)key);
+	}
+
 	bool InputState::IsButtonUp(Button button, int &indexOut, int controllingIndex)
 	{
-		if (controllingIndex > -1)
+		if (controllingIndex > -1 && controllingIndex < MAX_NUM_GAMEPADSTATES)
 		{
 			if (m_currentGamePadStates[controllingIndex].IsButtonUp(button))
 			{
@@ -188,7 +186,7 @@ namespace KatanaEngine
 
 	bool InputState::IsButtonDown(Button button, int &indexOut, int controllingIndex)
 	{
-		if (controllingIndex > -1)
+		if (controllingIndex > -1 && controllingIndex < MAX_NUM_GAMEPADSTATES)
 		{
 			if (m_currentGamePadStates[controllingIndex].IsButtonDown(button))
 			{
@@ -207,7 +205,7 @@ namespace KatanaEngine
 
 	bool InputState::IsNewButtonPress(Button button, int &indexOut, int controllingIndex)
 	{
-		if (controllingIndex > -1)
+		if (controllingIndex > -1 && controllingIndex < MAX_NUM_GAMEPADSTATES)
 		{
 			if (m_currentGamePadStates[controllingIndex].IsButtonDown(button) &&
 				m_previousGamePadStates[controllingIndex].IsButtonUp(button))
@@ -222,6 +220,26 @@ namespace KatanaEngine
 		{
 			return (IsNewButtonPress(button, indexOut, 0) || IsNewButtonPress(button, indexOut, 1) ||
 				IsNewButtonPress(button, indexOut, 2) || IsNewButtonPress(button, indexOut, 3));
+		}
+	}
+
+	bool InputState::IsNewButtonRelease(Button button, int &indexOut, int controllingIndex)
+	{
+		if (controllingIndex > -1 && controllingIndex < MAX_NUM_GAMEPADSTATES)
+		{
+			if (m_currentGamePadStates[controllingIndex].IsButtonUp(button) &&
+				m_previousGamePadStates[controllingIndex].IsButtonDown(button))
+			{
+				indexOut = controllingIndex;
+				return true;
+			}
+
+			return false;
+		}
+		else
+		{
+			return (IsNewButtonRelease(button, indexOut, 0) || IsNewButtonRelease(button, indexOut, 1) ||
+				IsNewButtonRelease(button, indexOut, 2) || IsNewButtonRelease(button, indexOut, 3));
 		}
 	}
 

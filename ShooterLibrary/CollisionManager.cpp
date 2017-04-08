@@ -15,8 +15,8 @@ namespace ShooterLibrary
 	
 	void CollisionManager::CheckCollision(GameObject *pGameObject1, GameObject *pGameObject2)
 	{
-		uint32_t t1 = pGameObject1->GetCollisionMask();
-		uint32_t t2 = pGameObject2->GetCollisionMask();
+		uint32_t t1 = pGameObject1->GetCollisionType();
+		uint32_t t2 = pGameObject2->GetCollisionType();
 
 		static int idx = 0;
 

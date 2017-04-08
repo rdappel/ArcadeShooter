@@ -3,7 +3,7 @@
 
 namespace GuardianFinalZero
 {
-	// Removal Function
+	// Removal Callback Function
 	void GameplayScreenRemove(Screen *pScreen)
 	{
 		pScreen->GetScreenManager()->AddScreen(new MainMenuScreen());
@@ -17,6 +17,6 @@ namespace GuardianFinalZero
 		case 1: SetLevel(new Level01()); break;
 		}
 		
-		OnRemove = GameplayScreenRemove;
+		SetRemoveCallback(GameplayScreenRemove);
 	}
 }

@@ -10,13 +10,6 @@
    `^^^^^^^^^^^^^^^^^^^ /---------------------------------------"
         Katana Engine \/ © 2012 - Shuriken Studios LLC
 
-
-   Author: Ryan Appel
-   Date: 5/6/2015
-
-   File: Color.cpp
-   Description: Source file for colors.
-
 /  --------------------------------------------------------------- */
 
 #include "KatanaEngine.h"
@@ -172,12 +165,12 @@ namespace KatanaEngine
 #pragma endregion
 
 
-	Color::Color(const float r, const float g, const float b, const float a)
+	Color::Color(const float red, const float green, const float blue, const float alpha)
 	{
-		m_color.r = r;
-		m_color.g = g;
-		m_color.b = b;
-		m_color.a = a;
+		this->red = red;
+		this->green = green;
+		this->blue = blue;
+		this->alpha = alpha;
 	}
 
 	Color Color::Lerp(const Color &start, const Color &end, const float value)
@@ -185,35 +178,33 @@ namespace KatanaEngine
 		if (value <= 0) return start;
 		if (value >= 1) return end;
 
-		float r = Math::Lerp(start.Get().r, end.Get().r, value);
-		float g = Math::Lerp(start.Get().g, end.Get().g, value);
-		float b = Math::Lerp(start.Get().b, end.Get().b, value);
-		float a = Math::Lerp(start.Get().a, end.Get().a, value);
+		float red = Math::Lerp(start.red, end.red, value);
+		float green = Math::Lerp(start.green, end.green, value);
+		float blue = Math::Lerp(start.blue, end.blue, value);
+		float alpha = Math::Lerp(start.alpha, end.alpha, value);
 
-		return Color(r, g, b, a);
+		return Color(red, green, blue, alpha);
 	}
 
 	const Color Color::operator*(const float scalar) const
 	{
 		Color color = Color(*this);
-		color.m_color.r *= scalar;
-		color.m_color.g *= scalar;
-		color.m_color.b *= scalar;
-		color.m_color.a *= scalar;
+		color.red *= scalar;
+		color.green *= scalar;
+		color.blue *= scalar;
+		color.alpha *= scalar;
 		return color;
 	}
 
-
-
-	bool Color::operator== (const Color& color2) const
+	bool Color::operator== (const Color& color) const
 	{
-		return ((Get().r == color2.Get().r) && (Get().g == color2.Get().g)
-			&& (Get().b == color2.Get().b) && (Get().a == color2.Get().a));
+		return ((red == color.red) && (green == color.green)
+			&& (blue == color.blue) && (alpha == color.alpha));
 	}
 
-	bool Color::operator!= (const Color& color2) const
+	bool Color::operator!= (const Color& color) const
 	{
-		return !((Get().r == color2.Get().r) && (Get().g == color2.Get().g)
-			&& (Get().b == color2.Get().b) && (Get().a == color2.Get().a));
+		return !((red == color.red) && (green == color.green)
+			&& (blue == color.blue) && (alpha == color.alpha));
 	}
 }

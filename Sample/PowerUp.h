@@ -22,7 +22,7 @@ namespace Sample
 
 		virtual void Activate(const Vector2 position, Level *pLevel);
 
-		virtual uint32_t GetCollisionMask() const { return POWER_UP; }
+		virtual uint32_t GetCollisionType() const { return POWER_UP; }
 
 		virtual std::string ToString() const { return "Power Up"; }
 

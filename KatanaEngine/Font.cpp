@@ -10,13 +10,6 @@
 `^^^^^^^^^^^^^^^^^^^ /---------------------------------------"
 Katana Engine \/ © 2012 - Shuriken Studios LLC
 
-
-Author: Ryan Appel
-Date: 5/8/2015
-
-File: Font.cpp
-Description: Source file for font resources.
-
 /  --------------------------------------------------------------- */
 
 #include "KatanaEngine.h"
@@ -61,10 +54,7 @@ namespace KatanaEngine
 		}
 		else if (isPNG)
 		{
-			int ranges[] = {
-				32, 126 };  // ASCII
-							//0x00A1, 0x00FF,  // Latin 1
-							//0x0100, 0x017F};  // Extended-A
+			int ranges[] = { 32, 126 };
 
 			if (s_ranges == nullptr)
 			{
@@ -75,7 +65,7 @@ namespace KatanaEngine
 			Texture *pTexture = pManager->Load<Texture>(path, true, false);
 			if (pTexture)
 			{
-				m_pFont = al_grab_font_from_bitmap(pTexture->GetBitmap(), s_rangeCount, s_ranges);
+				m_pFont = al_grab_font_from_bitmap(pTexture->GetAllegroBitmap(), s_rangeCount, s_ranges);
 			}
 
 			s_ranges = nullptr;

@@ -36,5 +36,7 @@ namespace ShooterLibrary
 	{
 		if (pGameObject1->IsMask(ENEMY | SHIP)) return static_cast<EnemyShip *>(pGameObject1);
 		if (pGameObject2->IsMask(ENEMY | SHIP)) return static_cast<EnemyShip *>(pGameObject2);
+
+		return nullptr;
 	}
 }

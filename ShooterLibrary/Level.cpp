@@ -1,6 +1,6 @@
 
 #include "ShooterLibrary.h"
-#include <allegro5\allegro_primitives.h>
+//#include <allegro5\allegro_primitives.h>
 
 namespace ShooterLibrary
 {
@@ -35,7 +35,7 @@ namespace ShooterLibrary
 
 		InitializeCollisionManager();
 
-		al_init_primitives_addon();
+		//al_init_primitives_addon();
 	}
 
 	void Level::HandleInput(InputState *pInput)
@@ -49,7 +49,7 @@ namespace ShooterLibrary
 		// Normalize the direction
 		if (direction.X != 0 && direction.Y != 0)
 		{
-			direction *= Math::NORMALIZE_45;
+			direction *= Math::NORMALIZE_PI_OVER4;
 		}
 
 		// gamepad overrides keyboard input
@@ -126,18 +126,17 @@ namespace ShooterLibrary
 
 		//al_set_blender(ALLEGRO_ADD, ALLEGRO_ONE, ALLEGRO_INVERSE_ALPHA);
 
-		/**
-		for (unsigned int i = 0; i < m_totalSectorCount; i++)
-		{
-			if (m_pSectors[i].size() > 0)
-			{
-				int x = (i % (int)m_sectorCount.X) * m_sectorSize.X;
-				int y = (i / (int)m_sectorCount.X) * m_sectorSize.Y;
+		//// Draw the sector primitive if it contains a game object
+		//for (unsigned int i = 0; i < m_totalSectorCount; i++)
+		//{
+		//	if (m_pSectors[i].size() > 0)
+		//	{
+		//		int x = (i % (int)m_sectorCount.X) * m_sectorSize.X;
+		//		int y = (i / (int)m_sectorCount.X) * m_sectorSize.Y;
 
-				al_draw_filled_rectangle(x, y, x + m_sectorSize.X, y + m_sectorSize.Y, al_map_rgba_f(1, 1, 1, 0.2f));
-			}
-		}
-		/**/
+		//		al_draw_filled_rectangle(x, y, x + m_sectorSize.X, y + m_sectorSize.Y, al_map_rgba_f(1, 1, 1, 0.2f));
+		//	}
+		//}
 
 		GetSpriteBatch()->Begin();
 
@@ -150,21 +149,21 @@ namespace ShooterLibrary
 				pGameObject->Draw(pGameTime);
 			}
 		}
-
 		GetSpriteBatch()->End();
 
-		/**
-		al_set_blender(ALLEGRO_ADD, ALLEGRO_ONE, ALLEGRO_ONE);
-		m_explosionIt = m_explosions.begin();
-		for (; m_explosionIt != m_explosions.end(); m_explosionIt++)
-		{
-			Explosion *pExplosion = (*m_explosionIt);
-			if (pExplosion->IsActive())
-			{
-				pExplosion->Draw(pGameTime);
-			}
-		}
-		/**/
+		GetParticleManager()->Draw(pGameTime);
+
+		//// Draw explosions
+		//al_set_blender(ALLEGRO_ADD, ALLEGRO_ONE, ALLEGRO_ONE);
+		//m_explosionIt = m_explosions.begin();
+		//for (; m_explosionIt != m_explosions.end(); m_explosionIt++)
+		//{
+		//	Explosion *pExplosion = (*m_explosionIt);
+		//	if (pExplosion->IsActive())
+		//	{
+		//		pExplosion->Draw(pGameTime);
+		//	}
+		//}
 
 		//al_set_blender(ALLEGRO_ADD, ALLEGRO_ALPHA, ALLEGRO_INVERSE_ALPHA);
 	}
@@ -186,27 +185,16 @@ namespace ShooterLibrary
 		int minY = (int)(position.Y - halfDimensions.Y - 0.5f);
 		int maxY = (int)(position.Y + halfDimensions.Y + 0.5f);
 
-		/**
-		if (position.X < previousPosition.X)
-			maxX = (int)(previousPosition.X + halfDimensions.X);
-		else if (position.X > previousPosition.X)
-			minX = (int)(previousPosition.X - halfDimensions.X);
+		//// Expand to contain the previous positions
+		//minX = Math::Min(minX, (int)(previousPosition.X - halfDimensions.X - 0.5f));
+		//maxX = Math::Max(maxX, (int)(previousPosition.X + halfDimensions.X + 0.5f));
+		//minY = Math::Min(minY, (int)(previousPosition.Y - halfDimensions.Y - 0.5f));
+		//maxY = Math::Max(maxY, (int)(previousPosition.Y + halfDimensions.Y + 0.5f));
 
-		if (position.Y < previousPosition.Y)
-			maxY = (int)(previousPosition.Y + halfDimensions.Y);
-		else if (position.Y > previousPosition.Y)
-			minY = (int)(previousPosition.Y - halfDimensions.Y);
-		/**/
-
-		minX /= (int)m_sectorSize.X;
-		maxX /= (int)m_sectorSize.X;
-		minY /= (int)m_sectorSize.Y;
-		maxY /= (int)m_sectorSize.Y;
-
-		minX = (int)Math::Clamp(0, m_sectorCount.X - 1, minX);
-		maxX = (int)Math::Clamp(0, m_sectorCount.X - 1, maxX);
-		minY = (int)Math::Clamp(0, m_sectorCount.Y - 1, minY);
-		maxY = (int)Math::Clamp(0, m_sectorCount.Y - 1, maxY);
+		minX = (int)Math::Clamp(0, m_sectorCount.X - 1, minX / (int)m_sectorSize.X);
+		maxX = (int)Math::Clamp(0, m_sectorCount.X - 1, maxX / (int)m_sectorSize.X);
+		minY = (int)Math::Clamp(0, m_sectorCount.Y - 1, minY / (int)m_sectorSize.Y);
+		maxY = (int)Math::Clamp(0, m_sectorCount.Y - 1, maxY / (int)m_sectorSize.Y);
 
 
 		for (int x = minX; x <= maxX; x++)

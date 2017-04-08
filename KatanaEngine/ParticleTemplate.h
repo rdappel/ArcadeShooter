@@ -1,8 +1,23 @@
+/* ---------------------------------------------------------------  /
+
+	 ██╗  ██╗  █████╗  ████████╗  █████╗  ███╗   ██╗  █████╗ 
+	 ██║ ██╔╝ ██╔══██╗ ╚══██╔══╝ ██╔══██╗ ████╗  ██║ ██╔══██╗
+	 █████╔╝  ███████║    ██║    ███████║ ██╔██╗ ██║ ███████║
+	 ██╔═██╗  ██╔══██║    ██║    ██╔══██║ ██║╚██╗██║ ██╔══██║
+	 ██║  ██╗ ██║  ██║    ██║    ██║  ██║ ██║ ╚████║ ██║  ██║
+	 ╚═╝  ╚═╝ ╚═╝  ╚═╝/\  ╚═╝    ╚═╝  ╚═╝ ╚═╝  ╚═══╝ ╚═╝  ╚═╝
+   /vvvvvvvvvvvvvvvvvvv \=========================================,
+   `^^^^^^^^^^^^^^^^^^^ /---------------------------------------"
+        Katana Engine \/ © 2012 - Shuriken Studios LLC
+
+/  --------------------------------------------------------------- */
 
 #pragma once
 
 namespace KatanaEngine
 {
+
+	/** @brief Base class for particle templates which are used to control the updating of a corresponding particle type. */
 	class ParticleTemplate
 	{
 
@@ -15,11 +30,9 @@ namespace KatanaEngine
 
 		virtual void UpdateParticle(Particle *pParticle, const GameTime *pGameTime) { }
 
-		virtual void SetTexture(Texture *pTexture);
+		virtual void SetTexture(Texture *pTexture) { m_pTexture = pTexture; }
 
 		virtual Texture *GetTexture() { return m_pTexture; }
-
-		virtual Vector2 &GetTextureOrigin() { return m_textureOrigin; }
 
 		virtual void SetParticleLifespan(const float lifespan) { m_pParticleLifespan = lifespan; }
 
@@ -68,7 +81,6 @@ namespace KatanaEngine
 	private:
 
 		Texture *m_pTexture;
-		Vector2 m_textureOrigin;
 
 		float m_pParticleLifespan;
 

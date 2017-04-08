@@ -10,13 +10,6 @@
    `^^^^^^^^^^^^^^^^^^^ /---------------------------------------"
 		Katana Engine \/ © 2012 - Shuriken Studios LLC
 
-
-   Author: Ryan Appel
-   Date: 5/6/2015
-
-   File: MenuScreen.cpp
-   Description: Source file for a menu screen.
-
 /  --------------------------------------------------------------- */
 
 #include "KatanaEngine.h"
@@ -109,8 +102,6 @@ namespace KatanaEngine
 			pMenuItem->SetDisplayed(displayed);
 			pMenuItem->SetSelected(index == m_selectedItemIndex);
 			pMenuItem->Update(pGameTime);
-
-			UpdateItem(pMenuItem, index);
 
 			index++;
 		}

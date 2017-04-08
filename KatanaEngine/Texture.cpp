@@ -10,13 +10,6 @@
    `^^^^^^^^^^^^^^^^^^^ /---------------------------------------"
         Katana Engine \/ © 2012 - Shuriken Studios LLC
 
-
-   Author: Ryan Appel
-   Date: 5/8/2015
-
-   File: Texture.cpp
-   Description: Source file for texture resources.
-
 /  --------------------------------------------------------------- */
 
 #include "KatanaEngine.h"

@@ -24,6 +24,11 @@ namespace ShooterLibrary
 		Show();
 	}
 
+	void GameplayScreen::UnloadContent()
+	{
+		m_pLevel->UnloadContent();
+	}
+
 
 	void GameplayScreen::HandleInput(InputState *pInput)
 	{
@@ -48,7 +53,7 @@ namespace ShooterLibrary
 				//GetScreenManager()->AddScreen(new GameOverScreen(this));
 			}
 
-			if (GetTransition() == ScreenTransition::SCREENTRANS_OUT)
+			if (GetTransition() == ScreenTransition::OUT)
 			{
 				/**
 				ALLEGRO_SAMPLE_INSTANCE *pSampleInstance = m_pLevel->GetSampleInstance();

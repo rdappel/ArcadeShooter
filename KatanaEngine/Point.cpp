@@ -10,23 +10,13 @@
    `^^^^^^^^^^^^^^^^^^^ /---------------------------------------"
         Katana Engine \/ © 2012 - Shuriken Studios LLC
 
-
-   Author: Ryan Appel
-   Date: 5/6/2015
-
-   File: Point.cpp
-   Description: Source file for two-dimensional points.
-
 /  --------------------------------------------------------------- */
 
 #include "KatanaEngine.h"
 
 namespace KatanaEngine
 {
-	const Point Point::Zero = Point(0, 0);
-	const Point Point::One = Point(1, 1);
-	const Point Point::UnitX = Point(1, 0);
-	const Point Point::UnitY = Point(0, 1);
+	const Point Point::Origin = Point(0, 0);
 
 
 	Point::Point(const int x, const int y)
@@ -47,51 +37,58 @@ namespace KatanaEngine
 		Y = point.Y;
 	}
 
-	Point &Point::operator=(const Point &p2)
+	std::string Point::ToString() const
 	{
-		if (this == &p2)
+		std::ostringstream ss;
+		ss << "{ " << X << ", " << Y << " }";
+		return ss.str();
+	}
+
+	Point &Point::operator=(const Point &point)
+	{
+		if (this == &point)
 			return *this;
 
-		X = p2.X;
-		Y = p2.Y;
+		X = point.X;
+		Y = point.Y;
 
 		return *this;
 	}
 
-	Point &Point::operator+=(const Point &p2)
+	Point &Point::operator+=(const Point &point)
 	{
-		X += p2.X;
-		Y += p2.Y;
+		X += point.X;
+		Y += point.Y;
 
 		return *this;
 	}
 
-	Point &Point::operator-=(const Point &p2)
+	Point &Point::operator-=(const Point &point)
 	{
-		X -= p2.X;
-		Y -= p2.Y;
+		X -= point.X;
+		Y -= point.Y;
 
 		return *this;
 	}
 
-	const Point Point::operator+(const Point &p2) const
+	const Point Point::operator+(const Point &point) const
 	{
-		return Point(*this) += p2;
+		return Point(*this) += point;
 	}
 
-	const Point Point::operator-(const Point &p2) const
+	const Point Point::operator-(const Point &point) const
 	{
-		return Point(*this) -= p2;
+		return Point(*this) -= point;
 	}
 
-	bool Point::operator== (const Point &p2) const
+	bool Point::operator== (const Point &point) const
 	{
-		return ((X == p2.X) && (Y == p2.Y));
+		return ((X == point.X) && (Y == point.Y));
 	}
 
-	bool Point::operator!= (const Point &p2) const
+	bool Point::operator!= (const Point &point) const
 	{
-		return !((X == p2.X) && (Y == p2.Y));
+		return !((X == point.X) && (Y == point.Y));
 	}
 
 	const Vector2 Point::ToVector2() const

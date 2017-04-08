@@ -3,7 +3,7 @@
 
 namespace Sample
 {
-	// Removal Function
+	// Removal Callback Function
 	void GameplayScreenRemove(Screen *pScreen)
 	{
 		pScreen->GetScreenManager()->AddScreen(new MainMenuScreen());
@@ -12,8 +12,7 @@ namespace Sample
 
 	GameplayScreen::GameplayScreen()
 	{
-		OnRemove = GameplayScreenRemove;
-
+		SetRemoveCallback(GameplayScreenRemove);
 		SetLevel(new Level01());
 	}
 }

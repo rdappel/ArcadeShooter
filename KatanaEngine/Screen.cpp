@@ -10,13 +10,6 @@
    `^^^^^^^^^^^^^^^^^^^ /---------------------------------------"
 		Katana Engine \/ © 2012 - Shuriken Studios LLC
 
-
-   Author: Ryan Appel
-   Date: 5/6/2015
-
-   File: Screen.cpp
-   Description: Source file for a game screen.
-
 /  --------------------------------------------------------------- */
 
 #include "KatanaEngine.h"
@@ -33,23 +26,23 @@ namespace KatanaEngine
 
 		m_pScreenManager = nullptr;
 
-		m_transition = SCREENTRANS_NONE;
+		m_transition = ScreenTransition::NONE;
 
 		m_transitionValue = 0.0f;
 
-		OnExit = nullptr;
-		OnRemove = nullptr;
+		m_onExit = nullptr;
+		m_onRemove = nullptr;
 
 		SetPassThroughFlags();
 	}
 
 	void Screen::UpdateTransition(const GameTime *pGameTime)
 	{
-		if (m_transition != SCREENTRANS_NONE)
+		if (m_transition != ScreenTransition::NONE)
 		{
 			m_transitionTime -= pGameTime->GetTimeElapsed();
 
-			if (m_transition == SCREENTRANS_IN)
+			if (m_transition == ScreenTransition::IN)
 			{
 				if (m_transitionInTime > 0)
 				{
@@ -61,7 +54,7 @@ namespace KatanaEngine
 				}
 			}
 
-			if (m_transition == SCREENTRANS_OUT)
+			if (m_transition == ScreenTransition::OUT)
 			{
 				if (m_transitionOutTime > 0)
 				{
@@ -79,7 +72,7 @@ namespace KatanaEngine
 			if (m_transitionTime <= 0)
 			{
 				m_transitionTime = 0;
-				m_transition = SCREENTRANS_NONE;
+				m_transition = ScreenTransition::NONE;
 
 				if (m_isExiting)
 				{
@@ -105,24 +98,24 @@ namespace KatanaEngine
 
 		TransitionOut();
 
-		if (OnExit)	OnExit(this);
+		if (m_onExit) ((OnExit)m_onExit)(this);
 	}
 
 	void Screen::TransitionIn()
 	{
-		if (m_transition == SCREENTRANS_NONE)
+		if (m_transition == ScreenTransition::NONE)
 		{
 			m_transitionTime = m_transitionInTime;
-			m_transition = SCREENTRANS_IN;
+			m_transition = ScreenTransition::IN;
 		}
 	}
 
 	void Screen::TransitionOut()
 	{
-		if (m_transition == SCREENTRANS_NONE)
+		if (m_transition == ScreenTransition::NONE)
 		{
 			m_transitionTime = m_transitionOutTime;
-			m_transition = SCREENTRANS_OUT;
+			m_transition = ScreenTransition::OUT;
 		}
 	}
 
@@ -138,15 +131,20 @@ namespace KatanaEngine
 		return m_pScreenManager->GetResourceManager();
 	}
 
+	ParticleManager *Screen::GetParticleManager() const
+	{
+		return GetGame()->GetParticleManager();
+	}
+
 	SpriteBatch *Screen::GetSpriteBatch() const
 	{
 		return GetGame()->GetSpriteBatch();
 	}
 
-	void Screen::SetPassThroughFlags(const bool handleInput, const bool update, const bool draw)
+	void Screen::SetPassThroughFlags(const bool draw, const bool update, const bool handleInput)
 	{
-		m_handleInputBelow = handleInput;
-		m_updateBelow = update;
 		m_drawBelow = draw;
+		m_updateBelow = update;
+		m_handleInputBelow = handleInput;
 	}
 }

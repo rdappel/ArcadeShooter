@@ -10,13 +10,6 @@
    `^^^^^^^^^^^^^^^^^^^ /---------------------------------------"
 		Katana Engine \/ © 2012 - Shuriken Studios LLC
 
-
-   Author: Ryan Appel
-   Date: 5/6/2015
-
-   File: MenuItem.cpp
-   Description: Source file for a menu item.
-
 /  --------------------------------------------------------------- */
 
 #include "KatanaEngine.h"
@@ -25,7 +18,7 @@ namespace KatanaEngine
 {
 	MenuItem::MenuItem()
 	{
-		OnSelect = nullptr;
+		m_onSelect = nullptr;
 		m_pFont = nullptr;
 
 		m_color = Color::White;
@@ -51,6 +44,6 @@ namespace KatanaEngine
 
 	void MenuItem::Select(MenuScreen *pMenuScreen)
 	{
-		if (OnSelect) OnSelect(pMenuScreen);
+		if (m_onSelect) ((OnSelect)m_onSelect)(pMenuScreen);
 	}
 }

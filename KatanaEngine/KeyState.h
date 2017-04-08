@@ -10,135 +10,130 @@
    `^^^^^^^^^^^^^^^^^^^ /---------------------------------------"
 		Katana Engine \/ © 2012 - Shuriken Studios LLC
 
-
-   Author: Ryan Appel
-   Date: 5/6/2015
-
-   File: KeyState.h
-   Description: Header file for keyboard structures and
-   enumerations.
-
 /  --------------------------------------------------------------- */
 
 #pragma once
 
 namespace KatanaEngine
 {
+
+	/** @brief Defines the keys on a keyboard */
 	enum class Key
 	{
-		A = 1, B, C, D, E, F, G, H, I, J, K, L, M,
-		N, O, P, Q, R, S, T, U, V, W, X, Y, Z,
+		A = 1,				/**< Represents the A Key on the keyboard. */
+		B,					/**< Represents the B Key on the keyboard. */
+		C,					/**< Represents the C Key on the keyboard. */
+		D,					/**< Represents the D Key on the keyboard. */
+		E,					/**< Represents the E Key on the keyboard. */
+		F,					/**< Represents the F Key on the keyboard. */
+		G,					/**< Represents the G Key on the keyboard. */
+		H,					/**< Represents the H Key on the keyboard. */
+		I,					/**< Represents the I Key on the keyboard. */
+		J,					/**< Represents the J Key on the keyboard. */
+		K,					/**< Represents the K Key on the keyboard. */
+		L,					/**< Represents the L Key on the keyboard. */
+		M,					/**< Represents the M Key on the keyboard. */
+		N,					/**< Represents the N Key on the keyboard. */
+		O,					/**< Represents the O Key on the keyboard. */
+		P,					/**< Represents the P Key on the keyboard. */
+		Q,					/**< Represents the Q Key on the keyboard. */
+		R,					/**< Represents the R Key on the keyboard. */
+		S,					/**< Represents the S Key on the keyboard. */
+		T,					/**< Represents the T Key on the keyboard. */
+		U,					/**< Represents the U Key on the keyboard. */
+		V,					/**< Represents the V Key on the keyboard. */
+		W,					/**< Represents the W Key on the keyboard. */
+		X,					/**< Represents the X Key on the keyboard. */
+		Y,					/**< Represents the Y Key on the keyboard. */
+		Z,					/**< Represents the Z Key on the keyboard. */
 
-		NUM_0, NUM_1, NUM_2, NUM_3, NUM_4,
-		NUM_5, NUM_6, NUM_7, NUM_8, NUM_9,
+		NUM_0,				/**< Represents the 0 Key on the keyboard. */
+		NUM_1,				/**< Represents the 1 Key on the keyboard. */
+		NUM_2,				/**< Represents the 2 Key on the keyboard. */
+		NUM_3,				/**< Represents the 3 Key on the keyboard. */
+		NUM_4,				/**< Represents the 4 Key on the keyboard. */
+		NUM_5,				/**< Represents the 5 Key on the keyboard. */
+		NUM_6,				/**< Represents the 6 Key on the keyboard. */
+		NUM_7,				/**< Represents the 7 Key on the keyboard. */
+		NUM_8,				/**< Represents the 8 Key on the keyboard. */
+		NUM_9,				/**< Represents the 9 Key on the keyboard. */
 
-		PAD_0, PAD_1, PAD_2, PAD_3, PAD_4,
-		PAD_5, PAD_6, PAD_7, PAD_8, PAD_9,
+		PAD_0,				/**< Represents the 0 Key on the keyboard number pad. */
+		PAD_1,				/**< Represents the 1 Key on the keyboard number pad. */
+		PAD_2,				/**< Represents the 2 Key on the keyboard number pad. */
+		PAD_3,				/**< Represents the 3 Key on the keyboard number pad. */
+		PAD_4,				/**< Represents the 4 Key on the keyboard number pad. */
+		PAD_5,				/**< Represents the 5 Key on the keyboard number pad. */
+		PAD_6,				/**< Represents the 6 Key on the keyboard number pad. */
+		PAD_7,				/**< Represents the 7 Key on the keyboard number pad. */
+		PAD_8,				/**< Represents the 8 Key on the keyboard number pad. */
+		PAD_9,				/**< Represents the 9 Key on the keyboard number pad. */
 
-		F1 = 47, F2 = 48, F3 = 49, F4 = 50,
-		F5 = 51, F6 = 52, F7 = 53, F8 = 54,
-		F9 = 55, F10 = 56, F11 = 57, F12 = 58,
+		F1 = 47,			/**< Represents the F1 Key on the keyboard. */
+		F2,					/**< Represents the F2 Key on the keyboard. */
+		F3,					/**< Represents the F3 Key on the keyboard. */
+		F4,					/**< Represents the F4 Key on the keyboard. */
+		F5,					/**< Represents the F5 Key on the keyboard. */
+		F6,					/**< Represents the F6 Key on the keyboard. */
+		F7,					/**< Represents the F7 Key on the keyboard. */
+		F8,					/**< Represents the F8 Key on the keyboard. */
+		F9,					/**< Represents the F9 Key on the keyboard. */
+		F10,				/**< Represents the F10 Key on the keyboard. */
+		F11,				/**< Represents the F11 Key on the keyboard. */
+		F12,				/**< Represents the F12 Key on the keyboard. */
 
-		ESCAPE = 59,
-		TILDE = 60,
-		MINUS = 61,
-		EQUALS = 62,
-		BACKSPACE = 63,
-		TAB = 64,
-		OPENBRACE = 65,
-		CLOSEBRACE = 66,
-		ENTER = 67,
-		SEMICOLON = 68,
-		QUOTE = 69,
-		BACKSLASH = 70,
-		BACKSLASH2 = 71, /* DirectInput calls this DIK_OEM_102: "< > | on UK/Germany keyboards" */
-		COMMA = 72,
-		FULLSTOP = 73,
-		SLASH = 74,
-		SPACE = 75,
+		ESCAPE = 59,		/**< Represents the Escape Key on the keyboard. */
+		TILDE,				/**< Represents the Tilde Key on the keyboard. */
+		MINUS,				/**< Represents the Minus Key on the keyboard. */
+		EQUALS,				/**< Represents the Equals Key on the keyboard. */
+		BACKSPACE,			/**< Represents the Backspace Key on the keyboard. */
+		TAB,				/**< Represents the Tab Key on the keyboard. */
+		OPENBRACE,			/**< Represents the Open Brace Key on the keyboard. */
+		CLOSEBRACE,			/**< Represents the Close Brace Key on the keyboard. */
+		ENTER,				/**< Represents the Enter Key on the keyboard. */
+		SEMICOLON,			/**< Represents the Semicolon Key on the keyboard. */
+		QUOTE,				/**< Represents the Quote Key on the keyboard. */
+		BACKSLASH,			/**< Represents the Backslash Key on the keyboard. */
+		BACKSLASH2,			/**< Represents the Backslash2 Key on the keyboard. */
+		COMMA,				/**< Represents the Comma Key on the keyboard. */
+		FULLSTOP,			/**< Represents the Full Stop Key on the keyboard. */
+		SLASH,				/**< Represents the Slash Key on the keyboard. */
+		SPACE,				/**< Represents the Space Key on the keyboard. */
 
-		INSERT = 76,
-		DELETE = 77,
-		HOME = 78,
-		END = 79,
-		PGUP = 80,
-		PGDN = 81,
-		LEFT = 82,
-		RIGHT = 83,
-		UP = 84,
-		DOWN = 85,
+		INSERT = 76,		/**< Represents the Space Key on the keyboard. */
+		DELETE,				/**< Represents the Delete Key on the keyboard. */
+		HOME,				/**< Represents the Home Key on the keyboard. */
+		END,				/**< Represents the End Key on the keyboard. */
+		PGUP,				/**< Represents the Page Up Key on the keyboard. */
+		PGDN,				/**< Represents the Page Down Key on the keyboard. */
+		LEFT,				/**< Represents the Left Key on the keyboard. */
+		RIGHT,				/**< Represents the Right Key on the keyboard. */
+		UP,					/**< Represents the Up Key on the keyboard. */
+		DOWN,				/**< Represents the Down Key on the keyboard. */
 
-		PAD_SLASH = 86,
-		PAD_ASTERISK = 87,
-		PAD_MINUS = 88,
-		PAD_PLUS = 89,
-		PAD_DELETE = 90,
-		PAD_ENTER = 91,
+		PAD_SLASH = 86,		/**< Represents the Slash Key on the keyboard number pad. */
+		PAD_ASTERISK,		/**< Represents the Asterisk Key on the keyboard number pad. */
+		PAD_MINUS,			/**< Represents the Minus Key on the keyboard number pad. */
+		PAD_PLUS,			/**< Represents the Plus Key on the keyboard number pad. */
+		PAD_DELETE,			/**< Represents the Delete Key on the keyboard number pad. */
+		PAD_ENTER,			/**< Represents the Enter Key on the keyboard number pad. */
 
-		PRINTSCREEN = 92,
-		PAUSE = 93,
+		PRINTSCREEN = 92,	/**< Represents the Print %Screen Key on the keyboard. */
+		PAUSE,				/**< Represents the Pause Key on the keyboard. */
 
-		ABNT_C1 = 94,
-		YEN = 95,
-		KANA = 96,
-		CONVERT = 97,
-		NOCONVERT = 98,
-		AT = 99,
-		CIRCUMFLEX = 100,
-		COLON2 = 101,
-		KANJI = 102,
+		LSHIFT = 215,		/**< Represents the Left Shift Key on the keyboard. */
+		RSHIFT,				/**< Represents the Right Shift Key on the keyboard. */
+		LCTRL,				/**< Represents the Left Control Key on the keyboard. */
+		RCTRL,				/**< Represents the Right Control Key on the keyboard. */
+		ALT,				/**< Represents the Alt Key on the keyboard. */
+		ALTGR,				/**< Represents the Alt Graph Key on the keyboard. */
+		LWIN,				/**< Represents the Left Windows Key on the keyboard. */
+		RWIN,				/**< Represents the Right Windows Key on the keyboard. */
+		MENU,				/**< Represents the Menu Key on the keyboard. */
+		SCROLLLOCK,			/**< Represents the Scroll Lock Key on the keyboard. */
+		NUMLOCK,			/**< Represents the Num Lock Key on the keyboard. */
+		CAPSLOCK,			/**< Represents the Caps Lock Key on the keyboard. */
 
-		PAD_EQUALS = 103,	/* MacOS X */
-		BACKQUOTE = 104,	/* MacOS X */
-		SEMICOLON2 = 105,	/* MacOS X */
-		COMMAND = 106,		/* MacOS X */
-
-		BACK = 107,        /* Android back key */
-		VOLUME_UP = 108,
-		VOLUME_DOWN = 109,
-
-		/* Android game keys */
-		SEARCH = 110,
-		DPAD_CENTER = 111,
-		BUTTON_X = 112,
-		BUTTON_Y = 113,
-		DPAD_UP = 114,
-		DPAD_DOWN = 115,
-		DPAD_LEFT = 116,
-		DPAD_RIGHT = 117,
-		SELECT = 118,
-		START = 119,
-		BUTTON_L1 = 120,
-		BUTTON_R1 = 121,
-		BUTTON_L2 = 122,
-		BUTTON_R2 = 123,
-		BUTTON_A = 124,
-		BUTTON_B = 125,
-		THUMBL = 126,
-		THUMBR = 127,
-
-		UNKNOWN = 128,
-
-		/* All codes up to before MODIFIERS can be freely
-		* assignedas additional unknown keys, like various multimedia
-		* and application keys keyboards may have.
-		*/
-
-		MODIFIERS = 215,
-
-		LSHIFT = 215,
-		RSHIFT = 216,
-		LCTRL = 217,
-		RCTRL = 218,
-		ALT = 219,
-		ALTGR = 220,
-		LWIN = 221,
-		RWIN = 222,
-		MENU = 223,
-		SCROLLLOCK = 224,
-		NUMLOCK = 225,
-		CAPSLOCK = 226,
-
-		MAX
+		MAX				/**< Represents the Max value for all keys. */
 	};
 }

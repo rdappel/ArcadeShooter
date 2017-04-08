@@ -8,7 +8,7 @@ namespace Sample
 {
 	class PlayerShip;
 	class PowerUp;
-
+	
 	class Level : public ShooterLibrary::Level
 	{
 

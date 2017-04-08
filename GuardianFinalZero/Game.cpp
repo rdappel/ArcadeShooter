@@ -8,7 +8,9 @@ namespace GuardianFinalZero
 		SetResourceDirectory("..\\GuardianFinalZero\\Content\\");
 
 		Font::SetLoadSize(18, true);
-		SetFrameCounterFont("Fonts\\Arialbd.ttf");
+
+		Font *pFont = GetResourceManager()->Load<Font>("Fonts\\Arialbd.ttf", false);
+		SetFrameCounterFont(pFont);
 	}
 
 	void Game::LoadContent()

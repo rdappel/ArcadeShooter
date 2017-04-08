@@ -10,13 +10,6 @@
    `^^^^^^^^^^^^^^^^^^^ /---------------------------------------"
         Katana Engine \/ © 2012 - Shuriken Studios LLC
 
-
-   Author: Ryan Appel
-   Date: 5/6/2015
-
-   File: Vector2.cpp
-   Description: Source file for two-dimensional vectors.
-
 /  --------------------------------------------------------------- */
 
 #include "KatanaEngine.h"
@@ -27,8 +20,7 @@ namespace KatanaEngine
 	const Vector2 Vector2::One = Vector2(1, 1);
 	const Vector2 Vector2::UnitX = Vector2(1, 0);
 	const Vector2 Vector2::UnitY = Vector2(0, 1);
-
-
+	
 	Vector2::Vector2(const float x, const float y)
 	{
 		X = x;
@@ -47,53 +39,40 @@ namespace KatanaEngine
 
 	void Vector2::Normalize()
 	{
-		float len = Length();
-
-		if (len != 0)
+		if (!IsZero())
 		{
+			float len = Length();
 			X /= len;
 			Y /= len;
 		}
 	}
-
-	void Vector2::Set(const float x, const float y)
+	
+	float Vector2::DotProduct(const Vector2 &vector) const
 	{
-		X = x;
-		Y = y;
+		return (X * vector.X) + (Y * vector.Y);
 	}
 
-	void Vector2::Set(const Vector2 vector)
+	float Vector2::CrossProduct(const Vector2 &vector) const
 	{
-		X = vector.X;
-		Y = vector.Y;
+		return (X * vector.Y) - (Y * vector.X);
 	}
 
-	float Vector2::DotProduct(const Vector2 &v2) const
+	float Vector2::Distance(const Vector2 &vector1, const Vector2 &vector2)
 	{
-		return (X * v2.X) + (Y * v2.Y);
+		return sqrtf(pow((vector2.X - vector1.X), 2) + pow((vector2.Y - vector1.Y), 2));
 	}
 
-	float Vector2::CrossProduct(const Vector2 &v2) const
+	float Vector2::DistanceSquared(const Vector2 &vector1, const Vector2 &vector2)
 	{
-		return (X * v2.Y) - (Y * v2.X);
+		return pow((vector2.X - vector1.X), 2) + pow((vector2.Y - vector1.Y), 2);
 	}
 
-	float Vector2::Distance(const Vector2 &v1, const Vector2 &v2)
+	Vector2 Vector2::Lerp(const Vector2 &start, const Vector2 &end, const float value)
 	{
-		return sqrtf(pow((v2.X - v1.X), 2) + pow((v2.Y - v1.Y), 2));
-	}
+		if (value < 0) return start;
+		if (value > 1) return end;
 
-	float Vector2::DistanceSquared(const Vector2 &v1, const Vector2 &v2)
-	{
-		return pow((v2.X - v1.X), 2) + pow((v2.Y - v1.Y), 2);
-	}
-
-	Vector2 Vector2::Lerp(const Vector2 &v1, const Vector2 &v2, const float value)
-	{
-		if (value > 1) return 1;
-		if (value < 0) return 0;
-
-		return (v1 * (1 - value) + v2 * value);
+		return start + (end - start) * value;
 	}
 
 	Vector2 Vector2::GetRandom(bool normalize)
@@ -107,29 +86,36 @@ namespace KatanaEngine
 		return result;
 	}
 
-	Vector2 &Vector2::operator=(const Vector2 &v2)
+	std::string Vector2::ToString() const
 	{
-		if (this == &v2)
+		std::ostringstream ss;
+		ss << "{ " << X << ", " << Y << " }";
+		return ss.str();
+	}
+
+	Vector2 &Vector2::operator=(const Vector2 &vector)
+	{
+		if (this == &vector)
 			return *this;
 
-		X = v2.X;
-		Y = v2.Y;
+		X = vector.X;
+		Y = vector.Y;
 
 		return *this;
 	}
 
-	Vector2 &Vector2::operator+=(const Vector2 &v2)
+	Vector2 &Vector2::operator+=(const Vector2 &vector)
 	{
-		X += v2.X;
-		Y += v2.Y;
+		X += vector.X;
+		Y += vector.Y;
 
 		return *this;
 	}
 
-	Vector2 &Vector2::operator-=(const Vector2 &v2)
+	Vector2 &Vector2::operator-=(const Vector2 &vector)
 	{
-		X -= v2.X;
-		Y -= v2.Y;
+		X -= vector.X;
+		Y -= vector.Y;
 
 		return *this;
 	}
@@ -150,14 +136,14 @@ namespace KatanaEngine
 		return *this;
 	}
 
-	const Vector2 Vector2::operator+(const Vector2 &v2) const
+	const Vector2 Vector2::operator+(const Vector2 &vector) const
 	{
-		return Vector2(*this) += v2;
+		return Vector2(*this) += vector;
 	}
 
-	const Vector2 Vector2::operator-(const Vector2 &v2) const
+	const Vector2 Vector2::operator-(const Vector2 &vector) const
 	{
-		return Vector2(*this) -= v2;
+		return Vector2(*this) -= vector;
 	}
 
 	const Vector2 Vector2::operator*(const float scalar) const
@@ -170,14 +156,14 @@ namespace KatanaEngine
 		return Vector2(*this) /= scalar;
 	}
 
-	bool Vector2::operator== (const Vector2 &v2) const
+	bool Vector2::operator== (const Vector2 &vector) const
 	{
-		return ((X == v2.X) && (Y == v2.Y));
+		return ((X == vector.X) && (Y == vector.Y));
 	}
 
-	bool Vector2::operator!= (const Vector2 &v2) const
+	bool Vector2::operator!= (const Vector2 &vector) const
 	{
-		return !((X == v2.X) && (Y == v2.Y));
+		return !((X == vector.X) && (Y == vector.Y));
 	}
 
 	const Point Vector2::ToPoint() const

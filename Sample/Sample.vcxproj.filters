@@ -31,6 +31,9 @@
     <ClCompile Include="PowerUp.cpp">
       <Filter>SourceFiles\Game Objects</Filter>
     </ClCompile>
+    <ClCompile Include="SmokeParticle.cpp">
+      <Filter>SourceFiles\Particles</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -63,6 +66,9 @@
     <ClInclude Include="CollisionTypes.h">
       <Filter>SourceFiles\Game Objects</Filter>
     </ClInclude>
+    <ClInclude Include="SmokeParticle.h">
+      <Filter>SourceFiles\Particles</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="SourceFiles">
@@ -79,6 +85,9 @@
     </Filter>
     <Filter Include="SourceFiles\Levels">
       <UniqueIdentifier>{7eeac002-5895-4220-81d7-44bf40b7dead}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFiles\Particles">
+      <UniqueIdentifier>{1b1a42b5-4eff-4647-85f9-da8f07b20003}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

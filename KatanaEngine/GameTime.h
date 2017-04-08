@@ -10,19 +10,13 @@
  `^^^^^^^^^^^^^^^^^^^ /---------------------------------------"
 		Katana Engine \/ © 2012 - Shuriken Studios LLC
 
-
-	Author: Ryan Appel
-	Date: 5/6/2015
-
-	File: GameTime.h
-	Description: Header file for the game's timing values.
-
 /  --------------------------------------------------------------- */
 
 #pragma once
 
 namespace KatanaEngine
 {
+	/** @brief Contains timing values for game updates and rendering. */
 	class GameTime
 	{
 		friend class Game;
@@ -32,10 +26,12 @@ namespace KatanaEngine
 		GameTime();
 		virtual ~GameTime() { }
 
-		// Gets the time in seconds since last frame.
+		/** @brief Gets the time in seconds since last frame.
+			@return Returns the number of seconds since the last frame. */
 		double GetTimeElapsed() const { return m_elapsedTime; }
 
-		// Gets the time in seconds since the game started.
+		/** @brief Gets the time in seconds since the game started.
+			@return Returns the number of seconds since the game started. */
 		double GetTotalTime() const { return m_currentTotalTime; }
 
 
