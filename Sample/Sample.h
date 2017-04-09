@@ -4,10 +4,11 @@
 #pragma message("Started precompiling header files for Sample.")
 
 #include "ShooterLibrary.h"
-#include "CollisionTypes.h"
-#include "SmokeParticle.h"
+#include "CollisionType.h"
+#include "SmokeTemplate.h"
 #include "GameObject.h"
 #include "Projectile.h"
+#include "Missile.h"
 #include "Ship.h"
 #include "PlayerShip.h"
 #include "EnemyShip.h"

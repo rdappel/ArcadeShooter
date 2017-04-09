@@ -46,7 +46,7 @@ namespace KatanaEngine
 			Texture *pTexture = m_pTemplate->GetTexture();
 			Color color = m_color * m_alpha;
 			Vector2 center = pTexture->GetCenter();
-			GetSpriteBatch()->Draw(pTexture, m_position, color, center, m_scale, m_rotation);
+			s_pSpriteBatch->Draw(pTexture, m_position, color, center, m_scale, m_rotation);
 		}
 	}
 

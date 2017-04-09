@@ -1,3 +1,15 @@
+﻿
+/*      .                         ,'`.       .                         
+   .                  .."    _.-;' ⁄‚ `.              .			`      
+              _.-"`.##%"_.--" ,' ⁄`     `.           "#"     ___,,od000
+           ,'"-_ _.-.--"\   ,'            `-_       '%#%',,/00000000000
+         ,'     |_.'     )`/-     __..--""`-_`-._    J L/00000000000000
+ . +   ,'   _.-"        / /   _-""           `-._`-_/___\///0000   000M
+     .'_.-""      '    :_/_.-'                 _,`-/__V__\0000    00MMM
+ . _-""                         .        '   _,/000\  |  /000    0MMMMM
+_-"   .       '     .              .        ,/   000\ | /000000000MMMMM
+       `       Shooter Library       '     ,/     000\|/000000000MMMMMM
+.       © 2017 - Shuriken Studios LLC     ,/0    00000|0000000000MMMMMM */
 
 #include "ShooterLibrary.h"
 //#include <allegro5\allegro_primitives.h>
@@ -31,34 +43,16 @@ namespace ShooterLibrary
 
 	void Level::LoadContent()
 	{
-		AddGameObject(GetPlayerShip());
-
 		InitializeCollisionManager();
+
+		AddGameObject(GetPlayerShip());
 
 		//al_init_primitives_addon();
 	}
 
 	void Level::HandleInput(InputState *pInput)
 	{
-		Vector2 direction = Vector2::Zero;
-		if (pInput->IsKeyDown(Key::DOWN)) direction.Y++;
-		if (pInput->IsKeyDown(Key::UP)) direction.Y--;
-		if (pInput->IsKeyDown(Key::RIGHT)) direction.X++;
-		if (pInput->IsKeyDown(Key::LEFT)) direction.X--;
-
-		// Normalize the direction
-		if (direction.X != 0 && direction.Y != 0)
-		{
-			direction *= Math::NORMALIZE_PI_OVER4;
-		}
-
-		// gamepad overrides keyboard input
-		//Vector2 thumbstick = pInput->GetGamePadState(0).Thumbsticks.Left;
-		//if (thumbstick != Vector2::Zero()) direction = thumbstick;
-
-		GetPlayerShip()->SetDesiredDirection(direction);
-
-		if (pInput->IsKeyDown(Key::SPACE)) GetPlayerShip()->Fire();
+		GetPlayerShip()->HandleInput(pInput);
 	}
 
 	void Level::Update(const GameTime *pGameTime)
@@ -138,7 +132,9 @@ namespace ShooterLibrary
 		//	}
 		//}
 
-		GetSpriteBatch()->Begin();
+		GetParticleManager()->Draw(pGameTime);
+
+		GetSpriteBatch()->Begin(SpriteSortMode::BACK_TO_FRONT, BlendState::ALPHA);
 
 		m_gameObjectIt = m_gameObjects.begin();
 		for (; m_gameObjectIt != m_gameObjects.end(); m_gameObjectIt++)
@@ -149,9 +145,8 @@ namespace ShooterLibrary
 				pGameObject->Draw(pGameTime);
 			}
 		}
-		GetSpriteBatch()->End();
 
-		GetParticleManager()->Draw(pGameTime);
+		GetSpriteBatch()->End();
 
 		//// Draw explosions
 		//al_set_blender(ALLEGRO_ADD, ALLEGRO_ONE, ALLEGRO_ONE);

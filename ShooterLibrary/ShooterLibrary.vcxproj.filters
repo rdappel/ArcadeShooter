@@ -11,11 +11,17 @@
     <Filter Include="Packages">
       <UniqueIdentifier>{17e5c652-ed6c-453a-b3f2-ef56d10edaf7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Weapons">
+      <UniqueIdentifier>{ea866af5-e613-4173-b76a-069143622b58}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Collision">
+      <UniqueIdentifier>{d1b9adcc-1e02-4157-8f57-b7bdc0fb782d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Core">
+      <UniqueIdentifier>{cb963eee-d0a6-4e9a-ad59-d2b28fee5b1a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Level.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="ShooterLibrary.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -34,20 +40,20 @@
     <ClCompile Include="PlayerShip.cpp">
       <Filter>Source Files\Game Objects</Filter>
     </ClCompile>
-    <ClCompile Include="GameplayScreen.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="CollisionManager.cpp">
+      <Filter>Source Files\Collision</Filter>
     </ClCompile>
     <ClCompile Include="Game.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Core</Filter>
     </ClCompile>
-    <ClCompile Include="CollisionManager.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="GameplayScreen.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Level.cpp">
+      <Filter>Source Files\Core</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Level.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="ShooterLibrary.h">
       <Filter>Source Files</Filter>
     </ClInclude>
@@ -66,17 +72,32 @@
     <ClInclude Include="PlayerShip.h">
       <Filter>Source Files\Game Objects</Filter>
     </ClInclude>
-    <ClInclude Include="GameplayScreen.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Game.h">
-      <Filter>Source Files</Filter>
+    <ClInclude Include="Weapon.h">
+      <Filter>Source Files\Weapons</Filter>
     </ClInclude>
     <ClInclude Include="CollisionManager.h">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Collision</Filter>
     </ClInclude>
-    <ClInclude Include="CollisionTypes.h">
-      <Filter>Source Files\Game Objects</Filter>
+    <ClInclude Include="ProjectilePool.h">
+      <Filter>Source Files\Weapons</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Source Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="GameplayScreen.h">
+      <Filter>Source Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Level.h">
+      <Filter>Source Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Gun.h">
+      <Filter>Source Files\Weapons</Filter>
+    </ClInclude>
+    <ClInclude Include="TriggerType.h">
+      <Filter>Source Files\Weapons</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionType.h">
+      <Filter>Source Files\Collision</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

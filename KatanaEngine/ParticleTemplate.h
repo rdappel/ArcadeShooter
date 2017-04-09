@@ -16,27 +16,33 @@
 
 namespace KatanaEngine
 {
-
 	/** @brief Base class for particle templates which are used to control the updating of a corresponding particle type. */
 	class ParticleTemplate
 	{
+
+		friend void Particle::Draw(const GameTime *pGameTime);
+		friend void Particle::Update(const GameTime *pGameTime);
+
 
 	public:
 
 		ParticleTemplate(const bool poolExpands = true);
 		virtual ~ParticleTemplate();
 
-		virtual void InitializeParticle(Particle *pParticle);
-
-		virtual void UpdateParticle(Particle *pParticle, const GameTime *pGameTime) { }
+		virtual Particle *GetInactiveParticle() = 0;
 
 		virtual void SetTexture(Texture *pTexture) { m_pTexture = pTexture; }
+
+		virtual void InitializeParticle(Particle *pParticle);
+
+
+	protected:
 
 		virtual Texture *GetTexture() { return m_pTexture; }
 
 		virtual void SetParticleLifespan(const float lifespan) { m_pParticleLifespan = lifespan; }
 
-		virtual Particle *GetInactiveParticle() = 0;
+		virtual void UpdateParticle(Particle *pParticle, const GameTime *pGameTime) { }
 
 		template <typename T>
 		T *GetInactiveParticleOfType()
@@ -57,9 +63,6 @@ namespace KatanaEngine
 
 			return nullptr;
 		}
-
-
-	protected:
 
 		template <typename T>
 		T *GenerateParticles(const int count = 1)

@@ -24,7 +24,9 @@ namespace KatanaEngine
 		RIGHT			/**< Align the text to the right. */
 	};
 
-	/** @brief Defines the methods for sorting sprites before rendering. */
+	/** @brief Defines the methods for sorting sprites before rendering.
+		@see SpriteBatch::Begin()
+		@see SpriteBatch::Draw() */
 	enum class SpriteSortMode
 	{
 		BACK_TO_FRONT,	/**< Sprites rendered with a lower draw order will render behind those with a higher draw order. */
@@ -168,29 +170,12 @@ namespace KatanaEngine
 
 		struct CompareBackToFront
 		{
-			bool operator()(const Drawable* l, const Drawable* r)
-			{
-				if (*l < *r)
-				{
-					return true;
-				}
-
-				return false;
-			}
+			bool operator()(const Drawable* l, const Drawable* r) { return (*l < *r); }
 		};
 
 		struct CompareFrontToBack
 		{
-			bool operator()(const Drawable* l, const Drawable* r)
-			{
-				if (*r < *l)
-				{
-
-					return true;
-				}
-
-				return false;
-			}
+			bool operator()(const Drawable* l, const Drawable* r) { return (*r < *l); }
 		};
 
 		std::vector<Drawable *> m_drawables;

@@ -22,22 +22,15 @@ namespace KatanaEngine
 	class Particle
 	{
 
+		friend class ParticleTemplate;
+		friend class ParticleManager;
+		friend class Emitter;
+
 	public:
 
 		Particle();
 		virtual ~Particle() { }
-
-		static SpriteBatch *GetSpriteBatch() { return s_pSpriteBatch; }
-		static void SetSpriteBatch(SpriteBatch *pSpriteBatch) { s_pSpriteBatch = pSpriteBatch; }
-
-		virtual void Activate() { m_lifeSeconds = m_lifespan; }
-
-		virtual bool IsActive() const { return m_lifeSeconds > 0; }
-
-		virtual void Update(const GameTime *pGameTime);
-
-		virtual void Draw(const GameTime *pGameTime);
-
+		
 		virtual float GetInterpolationValue();
 
 		virtual void SetLifespan(const float lifespan) { m_lifespan = lifespan; }
@@ -55,11 +48,14 @@ namespace KatanaEngine
 
 		virtual void SetRotation(const float rotation) { m_rotation = rotation; }
 		virtual float GetRotation() const { return m_rotation; }
+		
 
+	private:
 
-	protected:
-
+		static void SetSpriteBatch(SpriteBatch *pSpriteBatch) { s_pSpriteBatch = pSpriteBatch; }
 		static SpriteBatch *s_pSpriteBatch;
+
+		ParticleTemplate *m_pTemplate;
 
 		float m_lifespan;
 		float m_lifeSeconds;
@@ -71,6 +67,12 @@ namespace KatanaEngine
 		float m_rotation;
 		Vector2 m_scale;
 
-		ParticleTemplate *m_pTemplate;
+		virtual void Activate() { m_lifeSeconds = m_lifespan; }
+
+		virtual bool IsActive() const { return m_lifeSeconds > 0; }
+
+		virtual void Update(const GameTime *pGameTime);
+
+		virtual void Draw(const GameTime *pGameTime);
 	};
 }

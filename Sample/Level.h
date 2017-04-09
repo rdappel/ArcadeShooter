@@ -3,6 +3,7 @@
 
 using ShooterLibrary::GameObject;
 using ShooterLibrary::Projectile;
+using ShooterLibrary::ProjectilePool;
 
 namespace Sample
 {
@@ -23,20 +24,17 @@ namespace Sample
 
 		virtual ShooterLibrary::PlayerShip *GetPlayerShip() { return m_pPlayerShip; }
 
-		virtual Projectile *GetInactiveProjectile();
-
-		virtual void GeneratePowerUp(const Vector2 position);
+		virtual void SpawnPowerUp(const Vector2 position);
 
 
 	private:
 
 		PlayerShip *m_pPlayerShip;
-
-		std::vector<Projectile *> m_projectiles;
-		std::vector<Projectile *>::iterator m_projectileIt;
-
+		
 		std::vector<PowerUp *> m_powerUps;
 		std::vector<PowerUp *>::iterator m_powerUpIt;
+
+		std::vector<ProjectilePool *> m_pProjectilePools;
 
 	};
 }

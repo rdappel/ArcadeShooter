@@ -66,8 +66,8 @@
     <ClInclude Include="Game.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="CollisionTypes.h">
-      <Filter>Source Files\Game Objects</Filter>
+    <ClInclude Include="CollisionType.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

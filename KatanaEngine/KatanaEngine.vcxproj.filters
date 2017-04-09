@@ -183,6 +183,9 @@
     <ClInclude Include="KatanaEngine.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="RotatingParticle.h">
+      <Filter>Source Files\Particles</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config">

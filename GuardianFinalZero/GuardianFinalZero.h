@@ -5,7 +5,7 @@
 
 #include "ShooterLibrary.h"
 
-#include "CollisionTypes.h"
+#include "CollisionType.h"
 
 
 /* Game Objects */

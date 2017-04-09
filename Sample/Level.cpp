@@ -5,29 +5,36 @@ using ShooterLibrary::Projectile;
 using ShooterLibrary::EnemyShip;
 using ShooterLibrary::GameObject;
 using ShooterLibrary::CollisionManager;
+using ShooterLibrary::TriggerType;
+using ShooterLibrary::Weapon;
+using ShooterLibrary::Gun;
 
 namespace Sample
 {
 	// Collision Callbacks
-	void PlayerShootsEnemy(GameObject *pGameObject1, GameObject *pGameObject2)
+	void PlayerShootsEnemy(GameObject *pObject1, GameObject *pObject2)
 	{
-		Projectile *pProjectile = Projectile::Resolve(pGameObject1, pGameObject2);
-		EnemyShip *pEnemyShip = EnemyShip::Resolve(pGameObject1, pGameObject2);
-		pEnemyShip->Hit(pProjectile->GetDamage());
-		pProjectile->Deactivate();
+		bool m = pObject1->HasMask(COLLISIONTYPE_ENEMY);
+		EnemyShip *pEnemyShip = static_cast<EnemyShip *>((m) ? pObject1 : pObject2);
+		Projectile *pPlayerProjectile = static_cast<Projectile *>((!m) ? pObject1 : pObject2);
+		
+		pEnemyShip->Hit(pPlayerProjectile->GetDamage());
+		pPlayerProjectile->Deactivate();
 	}
 
-	void PlayerCollectsPowerUp(GameObject *pGameObject1, GameObject *pGameObject2)
+	void PlayerCollectsPowerUp(GameObject *pObject1, GameObject *pObject2)
 	{
-		PowerUp *pPowerUp = PowerUp::Resolve(pGameObject1, pGameObject2);
-		PlayerShip *pPlayerShip = PlayerShip::Resolve(pGameObject1, pGameObject2);
+		bool m = pObject1->HasMask(COLLISIONTYPE_POWERUP);
+		PowerUp *pPowerUp = static_cast<PowerUp *>((m) ? pObject1 : pObject2);
+		PlayerShip *pPlayerShip = static_cast<PlayerShip *>((!m) ? pObject1 : pObject2);
 		pPowerUp->Deactivate();
-		pPlayerShip->IncreaseFireRate();
+		//pPlayerShip->PowerUp();
 	}
 
-	void PlayerCollidesWithEnemy(GameObject *pGameObject1, GameObject *pGameObject2)
+	void PlayerCollidesWithEnemy(GameObject *pObject1, GameObject *pObject2)
 	{
-		PlayerShip *pPlayerShip = PlayerShip::Resolve(pGameObject1, pGameObject2);
+		bool m = pObject1->HasMask(COLLISIONTYPE_PLAYER);
+		PlayerShip *pPlayerShip = static_cast<PlayerShip *>((m) ? pObject1 : pObject2);
 		pPlayerShip->Hit(1000);
 	}
 
@@ -35,12 +42,30 @@ namespace Sample
 	Level::Level()
 	{
 		m_pPlayerShip = new	PlayerShip();
+
+		ProjectilePool *pPool;
+		Weapon *pWeapon;
+		
+		pPool = new ProjectilePool(this);
+		m_pProjectilePools.push_back(pPool);
+		pWeapon = new Gun<Projectile>(true);
+		pWeapon->SetProjectilePool(pPool);
+		m_pPlayerShip->AttachWeapon(pWeapon, Vector2::UnitY * -32);
+
+		pPool = new ProjectilePool(this);
+		m_pProjectilePools.push_back(pPool);
+		pWeapon = new Gun<Projectile>(true);
+		pWeapon->SetProjectilePool(pPool);
+		pWeapon->SetFireType(TriggerType::TRIGGERTYPE_SECONDARY);
+		m_pPlayerShip->AttachWeapon(pWeapon, Vector2::UnitX * -32);
+
 	}
 
 	void Level::LoadContent()
 	{
 		Texture *pTexture = GetResourceManager()->Load<Texture>("Textures\\PlayerShip.png");
 		m_pPlayerShip->SetTexture(pTexture);
+		m_pPlayerShip->SetLevel(this);
 
 		Animation *pAnimation = GetResourceManager()->Load<Animation>("Animations\\Thruster.anim");
 		if (pAnimation)
@@ -53,24 +78,22 @@ namespace Sample
 			}
 		}
 
-		for (int i = 0; i < 60; i++)
-		{
-			Projectile *pProjectile = new Projectile();
-			m_projectiles.push_back(pProjectile);
-			AddGameObject(pProjectile);
-		}
-
+		m_pProjectilePools[0]->Fill<Projectile>(100);
+		m_pProjectilePools[1]->Fill<Projectile>(100);
+		
 		ShooterLibrary::Level::LoadContent();
 
-		InitializeCollisionManager();
-
 		CollisionManager *pC = GetCollisionManager();
-		pC->AddNonCollisionType((PLAYER | SHIP), (PLAYER | PROJECTILE));
-		pC->AddCollisionType((PLAYER | PROJECTILE), (ENEMY | SHIP), PlayerShootsEnemy);
-		pC->AddCollisionType((PLAYER | SHIP), (POWER_UP), PlayerCollectsPowerUp);
-		pC->AddCollisionType((PLAYER | SHIP), (ENEMY | SHIP), PlayerCollidesWithEnemy);
 
-		m_pPlayerShip->SetLevel(this);
+		uint32_t playerShip = (COLLISIONTYPE_PLAYER | COLLISIONTYPE_SHIP);
+		uint32_t playerProjectile = (COLLISIONTYPE_PLAYER | COLLISIONTYPE_PROJECTILE);
+		uint32_t enemyShip = (COLLISIONTYPE_ENEMY | COLLISIONTYPE_SHIP);
+		uint32_t powerUp = (COLLISIONTYPE_POWERUP);
+
+		pC->AddNonCollisionType(playerShip, playerProjectile);
+		pC->AddCollisionType(playerProjectile, enemyShip, PlayerShootsEnemy);
+		pC->AddCollisionType(playerShip, powerUp, PlayerCollectsPowerUp);
+		pC->AddCollisionType(playerShip, enemyShip, PlayerCollidesWithEnemy);
 	}
 
 	void Level::AddGameObject(GameObject *pGameObject)
@@ -78,18 +101,7 @@ namespace Sample
 		ShooterLibrary::Level::AddGameObject(pGameObject);
 	}
 
-	Projectile *Level::GetInactiveProjectile()
-	{
-		m_projectileIt = m_projectiles.begin();
-		for (; m_projectileIt != m_projectiles.end(); m_projectileIt++)
-		{
-			if (!(*m_projectileIt)->IsActive()) return *m_projectileIt;
-		}
-
-		return nullptr;
-	}
-
-	void Level::GeneratePowerUp(const Vector2 position)
+	void Level::SpawnPowerUp(const Vector2 position)
 	{
 		PowerUp *pPowerUp = new	PowerUp();
 		pPowerUp->Activate(position, this);

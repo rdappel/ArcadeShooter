@@ -41,8 +41,8 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -125,29 +125,30 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="BioEnemyShip.h" />
-    <ClInclude Include="CollisionTypes.h" />
+    <ClInclude Include="CollisionType.h" />
     <ClInclude Include="Level01.h" />
     <ClInclude Include="MainMenuScreen.h" />
+    <ClInclude Include="Missile.h" />
     <ClInclude Include="PowerUp.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameplayScreen.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="Sample.h" />
     <ClInclude Include="PlayerShip.h" />
-    <ClInclude Include="SmokeParticle.h" />
+    <ClInclude Include="SmokeTemplate.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BioEnemyShip.cpp" />
     <ClCompile Include="Level01.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MainMenuScreen.cpp" />
+    <ClCompile Include="Missile.cpp" />
     <ClCompile Include="PowerUp.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameplayScreen.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="Sample.cpp" />
     <ClCompile Include="PlayerShip.cpp" />
-    <ClCompile Include="SmokeParticle.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\KatanaEngine\KatanaEngine.vcxproj">

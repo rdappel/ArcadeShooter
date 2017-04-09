@@ -25,24 +25,7 @@ namespace Sample
 
 		PowerUp::SetTexture(pRes->Load<Texture>("Textures\\PowerUp.png"));
 		PowerUp::SetGlowTexture(pRes->Load<Texture>("Textures\\PowerUpGlow.png"));
-
-		m_pSmokeTemplate = new SmokeTemplate<SmokeParticle>();
-		m_pSmokeTemplate->SetTexture(pRes->Load<Texture>("Textures\\Particle.png"));
-		m_pEmitter = new Emitter(GetParticleManager(), m_pSmokeTemplate);
-
+		
 		Level::LoadContent();
-	}
-	
-	void Level01::HandleInput(InputState *pInputState)
-	{
-		m_pEmitter->SetPosition(pInputState->GetMousePosition().ToVector2());
-	}
-
-	void Level01::Update(const GameTime *pGameTime)
-	{
-		m_pEmitter->SetOutput(1);
-		m_pEmitter->Update(pGameTime);
-
-		Level::Update(pGameTime);
 	}
 }

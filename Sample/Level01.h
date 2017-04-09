@@ -13,15 +13,5 @@ namespace Sample
 
 		virtual void LoadContent();
 
-		virtual void Update(const GameTime *pGameTime);
-
-		virtual void HandleInput(InputState *pInput);
-
-
-	private:
-
-		SmokeTemplate<SmokeParticle> *m_pSmokeTemplate;
-		Emitter *m_pEmitter;
-
 	};
 }

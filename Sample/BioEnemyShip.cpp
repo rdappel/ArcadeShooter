@@ -41,7 +41,7 @@ namespace Sample
 		if (!IsActive())
 		{
 			Level *pLevel = static_cast<Level *>(GetCurrentLevel());
-			pLevel->GeneratePowerUp(GetPosition());
+			pLevel->SpawnPowerUp(GetPosition());
 		}
 	}
 }

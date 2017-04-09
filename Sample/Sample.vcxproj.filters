@@ -31,8 +31,8 @@
     <ClCompile Include="PowerUp.cpp">
       <Filter>SourceFiles\Game Objects</Filter>
     </ClCompile>
-    <ClCompile Include="SmokeParticle.cpp">
-      <Filter>SourceFiles\Particles</Filter>
+    <ClCompile Include="Missile.cpp">
+      <Filter>SourceFiles\Game Objects</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -63,11 +63,14 @@
     <ClInclude Include="PowerUp.h">
       <Filter>SourceFiles\Game Objects</Filter>
     </ClInclude>
-    <ClInclude Include="CollisionTypes.h">
+    <ClInclude Include="SmokeTemplate.h">
+      <Filter>SourceFiles\Particles</Filter>
+    </ClInclude>
+    <ClInclude Include="Missile.h">
       <Filter>SourceFiles\Game Objects</Filter>
     </ClInclude>
-    <ClInclude Include="SmokeParticle.h">
-      <Filter>SourceFiles\Particles</Filter>
+    <ClInclude Include="CollisionType.h">
+      <Filter>SourceFiles</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -1,31 +1,35 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(387,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (SampleLibrary.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  Level01.cpp
+  Level.cpp
   Started precompiling header files for Sample.
   
-    ██╗  ██╗  █████╗  ████████╗  █████╗  ███╗   ██╗  █████╗
-    ██║ ██╔╝ ██╔══██╗ ╚══██╔══╝ ██╔══██╗ ████╗  ██║ ██╔══██╗
-    █████╔╝  ███████║    ██║    ███████║ ██╔██╗ ██║ ███████║
-    ██╔═██╗  ██╔══██║    ██║    ██╔══██║ ██║╚██╗██║ ██╔══██║
-    ██║  ██╗ ██║  ██║    ██║    ██║  ██║ ██║ ╚████║ ██║  ██║
-    ╚═╝  ╚═╝ ╚═╝  ╚═╝/\  ╚═╝    ╚═╝  ╚═╝ ╚═╝  ╚═══╝ ╚═╝  ╚═╝
-  /vvvvvvvvvvvvvvvvvvv \=========================================,
-  `^^^^^^^^^^^^^^^^^^^ /---------------------------------------"
-       Katana Engine \/ © 2012 - Shuriken Studios LLC
-  
-  Standard Headers... Finished.
-  Allegro Specific Headers... Finished.
-  Math Specific Headers... Finished.
-  Input Specific Headers... Finished.
-  Resource Management Headers... Finished.
-  Graphics Management Headers... Finished.
-  Particle Management Headers... Finished.
-  Screen Management Headers... Finished.
-  Game Engine Headers... Finished.
-  Finished precompiling header files for Katana Engine.
   
   
-  Started precompiling header files for Shooter Library.
-  Finished precompiling header files for Shooter Library.
+           ██╗  ██╗  █████╗  ████████╗  █████╗  ███╗   ██╗  █████╗ 
+           ██║ ██╔╝ ██╔══██╗ ╚══██╔══╝ ██╔══██╗ ████╗  ██║ ██╔══██╗
+           █████╔╝  ███████║    ██║    ███████║ ██╔██╗ ██║ ███████║
+           ██╔═██╗  ██╔══██║    ██║    ██╔══██║ ██║╚██╗██║ ██╔══██║
+           ██║  ██╗ ██║  ██║    ██║    ██║  ██║ ██║ ╚████║ ██║  ██║
+           ╚═╝  ╚═╝ ╚═╝  ╚═╝/\  ╚═╝    ╚═╝  ╚═╝ ╚═╝  ╚═══╝ ╚═╝  ╚═╝
+         /vvvvvvvvvvvvvvvvvvv \=======================================,
+         `^^^^^^^^^^^^^^^^^^^ /-------------------------------------"
+              Katana Engine \/ © 2012 - Shuriken Studios LLC
+  
+  
+  
+  
+  
+           .                         ,'`.       .                         
+      .                  .."    _.-;' ⁄‚ `.              .			`   
+                 _.-"`.##%"_.--" ,' ⁄`     `.           "#"     ___,,od000
+              ,'"-_ _.-.--"\   ,'            `-_       '%#%',,/00000000000
+            ,'     |_.'     )`/-     __..--""`-_`-._    J L/00000000000000
+    . +   ,'   _.-"        / /   _-""           `-._`-_/___\///0000   000M
+        .'_.-""      '    :_/_.-'                 _,`-/__V__\0000    00MMM
+    . _-""                         .        '   _,/000\  |  /000    0MMMMM
+   _-"   .       '     .              .        ,/   000\ | /000000000MMMMM
+          `       Shooter Library       '     ,/     000\|/000000000MMMMMM
+   .       © 2017 - Shuriken Studios LLC     ,/0    00000|0000000000MMMMMM
+  
   
   Finished precompiling header files for Sample.
   Sample.vcxproj -> C:\Users\Ryan Appel\Desktop\ArcadeShooter\x64\Debug\Sample.exe

@@ -15,8 +15,6 @@ namespace Sample
 
 		static PlayerShip *Resolve(GameObject *pGameObject1, GameObject *pGameObject2);
 
-		virtual void Fire();
-
 		virtual void Update(const GameTime *pGameTime);
 
 		virtual void Draw(const GameTime *pGameTime);
@@ -24,14 +22,9 @@ namespace Sample
 		virtual void SetLevel(Level *pLevel) { m_pLevel = pLevel; }
 
 		virtual void SetThrusterAnimation(Animation *pAnimation) { m_pThrusterAnimation = pAnimation; }
-
-		virtual bool CanFire() const { return (m_coolDownTime <= 0); }
-
-		virtual void IncreaseFireRate();
+		
 
 	protected:
-
-		//virtual float GetSpeed() const { return PlayerShip::GetSpeed(); }
 
 		virtual float GetResponsiveness() const;
 
@@ -41,9 +34,6 @@ namespace Sample
 		Level *m_pLevel;
 
 		Animation *m_pThrusterAnimation;
-
-		float m_coolDownTime;
-		float m_baseCoolDownTime;
 
 	};
 }

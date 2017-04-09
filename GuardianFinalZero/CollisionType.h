@@ -4,7 +4,7 @@
 namespace GuardianFinalZero
 {
 	/** @brief Defines the types of game objects that can collide with each other. */
-	enum CollisionTypes : uint32_t
+	enum CollisionType : uint32_t
 	{
 		/* Same as Shooter Library */
 		NONE = 0,

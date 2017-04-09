@@ -1,3 +1,15 @@
+﻿
+/*      .                         ,'`.       .                         
+   .                  .."    _.-;' ⁄‚ `.              .			`      
+              _.-"`.##%"_.--" ,' ⁄`     `.           "#"     ___,,od000
+           ,'"-_ _.-.--"\   ,'            `-_       '%#%',,/00000000000
+         ,'     |_.'     )`/-     __..--""`-_`-._    J L/00000000000000
+ . +   ,'   _.-"        / /   _-""           `-._`-_/___\///0000   000M
+     .'_.-""      '    :_/_.-'                 _,`-/__V__\0000    00MMM
+ . _-""                         .        '   _,/000\  |  /000    0MMMMM
+_-"   .       '     .              .        ,/   000\ | /000000000MMMMM
+       `       Shooter Library       '     ,/     000\|/000000000MMMMMM
+.       © 2017 - Shuriken Studios LLC     ,/0    00000|0000000000MMMMMM */
 
 #pragma once
 
@@ -21,7 +33,7 @@ namespace ShooterLibrary
 
 		/** @brief Sets the texture of the player ship.
 			@param pTexture A pointer to the texture resource. */
-		static void SetTexture(Texture *pTexture);
+		static void SetTexture(Texture *pTexture) { s_pTexture = pTexture; }
 
 		/** @brief Called when the game determines it is time to draw a frame.
 			@param pGameTime Timing values including time since last update. */
@@ -33,8 +45,8 @@ namespace ShooterLibrary
 
 		/** @brief Activates the projectile.
 			@param position The starting position of the projectile.
-			@param isShotByPlayer Indicates if the player shot the projectile. */
-		virtual void Activate(const Vector2 &position, bool isShotByPlayer = true);
+			@param wasShotByPlayer Indicates if the player fired the projectile. */
+		virtual void Activate(const Vector2 &position, bool wasShotByPlayer = true);
 
 		/** @brief Gets the damage of the projectile.
 			@return Returns a the amount of damage the projectile inflicts. */
@@ -57,21 +69,46 @@ namespace ShooterLibrary
 			@param speed The desired speed in pixels per second. */
 		virtual void SetSpeed(const float speed) { m_speed = speed; }
 
-		/** @brief Gets the speed of the projectile in pixels per second. */
+		/** @brief Sets the amount of damage the projectile inflicts.
+			@param damage The damage that the projectile inflicts. */
+		virtual void SetDamage(const float damage) { m_damage = damage; }
+
+		/** @brief Sets the direction of the projectile.
+			@param direction The normalized direction vector. */
+		virtual void SetDirection(const Vector2 direction) { m_direction = direction; }
+
+		/** @brief Gets the speed of the projectile in pixels per second.
+			@return Returns the speed of the projectile. */
 		virtual float GetSpeed() const { return m_speed; }
+
+		/** @brief Gets the direction of the projectile.
+			@return Returns the direction vector of the projectile. */
+		virtual Vector2 &GetDirection() { return m_direction; }
+
+		/** @brief Determines if the projectile was shot by a player.
+			@return Returns true if the projectile was shot by the player, false otherwise. */
+		virtual bool WasShotByPlayer() const { return m_wasShotByPlayer; }
+
+		/** @brief Gets the collision type mask for the projectile.
+			@return Returns bit-mask value for the collision type, not including the ship
+			type. */
+		virtual uint32_t GetProjectileType() const { return COLLISIONTYPE_PROJECTILE; }
+
+		/** @brief Gets a string representation of the projectile.
+			@return Returns a string displaying the type of projectile, not including the
+			ship type. */
+		virtual std::string GetProjectileTypeString() const { return "Projectile"; }
 
 
 	private:
 
 		static Texture *s_pTexture;
-		static Vector2 s_textureOrigin;
 
 		float m_speed;
+		float m_damage;
 
 		Vector2 m_direction;
 
-		bool m_isShotByPlayer;
-
-		float m_damage;
+		bool m_wasShotByPlayer;
 	};
 }

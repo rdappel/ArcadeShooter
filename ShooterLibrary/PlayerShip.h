@@ -1,3 +1,15 @@
+﻿
+/*      .                         ,'`.       .                         
+   .                  .."    _.-;' ⁄‚ `.              .			`      
+              _.-"`.##%"_.--" ,' ⁄`     `.           "#"     ___,,od000
+           ,'"-_ _.-.--"\   ,'            `-_       '%#%',,/00000000000
+         ,'     |_.'     )`/-     __..--""`-_`-._    J L/00000000000000
+ . +   ,'   _.-"        / /   _-""           `-._`-_/___\///0000   000M
+     .'_.-""      '    :_/_.-'                 _,`-/__V__\0000    00MMM
+ . _-""                         .        '   _,/000\  |  /000    0MMMMM
+_-"   .       '     .              .        ,/   000\ | /000000000MMMMM
+       `       Shooter Library       '     ,/     000\|/000000000MMMMMM
+.       © 2017 - Shuriken Studios LLC     ,/0    00000|0000000000MMMMMM */
 
 #pragma once
 
@@ -31,9 +43,10 @@ namespace ShooterLibrary
 			@param pGameTime Timing values including time since last update. */
 		virtual void Draw(const GameTime *pGameTime);
 
-		/** @brief Fires the ships weapons. */
-		virtual void Fire() = 0;
-
+		/** @brief Called when the game has determined that player input needs to be processed.
+			@param pInput The current state of all player input devices. */
+		virtual void HandleInput(InputState *pInput);
+		
 		/** @brief Set the desired player direction.
 			@param direction The desired direction. */
 		virtual void SetDesiredDirection(const Vector2 direction) { m_desiredDirection.Set(direction); }
@@ -50,7 +63,7 @@ namespace ShooterLibrary
 			@return Returns bit-mask value for the collision type.
 			@see CollisionTypes
 			@see CollisionManager */
-		virtual uint32_t GetCollisionType() const { return (IsInvulnurable() ? NONE : (PLAYER | SHIP)); }
+		virtual uint32_t GetCollisionType() const { return (IsInvulnurable() ? COLLISIONTYPE_NONE : (COLLISIONTYPE_PLAYER | COLLISIONTYPE_SHIP)); }
 
 
 	protected:
@@ -71,7 +84,7 @@ namespace ShooterLibrary
 		/** @brief Confines the player ship to the screen.
 			@param padding The amount of padding around the screen. */
 		virtual void ConfineToScreen(const int padding = 5);
-
+		
 
 	private:
 

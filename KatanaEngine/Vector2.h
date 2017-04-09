@@ -148,6 +148,10 @@ namespace KatanaEngine
 			@return Returns the resulting vector. */
 		Vector2 &operator/=(const float scalar);
 
+		/** @brief Negates the vector.
+			@return Returns the resulting vector. */
+		const Vector2 operator-() const { return Vector2(-X, -Y); }
+
 		/** @brief Adds two vectors.
 			@param vector The vector to add.
 			@return Returns the resulting vector. */
@@ -167,7 +171,7 @@ namespace KatanaEngine
 			@param scalar The scalar to divide by.
 			@return Returns the resulting vector. */
 		const Vector2 operator/(const float scalar) const;
-
+				
 
 		/** @brief Checks to see if two vectors are equal.
 			@param vector The color to compare.
@@ -178,7 +182,7 @@ namespace KatanaEngine
 			@param vector The color to compare.
 			@return Returns true if the vector are not equal, false otherwise. */
 		bool operator!=(const Vector2 &vector) const;
-
+		
 
 		float X;	/**< @brief The x-coordinate of the vector. */
 		float Y;	/**< @brief The y-coordinate of the vector. */

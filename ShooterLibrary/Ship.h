@@ -1,3 +1,16 @@
+﻿
+/*      .                         ,'`.       .                         
+   .                  .."    _.-;' ⁄‚ `.              .			`      
+              _.-"`.##%"_.--" ,' ⁄`     `.           "#"     ___,,od000
+           ,'"-_ _.-.--"\   ,'            `-_       '%#%',,/00000000000
+         ,'     |_.'     )`/-     __..--""`-_`-._    J L/00000000000000
+ . +   ,'   _.-"        / /   _-""           `-._`-_/___\///0000   000M
+     .'_.-""      '    :_/_.-'                 _,`-/__V__\0000    00MMM
+ . _-""                         .        '   _,/000\  |  /000    0MMMMM
+_-"   .       '     .              .        ,/   000\ | /000000000MMMMM
+       `       Shooter Library       '     ,/     000\|/000000000MMMMMM
+.       © 2017 - Shuriken Studios LLC     ,/0    00000|0000000000MMMMMM */
+
 #pragma once
 
 #include "ShooterLibrary.h"
@@ -16,9 +29,6 @@ namespace ShooterLibrary
 		/** @brief Called when the game determines it is time to draw a frame.
 			@param pGameTime Timing values including time since last update. */
 		virtual void Draw(const GameTime *pGameTime) = 0;
-
-		/** @brief Fires the ships weapons. */
-		virtual void Fire() = 0;
 
 		/** @brief Hits the object, dealing damage to it.
 			@param damage The amount of damage to inflict. */
@@ -44,6 +54,11 @@ namespace ShooterLibrary
 			@see CollisionManager */
 		virtual uint32_t GetCollisionType() const = 0;
 
+		/** @brief Attaches a weapon to the ship.
+			@param pWeapon The weapon to attach.
+			@param position The position, on the ship, to attach the weapon. */
+		virtual void AttachWeapon(Weapon *pWeapon, Vector2 position);
+
 
 	protected:
 
@@ -61,6 +76,9 @@ namespace ShooterLibrary
 			@param hitPoints The desired hit point maximum. */
 		virtual void SetMaxHitPoints(const float hitPoints) { m_maxHitPoints = hitPoints; }
 
+		virtual void FireWeapons(TriggerType type = TRIGGERTYPE_ALL);
+
+
 
 	private:
 
@@ -72,5 +90,7 @@ namespace ShooterLibrary
 
 		bool m_isInvulnurable;
 
+		std::vector<Weapon *> m_weapons;
+		std::vector<Weapon *>::iterator m_weaponIt;
 	};
 }

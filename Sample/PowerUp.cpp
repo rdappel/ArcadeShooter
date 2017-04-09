@@ -70,8 +70,8 @@ namespace Sample
 
 	PowerUp *PowerUp::Resolve(GameObject *pGameObject1, GameObject *pGameObject2)
 	{
-		if (pGameObject1->HasMask(POWER_UP)) return static_cast<PowerUp *>(pGameObject1);
-		if (pGameObject2->HasMask(POWER_UP)) return static_cast<PowerUp *>(pGameObject2);
+		if (pGameObject1->HasMask(COLLISIONTYPE_POWERUP)) return static_cast<PowerUp *>(pGameObject1);
+		if (pGameObject2->HasMask(COLLISIONTYPE_POWERUP)) return static_cast<PowerUp *>(pGameObject2);
 
 		return nullptr;
 	}

@@ -1,16 +1,27 @@
+﻿
+/*      .                         ,'`.       .                         
+   .                  .."    _.-;' ⁄‚ `.              .			`      
+              _.-"`.##%"_.--" ,' ⁄`     `.           "#"     ___,,od000
+           ,'"-_ _.-.--"\   ,'            `-_       '%#%',,/00000000000
+         ,'     |_.'     )`/-     __..--""`-_`-._    J L/00000000000000
+ . +   ,'   _.-"        / /   _-""           `-._`-_/___\///0000   000M
+     .'_.-""      '    :_/_.-'                 _,`-/__V__\0000    00MMM
+ . _-""                         .        '   _,/000\  |  /000    0MMMMM
+_-"   .       '     .              .        ,/   000\ | /000000000MMMMM
+       `       Shooter Library       '     ,/     000\|/000000000MMMMMM
+.       © 2017 - Shuriken Studios LLC     ,/0    00000|0000000000MMMMMM */
 
 #include "ShooterLibrary.h"
 
 namespace ShooterLibrary
 {
 	Texture *Projectile::s_pTexture = nullptr;
-	Vector2 Projectile::s_textureOrigin = Vector2::Zero;
 
 	Projectile::Projectile()
 	{
-		m_speed = 400;
-		m_damage = 1;
-		m_direction.Set(0, -1);
+		SetSpeed(400);
+		SetDamage(1);
+		SetDirection(-Vector2::UnitY);
 		SetCollisionRadius(9);
 	}
 
@@ -18,10 +29,17 @@ namespace ShooterLibrary
 	{
 		if (IsActive())
 		{
-			Vector2 translation = m_direction * m_speed * pGameTime->GetTimeElapsed();
+			Vector2 translation = m_direction * GetSpeed() * pGameTime->GetTimeElapsed();
 			TranslatePosition(translation);
 
-			if (GetPosition().Y < -s_textureOrigin.Y) Deactivate();
+			Vector2 position = GetPosition();
+			Vector2 size = s_pTexture->GetSize();
+
+			// is the projectile off the screen?
+			if (position.Y < -size.Y) Deactivate();
+			else if (position.X < -size.X) Deactivate();
+			else if (position.Y > Game::GetScreenHeight() + size.Y) Deactivate();
+			else if (position.X > Game::GetScreenWidth() + size.X) Deactivate();
 		}
 
 		GameObject::Update(pGameTime);
@@ -31,40 +49,32 @@ namespace ShooterLibrary
 	{
 		if (s_pTexture)
 		{
-			GetSpriteBatch()->Draw(s_pTexture, GetPosition(), Color::White, s_textureOrigin);
+			GetSpriteBatch()->Draw(s_pTexture, GetPosition(), Color::White, s_pTexture->GetCenter());
 		}
 	}
 
-	void Projectile::Activate(const Vector2 &position, bool isShotByPlayer)
+	void Projectile::Activate(const Vector2 &position, bool wasShotByPlayer)
 	{
-		m_isShotByPlayer = isShotByPlayer;
+		m_wasShotByPlayer = wasShotByPlayer;
 		SetPosition(position);
 
 		GameObject::Activate();
 	}
 
-	void Projectile::SetTexture(Texture *pTexture)
-	{
-		s_pTexture = pTexture;
-		s_textureOrigin.Set(s_pTexture->GetCenter());
-	}
-
 	std::string Projectile::ToString() const
 	{
-		if (m_isShotByPlayer) return "Player Projectile";
-		return "Enemy Projectile";
+		return ((WasShotByPlayer()) ? "Player " : "Enemy ") + GetProjectileTypeString();
 	}
 
 	uint32_t Projectile::GetCollisionType() const
 	{
-		if (m_isShotByPlayer) return (PLAYER | PROJECTILE);
-		return (ENEMY | PROJECTILE);
+		return ((WasShotByPlayer()) ? COLLISIONTYPE_PLAYER : COLLISIONTYPE_ENEMY) | GetProjectileType();
 	}
 
 	Projectile *Projectile::Resolve(GameObject *pGameObject1, GameObject *pGameObject2)
 	{
-		if (pGameObject1->HasMask(PROJECTILE)) return static_cast<Projectile *>(pGameObject1);
-		if (pGameObject2->HasMask(PROJECTILE)) return static_cast<Projectile *>(pGameObject2);
+		if (pGameObject1->HasMask(COLLISIONTYPE_PROJECTILE)) return static_cast<Projectile *>(pGameObject1);
+		if (pGameObject2->HasMask(COLLISIONTYPE_PROJECTILE)) return static_cast<Projectile *>(pGameObject2);
 
 		return nullptr;
 	}
