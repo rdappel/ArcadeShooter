@@ -1,9 +1,22 @@
 
 #pragma once
 
-#pragma message("Started precompiling header files for Sample.")
-
 #include "ShooterLibrary.h"
+
+#pragma message("")
+#pragma message("")
+#pragma message("   .oooooo..o       .o.       ooo        ooooo ooooooooo.   ooooo        oooooooooooo")
+#pragma message("	d8P'    `Y8      .888.      `88.       .888' `888   `Y88. `888'        `888'     `8")
+#pragma message("	Y88bo.          .8\"888.      888b     d'888   888   .d88'  888          888")
+#pragma message("	 `\"Y8888o.     .8' `888.     8 Y88. .P  888   888ooo88P'   888          888oooo8")
+#pragma message("		 `\"Y88b   .88ooo8888.    8  `888'   888   888          888          888    \"")
+#pragma message("	oo     .d8P  .8'     `888.   8    Y     888   888          888       o  888       o")
+#pragma message("	8\"\"88888P'  o88o     o8888o o8o        o888o o888o        o888ooooood8 o888ooooood8")
+#pragma message("")
+#pragma message("					        Sample © 2017 - Shuriken Studios LLC")
+#pragma message("")
+
+
 #include "CollisionType.h"
 #include "SmokeTemplate.h"
 #include "GameObject.h"
@@ -21,5 +34,3 @@
 #include "Game.h"
 #include "MainMenuScreen.h"
 #include "GameplayScreen.h"
-
-#pragma message("Finished precompiling header files for Sample.")

@@ -5,7 +5,6 @@
 
 #pragma message("")
 #pragma message("")
-#pragma message("")
 #pragma message("         .                         ,'`.       .                         ")
 #pragma message("    .                  ..\"    _.-;' ⁄‚ `.              .			`   ")
 #pragma message("               _.-\"`.##%\"_.--\" ,' ⁄`     `.           \"#\"     ___,,od000")
@@ -18,7 +17,7 @@
 #pragma message("        `       Shooter Library       '     ,/     000\\|/000000000MMMMMM")
 #pragma message(" .       © 2017 - Shuriken Studios LLC     ,/0    00000|0000000000MMMMMM")
 #pragma message("")
-#pragma message("")
+
 
 #include "CollisionType.h"
 #include "TriggerType.h"
