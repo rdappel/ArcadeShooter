@@ -24,13 +24,7 @@ namespace ShooterLibrary
 
 		PlayerShip();
 		virtual ~PlayerShip() { }
-
-		/** @brief Resolves which game object is a player ship.
-			@param pGameObject1 A pointer to the first game object to test.
-			@param pGameObject2 A pointer to the second game object to test.
-			@return Returns a pointer to an player ship, or a null pointer. */
-		static PlayerShip *Resolve(GameObject *pGameObject1, GameObject *pGameObject2);
-
+		
 		/** @brief Sets the texture of the player ship.
 			@param pTexture A pointer to the texture resource. */
 		virtual void SetTexture(Texture *pTexture);
@@ -56,7 +50,8 @@ namespace ShooterLibrary
 		virtual std::string ToString() const { return "PlayerShip"; }
 
 		/** @brief Gets the half dimensions of the game object.
-			@return Returns the half dimensions of the object. */
+			@return Returns the half dimensions of the object.
+			@callergraph */
 		virtual Vector2 GetHalfDimensions() const { return m_textureOrigin; }
 
 		/** @brief Gets the collision type mask.

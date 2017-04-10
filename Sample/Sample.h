@@ -9,6 +9,8 @@
 #include "GameObject.h"
 #include "Projectile.h"
 #include "Missile.h"
+#include "Blaster.h"
+#include "Launcher.h"
 #include "Ship.h"
 #include "PlayerShip.h"
 #include "EnemyShip.h"

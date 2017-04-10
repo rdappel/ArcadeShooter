@@ -135,6 +135,9 @@ namespace ShooterLibrary
 		@return Returns a pointer to the ResourceManager. */
 		ParticleManager *GetParticleManager() const { return m_pGameplayScreen->GetParticleManager(); }
 
+		void AddProjectilePool(ProjectilePool *pProjectilePool) { m_pProjectilePools.push_back(pProjectilePool); }
+
+
 
 	private:
 
@@ -164,6 +167,8 @@ namespace ShooterLibrary
 		virtual unsigned int GetTotalSectorCount() const { return m_totalSectorCount; }
 
 		virtual std::vector<GameObject *> *GetSectors() { return m_pSectors; }
+
+		std::vector<ProjectilePool *> m_pProjectilePools;
 
 	};
 }

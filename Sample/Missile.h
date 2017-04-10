@@ -1,4 +1,14 @@
 
+/*   .oooooo..o       .o.       ooo        ooooo ooooooooo.   ooooo        oooooooooooo
+	d8P'    `Y8      .888.      `88.       .888' `888   `Y88. `888'        `888'     `8
+	Y88bo.          .8"888.      888b     d'888   888   .d88'  888          888
+	 `"Y8888o.     .8' `888.     8 Y88. .P  888   888ooo88P'   888          888oooo8
+		 `"Y88b   .88ooo8888.    8  `888'   888   888          888          888    "
+	oo     .d8P  .8'     `888.   8    Y     888   888          888       o  888       o
+	8""88888P'  o88o     o8888o o8o        o888o o888o        o888ooooood8 o888ooooood8
+
+					   Sample © 2017 - Shuriken Studios LLC                          */
+
 #pragma once
 
 namespace Sample
@@ -12,9 +22,7 @@ namespace Sample
 		Missile();
 		virtual ~Missile() { }
 
-		/** @brief Sets the texture of the player ship.
-			@param pTexture A pointer to the texture resource. */
-		static void SetTexture(Texture *pTexture) { s_pTexture = pTexture; }
+		virtual void SetAnimation(Animation *pAnimation) { m_pAnimation = pAnimation; }
 
 		/** @brief Called when the game determines it is time to draw a frame.
 			@param pGameTime Timing values including time since last update. */
@@ -40,7 +48,7 @@ namespace Sample
 
 	protected:
 
-		void SetSpeed(const float speed) { m_speed = speed; }
+		void SetTurnSpeed(const float turnSpeed) { m_turnSpeed = Math::Abs(turnSpeed); }
 
 		void SetRange(const float range) { m_range = range; }
 
@@ -48,25 +56,19 @@ namespace Sample
 
 		void SetTarget(GameObject *pTarget = nullptr) { m_pTarget = pTarget; }
 
-		void SetTargetingDelay(const float delaySeconds) { m_targetingDelaySeconds = delaySeconds; }
+		void ResetTargetingDelay() { m_targetingDelayFrames = Math::GetRandomInt(8, 9); }
 
 		GameObject *GetTarget() const { return m_pTarget; }
 
 
 	private:
 
-		static Texture *s_pTexture;
-
 		Animation *m_pAnimation;
 
-		float m_targetingDelaySeconds;
-		float m_currentTargetingDelay;
+		int m_targetingDelayFrames;
 
 		Vector2 m_targetingOffset;
 
-		Vector2 m_direction;
-
-		float m_speed;
 		float m_angle;
 		float m_range;
 		float m_turnSpeed;

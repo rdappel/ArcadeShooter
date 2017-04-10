@@ -27,6 +27,17 @@ namespace ShooterLibrary
 		Initialize();
 	}
 
+	void Ship::Update(const GameTime *pGameTime)
+	{
+		m_weaponIt = m_weapons.begin();
+		for (; m_weaponIt != m_weapons.end(); m_weaponIt++)
+		{
+			(*m_weaponIt)->Update(pGameTime);
+		}
+
+		GameObject::Update(pGameTime);
+	}
+
 	void Ship::Hit(const float damage)
 	{
 		if (!m_isInvulnurable)

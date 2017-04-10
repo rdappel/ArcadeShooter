@@ -30,6 +30,7 @@
   
   
   Ship.cpp
+  ProjectilePool.cpp
   Projectile.cpp
   PlayerShip.cpp
   Level.cpp

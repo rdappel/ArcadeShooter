@@ -1,40 +1,45 @@
 
+/*   .oooooo..o       .o.       ooo        ooooo ooooooooo.   ooooo        oooooooooooo
+	d8P'    `Y8      .888.      `88.       .888' `888   `Y88. `888'        `888'     `8
+	Y88bo.          .8"888.      888b     d'888   888   .d88'  888          888
+	 `"Y8888o.     .8' `888.     8 Y88. .P  888   888ooo88P'   888          888oooo8
+		 `"Y88b   .88ooo8888.    8  `888'   888   888          888          888    "
+	oo     .d8P  .8'     `888.   8    Y     888   888          888       o  888       o
+	8""88888P'  o88o     o8888o o8o        o888o o888o        o888ooooood8 o888ooooood8
+
+					   Sample © 2017 - Shuriken Studios LLC                          */
+
 #include "Sample.h"
 
 namespace Sample
 {
-
-	Texture *Missile::s_pTexture;
-
 	Missile::Missile()
 	{
-		SetSpeed(400);
+		SetSpeed(320);
 		SetDamage(3);
+		SetTurnSpeed(Math::PI);
 		Deactivate();
 		SetCollisionRadius(15);
-		SetRange(140);
-		SetTarget();
-		SetTargetingDelay(0.5f);
-
-
-		//m_pAnimation = new Animation(2);
-		//m_pAnimation->Play(true);
+		SetRange(200);
 	}
 
 	void Missile::Update(const GameTime *pGameTime)
 	{
 		if (IsActive())
 		{
-			//m_pAnimation->Update(pGameTime);
+			m_pAnimation->Update(pGameTime);
+			m_targetingDelayFrames--;
 
-			if (m_currentTargetingDelay > 0) m_currentTargetingDelay -= pGameTime->GetTimeElapsed();
+			if (GetTarget() && !GetTarget()->IsActive())
+			{
+				SetTarget();
+			}
 
-			if (GetTarget() && !GetTarget()->IsActive()) SetTarget();
-
-			if (!GetTarget() && m_currentTargetingDelay <= 0)
+			if (!GetTarget() && m_targetingDelayFrames <= 0)
 			{
 				Vector2 seek = GetPosition() + m_targetingOffset;
 				SetTarget(GetCurrentLevel()->GetClosestObject<ShooterLibrary::EnemyShip>(seek, m_range));
+				ResetTargetingDelay();
 			}
 
 			if (GetTarget())
@@ -42,18 +47,18 @@ namespace Sample
 				Vector2 targetDirection = m_pTarget->GetPosition() - GetPosition();
 				targetDirection.Normalize();
 
-				float dot = targetDirection.DotProduct(m_direction.Left());
+				float dot = targetDirection.DotProduct(GetDirection().Left());
 				float turn = m_turnSpeed * pGameTime->GetTimeElapsed();
 
 				m_angle += (dot > 0) ? turn : -turn;
-				m_direction.Set(cos(m_angle), sin(m_angle));
+				SetDirection(Vector2(cos(m_angle), sin(m_angle)));
 
 				// remove jitter
-				float newDot = targetDirection.DotProduct(m_direction.Left());
+				float newDot = targetDirection.DotProduct(GetDirection().Left());
 				if (newDot * dot < 0)
 				{
-					m_direction = targetDirection;
-					m_angle = atan2f(m_direction.Y, m_direction.X);
+					SetDirection(targetDirection);
+					m_angle = atan2f(GetDirection().Y, GetDirection().X);
 				}
 			}
 			
@@ -70,21 +75,10 @@ namespace Sample
 
 	void Missile::Draw(const GameTime *pGameTime)
 	{
-		if (s_pTexture)
+		if (m_pAnimation)
 		{
-			/*
-			int index = m_pAnimation->GetCurrentFrame();
-			int sw = 70;
-			int sh = 15;
-			int sx = index % (70 / sw);
-			int sy = index / (70 / sw);
-			int dx = (int)m_position.X;
-			int dy = (int)m_position.Y;
-			ALLEGRO_COLOR color = al_map_rgb(255, 255, 255);
-
-			al_draw_tinted_scaled_rotated_bitmap_region(
-				s_pTexture, sw * sx, sh * sy, sw, sh, color,
-				sw / 2, sh / 2, dx, dy, 1, 1, m_angle, 0);*/
+			Vector2 center = m_pAnimation->GetFrame(0)->GetCenter();
+			GetSpriteBatch()->Draw(m_pAnimation, GetPosition(), Color::White, center, Vector2::One * 0.75f, m_angle);
 		}
 	}
 
@@ -92,7 +86,7 @@ namespace Sample
 	{
 		GameObject::Activate();
 
-		m_currentTargetingDelay = m_targetingDelaySeconds;
+		ResetTargetingDelay();
 		SetTarget();
 
 		Projectile::Activate(position, wasShotByPlayer);
@@ -100,9 +94,9 @@ namespace Sample
 		if (wasShotByPlayer)
 		{
 			SetDirection(-Vector2::UnitY);
-			SetAngle(-2 * Math::PI);
+			SetAngle(-0.5f * Math::PI);
 		}
 
-		m_targetingOffset = m_direction * 50;
+		m_targetingOffset = GetDirection() * 50;
 	}
 }

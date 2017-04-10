@@ -59,6 +59,11 @@ namespace KatanaEngine
 			@return Returns the greator number between two values. */
 		static float Max(const float value1, const float value2);
 
+		/** @brief Get the absolute value of a number.
+			@param value The positive or negative value.
+			@return Returns the absolute value. */
+		static float Abs(const float value);
+
 		/** @brief Restricts a value to be within a specified range.
 			@param min The minimum value. If value is less than min, min will be returned.
 			@param max The maximum value. If value is greater than max, max will be returned.

@@ -25,12 +25,6 @@ namespace ShooterLibrary
 		Projectile();
 		virtual ~Projectile() { }
 
-		/** @brief Resolves which game object is a projectile.
-			@param pGameObject1 A pointer to the first game object to test.
-			@param pGameObject2 A pointer to the second game object to test.
-			@return Returns a pointer to an projectile, or a null pointer. */
-		static Projectile *Resolve(GameObject *pGameObject1, GameObject *pGameObject2);
-
 		/** @brief Sets the texture of the player ship.
 			@param pTexture A pointer to the texture resource. */
 		static void SetTexture(Texture *pTexture) { s_pTexture = pTexture; }

@@ -72,6 +72,12 @@
     <ClInclude Include="CollisionType.h">
       <Filter>SourceFiles</Filter>
     </ClInclude>
+    <ClInclude Include="Blaster.h">
+      <Filter>SourceFiles\Weapons</Filter>
+    </ClInclude>
+    <ClInclude Include="Launcher.h">
+      <Filter>SourceFiles\Weapons</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="SourceFiles">
@@ -91,6 +97,9 @@
     </Filter>
     <Filter Include="SourceFiles\Particles">
       <UniqueIdentifier>{1b1a42b5-4eff-4647-85f9-da8f07b20003}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFiles\Weapons">
+      <UniqueIdentifier>{ecc1f7ce-338c-439b-9773-7f76b1c6d197}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

@@ -39,6 +39,9 @@ namespace ShooterLibrary
 		{
 			delete m_pCollisionManager;
 		}
+
+		std::vector<ProjectilePool *>::iterator it = m_pProjectilePools.begin();
+		for (; it != m_pProjectilePools.end(); it++) delete *it;
 	}
 
 	void Level::LoadContent()

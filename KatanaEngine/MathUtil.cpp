@@ -48,6 +48,12 @@ namespace KatanaEngine
 		return value2;
 	}
 
+	float Math::Abs(const float value)
+	{
+		if (value < 0) return -value;
+		else return value;
+	}
+
 	float Math::Clamp(const float min, const float max, const float value)
 	{
 		if (value < min) return min;

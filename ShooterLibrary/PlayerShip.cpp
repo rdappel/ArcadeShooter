@@ -43,7 +43,7 @@ namespace ShooterLibrary
 	{
 		if (m_pTexture)
 		{
-			GetSpriteBatch()->Draw(m_pTexture, GetPosition(), Color::Blue, m_textureOrigin, Vector2::One, 0, 1);
+			GetSpriteBatch()->Draw(m_pTexture, GetPosition(), Color::White, m_textureOrigin, Vector2::One, 0, 1);
 		}
 	}
 
@@ -111,13 +111,5 @@ namespace ShooterLibrary
 	void PlayerShip::SetResponsiveness(const float responsiveness)
 	{
 		m_responsiveness = Math::Clamp(0, 1, responsiveness);
-	}
-	
-	PlayerShip *PlayerShip::Resolve(GameObject *pGameObject1, GameObject *pGameObject2)
-	{
-		if (pGameObject1->IsMask(COLLISIONTYPE_PLAYER | COLLISIONTYPE_SHIP)) return static_cast<PlayerShip *>(pGameObject1);
-		if (pGameObject2->IsMask(COLLISIONTYPE_PLAYER | COLLISIONTYPE_SHIP)) return static_cast<PlayerShip *>(pGameObject2);
-
-		return nullptr;
 	}
 }

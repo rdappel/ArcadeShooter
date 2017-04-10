@@ -45,10 +45,13 @@ namespace ShooterLibrary
 
 		virtual void SetProjectilePool(ProjectilePool *pool) = 0;
 
+		virtual void Activate() { m_isActive = true; }
+
+		virtual void Dectivate() { m_isActive = false; }
+
+		virtual bool IsActive() const { return m_isActive && m_pGameObject->IsActive(); }
 
 	protected:
-
-		virtual bool IsActive() const { return m_isActive; }
 
 		virtual TriggerType GetTriggerType() const { return m_triggerType; }
 

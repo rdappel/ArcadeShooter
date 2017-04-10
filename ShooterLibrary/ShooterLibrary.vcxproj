@@ -159,6 +159,7 @@
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="PlayerShip.cpp" />
     <ClCompile Include="Projectile.cpp" />
+    <ClCompile Include="ProjectilePool.cpp" />
     <ClCompile Include="Ship.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="ShooterLibrary.cpp">

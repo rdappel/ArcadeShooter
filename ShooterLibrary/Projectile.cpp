@@ -29,7 +29,7 @@ namespace ShooterLibrary
 	{
 		if (IsActive())
 		{
-			Vector2 translation = m_direction * GetSpeed() * pGameTime->GetTimeElapsed();
+			Vector2 translation = m_direction * m_speed * pGameTime->GetTimeElapsed();
 			TranslatePosition(translation);
 
 			Vector2 position = GetPosition();
@@ -69,13 +69,5 @@ namespace ShooterLibrary
 	uint32_t Projectile::GetCollisionType() const
 	{
 		return ((WasShotByPlayer()) ? COLLISIONTYPE_PLAYER : COLLISIONTYPE_ENEMY) | GetProjectileType();
-	}
-
-	Projectile *Projectile::Resolve(GameObject *pGameObject1, GameObject *pGameObject2)
-	{
-		if (pGameObject1->HasMask(COLLISIONTYPE_PROJECTILE)) return static_cast<Projectile *>(pGameObject1);
-		if (pGameObject2->HasMask(COLLISIONTYPE_PROJECTILE)) return static_cast<Projectile *>(pGameObject2);
-
-		return nullptr;
 	}
 }

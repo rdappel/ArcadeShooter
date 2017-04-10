@@ -1,3 +1,19 @@
+﻿/*
+                  '888 88888888888 888888888',8888'
+                    88 888888888888 8888888',8888'
+                     8 8888             ,8',8888'
+          ==̲=̲=̲=̲=̲=̲=== 8 8888 ========== ,8 ,̲8̲88̲8_==============
+          /  ____/__ 8_̲88̲8̲8̲8̲88̲88̲8̲8̲8__ ,̲8__/ //_/____ _ ____
+	     / /  __ / / / /ˊ __ `// ___/ˊ __  /__ ˊ __ `// __ \
+	    / /__/ // /_/ // /_/ // /   / /_/ // // /_/ // / / /
+	    \_____/ \__,_/ \__,_//_/    \__,_//_/ \__,_//_/ /_/
+      ============== 8 8888 ===== ,8',8888' ===============
+                    88 8888      ,8',8888888888888 
+                   ,88 8888     ,8',888888888888888,
+				   
+				          ファイナル ゼロ
+
+               Guardian FZ © 2017 - Shuriken Studios LLC          */
 
 #include "GuardianFinalZero.h"
 
@@ -5,43 +21,17 @@ namespace GuardianFinalZero
 {
 	PlayerShip::PlayerShip()
 	{
-		m_coolDownTime = 0;
-
 		SetSpeed(450);
-		SetResponsiveness(0.1);
 		SetInvulnurable();
 	}
 
 	void PlayerShip::Update(const GameTime *pGameTime)
-	{
-		m_coolDownTime -= pGameTime->GetTimeElapsed();
-		
+	{		
 		ShooterLibrary::PlayerShip::Update(pGameTime);
 	}
-
+	
 	void PlayerShip::Draw(const GameTime *pGameTime)
 	{
 		ShooterLibrary::PlayerShip::Draw(pGameTime);
-	}
-
-	void PlayerShip::Fire()
-	{
-		if (CanFire())
-		{
-			ShooterLibrary::Projectile *pProjectile = nullptr;
-			pProjectile = m_pLevel->GetInactiveProjectile();
-			if (pProjectile)
-			{
-				pProjectile->Activate(GetPosition() - Vector2(0, 32));
-				m_coolDownTime = 0.25f;
-			}
-		}
-	}
-
-	float PlayerShip::GetResponsiveness() const
-	{
-		float firingDrag = 0.2f;
-		if (CanFire()) firingDrag = 1;
-		return ShooterLibrary::PlayerShip::GetResponsiveness() * firingDrag;
 	}
 }

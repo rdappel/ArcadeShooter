@@ -25,12 +25,6 @@ namespace ShooterLibrary
 		EnemyShip();
 		virtual ~EnemyShip() { }
 
-		/** @brief Resolves which game object is an enemy ship.
-			@param pGameObject1 A pointer to the first game object to test. 
-			@param pGameObject2 A pointer to the second game object to test.
-			@return Returns a pointer to an enemy ship, or a null pointer. */
-		static EnemyShip *Resolve(GameObject *pGameObject1, GameObject *pGameObject2);
-
 		/** @brief Called when the game has determined that game logic needs
 			to be processed.
 			@param pGameTime Timing values including time since last update. */

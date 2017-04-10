@@ -50,6 +50,10 @@ namespace KatanaEngine
 			@return Returns a Region that defines the size and position of the current frame. */
 		virtual Region *GetCurrentFrame() { return m_frames[m_currentIndex]; }
 
+		/** @brief Gets a pointer to the indexed frame.
+			@return Returns a Region that defines the size and position of the indexed frame. */
+		virtual Region *GetFrame(const int index) { return m_frames[index]; }
+
 		/** @brief Gets a pointer to the texture of the animation.
 			@return Returns a pointer to the texture. */
 		virtual Texture *GetTexture() const { return m_pTexture; }

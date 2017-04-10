@@ -23,42 +23,56 @@ namespace ShooterLibrary
 	public:
 
 		/** @brief Instantiates a new Weapon object.
-		@param pGameObject The game object that the weapon is attached to. */
-		Gun(bool isActive = false)
-			: Weapon(isActive) { }
+			@param pGameObject The game object that the weapon is attached to. */
+		Gun(bool isActive = false) : Weapon(isActive)
+		{
+			m_cooldown = 0;
+			m_cooldownSeconds = 0.25;
+		}
 
 		virtual ~Gun() { }
 
 		/** @brief Called when the game determines it is time to draw a frame.
-		@param pGameTime Timing values including time since last update. */
-		virtual void Update(const GameTime *pGameTime) { }
+			@param pGameTime Timing values including time since last update. */
+		virtual void Update(const GameTime *pGameTime)
+		{
+			if (m_cooldown > 0) m_cooldown -= pGameTime->GetTimeElapsed();
+		}
 
 		/** @brief Called when the game determines it is time to draw a frame.
-		@param pGameTime Timing values including time since last update. */
+			@param pGameTime Timing values including time since last update. */
 		virtual void Draw(const GameTime *pGameTime) { }
 
 		/** @brief Fires the weapon. */
 		virtual void Fire(TriggerType triggerType)
 		{
-			bool match = (GetTriggerType() & triggerType) > 0;
-			if (match && IsActive())
+			if (IsActive() && CanFire())
 			{
-				Projectile *pProjectile = m_pProjectilePool->GetInactiveProjectile<T>();
-				if (pProjectile)
+				if (GetTriggerType() & triggerType)
 				{
-					pProjectile->Activate(GetPosition(), true);
+					Projectile *pProjectile = m_pProjectilePool->GetInactiveProjectile<T>();
+					if (pProjectile)
+					{
+						pProjectile->Activate(GetPosition(), true);
+						m_cooldown = m_cooldownSeconds;
+					}
 				}
 			}
 		}
 
 		virtual void SetProjectilePool(ProjectilePool *pool) { m_pProjectilePool = pool; }
 
-		virtual bool CanFire() const { return true; }
+		virtual bool CanFire() const { return m_cooldown <= 0; }
+
+		virtual void SetCooldownSeconds(const float seconds) { m_cooldownSeconds = seconds; }
 
 
 	private:
 
 		ProjectilePool *m_pProjectilePool;
+
+		float m_cooldown;
+		float m_cooldownSeconds;
 
 	};
 }

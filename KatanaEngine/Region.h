@@ -105,6 +105,8 @@ namespace KatanaEngine
 		@return Returns the bottom right corner. */
 		Point GetBottomRight() { return Point(GetRight(), GetBottom()); }
 
+		Vector2 GetCenter() { return GetTopLeft().ToVector2() + (Vector2(Width, Height) / 2); }
+
 
 		int X;		/**< @brief The left side of the region. */
 		int Y;		/**< @brief The top of the region. */

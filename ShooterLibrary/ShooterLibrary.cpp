@@ -8,6 +8,7 @@
 /** @namespace ShooterLibrary
 	@brief Shooter Library is a library of classes, interfaces, and value types
 	that provides a foundation for developing shoot 'em up style games.
-	@author Ryan Appel (ryan@ryan-appel.com) */
+	@author Ryan Appel (ryan@ryan-appel.com)
+	@copyright © 2017 Shuriken Studios LLC */
 
 namespace ShooterLibrary { }

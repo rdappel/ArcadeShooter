@@ -26,6 +26,10 @@ namespace ShooterLibrary
 		Ship();
 		virtual ~Ship() { }
 
+		/** @brief Updates the game object.
+			@param pGameTime Timing values including time since last update. */
+		virtual void Update(const GameTime *pGameTime);
+
 		/** @brief Called when the game determines it is time to draw a frame.
 			@param pGameTime Timing values including time since last update. */
 		virtual void Draw(const GameTime *pGameTime) = 0;
@@ -77,6 +81,8 @@ namespace ShooterLibrary
 		virtual void SetMaxHitPoints(const float hitPoints) { m_maxHitPoints = hitPoints; }
 
 		virtual void FireWeapons(TriggerType type = TRIGGERTYPE_ALL);
+
+		virtual Weapon *GetWeapon(const int index) { return m_weapons[index]; }
 
 
 

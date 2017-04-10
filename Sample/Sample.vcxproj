@@ -125,7 +125,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="BioEnemyShip.h" />
+    <ClInclude Include="Blaster.h" />
     <ClInclude Include="CollisionType.h" />
+    <ClInclude Include="Launcher.h" />
     <ClInclude Include="Level01.h" />
     <ClInclude Include="MainMenuScreen.h" />
     <ClInclude Include="Missile.h" />
