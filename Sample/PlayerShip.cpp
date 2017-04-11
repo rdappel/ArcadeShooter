@@ -18,7 +18,7 @@ namespace Sample
 	PlayerShip::PlayerShip()
 	{
 		SetSpeed(450);
-		//SetInvulnurable();
+		SetInvulnurable();
 	}
 
 	void PlayerShip::Update(const GameTime *pGameTime)

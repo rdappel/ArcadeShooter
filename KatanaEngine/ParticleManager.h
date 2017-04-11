@@ -35,7 +35,13 @@ namespace KatanaEngine
 
 		/** @brief Add a particle to be managed.
 			@param pScreen A pointer to the particle to be managed. */
-		virtual void AddParticle(Particle *pParticle) { m_particles.push_back(pParticle); }
+		virtual void AddParticle(Particle *pParticle) { 
+			if (m_particles.size() > 0)
+			{
+				int i;
+			}
+
+			m_particles.push_back(pParticle); }
 
 		/** @brief Gets a pointer to the Game.
 			@return A pointer to the game instance. */
@@ -53,6 +59,7 @@ namespace KatanaEngine
 
 		std::vector<Particle *> m_particles;
 		std::vector<Particle *>::iterator m_it;
+
 
 	};
 }

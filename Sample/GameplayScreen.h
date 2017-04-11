@@ -22,5 +22,12 @@ namespace Sample
 
 		virtual ~GameplayScreen() { }
 
+		virtual void Update(const GameTime *pGameTime)
+		{
+			ShooterLibrary::GameplayScreen::Update(pGameTime);
+
+			std::cout << pGameTime->GetTimeElapsed() << std::endl;
+		}
+
 	};
 }

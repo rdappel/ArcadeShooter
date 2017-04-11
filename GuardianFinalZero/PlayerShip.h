@@ -27,18 +27,17 @@ namespace GuardianFinalZero
 	public:
 
 		PlayerShip();
+
 		virtual ~PlayerShip() { }
-		
+
 		virtual void Update(const GameTime *pGameTime);
 
+		/** @brief Called when the game determines it is time to draw a frame.
+			@param pGameTime Timing values including time since last update. */
 		virtual void Draw(const GameTime *pGameTime);
-
-		virtual void SetLevel(Level *pLevel) { m_pLevel = pLevel; }
 
 
 	private:
-
-		Level *m_pLevel;
 
 	};
 }

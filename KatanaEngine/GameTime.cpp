@@ -13,6 +13,7 @@
 
 namespace KatanaEngine
 {
+
 	GameTime::GameTime()
 	{
 		m_previousTotalTime = al_get_time();
@@ -25,6 +26,14 @@ namespace KatanaEngine
 	{
 		m_previousTotalTime = m_currentTotalTime;
 		m_currentTotalTime = al_get_time();
-		m_elapsedTime = (m_currentTotalTime - m_previousTotalTime);
+
+		if (m_currentTotalTime - m_previousTotalTime <= 0.2)
+		{
+			m_elapsedTime = (m_currentTotalTime - m_previousTotalTime);
+		}
+		else
+		{
+			std::cout << "Hopefully you were debugging!" << std::endl;
+		}
 	}
 }

@@ -28,7 +28,8 @@ namespace GuardianFinalZero
 	{
 		Texture *pTexture = GetResourceManager()->Load<Texture>("Textures\\PlayerShip.png");
 		m_pPlayerShip->SetTexture(pTexture);
-		m_pPlayerShip->SetLevel(this);
+		
+		AddGameObject(m_pPlayerShip);
 
 		for (int i = 0; i < 60; i++)
 		{

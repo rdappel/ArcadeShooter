@@ -47,7 +47,10 @@ namespace KatanaEngine
 			m_it = m_particles.begin();
 			for (; m_it != m_particles.end(); ++m_it)
 			{
-				if (!(*m_it)->IsActive())
+				bool active = (*m_it)->IsActive();
+				std::cout << active << std::endl;
+
+				if (!active)
 				{
 					return static_cast<T *>(*m_it);
 				}
@@ -84,10 +87,10 @@ namespace KatanaEngine
 
 		float m_pParticleLifespan;
 
-		bool m_poolExpands;
-
 		std::vector<Particle *> m_particles;
 		std::vector<Particle *>::iterator m_it;
+
+	public:	bool m_poolExpands;
 
 	};
 }

@@ -45,6 +45,8 @@ namespace Sample
 			@return Returns a string displaying the type of object. */
 		virtual std::string ToString() const { return "Missile"; }
 
+		//virtual void LoadContent(ResourceManager *pResourceManager);
+
 
 	protected:
 

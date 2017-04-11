@@ -19,10 +19,13 @@ namespace Sample
 
 	public:
 
+		int frames;
+
 		SmokeTemplate()
 		{
-			GenerateParticles<T>(100); 
+			GenerateParticles<T>(1); 
 			SetParticleLifespan(1);
+			m_poolExpands = false;
 		}
 
 		virtual ~SmokeTemplate() { }
@@ -35,12 +38,14 @@ namespace Sample
 			ParticleTemplate::InitializeParticle(pT);
 
 			pT->SetScale(Vector2::One * 0.1f);
-			pT->SetAlpha(1);
+			pT->SetAlpha(0.25f);
 
 			pT->SetRotation(Math::GetRandomFloat() * Math::PI * 2);
 			pT->SetRotationVelocity(Math::GetRandomFloat() * 0.2f - 0.1f);
 
 			pT->SetPosition(pT->GetPosition() + Vector2::GetRandom(true) * 2);
+
+			frames = 0;
 		}
 
 		virtual void UpdateParticle(Particle *pParticle, const GameTime *pGameTime)
@@ -52,6 +57,8 @@ namespace Sample
 			float scale = (1 - value) * 0.25f + 0.1f;
 			pT->SetScale(Vector2::One * scale);
 			pT->SetAlpha(value * 0.25f);
+
+			//std::cout << "INTERP: \t" << value << "\tFR: " << frames++ << "\tTT: " << pGameTime->GetTotalTime() << std::endl ;
 
 			float rotation = pT->GetRotation() + pT->GetRotationVelocity();
 

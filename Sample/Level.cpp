@@ -81,16 +81,21 @@ namespace Sample
 		pBlaster->SetProjectilePool(pPool);
 		m_pPlayerShip->AttachWeapon(pBlaster, Vector2::UnitY * -32);
 
+		SmokeTemplate<RotatingParticle> *pTemplate = new SmokeTemplate<RotatingParticle>();
+		pTemplate->SetTexture(pRes->Load<Texture>("Textures\\Particle.png"));
+
+
 		pPool = new ProjectilePool(this);
 		AddProjectilePool(pPool);
 		for (int i = 0; i < 100; i++)
 		{
 			pMissile = new Missile();
+			pMissile->SetEmitter(new Emitter(GetParticleManager(), pTemplate, 100));
 			pMissile->SetAnimation(pRes->Load<Animation>("Animations\\Missile_01.anim"));
 			pPool->Add(pMissile);
 		}
 
-		pLauncher = new Launcher(false);
+		pLauncher = new Launcher(true);
 		pLauncher->SetProjectilePool(pPool);
 		m_pPlayerShip->AttachWeapon(pLauncher, Vector2::UnitX * -22);
 

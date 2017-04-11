@@ -64,12 +64,12 @@ namespace Sample
 			
 			Projectile::Update(pGameTime);
 
-			//if (IsActive())
-			//{
-			//	m_pEmitter->SetOutput(1);
-			//	m_pEmitter->SetPosition(m_position + (m_direction * -18));
-			//	m_pEmitter->Update(pGameTime);
-			//}
+			/*if (IsActive() && m_pEmitter)
+			{
+				m_pEmitter->SetOutput(1);
+				m_pEmitter->SetPosition(GetPosition() - GetDirection() * 18);
+				m_pEmitter->Update(pGameTime);
+			}*/
 		}
 	}
 
@@ -98,5 +98,7 @@ namespace Sample
 		}
 
 		m_targetingOffset = GetDirection() * 50;
+		Vector2 emitterPosition = GetPosition() - GetDirection() * 18;
+		m_pEmitter->SetPosition(emitterPosition);
 	}
 }

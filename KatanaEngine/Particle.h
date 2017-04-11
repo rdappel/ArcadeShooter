@@ -45,7 +45,7 @@ namespace KatanaEngine
 
 		virtual void SetRotation(const float rotation) { m_rotation = rotation; }
 		virtual float GetRotation() const { return m_rotation; }
-		
+				
 
 	private:
 

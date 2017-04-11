@@ -1,7 +1,6 @@
 ﻿  ShooterLibrary.cpp
   
   
-  
            ██╗  ██╗  █████╗  ████████╗  █████╗  ███╗   ██╗  █████╗ 
            ██║ ██╔╝ ██╔══██╗ ╚══██╔══╝ ██╔══██╗ ████╗  ██║ ██╔══██╗
            █████╔╝  ███████║    ██║    ███████║ ██╔██╗ ██║ ███████║
@@ -12,8 +11,7 @@
          `^^^^^^^^^^^^^^^^^^^ /-------------------------------------"
               Katana Engine \/ © 2012 - Shuriken Studios LLC
   
-  
-  
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\particlemanager.h(41): warning C4101: 'i': unreferenced local variable
   
   
            .                         ,'`.       .                         
@@ -28,8 +26,8 @@
           `       Shooter Library       '     ,/     000\|/000000000MMMMMM
    .       © 2017 - Shuriken Studios LLC     ,/0    00000|0000000000MMMMMM
   
-  
   Ship.cpp
+  ProjectilePool.cpp
   Projectile.cpp
   PlayerShip.cpp
   Level.cpp

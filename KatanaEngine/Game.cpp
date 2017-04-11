@@ -211,21 +211,21 @@ namespace KatanaEngine
 
 			float percent = (float)(m_actualFramesPerSec * m_inverseTargetFrames);
 
-			if (percent >= 1)
+			if (percent >= 0.98f)
 			{
-				color = Color::Lerp(color, Color(0, 0.5, 0), 0.1f);
+				color = Color(0, 0.5, 0);
 			}
-			if (percent < 1 && percent >= 0.8f)
+			if (percent < 0.98f && percent >= 0.8f)
 			{
-				color = Color::Lerp(color, Color(1, 1, 0), 0.1f);
+				color = Color(1, 1, 0);
 			}
 			else if (percent < 0.8f && percent >= 0.6f)
 			{
-				color = Color::Lerp(color, Color(1, 0.5, 0), 0.1f);
+				color = Color(1, 0.5, 0);
 			}
 			else if (percent < 0.6f)
 			{
-				color = Color::Lerp(color, Color(1, 0, 0), 0.1f);
+				color = Color(1, 0, 0);
 			}
 
 			char buffer[16];
