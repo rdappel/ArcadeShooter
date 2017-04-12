@@ -9,10 +9,10 @@
 
 ### About the Project
 The Arcade Shooter is currently split into the four projects described below:
-| First Header  | Second Header |
-| ------------- | ------------- |
-| Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  |
+First Header  | Second Header
+------------- | -------------
+Content Cell  | Content Cell
+Content Cell  | Content Cell
 
 ### Documentation
 [Arcade Shooter Documentation](http://ryan-appel.com/arcade_shooter/api/)
