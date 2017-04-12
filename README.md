@@ -20,4 +20,4 @@ Sample              | Sample is a sample game to use as a template for creating 
 ### Documentation
 [Arcade Shooter Documentation](http://ryan-appel.com/arcade_shooter/api/)
 
-Documentation id generated using [Doxygen](http://www.stack.nl/~dimitri/doxygen/index.html).
+Documentation is generated using [Doxygen](http://www.stack.nl/~dimitri/doxygen/index.html).
