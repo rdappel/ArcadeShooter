@@ -10,11 +10,11 @@
 ### About the Project
 The Arcade Shooter is currently split into the four projects described below:
 | Project             | Description |
-| ------------------- | -------------------------------------------------------------------------------------------------------------- |
-| Katana Engine       | Katana Engine is a library of classes, interfaces, and value types that provides a foundation for developing two-dimensional games in C++. |
-| Shooter Library     | Shooter Library is a library of classes, interfaces, and value types that provides a foundation for developing shoot 'em up style games. |
-| Guardian Final Zero | Guardian FZ it the main game that will be playable at launch. |
-| Sample              | Sample is a sample game to use as a template for creating your own games utilizing the Katana Engine and Shooter Library. |
+| ------------------- | ----------- |
+| Katana Engine       | Descr... |
+| Shooter Library     | Descr... |
+| Guardian Final Zero | Descr... |
+| Sample              | Descr... |
 
 ### Documentation
 [Arcade Shooter Documentation](http://ryan-appel.com/arcade_shooter/api/)
