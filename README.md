@@ -20,7 +20,7 @@ The Arcade Shooter is currently split into the four projects described below:
 ### Documentation
 [Arcade Shooter Documentation](http://ryan-appel.com/arcade_shooter/api/)
 
-Documentation is generated using [Doxygen](http://www.stack.nl/~dimitri/doxygen/index.html).
+<sub><sup>Documentation is generated using [Doxygen](http://www.stack.nl/~dimitri/doxygen/index.html).</sup></sub>
 
 ### Getting Started
 
