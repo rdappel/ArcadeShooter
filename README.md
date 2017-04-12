@@ -1,4 +1,4 @@
 # Arcade Shooter
 Shooter Game for Arcade Cabinet
 
-[API Reference](http://ryan-appel.com/arcade_shooter/api/)
+[Arcade Shooter Documentation](http://ryan-appel.com/arcade_shooter/api/)
