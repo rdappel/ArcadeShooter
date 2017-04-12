@@ -9,12 +9,10 @@
 
 ### About the Project
 The Arcade Shooter is currently split into the four projects described below:
-| Project             | Description |
-| ------------------- | ----------- |
-| Katana Engine       | Descr... |
-| Shooter Library     | Descr... |
-| Guardian Final Zero | Descr... |
-| Sample              | Descr... |
+| First Header  | Second Header |
+| ------------- | ------------- |
+| Content Cell  | Content Cell  |
+| Content Cell  | Content Cell  |
 
 ### Documentation
 [Arcade Shooter Documentation](http://ryan-appel.com/arcade_shooter/api/)
