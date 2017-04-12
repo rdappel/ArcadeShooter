@@ -1,14 +1,14 @@
 ﻿
-/*      .                         ,'`.       .                         
-   .                  .."    _.-;' ⁄‚ `.              .			`      
-              _.-"`.##%"_.--" ,' ⁄`     `.           "#"     ___,,od000
-           ,'"-_ _.-.--"\   ,'            `-_       '%#%',,/00000000000
-         ,'     |_.'     )`/-     __..--""`-_`-._    J L/00000000000000
+/*      .                         ,'`.       .
+   .                  .."    _.-;' ⁄‚ `.              .			`
+			  _.-"`.##%"_.--" ,' ⁄`     `.           "#"     ___,,od000
+		   ,'"-_ _.-.--"\   ,'            `-_       '%#%',,/00000000000
+		 ,'     |_.'     )`/-     __..--""`-_`-._    J L/00000000000000
  . +   ,'   _.-"        / /   _-""           `-._`-_/___\///0000   000M
-     .'_.-""      '    :_/_.-'                 _,`-/__V__\0000    00MMM
+	 .'_.-""      '    :_/_.-'                 _,`-/__V__\0000    00MMM
  . _-""                         .        '   _,/000\  |  /000    0MMMMM
 _-"   .       '     .              .        ,/   000\ | /000000000MMMMM
-       `       Shooter Library       '     ,/     000\|/000000000MMMMMM
+	   `       Shooter Library       '     ,/     000\|/000000000MMMMMM
 .       © 2017 - Shuriken Studios LLC     ,/0    00000|0000000000MMMMMM */
 
 #pragma once
@@ -31,7 +31,7 @@ namespace ShooterLibrary
 		virtual void Update(const GameTime *pGameTime);
 
 		/** @brief Called when the game determines it is time to draw a frame.
-			@param pGameTime Timing values including time since last update. */
+			@param pSpriteBatch The game's sprite batch, used for rendering. */
 		virtual void Draw(SpriteBatch *pSpriteBatch) = 0;
 
 		/** @brief Hits the object, dealing damage to it.
@@ -80,10 +80,14 @@ namespace ShooterLibrary
 			@param hitPoints The desired hit point maximum. */
 		virtual void SetMaxHitPoints(const float hitPoints) { m_maxHitPoints = hitPoints; }
 
+		/** @brief Fires the ship's weapons.
+			@param type The type mask for weapons that should be fired. */
 		virtual void FireWeapons(TriggerType type = TRIGGERTYPE_ALL);
 
+		/** @brief Gets the weapon at the specified index.
+			@param index The index of the desired weapon.
+			@return Returns a pointer to the specified weapon. */
 		virtual Weapon *GetWeapon(const int index) { return m_weapons[index]; }
-
 
 
 	private:
@@ -91,7 +95,6 @@ namespace ShooterLibrary
 		float m_speed;
 
 		float m_hitPoints;
-
 		float m_maxHitPoints;
 
 		bool m_isInvulnurable;

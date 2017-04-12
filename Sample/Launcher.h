@@ -15,13 +15,16 @@ using namespace ShooterLibrary;
 
 namespace Sample
 {
+	/** @brief Class for a missile launcher. */
 	class Launcher : public Gun<Missile>
 	{
 	public:
 
-		Launcher(bool isActive) : Gun<Missile>(isActive)
+		/** @brief Instantiates a new missile launcher object.
+			@param isActive Specifies if the weapon is active. */
+		Launcher(const bool isActive) : Gun<Missile>(isActive)
 		{
-			SetFireType(TriggerType::TRIGGERTYPE_SECONDARY);
+			SetTriggerType(TriggerType::TRIGGERTYPE_SECONDARY);
 			SetCooldownSeconds(1.25f);
 		}
 

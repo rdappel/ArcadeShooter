@@ -13,6 +13,8 @@
 
 namespace Sample
 {
+
+	/** @brief Class for sample game. */
 	class Game : public ShooterLibrary::Game
 	{
 
@@ -32,7 +34,7 @@ namespace Sample
 
 	private:
 
-		virtual void LoadStaticResources();
+		virtual void LoadStaticResources(ResourceManager *pResourceManager);
 
 	};
 }

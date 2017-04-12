@@ -21,7 +21,7 @@ namespace KatanaEngine
 
 	public:
 
-		/** @brief Instantiates a new Point object.
+		/** @brief Instantiates a new point object.
 			@param x The X component
 			@param y The Y component */
 		Point(const int x = 0, const int y = 0);

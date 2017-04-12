@@ -22,7 +22,12 @@ namespace KatanaEngine
 
 		virtual ~RotatingParticle() { }
 
-		virtual void SetRotationVelocity(float rotationVelocity) { m_rotationVelocity = rotationVelocity; }
+		/** @brief Sets the particle's rotational velocity.
+			@param velocity The rotational velocity value. */
+		virtual void SetRotationVelocity(const float velocity) { m_rotationVelocity = velocity; }
+
+		/** @brief Gets the rotational velocity of the particle.
+			@return Returns the particle's rotational velocity.  */
 		virtual float GetRotationVelocity() const { return m_rotationVelocity; }
 
 

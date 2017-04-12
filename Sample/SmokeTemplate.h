@@ -13,13 +13,13 @@
 
 namespace Sample
 {
+
+	/** @brief Template for smoke particles. */
 	template <typename T>
 	class SmokeTemplate : public ParticleTemplate
 	{
 
 	public:
-
-		int frames;
 
 		SmokeTemplate()
 		{
@@ -29,6 +29,9 @@ namespace Sample
 
 		virtual ~SmokeTemplate() { }
 
+
+		/** @brief Initaializes the particle. This runs when a particle is emitted.
+			@param pParticle The particle to initialize. */
 		virtual void InitializeParticle(Particle *pParticle)
 		{
 			RotatingParticle *pT = static_cast<RotatingParticle *>(pParticle);
@@ -43,10 +46,12 @@ namespace Sample
 			pT->SetRotationVelocity(Math::GetRandomFloat() * 0.2f - 0.1f);
 
 			pT->SetPosition(pT->GetPosition() + Vector2::GetRandom(true) * 2);
-
-			frames = 0;
 		}
 
+
+		/** @brief Updates the particle.
+			@param pParticle The particle to update.
+			@param pGameTime Timing values including time since last update. */
 		virtual void UpdateParticle(Particle *pParticle, const GameTime *pGameTime)
 		{
 			RotatingParticle *pT = static_cast<RotatingParticle *>(pParticle);
@@ -62,6 +67,8 @@ namespace Sample
 			pT->SetRotation(rotation);
 		}
 
+		/** @brief Gets an inactive particle to reuse.
+			@return Returns a pointer to the inactive particle. */
 		virtual Particle *GetInactiveParticle()
 		{
 			return GetInactiveParticleOfType<T>();

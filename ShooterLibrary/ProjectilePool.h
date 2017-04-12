@@ -15,11 +15,17 @@ _-"   .       '     .              .        ,/   000\ | /000000000MMMMM
 
 namespace ShooterLibrary
 {
+
+	/** @brief Used to recycle projectiles. */
 	class ProjectilePool
 	{
 
 	public:
 
+		/** @brief Instantiate a projectile pool object.
+			@param pLevel A pointer to the current level.
+			@param expands Allows the pool to dynamically create
+			projectiles when it's empty. */
 		ProjectilePool(Level *pLevel, bool expands = true)
 		{
 			m_pLevel = pLevel;
@@ -28,22 +34,14 @@ namespace ShooterLibrary
 
 		virtual ~ProjectilePool() { }
 
+
+		/** @brief Add a projectile to the pool.
+			@param pProjectile The projectile to add. */
 		void Add(Projectile *pProjectile);
 
-		/*template <typename T>
-		void Fill(int count)
-		{
-			if (m_projectiles.size() == 0)
-			{
-				for (int i = 0; i < count; i++)
-				{
-					T *pT = new T();
-					m_pLevel->AddGameObject(pT);
-					m_projectiles.push_back(pT);
-				}
-			}
-		}*/
 
+		/** @brief Get the next available projectile.
+			@return Returns a pointer to the projectile. */
 		template <typename T>
 		Projectile *GetInactiveProjectile()
 		{

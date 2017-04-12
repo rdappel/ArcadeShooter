@@ -25,20 +25,20 @@ namespace KatanaEngine
 		Emitter(ParticleManager *pManager);
 
 		/** @brief Instantiate a particle emitter object.
-		@param pManager A pointer to the particle manager that will manage emitted particles.
-		@param pTemplate A pointer to the template that the particles will use to update and
-		for initialization.
+			@param pManager A pointer to the particle manager that will manage emitted particles.
+			@param pTemplate A pointer to the template that the particles will use to update and
+			for initialization.
 
-		@overload */
+			@overload */
 		Emitter(ParticleManager *pManager, ParticleTemplate *pTemplate);
 
 		/** @brief Instantiate a particle emitter object.
-		@param pManager A pointer to the particle manager that will manage emitted particles.
-		@param pTemplate A pointer to the template that the particles will use to update and
-		for initialization.
-		@param particlesPerSecond The number of particles that will be emitted per second.
+			@param pManager A pointer to the particle manager that will manage emitted particles.
+			@param pTemplate A pointer to the template that the particles will use to update and
+			for initialization.
+			@param particlesPerSecond The number of particles that will be emitted per second.
 
-		@overload */
+			@overload */
 		Emitter(ParticleManager *pManager, ParticleTemplate *pTemplate, const int particlesPerSecond);
 
 		virtual ~Emitter() { }
@@ -67,7 +67,7 @@ namespace KatanaEngine
 
 		/** @brief Sets the number of particles that will be emitted per second, when the output
 			is set to one.
-			@param particleCount The number of particles per second to emit.
+			@param particlesPerSecond The number of particles per second to emit.
 			@see SetOutput() */
 		virtual void SetParticlesPerSecond(float particlesPerSecond) { m_particlesPerSecond = particlesPerSecond; }
 

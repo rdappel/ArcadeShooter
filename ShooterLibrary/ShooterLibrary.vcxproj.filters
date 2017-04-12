@@ -102,6 +102,9 @@
     <ClInclude Include="CollisionType.h">
       <Filter>Source Files\Collision</Filter>
     </ClInclude>
+    <ClInclude Include="Background.h">
+      <Filter>Source Files\Core</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config">

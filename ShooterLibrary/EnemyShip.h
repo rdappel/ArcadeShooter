@@ -31,7 +31,7 @@ namespace ShooterLibrary
 		virtual void Update(const GameTime *pGameTime);
 
 		/** @brief Called when the game determines it is time to draw a frame.
-			@param pGameTime Timing values including time since last update. */
+			@param pSpriteBatch The game's sprite batch, used for rendering. */
 		virtual void Draw(SpriteBatch *pSpriteBatch) = 0;
 
 		/** @brief Initializes the enemy at the beginning of the level.

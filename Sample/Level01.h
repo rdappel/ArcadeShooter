@@ -13,6 +13,8 @@
 
 namespace Sample
 {
+
+	/** @brief Class for level 1. */
 	class Level01 : public Level
 	{
 

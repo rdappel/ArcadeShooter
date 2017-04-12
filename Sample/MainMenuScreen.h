@@ -13,6 +13,8 @@
 
 namespace Sample
 {
+
+	/** @brief The main menu for the sample game. */
 	class MainMenuScreen : public MenuScreen
 	{
 
@@ -26,9 +28,14 @@ namespace Sample
 			and managing game resources. */
 		virtual void LoadContent(ResourceManager *pResourceManager);
 
+		/** @brief Called when the game has determined that screen logic needs to be processed.
+			@param pGameTime Timing values including time since last update. */
 		virtual void Update(const GameTime *pGameTime);
 
+		/** @brief Called when the game determines it is time to draw a frame.
+			@param pSpriteBatch The game's sprite batch, used for rendering. */
 		virtual void Draw(SpriteBatch *pSpriteBatch);
+
 
 	private:
 
@@ -40,5 +47,6 @@ namespace Sample
 		Texture *m_pTexture;
 
 		Vector2 m_position;
+
 	};
 }

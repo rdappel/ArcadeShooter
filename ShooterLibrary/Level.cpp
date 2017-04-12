@@ -28,8 +28,11 @@ namespace ShooterLibrary
 
 		m_pSectors = new std::vector<GameObject *>[m_totalSectorCount];
 
+		m_pBackground = nullptr;
+
 		GameObject::SetCurrentLevel(this);
 	}
+
 
 	Level::~Level()
 	{
@@ -44,23 +47,35 @@ namespace ShooterLibrary
 		for (; it != m_pProjectilePools.end(); it++) delete *it;
 	}
 
+
 	void Level::LoadContent(ResourceManager *pResourceManager)
 	{
 		InitializeCollisionManager();
 
 		AddGameObject(GetPlayerShip());
 		
+		if (m_pBackground) m_pBackground->LoadContent(pResourceManager);
 
 		//al_init_primitives_addon();
 	}
+
+
+	void Level::UnloadContent()
+	{
+		if (m_pBackground) m_pBackground->UnloadContent();
+	}
+
 
 	void Level::HandleInput(const InputState *pInput)
 	{
 		GetPlayerShip()->HandleInput(pInput);
 	}
 
+
 	void Level::Update(const GameTime *pGameTime)
 	{
+		if (m_pBackground) m_pBackground->Update(pGameTime);
+
 		for (unsigned int i = 0; i < m_totalSectorCount; i++)
 		{
 			m_pSectors[i].clear();
@@ -85,7 +100,6 @@ namespace ShooterLibrary
 			}
 		}
 	}
-
 
 
 	void Level::CheckCollisions(std::vector<GameObject *> &gameObjects)
@@ -116,6 +130,8 @@ namespace ShooterLibrary
 
 	void Level::Draw(SpriteBatch *pSpriteBatch)
 	{
+		if (m_pBackground) m_pBackground->Draw(pSpriteBatch);
+
 		//al_set_blender(ALLEGRO_ADD, ALLEGRO_ONE, ALLEGRO_INVERSE_ALPHA);
 		//if (m_pBackground) m_pBackground->Draw(pGameTime);
 

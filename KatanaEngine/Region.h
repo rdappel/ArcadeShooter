@@ -91,17 +91,19 @@ namespace KatanaEngine
 		Point GetTopLeft() { return Point(GetLeft(), GetTop()); }
 
 		/** @brief The top right corner of the region.
-		@return Returns the top right corner. */
+			@return Returns the top right corner. */
 		Point GetTopRight() { return Point(GetRight(), GetTop()); }
 
 		/** @brief The bottom left corner of the region.
-		@return Returns the bottom left corner. */
+			@return Returns the bottom left corner. */
 		Point GetBottomLeft() { return Point(GetLeft(), GetBottom()); }
 
 		/** @brief The bottom right corner of the region.
-		@return Returns the bottom right corner. */
+			@return Returns the bottom right corner. */
 		Point GetBottomRight() { return Point(GetRight(), GetBottom()); }
 
+		/** @brief The center position of the region.
+			@return Returns the center position. */
 		Vector2 GetCenter() { return GetTopLeft().ToVector2() + (Vector2(Width, Height) / 2); }
 
 

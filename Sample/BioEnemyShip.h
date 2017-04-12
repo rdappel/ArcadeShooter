@@ -13,6 +13,8 @@
 
 namespace Sample
 {
+
+	/** @brief Class for bio enemies. */
 	class BioEnemyShip : public ShooterLibrary::EnemyShip
 	{
 
@@ -21,14 +23,20 @@ namespace Sample
 		BioEnemyShip();
 		virtual ~BioEnemyShip() { }
 
+		/** @brief Sets the texture of the bio enemies.
+			@param pTexture A pointer to the texture resource. */
 		static void SetTexture(Texture *pTexture) { s_pTexture = pTexture; }
 
+		/** @brief Called when the game determines it is time to draw a frame.
+			@param pGameTime Timing values including time since last update. */
 		virtual void Update(const GameTime *pGameTime);
 
 		/** @brief Called when the game determines it is time to draw a frame.
 			@param pSpriteBatch The game's sprite batch, used for rendering. */
 		virtual void Draw(SpriteBatch *pSpriteBatch);
 
+		/** @brief Hits the object, dealing damage to it.
+			@param damage The amount of damage to inflict. */
 		virtual void Hit(const float damage);
 
 

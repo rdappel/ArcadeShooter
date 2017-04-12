@@ -15,6 +15,7 @@ namespace Sample
 {
 	class Level;
 
+	/** @brief Class for player ships. */
 	class PlayerShip : public ShooterLibrary::PlayerShip
 	{
 
@@ -23,14 +24,25 @@ namespace Sample
 		PlayerShip();
 		virtual ~PlayerShip() { }
 
+		/** @brief Called when the game has determined that game logic needs to be processed.
+			@param pGameTime Timing values including time since last update. */
 		virtual void Update(const GameTime *pGameTime);
 
+		/** @brief Called when the game determines it is time to draw a frame.
+			@param pSpriteBatch The game's sprite batch, used for rendering. */
 		virtual void Draw(SpriteBatch *pSpriteBatch);
 
+		/** @brief Sets the current level.
+			@param pLevel The current level. */
 		virtual void SetLevel(Level *pLevel) { m_pLevel = pLevel; }
 
+		/** @brief Sets the animation for the ships thruster.
+			@param pAnimation The thruster animation. */
 		virtual void SetThrusterAnimation(Animation *pAnimation) { m_pThrusterAnimation = pAnimation; }
 
+		/** @brief Powers up the ship.
+			@todo This is just a test to see that gaining a power up does something. This
+			will eventually be replaced when specific power up types are created. */
 		virtual void PowerUp()
 		{
 			if (!GetWeapon(1)->IsActive()) GetWeapon(1)->Activate();

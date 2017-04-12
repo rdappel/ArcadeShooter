@@ -25,7 +25,6 @@
           `       Shooter Library       '     ,/     000\|/000000000MMMMMM
    .       © 2017 - Shuriken Studios LLC     ,/0    00000|0000000000MMMMMM
   
-  Game.cpp
   Ship.cpp
   ProjectilePool.cpp
   Projectile.cpp
@@ -33,6 +32,7 @@
   Level.cpp
   GameplayScreen.cpp
   GameObject.cpp
+  Game.cpp
   EnemyShip.cpp
   CollisionManager.cpp
   Generating Code...

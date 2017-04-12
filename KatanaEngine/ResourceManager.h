@@ -47,10 +47,10 @@ namespace KatanaEngine
 		/** @brief Load and manage a resource.
 			@param path The path to the resource.
 			@param cache Sets whether the resource manager will manage the resource.
-			@param appendContentPath Usually a game's content is kept in a single folder which is
-			set by calling SetContentPath. This allows you to use shorter paths when loading assets.
-			ocasionally a resource is outside of this folder and not using the content path is more
-			convenient. */
+			@param appendContentPath Allows the use of shorter paths when loading assets.
+			@remark	Usually a game's content is kept in a single folder which is set by calling
+			SetContentPath. This allows you to use shorter paths when loading assets. Occasionally
+			a resource is outside of this folder and not using the content path is more convenient. */
 		template <typename T>
 		T *Load(const std::string &path, const bool cache = true, const bool appendContentPath = true)
 		{

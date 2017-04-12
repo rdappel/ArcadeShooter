@@ -14,6 +14,7 @@
 namespace Sample
 {
 
+	/** @brief Class for missiles. */
 	class Missile : public ShooterLibrary::Projectile
 	{
 
@@ -22,6 +23,8 @@ namespace Sample
 		Missile();
 		virtual ~Missile() { }
 
+		/** @brief Sets the animation for the missile.
+			@param pAnimation The animation to set for the missile. */
 		virtual void SetAnimation(Animation *pAnimation) { m_pAnimation = pAnimation; }
 
 		/** @brief Called when the game determines it is time to draw a frame.
@@ -29,7 +32,7 @@ namespace Sample
 		virtual void Update(const GameTime *pGameTime);
 
 		/** @brief Called when the game determines it is time to draw a frame.
-			@param pGameTime Timing values including time since last update. */
+			@param pSpriteBatch The game's sprite batch, used for rendering. */
 		virtual void Draw(SpriteBatch *pSpriteBatch);
 
 		/** @brief Activates the missile.
@@ -45,21 +48,30 @@ namespace Sample
 			@return Returns a string displaying the type of object. */
 		virtual std::string ToString() const { return "Missile"; }
 
-		//virtual void LoadContent(ResourceManager *pResourceManagerResourceManager *pResourceManager);
-
 
 	protected:
 
+		/** @brief Sets the turn speed of the missile.
+			@param turnSpeed The degrees in radians that the missile can turn in one second. */
 		void SetTurnSpeed(const float turnSpeed) { m_turnSpeed = Math::Abs(turnSpeed); }
 
+		/** @brief Sets the  target range of the missile.
+			@param range The range which the missile can seek enemy targets. */
 		void SetRange(const float range) { m_range = range; }
 
+		/** @brief Sets the current angle of the missile.
+			@param angle The missiles angle in radians. */
 		void SetAngle(const float angle) { m_angle = angle; }
 
+		/** @brief Sets the missile's target.
+			@param pTarget The missiles target, pass nullptr to unset the target. */
 		void SetTarget(GameObject *pTarget = nullptr) { m_pTarget = pTarget; }
 
+		/** @brief Resets the timer for when the missile should reaquire a target. */
 		void ResetTargetingDelay() { m_targetingDelayFrames = Math::GetRandomInt(8, 9); }
 
+		/** @brief Gets the missile's target object.
+			@return Returns a pointer to the target object. */
 		GameObject *GetTarget() const { return m_pTarget; }
 
 

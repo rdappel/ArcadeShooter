@@ -28,24 +28,53 @@ namespace KatanaEngine
 		Particle();
 		virtual ~Particle() { }
 
+		/** @brief A value representing the percentage of the particle's lifespan.
+			@return Returns the interpolated lifespan value. */
 		virtual float GetInterpolationValue();
 
-		virtual void SetLifespan(const float lifespan) { m_lifespan = lifespan; }
 
+		/** @brief Sets the lifespan of the particle in seconds.
+			@param seconds The time in seconds that the particle will live. */
+		virtual void SetLifespan(const float seconds) { m_lifespan = seconds; }
+
+		/** @brief Sets template responsible for updating the particle.
+			@param pTemplate The template that updates and initializes the particle. */
 		virtual void SetTemplate(ParticleTemplate *pTemplate) { m_pTemplate = pTemplate; }
 
+		/** @brief Sets the particle's position.
+			@param position The particle's new position. */
 		virtual void SetPosition(const Vector2 position) { m_position = position; }
+
+		/** @brief Gets the position of the particle.
+			@return Returns the particle's position.  */
 		virtual Vector2 &GetPosition() { return m_position; }
 
+		/** @brief Sets the particle's alpha value (opacity).
+			@param alpha The alpha value. */
 		virtual void SetAlpha(const float alpha) { m_alpha = alpha; }
+
+		/** @brief Gets the alpha value (opacity) of the particle.
+			@return Returns the particle's alpha value.  */
 		virtual float GetAlpha() const { return m_alpha; }
 
+		/** @brief Sets the particle's scale.
+			@param scale The scale value. */
 		virtual void SetScale(const Vector2 scale) { m_scale = scale; }
+
+		/** @brief Gets the scale of the particle.
+			@return Returns the particle's scale.  */
 		virtual Vector2 GetScale() const { return m_scale; }
 
+		/** @brief Sets the particle's rotation.
+			@param rotation The rotation value. */
 		virtual void SetRotation(const float rotation) { m_rotation = rotation; }
+
+		/** @brief Gets the rotation of the particle.
+			@return Returns the particle's rotation.  */
 		virtual float GetRotation() const { return m_rotation; }
 
+		/** @brief Gets the index of the particle.
+			@return Returns the particle's index.  */
 		virtual uint32_t GetIndex() const { return m_index; }
 
 

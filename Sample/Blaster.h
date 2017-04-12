@@ -15,12 +15,15 @@ using namespace ShooterLibrary;
 
 namespace Sample
 {
+	/** @brief Class for a blaster. */
 	class Blaster : public Gun<Projectile>
 	{
 
 	public:
 
-		Blaster(bool isActive) : Gun<Projectile>(isActive) { }
+		/** @brief Instantiates a new blaster object.
+			@param isActive Specifies if the weapon is active. */
+		Blaster(const bool isActive) : Gun<Projectile>(isActive) { }
 
 		virtual ~Blaster() { }
 

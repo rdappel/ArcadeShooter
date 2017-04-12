@@ -32,4 +32,5 @@
 #include "CollisionManager.h"
 #include "Game.h"
 #include "GameplayScreen.h"
+#include "Background.h"
 #include "Level.h"

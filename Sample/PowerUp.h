@@ -13,6 +13,8 @@
 
 namespace Sample
 {
+
+	/** @brief Class for power ups. */
 	class PowerUp : public ShooterLibrary::GameObject
 	{
 
@@ -21,17 +23,36 @@ namespace Sample
 		PowerUp();
 		virtual ~PowerUp() { }
 
+		/** @brief Sets the texture of the power up.
+			@param pTexture A pointer to the texture resource. */
 		static void SetTexture(Texture *pTexture) { s_pTexture = pTexture; }
+
+		/** @brief Sets the glow texture of the power up.
+			@param pTexture A pointer to the texture resource. */
 		static void SetGlowTexture(Texture *pTexture) { s_pGlowTexture = pTexture; }
 
+		/** @brief Called when the game has determined that game logic needs
+			to be processed.
+			@param pGameTime Timing values including time since last update. */
 		virtual void Update(const GameTime *pGameTime);
 
+		/** @brief Called when the game determines it is time to draw a frame.
+			@param pSpriteBatch The game's sprite batch, used for rendering. */
 		virtual void Draw(SpriteBatch *pSpriteBatch);
 
+		/** @brief Activates the power up.
+			@param position The position to place the power up.
+			@param pLevel The level that contains the power up. */
 		virtual void Activate(const Vector2 position, Level *pLevel);
 
+		/** @brief Gets the collision type mask.
+			@return Returns bit-mask value for the collision type.
+			@see CollisionTypes
+			@see CollisionManager */
 		virtual uint32_t GetCollisionType() const { return COLLISIONTYPE_POWERUP; }
 
+		/** @brief Gets a string representation of the power up.
+			@return Returns a string displaying the type of object. */
 		virtual std::string ToString() const { return "Power Up"; }
 
 

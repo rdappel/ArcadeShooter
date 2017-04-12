@@ -25,18 +25,16 @@ namespace Sample
 
 	void Game::LoadContent(ResourceManager *pResourceManager)
 	{
-		LoadStaticResources();
+		LoadStaticResources(pResourceManager);
 
 		GetScreenManager()->AddScreen(new MainMenuScreen());
 	}
 
-	void Game::LoadStaticResources()
+	void Game::LoadStaticResources(ResourceManager *pResourceManager)
 	{
-		ResourceManager *pRes = GetResourceManager();
+		Projectile::SetTexture(pResourceManager->Load<Texture>("Textures\\Bullet_02.png"));
 
-		Projectile::SetTexture(pRes->Load<Texture>("Textures\\Bullet_02.png"));
-
-		Animation *pAnimation = pRes->Load<Animation>("Animations\\Missile_01.anim");
-		pAnimation->SetTexture(pRes->Load<Texture>("Textures\\Missile_01.png"));
+		Animation *pAnimation = pResourceManager->Load<Animation>("Animations\\Missile_01.anim");
+		pAnimation->SetTexture(pResourceManager->Load<Texture>("Textures\\Missile_01.png"));
 	}
 }

@@ -15,7 +15,11 @@ using namespace ShooterLibrary;
 
 namespace Sample
 {
-	// Collision Callbacks
+
+	/** @brief Callback function for when a player projectile hits
+		an enemy.
+		@param pObject1 The first game object in the collision. 
+		@param pObject2 The second game object in the collision. */
 	void PlayerShootsEnemy(GameObject *pObject1, GameObject *pObject2)
 	{
 		bool m = pObject1->HasMask(COLLISIONTYPE_ENEMY);
@@ -25,6 +29,9 @@ namespace Sample
 		pPlayerProjectile->Deactivate();
 	}
 
+	/** @brief Callback function for when a player collects a power up.
+		@param pObject1 The first game object in the collision.
+		@param pObject2 The second game object in the collision. */
 	void PlayerCollectsPowerUp(GameObject *pObject1, GameObject *pObject2)
 	{
 		bool m = pObject1->HasMask(COLLISIONTYPE_POWERUP);
@@ -34,6 +41,9 @@ namespace Sample
 		pPlayerShip->PowerUp();
 	}
 
+	/** @brief Callback function for when a player collides with an enemy.
+		@param pObject1 The first game object in the collision.
+		@param pObject2 The second game object in the collision. */
 	void PlayerCollidesWithEnemy(GameObject *pObject1, GameObject *pObject2)
 	{
 		bool m = pObject1->HasMask(COLLISIONTYPE_PLAYER);

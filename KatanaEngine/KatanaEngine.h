@@ -70,9 +70,9 @@
 /* Particle Management */
 #include "Particle.h"
 #include "RotatingParticle.h"
+#include "Emitter.h"
 #include "ParticleTemplate.h"
 #include "ParticleManager.h"
-#include "Emitter.h"
 
 
 /* Screen Management */

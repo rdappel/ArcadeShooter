@@ -13,7 +13,10 @@
 
 namespace Sample
 {
-	// Removal Callback Function
+
+	/** @brief Callback function for when the gameplay screen is
+		removed from the screen manager.
+		@param pScreen The screen that is about to be removed. */
 	void GameplayScreenRemove(Screen *pScreen)
 	{
 		pScreen->GetScreenManager()->AddScreen(new MainMenuScreen());

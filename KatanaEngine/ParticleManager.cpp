@@ -18,10 +18,12 @@ namespace KatanaEngine
 		m_pGame = pGame;
 	}
 
+
 	ResourceManager *ParticleManager::GetResourceManager() const
 	{
 		return GetGame()->GetResourceManager();
 	}
+
 
 	void ParticleManager::Update(const GameTime *pGameTime)
 	{
@@ -39,6 +41,7 @@ namespace KatanaEngine
 			}
 		}
 	}
+
 
 	void ParticleManager::Draw(SpriteBatch *pSpriteBatch)
 	{

@@ -34,7 +34,7 @@ namespace KatanaEngine
 		virtual void Draw(SpriteBatch *pSpriteBatch);
 
 		/** @brief Add a particle to be managed.
-			@param pScreen A pointer to the particle to be managed. */
+			@param pParticle A pointer to the particle to be managed. */
 		virtual void AddParticle(Particle *pParticle) { m_particles.push_back(pParticle); }
 
 		/** @brief Gets a pointer to the Game.

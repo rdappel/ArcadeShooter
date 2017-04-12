@@ -23,6 +23,7 @@ namespace Sample
 		SetRange(200);
 	}
 
+
 	void Missile::Update(const GameTime *pGameTime)
 	{
 		if (IsActive())
@@ -73,6 +74,7 @@ namespace Sample
 		}
 	}
 
+
 	void Missile::Draw(SpriteBatch *pSpriteBatch)
 	{
 		if (m_pAnimation)
@@ -81,6 +83,7 @@ namespace Sample
 			pSpriteBatch->Draw(m_pAnimation, GetPosition(), Color::White, center, Vector2::One * 0.75f, m_angle);
 		}
 	}
+
 
 	void Missile::Activate(const Vector2 &position, bool wasShotByPlayer)
 	{

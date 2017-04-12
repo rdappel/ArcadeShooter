@@ -20,19 +20,24 @@
 namespace GuardianFinalZero
 {
 
-	// Removal Callback Function
+	/** @brief Callback function for when the main menu is removed from
+		the screen manager.
+		@param pScreen The screen that is about to be removed. */
 	void MainMenuScreenRemove(Screen *pScreen)
 	{
 		pScreen->GetScreenManager()->AddScreen(new GameplayScreen(1));
 	}
 
-	// MenuItem Callback Functions
+	/** @brief Callback function for start item is selected.
+		@param pMenuScreen The menu screen that contains the menu item. */
 	void StartSelect(MenuScreen *pMenuScreen)
 	{
 		pMenuScreen->SetRemoveCallback(MainMenuScreenRemove);
 		pMenuScreen->Exit();
 	}
 
+	/** @brief Callback function for exit item is selected.
+		@param pMenuScreen The menu screen that contains the menu item. */
 	void ExitSelect(MenuScreen *pMenuScreen)
 	{
 		pMenuScreen->Exit();
@@ -59,6 +64,7 @@ namespace GuardianFinalZero
 		//SetUseRenderTarget();
 		Show();
 	}
+
 
 	void MainMenuScreen::LoadContent(ResourceManager *pResourceManager)
 	{
@@ -93,6 +99,7 @@ namespace GuardianFinalZero
 
 		Screen::LoadContent(pResourceManager);
 	}
+
 
 	void MainMenuScreen::Update(const GameTime *pGameTime)
 	{
@@ -135,6 +142,7 @@ namespace GuardianFinalZero
 
 		MenuScreen::Update(pGameTime);
 	}
+
 
 	void MainMenuScreen::Draw(SpriteBatch *pSpriteBatch)
 	{

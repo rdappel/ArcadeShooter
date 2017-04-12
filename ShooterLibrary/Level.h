@@ -33,7 +33,7 @@ namespace ShooterLibrary
 
 		/** @brief Called when resources need to be unloaded. Override this
 			method to unload any game-specific resources. */
-		virtual void UnloadContent() { }
+		virtual void UnloadContent();
 
 		/** @brief Called when the game has determined that player input
 			needs to be processed.
@@ -126,9 +126,11 @@ namespace ShooterLibrary
 		GameplayScreen *GetGameplayScreen() const { return m_pGameplayScreen; }
 		
 		/** @brief Gets the ParticleManager for loading the level's resources.
-		@return Returns a pointer to the ResourceManager. */
+			@return Returns a pointer to the ResourceManager. */
 		ParticleManager *GetParticleManager() const { return m_pGameplayScreen->GetParticleManager(); }
 
+		/** @brief Adds a pool of projectiles to the level.
+			@param pProjectilePool The pool to add. */
 		void AddProjectilePool(ProjectilePool *pProjectilePool) { m_pProjectilePools.push_back(pProjectilePool); }
 
 
@@ -152,6 +154,10 @@ namespace ShooterLibrary
 		ALLEGRO_SAMPLE *m_pSample;
 		ALLEGRO_SAMPLE_ID m_sampleID;
 
+		std::vector<ProjectilePool *> m_pProjectilePools;
+		
+		Background *m_pBackground;
+
 		void CheckCollisions(std::vector<GameObject *> &sector);
 
 		virtual Vector2 GetSectorCount() const { return m_sectorCount; }
@@ -161,8 +167,6 @@ namespace ShooterLibrary
 		virtual unsigned int GetTotalSectorCount() const { return m_totalSectorCount; }
 
 		virtual std::vector<GameObject *> *GetSectors() { return m_pSectors; }
-
-		std::vector<ProjectilePool *> m_pProjectilePools;
 		
 	};
 }

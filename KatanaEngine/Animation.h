@@ -41,7 +41,7 @@ namespace KatanaEngine
 
 		/** @brief Used to create a clone of the animation.
 			@return Returns a clone of the animation. */
-		virtual Resource *Animation::Clone();
+		virtual Resource *Clone();
 
 		/** @brief Gets a pointer to the current frame.
 			@return Returns a Region that defines the size and position of the current frame. */

@@ -139,7 +139,9 @@ namespace ShooterLibrary
 			@overload */
 		virtual void TranslatePosition(const Vector2 &offset);
 
-
+		/** @brief Determines if the game object is on the screen.
+			@return Returns true if the game object is on the screen,
+			false otherwise. */
 		virtual bool IsOnScreen() const;
 
 

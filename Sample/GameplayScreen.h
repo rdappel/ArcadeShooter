@@ -13,6 +13,8 @@
 
 namespace Sample
 {
+
+	/** @brief The gameplay screen for the sample game. */
 	class GameplayScreen : public ShooterLibrary::GameplayScreen
 	{
 
@@ -21,11 +23,6 @@ namespace Sample
 		GameplayScreen();
 
 		virtual ~GameplayScreen() { }
-
-		virtual void Update(const GameTime *pGameTime)
-		{
-			ShooterLibrary::GameplayScreen::Update(pGameTime);
-		}
 
 	};
 }

@@ -14,19 +14,24 @@
 namespace Sample
 {
 
-	// Removal Callback Function
+	/** @brief Callback function for when the main menu is removed from
+		the screen manager.
+		@param pScreen The screen that is about to be removed. */
 	void MainMenuScreenRemove(Screen *pScreen)
 	{
 		pScreen->GetScreenManager()->AddScreen(new GameplayScreen());
 	}
 
-	// MenuItem Callback Functions
+	/** @brief Callback function for start item is selected.
+		@param pMenuScreen The menu screen that contains the menu item. */
 	void StartSelect(MenuScreen *pMenuScreen)
 	{
 		pMenuScreen->SetRemoveCallback(MainMenuScreenRemove);
 		pMenuScreen->Exit();
 	}
 
+	/** @brief Callback function for exit item is selected.
+		@param pMenuScreen The menu screen that contains the menu item. */
 	void ExitSelect(MenuScreen *pMenuScreen)
 	{
 		pMenuScreen->Exit();

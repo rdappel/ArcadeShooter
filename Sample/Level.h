@@ -20,6 +20,8 @@ namespace Sample
 	class PlayerShip;
 	class PowerUp;
 	
+
+	/** @brief Base class for shooter levels. */
 	class Level : public ShooterLibrary::Level
 	{
 
@@ -33,10 +35,16 @@ namespace Sample
 			and managing game resources. */
 		virtual void LoadContent(ResourceManager *pResourceManager);
 
+		/** @brief Adds a game object to the level.
+			@param pGameObject The game object to add. */
 		virtual void AddGameObject(GameObject *pGameObject);
 
+		/** @brief Gets the player ship.
+			@return Returns a pointer to the player ship. */
 		virtual ShooterLibrary::PlayerShip *GetPlayerShip() { return m_pPlayerShip; }
 
+		/** @brief Adds a power up to the level.
+			@param position The position to place the power up. */
 		virtual void SpawnPowerUp(const Vector2 position);
 
 
