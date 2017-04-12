@@ -9,6 +9,7 @@
 
 ### About the Project
 The Arcade Shooter is currently split into the four projects described below:
+
 First Header  | Second Header
 ------------- | -------------
 Content Cell  | Content Cell
