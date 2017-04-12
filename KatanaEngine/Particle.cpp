@@ -14,8 +14,7 @@
 namespace KatanaEngine
 {
 
-	SpriteBatch *Particle::s_pSpriteBatch = nullptr;
-
+	uint32_t Particle::s_count = 0;
 
 	Particle::Particle()
 	{
@@ -24,26 +23,29 @@ namespace KatanaEngine
 		m_scale = Vector2::One;
 		m_alpha = 0;
 		m_rotation = 0;
+
+		m_index = s_count;
+		s_count++;
 	}
 
 	void Particle::Update(const GameTime *pGameTime)
 	{
+		m_lifeSeconds -= pGameTime->GetTimeElapsed();
 		if (IsActive())
 		{
-			m_lifeSeconds -= pGameTime->GetTimeElapsed();
+			m_pTemplate->UpdateParticle(this, pGameTime);
 		}
-
-		m_pTemplate->UpdateParticle(this, pGameTime);
+		
 	}
 
-	void Particle::Draw(const GameTime *pGameTime)
+	void Particle::Draw(SpriteBatch *pSpriteBatch)
 	{
 		if (IsActive())
 		{
 			Texture *pTexture = m_pTemplate->GetTexture();
 			Color color = m_color * m_alpha;
 			Vector2 center = pTexture->GetCenter();
-			s_pSpriteBatch->Draw(pTexture, m_position, color, center, m_scale, m_rotation);
+			pSpriteBatch->Draw(pTexture, m_position, color, center, m_scale, m_rotation);
 		}
 	}
 

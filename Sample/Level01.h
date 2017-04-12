@@ -21,7 +21,10 @@ namespace Sample
 		Level01();
 		virtual ~Level01() { }
 
-		virtual void LoadContent();
+		/** @brief Called when resources need to be loaded.
+			@param pResourceManager The game's resource manager, used for loading
+			and managing game resources. */
+		virtual void LoadContent(ResourceManager *pResourceManager);
 
 	};
 }

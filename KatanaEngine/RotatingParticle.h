@@ -14,6 +14,7 @@
 
 namespace KatanaEngine
 {
+	/** @brief A particle instance that rotates. */
 	class RotatingParticle : public Particle
 	{
 

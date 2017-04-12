@@ -21,7 +21,6 @@ namespace Sample
 		bool m = pObject1->HasMask(COLLISIONTYPE_ENEMY);
 		EnemyShip *pEnemyShip = static_cast<EnemyShip *>((m) ? pObject1 : pObject2);
 		Projectile *pPlayerProjectile = static_cast<Projectile *>((!m) ? pObject1 : pObject2);
-		
 		pEnemyShip->Hit(pPlayerProjectile->GetDamage());
 		pPlayerProjectile->Deactivate();
 	}
@@ -39,7 +38,7 @@ namespace Sample
 	{
 		bool m = pObject1->HasMask(COLLISIONTYPE_PLAYER);
 		PlayerShip *pPlayerShip = static_cast<PlayerShip *>((m) ? pObject1 : pObject2);
-		pPlayerShip->Hit(1000);
+		if (!pPlayerShip->IsInvulnurable()) pPlayerShip->Hit(1000);
 	}
 
 
@@ -48,18 +47,16 @@ namespace Sample
 		m_pPlayerShip = new	PlayerShip();
 	}
 
-	void Level::LoadContent()
+	void Level::LoadContent(ResourceManager *pResourceManager)
 	{
-		ResourceManager *pRes = GetResourceManager();
-
-		Texture *pTexture = pRes->Load<Texture>("Textures\\PlayerShip.png");
+		Texture *pTexture = pResourceManager->Load<Texture>("Textures\\PlayerShip.png");
 		m_pPlayerShip->SetTexture(pTexture);
 		m_pPlayerShip->SetLevel(this);
 
-		Animation *pAnimation = pRes->Load<Animation>("Animations\\Thruster.anim");
+		Animation *pAnimation = pResourceManager->Load<Animation>("Animations\\Thruster.anim");
 		if (pAnimation)
 		{
-			pAnimation->SetTexture(pRes->Load<Texture>("Textures\\Thruster_01.png"));
+			pAnimation->SetTexture(pResourceManager->Load<Texture>("Textures\\Thruster_01.png"));
 			if (pAnimation->GetTexture())
 			{
 				m_pPlayerShip->SetThrusterAnimation(pAnimation);
@@ -82,7 +79,7 @@ namespace Sample
 		m_pPlayerShip->AttachWeapon(pBlaster, Vector2::UnitY * -32);
 
 		SmokeTemplate<RotatingParticle> *pTemplate = new SmokeTemplate<RotatingParticle>();
-		pTemplate->SetTexture(pRes->Load<Texture>("Textures\\Particle.png"));
+		pTemplate->SetTexture(pResourceManager->Load<Texture>("Textures\\Particle.png"));
 
 
 		pPool = new ProjectilePool(this);
@@ -91,7 +88,7 @@ namespace Sample
 		{
 			pMissile = new Missile();
 			pMissile->SetEmitter(new Emitter(GetParticleManager(), pTemplate, 100));
-			pMissile->SetAnimation(pRes->Load<Animation>("Animations\\Missile_01.anim"));
+			pMissile->SetAnimation(pResourceManager->Load<Animation>("Animations\\Missile_01.anim"));
 			pPool->Add(pMissile);
 		}
 
@@ -104,7 +101,7 @@ namespace Sample
 		m_pPlayerShip->AttachWeapon(pLauncher, Vector2::UnitX * 22);
 
 
-		ShooterLibrary::Level::LoadContent();
+		ShooterLibrary::Level::LoadContent(pResourceManager);
 
 		CollisionManager *pC = GetCollisionManager();
 

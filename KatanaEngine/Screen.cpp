@@ -123,22 +123,10 @@ namespace KatanaEngine
 	{
 		return m_pScreenManager->GetGame();
 	}
-
-	ResourceManager *Screen::GetResourceManager() const
-	{
-		if (m_pScreenManager == nullptr) return nullptr;
-
-		return m_pScreenManager->GetResourceManager();
-	}
-
+	
 	ParticleManager *Screen::GetParticleManager() const
 	{
 		return GetGame()->GetParticleManager();
-	}
-
-	SpriteBatch *Screen::GetSpriteBatch() const
-	{
-		return GetGame()->GetSpriteBatch();
 	}
 
 	void Screen::SetPassThroughFlags(const bool draw, const bool update, const bool handleInput)

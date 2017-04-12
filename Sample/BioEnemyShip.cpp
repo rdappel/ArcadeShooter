@@ -35,11 +35,11 @@ namespace Sample
 		EnemyShip::Update(pGameTime);
 	}
 
-	void BioEnemyShip::Draw(const GameTime *pGameTime)
+	void BioEnemyShip::Draw(SpriteBatch *pSpriteBatch)
 	{
 		if (IsActive())
 		{
-			GetSpriteBatch()->Draw(s_pTexture, GetPosition(), Color::White, s_pTexture->GetCenter());
+			pSpriteBatch->Draw(s_pTexture, GetPosition(), Color::White, s_pTexture->GetCenter());
 		}
 	}
 

@@ -46,8 +46,10 @@ namespace KatanaEngine
 		virtual ~Screen() { }
 
 
-		/** @brief Called when resources need to be loaded. */
-		virtual void LoadContent() { }
+		/** @brief Called when resources need to be loaded.
+			@param pResourceManager The game's resource manager, used for loading
+			and managing game resources. */
+		virtual void LoadContent(ResourceManager *pResourceManager) { }
 
 		/** @brief Called when resources need to be unloaded. Override this method to unload
 			any screen-specific resources. */
@@ -55,15 +57,15 @@ namespace KatanaEngine
 
 		/** @brief Called when the game has determined that player input needs to be processed.
 			@param pInput The current state of all player input devices. */
-		virtual void HandleInput(InputState *pInput) { }
+		virtual void HandleInput(const InputState *pInput) { }
 
 		/** @brief Called when the game has determined that screen logic needs to be processed.
 			@param pGameTime Timing values including time since last update. */
 		virtual void Update(const GameTime *pGameTime) = 0;
 
 		/** @brief Called when the game determines it is time to draw a frame.
-			@param pGameTime Timing values including time since last update. */
-		virtual void Draw(const GameTime *pGameTime) = 0;
+			@param pSpriteBatch The game's sprite batch, used for rendering. */
+		virtual void Draw(SpriteBatch *pSpriteBatch) = 0;
 
 		/** @brief Determines if the screen is currently exiting.
 			@return Returns true if the screen is exiting, false otherwise. */
@@ -83,15 +85,7 @@ namespace KatanaEngine
 		/** @brief Gets a pointer to the Game.
 			@return A pointer to the game instance. */
 		virtual Game *GetGame() const;
-
-		/** @brief Gets a pointer to the SpriteBatch, for rendering.
-			@return A pointer to the game's SpriteBatch instance. */
-		virtual SpriteBatch *GetSpriteBatch() const;
-
-		/** @brief Gets a pointer to the ResourceManager, for loading and managing resources.
-			@return A pointer to the game's ResourceManager instance. */
-		virtual ResourceManager *GetResourceManager() const;
-
+		
 		/** @brief Gets a pointer to the ParticleManager, for creating and managing particles.
 			@return A pointer to the game's ParticleManager instance. */
 		virtual ParticleManager *GetParticleManager() const;

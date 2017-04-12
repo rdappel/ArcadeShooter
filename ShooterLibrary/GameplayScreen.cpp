@@ -28,10 +28,10 @@ namespace ShooterLibrary
 		if (m_pLevel) delete m_pLevel;
 	}
 
-	void GameplayScreen::LoadContent()
+	void GameplayScreen::LoadContent(ResourceManager *pResourceManager)
 	{
 		m_pLevel->SetGameplayScreen(this);
-		m_pLevel->LoadContent();
+		m_pLevel->LoadContent(pResourceManager);
 
 		Show();
 	}
@@ -42,7 +42,7 @@ namespace ShooterLibrary
 	}
 
 
-	void GameplayScreen::HandleInput(InputState *pInput)
+	void GameplayScreen::HandleInput(const InputState *pInput)
 	{
 		if (pInput->IsNewKeyPress(Key::ESCAPE))
 		{
@@ -79,11 +79,8 @@ namespace ShooterLibrary
 		}
 	}
 
-	void GameplayScreen::Draw(const GameTime *pGameTime)
+	void GameplayScreen::Draw(SpriteBatch *pSpriteBatch)
 	{
-		if (!this->NeedsToBeRemoved())
-		{
-			m_pLevel->Draw(pGameTime);
-		}
+		if (!this->NeedsToBeRemoved()) m_pLevel->Draw(pSpriteBatch);
 	}
 }

@@ -17,8 +17,8 @@ namespace KatanaEngine
 	class ParticleTemplate
 	{
 
-		friend void Particle::Draw(const GameTime *pGameTime);
 		friend void Particle::Update(const GameTime *pGameTime);
+		friend void Particle::Draw(SpriteBatch *pSpriteBatch);
 
 
 	public:
@@ -48,18 +48,10 @@ namespace KatanaEngine
 			for (; m_it != m_particles.end(); ++m_it)
 			{
 				bool active = (*m_it)->IsActive();
-				std::cout << active << std::endl;
-
-				if (!active)
-				{
-					return static_cast<T *>(*m_it);
-				}
+				if (!active) return static_cast<T *>(*m_it);
 			}
 
-			if (m_poolExpands)
-			{
-				return GenerateParticles<T>();
-			}
+			if (m_poolExpands) return GenerateParticles<T>();
 
 			return nullptr;
 		}

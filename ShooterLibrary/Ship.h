@@ -32,7 +32,7 @@ namespace ShooterLibrary
 
 		/** @brief Called when the game determines it is time to draw a frame.
 			@param pGameTime Timing values including time since last update. */
-		virtual void Draw(const GameTime *pGameTime) = 0;
+		virtual void Draw(SpriteBatch *pSpriteBatch) = 0;
 
 		/** @brief Hits the object, dealing damage to it.
 			@param damage The amount of damage to inflict. */

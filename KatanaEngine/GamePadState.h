@@ -134,7 +134,7 @@ namespace KatanaEngine
 		/** @brief Determines if a button is pressed down.
 			@param button The button to test.
 			@return Returns true if the button is down, false otherwise. */
-		bool IsButtonDown(Button button)
+		bool IsButtonDown(Button button) const
 		{
 			switch (button)
 			{
@@ -158,6 +158,6 @@ namespace KatanaEngine
 		/** @brief Determines if a button is up.
 			@param button The button to test.
 			@return Returns true if the button is up, false otherwise. */
-		bool IsButtonUp(Button button) { return !IsButtonDown(button); }
+		bool IsButtonUp(Button button) const { return !IsButtonDown(button); }
 	};
 }

@@ -16,7 +16,8 @@ _-"   .       '     .              .        ,/   000\ | /000000000MMMMM
 namespace ShooterLibrary
 {
 
-	/** @brief Base class for a shooter game. */
+	/** @brief Base class for a shooter game. Inherit from this class when
+		creating your own shooter game. */
 	class Game : public KatanaEngine::Game
 	{
 
@@ -26,8 +27,8 @@ namespace ShooterLibrary
 		virtual ~Game() { }
 
 		/** @brief Called when the game determines it is time to draw a frame.
-			@param pGameTime Timing values including time since last update. */
-		virtual void Draw(const GameTime *pGameTime);
+			@param pSpriteBatch The game's sprite batch, used for rendering. */
+		virtual void Draw(SpriteBatch *pSpriteBatch);
 
 	};
 }

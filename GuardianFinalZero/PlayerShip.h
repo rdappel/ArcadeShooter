@@ -32,12 +32,7 @@ namespace GuardianFinalZero
 
 		virtual void Update(const GameTime *pGameTime);
 
-		/** @brief Called when the game determines it is time to draw a frame.
-			@param pGameTime Timing values including time since last update. */
-		virtual void Draw(const GameTime *pGameTime);
-
-
-	private:
-
+		virtual void Draw(SpriteBatch *pSpriteBatch);
+		
 	};
 }

@@ -44,11 +44,11 @@ namespace ShooterLibrary
 		virtual void Update(const GameTime *pGameTime);
 
 		/** @brief Renders the game object.
-			@param pGameTime Timing values including time since last update.
+			@param pSpriteBatch The game's sprite batch, used for rendering.
 			@remark This should be called automatically by the Level, as long as the gameobject is
 			added to the Level by calling Level::AddGameObject().
 			@see Level::AddGameObject() */
-		virtual void Draw(const GameTime *pGameTime) = 0;
+		virtual void Draw(SpriteBatch *pSpriteBatch) = 0;
 
 		/** @brief Determines if the game object is active.
 			@return Returns true if the game object is active, false otherwise. */
@@ -78,7 +78,7 @@ namespace ShooterLibrary
 
 		/** @brief Gets the index of the game object.
 			@return Returns the index of the object. */
-		virtual int GetIndex() const { return m_index; }
+		virtual uint32_t GetIndex() const { return m_index; }
 
 		/** @brief Gets the collision type mask.
 			@return Returns bit-mask value for the collision type.
@@ -93,10 +93,6 @@ namespace ShooterLibrary
 		/** @brief Hits the object, dealing damage to it.
 			@param damage The amount of damage to inflict. */
 		virtual void Hit(const float damage) { }
-
-		/** @brief Sets the sprite batch for object rendering.
-			@param pSpriteBatch A pointer to the sprite batch. */
-		virtual void SetSpriteBatch(SpriteBatch *pSpriteBatch) { m_pSpriteBatch = pSpriteBatch; }
 
 		/** @brief Determines if the object contains part of a collision bit-mask.
 			@param mask The mask to test.
@@ -116,11 +112,7 @@ namespace ShooterLibrary
 		/** @brief Gets the current level.
 			@return Returns a pointer to the current level. */
 		static Level *GetCurrentLevel() { return s_pCurrentLevel; }
-
-		/** @brief Gets a pointer to the SpriteBatch, for rendering.
-			@return A pointer to the game's SpriteBatch instance. */
-		virtual SpriteBatch *GetSpriteBatch() const { return m_pSpriteBatch; }
-
+		
 		/** @brief Sets the collision radius for the object.
 			@param radius The collision radius. */
 		virtual void SetCollisionRadius(const int radius) { m_collisionRadius = radius; }
@@ -148,13 +140,16 @@ namespace ShooterLibrary
 		virtual void TranslatePosition(const Vector2 &offset);
 
 
+		virtual bool IsOnScreen() const;
+
+
 	private:
 
 		static Level *s_pCurrentLevel;
 
-		static int s_count;
+		static uint32_t s_count;
 
-		int m_index;
+		uint32_t m_index;
 
 		bool m_isActive;
 
@@ -162,8 +157,6 @@ namespace ShooterLibrary
 		Vector2 m_previousPosition;
 
 		float m_collisionRadius;
-
-		SpriteBatch *m_pSpriteBatch = nullptr;
 
 	};
 }

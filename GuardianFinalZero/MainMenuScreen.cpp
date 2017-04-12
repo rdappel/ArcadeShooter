@@ -60,7 +60,7 @@ namespace GuardianFinalZero
 		Show();
 	}
 
-	void MainMenuScreen::LoadContent()
+	void MainMenuScreen::LoadContent(ResourceManager *pResourceManager)
 	{
 		const int MENU_ITEM_COUNT = 2;
 		std::string items[MENU_ITEM_COUNT] = { "Start", /*"Options", */"Quit" };
@@ -69,7 +69,7 @@ namespace GuardianFinalZero
 		int x = Game::GetScreenWidth() / 2;
 
 		Font::SetLoadSize(24, true);
-		Font *pFont = GetResourceManager()->Load<Font>("Fonts\\Ethnocentric.ttf");
+		Font *pFont = pResourceManager->Load<Font>("Fonts\\Ethnocentric.ttf");
 
 		for (int i = 0; i < MENU_ITEM_COUNT; i++)
 		{
@@ -86,12 +86,12 @@ namespace GuardianFinalZero
 		GetMenuItem(0)->SetSelectCallback(StartSelect);
 		GetMenuItem(1)->SetSelectCallback(ExitSelect);
 
-		m_pLogoTexture = GetResourceManager()->Load<Texture>("Textures\\LogoText.png");
+		m_pLogoTexture = pResourceManager->Load<Texture>("Textures\\LogoText.png");
 
 		m_targetPosition = Game::GetScreenCenter().ToVector2() - Vector2(0, 150);
 		m_position = m_targetPosition - Vector2(0, 400);
 
-		Screen::LoadContent();
+		Screen::LoadContent(pResourceManager);
 	}
 
 	void MainMenuScreen::Update(const GameTime *pGameTime)
@@ -136,14 +136,14 @@ namespace GuardianFinalZero
 		MenuScreen::Update(pGameTime);
 	}
 
-	void MainMenuScreen::Draw(const GameTime *pGameTime)
+	void MainMenuScreen::Draw(SpriteBatch *pSpriteBatch)
 	{
 		Color color = Color::White * GetAlpha();
 
-		GetSpriteBatch()->Begin();
-		GetSpriteBatch()->Draw(m_pLogoTexture, m_position, color, m_pLogoTexture->GetCenter());
-		GetSpriteBatch()->End();
+		pSpriteBatch->Begin();
+		pSpriteBatch->Draw(m_pLogoTexture, m_position, color, m_pLogoTexture->GetCenter());
+		pSpriteBatch->End();
 
-		MenuScreen::Draw(pGameTime);
+		MenuScreen::Draw(pSpriteBatch);
 	}
 }

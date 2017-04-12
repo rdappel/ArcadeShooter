@@ -19,7 +19,7 @@ namespace ShooterLibrary
 
 	Projectile::Projectile()
 	{
-		SetSpeed(400);
+		SetSpeed(500);
 		SetDamage(1);
 		SetDirection(-Vector2::UnitY);
 		SetCollisionRadius(9);
@@ -45,11 +45,11 @@ namespace ShooterLibrary
 		GameObject::Update(pGameTime);
 	}
 
-	void Projectile::Draw(const GameTime *pGameTime)
+	void Projectile::Draw(SpriteBatch *pSpriteBatch)
 	{
 		if (s_pTexture)
 		{
-			GetSpriteBatch()->Draw(s_pTexture, GetPosition(), Color::White, s_pTexture->GetCenter());
+			pSpriteBatch->Draw(s_pTexture, GetPosition(), Color::White, s_pTexture->GetCenter());
 		}
 	}
 

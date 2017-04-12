@@ -44,16 +44,17 @@ namespace ShooterLibrary
 		for (; it != m_pProjectilePools.end(); it++) delete *it;
 	}
 
-	void Level::LoadContent()
+	void Level::LoadContent(ResourceManager *pResourceManager)
 	{
 		InitializeCollisionManager();
 
 		AddGameObject(GetPlayerShip());
+		
 
 		//al_init_primitives_addon();
 	}
 
-	void Level::HandleInput(InputState *pInput)
+	void Level::HandleInput(const InputState *pInput)
 	{
 		GetPlayerShip()->HandleInput(pInput);
 	}
@@ -113,7 +114,7 @@ namespace ShooterLibrary
 	}
 
 
-	void Level::Draw(const GameTime *pGameTime)
+	void Level::Draw(SpriteBatch *pSpriteBatch)
 	{
 		//al_set_blender(ALLEGRO_ADD, ALLEGRO_ONE, ALLEGRO_INVERSE_ALPHA);
 		//if (m_pBackground) m_pBackground->Draw(pGameTime);
@@ -135,9 +136,9 @@ namespace ShooterLibrary
 		//	}
 		//}
 
-		GetParticleManager()->Draw(pGameTime);
+		GetParticleManager()->Draw(pSpriteBatch);
 
-		GetSpriteBatch()->Begin(SpriteSortMode::BACK_TO_FRONT, BlendState::ALPHA);
+		pSpriteBatch->Begin(SpriteSortMode::BACK_TO_FRONT, BlendState::ALPHA);
 
 		m_gameObjectIt = m_gameObjects.begin();
 		for (; m_gameObjectIt != m_gameObjects.end(); m_gameObjectIt++)
@@ -145,11 +146,11 @@ namespace ShooterLibrary
 			GameObject *pGameObject = (*m_gameObjectIt);
 			if (pGameObject->IsActive())
 			{
-				pGameObject->Draw(pGameTime);
+				pGameObject->Draw(pSpriteBatch);
 			}
 		}
 
-		GetSpriteBatch()->End();
+		pSpriteBatch->End();
 
 		//// Draw explosions
 		//al_set_blender(ALLEGRO_ADD, ALLEGRO_ONE, ALLEGRO_ONE);
@@ -165,13 +166,7 @@ namespace ShooterLibrary
 
 		//al_set_blender(ALLEGRO_ADD, ALLEGRO_ALPHA, ALLEGRO_INVERSE_ALPHA);
 	}
-
-	void Level::AddGameObject(GameObject *pGameObject)
-	{
-		pGameObject->SetSpriteBatch(GetSpriteBatch());
-		m_gameObjects.push_back(pGameObject);
-	}
-
+	
 	void Level::UpdateSectorPosition(GameObject *pGameObject)
 	{
 		Vector2 position = pGameObject->GetPosition();

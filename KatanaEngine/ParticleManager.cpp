@@ -16,8 +16,6 @@ namespace KatanaEngine
 	ParticleManager::ParticleManager(Game *pGame)
 	{
 		m_pGame = pGame;
-		m_pSpriteBatch = pGame->GetSpriteBatch();
-		Particle::SetSpriteBatch(m_pSpriteBatch);
 	}
 
 	ResourceManager *ParticleManager::GetResourceManager() const
@@ -35,23 +33,21 @@ namespace KatanaEngine
 			if (pParticle->IsActive())
 			{
 				pParticle->Update(pGameTime);
-				++m_it;
-			}
-			else
-			{
-				m_it = m_particles.erase(m_it);
+
+				if (pParticle->IsActive()) ++m_it;
+				else m_it = m_particles.erase(m_it);
 			}
 		}
 	}
 
-	void ParticleManager::Draw(const GameTime *pGameTime)
+	void ParticleManager::Draw(SpriteBatch *pSpriteBatch)
 	{
-		m_pSpriteBatch->Begin(SpriteSortMode::TEXTURE, BlendState::ADDITIVE);
+		pSpriteBatch->Begin(SpriteSortMode::TEXTURE, BlendState::ADDITIVE);
 		m_it = m_particles.begin();
 		for (; m_it != m_particles.end(); ++m_it)
 		{
-			(*m_it)->Draw(pGameTime);
+			(*m_it)->Draw(pSpriteBatch);
 		}
-		m_pSpriteBatch->End();
+		pSpriteBatch->End();
 	}
 }

@@ -55,32 +55,32 @@ namespace KatanaEngine
 		/** @brief Determines if a mouse button is currently being pressed down.
 			@param button The button to test.
 			@return Returns true if the button is down, false otherwise. */
-		bool IsMouseButtonDown(MouseButton button) { return (m_currentMouseState.buttons & (int)button); }
+		bool IsMouseButtonDown(MouseButton button) const { return (m_currentMouseState.buttons & (int)button); }
 
 		/** @brief Determines if a mouse button is currently not being pressed down.
 			@param button The button to test.
 			@return Returns true if the button is up, false otherwise. */
-		bool IsMouseButtonUp(MouseButton button) { return !IsMouseButtonDown(button); }
+		bool IsMouseButtonUp(MouseButton button) const { return !IsMouseButtonDown(button); }
 
 		/** @brief Determines if a mouse button was being pressed down during the previous frame.
 			@param button The button to test.
 			@return Returns true if the button was down during the last frame, false otherwise. */
-		bool WasMouseButtonDown(MouseButton button) { return (m_previousMouseState.buttons & (int)button); }
+		bool WasMouseButtonDown(MouseButton button) const { return (m_previousMouseState.buttons & (int)button); }
 
 		/** @brief Determines if a mouse button was not being pressed down during the previous frame.
 			@param button The button to test.
 			@return Returns true if the button was up during the last frame, false otherwise. */
-		bool WasMouseButtonUp(MouseButton button) { return !WasMouseButtonDown(button); }
+		bool WasMouseButtonUp(MouseButton button) const { return !WasMouseButtonDown(button); }
 
 		/** @brief Determines if a mouse button was just pressed this frame.
 			@param button The button to test.
 			@return Returns true if the button was just pressed, false otherwise. */
-		bool IsNewMouseButtonPress(MouseButton button) { return (IsMouseButtonDown(button) && WasMouseButtonUp(button)); }
+		bool IsNewMouseButtonPress(MouseButton button) const { return (IsMouseButtonDown(button) && WasMouseButtonUp(button)); }
 		
 		/** @brief Determines if a mouse button was just released this frame.
 			@param button The button to test.
 			@return Returns true if the button was just released, false otherwise. */
-		bool IsNewMouseButtonRelease(MouseButton button) { return (WasMouseButtonDown(button) && IsMouseButtonUp(button)); }
+		bool IsNewMouseButtonRelease(MouseButton button) const { return (WasMouseButtonDown(button) && IsMouseButtonUp(button)); }
 
 
 		/** @brief Determines if a the button on an Xbox controller is up.
@@ -90,7 +90,7 @@ namespace KatanaEngine
 			is not valid, all controllers will be tested indexOut will be set to the first detected
 			index matching the condition.
 			@return Returns true if the button is up, false otherwise. */
-		bool IsButtonUp(Button button, int &indexOut, int controllingIndex = -1);
+		bool IsButtonUp(Button button, int &indexOut, int controllingIndex = -1) const;
 
 		/** @brief Determines if a the button on an Xbox controller is down.
 			@param button The button to test.
@@ -99,7 +99,7 @@ namespace KatanaEngine
 			is not valid, all controllers will be tested indexOut will be set to the first detected
 			index matching the condition.
 			@return Returns true if the button is down, false otherwise. */
-		bool IsButtonDown(Button button, int &indexOut, int controllingIndex = -1);
+		bool IsButtonDown(Button button, int &indexOut, int controllingIndex = -1) const;
 
 		/** @brief Determines if a the button on an Xbox controller was just pressed this frame.
 			@param button The button to test.
@@ -108,7 +108,7 @@ namespace KatanaEngine
 			is not valid, all controllers will be tested indexOut will be set to the first detected
 			index matching the condition.
 			@return Returns true if the button was just pressed, false otherwise. */
-		bool IsNewButtonPress(Button button, int &indexOut, int controllingIndex = -1);
+		bool IsNewButtonPress(Button button, int &indexOut, int controllingIndex = -1) const;
 
 		/** @brief Determines if a the button on an Xbox controller just released this frame.
 			@param button The button to test.
@@ -117,12 +117,12 @@ namespace KatanaEngine
 			is not valid, all controllers will be tested indexOut will be set to the first detected
 			index matching the condition.
 			@return Returns true if the button was just released, false otherwise. */
-		bool IsNewButtonRelease(Button button, int &indexOut, int controllingIndex = -1);
+		bool IsNewButtonRelease(Button button, int &indexOut, int controllingIndex = -1) const;
 
 		/** @brief Get the current state of an Xbox controller.
 			@param gamePadIndex The index of the desired game pad state.
 			@return The game pad's current state. */
-		GamePadState &GetGamePadState(const int gamePadIndex);
+		GamePadState GetGamePadState(const int gamePadIndex) const;
 
 
 	private:

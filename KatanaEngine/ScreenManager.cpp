@@ -26,7 +26,7 @@ namespace KatanaEngine
 		return GetGame()->GetResourceManager();
 	}
 
-	void ScreenManager::HandleInput(InputState *pInput)
+	void ScreenManager::HandleInput(const InputState *pInput)
 	{
 		if (m_screens.size() > 0)
 		{
@@ -100,7 +100,7 @@ namespace KatanaEngine
 		}
 	}
 
-	void ScreenManager::Draw(const GameTime *pGameTime)
+	void ScreenManager::Draw(SpriteBatch *pSpriteBatch)
 	{
 		Screen *pScreen;
 
@@ -123,7 +123,7 @@ namespace KatanaEngine
 		{
 			for (m_rit = m_screensToDraw.rbegin(); m_rit != m_screensToDraw.rend(); ++m_rit)
 			{
-				(*m_rit)->Draw(pGameTime);
+				(*m_rit)->Draw(pSpriteBatch);
 			}
 
 			m_screensToDraw.clear();
@@ -133,7 +133,7 @@ namespace KatanaEngine
 	void ScreenManager::AddScreen(Screen *pScreen)
 	{
 		pScreen->SetScreenManager(this);
-		pScreen->LoadContent();
+		pScreen->LoadContent(GetResourceManager());
 
 		m_screensToAdd.push_back(pScreen);
 	}

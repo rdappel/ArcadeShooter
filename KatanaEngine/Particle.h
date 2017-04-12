@@ -1,5 +1,5 @@
 
-/*	 ██╗  ██╗  █████╗  ████████╗  █████╗  ███╗   ██╗  █████╗ 
+/*	 ██╗  ██╗  █████╗  ████████╗  █████╗  ███╗   ██╗  █████╗
 	 ██║ ██╔╝ ██╔══██╗ ╚══██╔══╝ ██╔══██╗ ████╗  ██║ ██╔══██╗
 	 █████╔╝  ███████║    ██║    ███████║ ██╔██╗ ██║ ███████║
 	 ██╔═██╗  ██╔══██║    ██║    ██╔══██║ ██║╚██╗██║ ██╔══██║
@@ -7,7 +7,7 @@
 	 ╚═╝  ╚═╝ ╚═╝  ╚═╝/\  ╚═╝    ╚═╝  ╚═╝ ╚═╝  ╚═══╝ ╚═╝  ╚═╝
    /vvvvvvvvvvvvvvvvvvv \=========================================,
    `^^^^^^^^^^^^^^^^^^^ /---------------------------------------"
-        Katana Engine \/ © 2012 - Shuriken Studios LLC              */
+		Katana Engine \/ © 2012 - Shuriken Studios LLC              */
 
 #pragma once
 
@@ -27,7 +27,7 @@ namespace KatanaEngine
 
 		Particle();
 		virtual ~Particle() { }
-		
+
 		virtual float GetInterpolationValue();
 
 		virtual void SetLifespan(const float lifespan) { m_lifespan = lifespan; }
@@ -45,12 +45,15 @@ namespace KatanaEngine
 
 		virtual void SetRotation(const float rotation) { m_rotation = rotation; }
 		virtual float GetRotation() const { return m_rotation; }
-				
+
+		virtual uint32_t GetIndex() const { return m_index; }
+
 
 	private:
 
-		static void SetSpriteBatch(SpriteBatch *pSpriteBatch) { s_pSpriteBatch = pSpriteBatch; }
-		static SpriteBatch *s_pSpriteBatch;
+		static uint32_t s_count;
+
+		uint32_t m_index;
 
 		ParticleTemplate *m_pTemplate;
 
@@ -70,6 +73,7 @@ namespace KatanaEngine
 
 		virtual void Update(const GameTime *pGameTime);
 
-		virtual void Draw(const GameTime *pGameTime);
+		virtual void Draw(SpriteBatch *pSpriteBatch);
+
 	};
 }

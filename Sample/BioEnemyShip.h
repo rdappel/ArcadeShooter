@@ -25,7 +25,9 @@ namespace Sample
 
 		virtual void Update(const GameTime *pGameTime);
 
-		virtual void Draw(const GameTime *pGameTime);
+		/** @brief Called when the game determines it is time to draw a frame.
+			@param pSpriteBatch The game's sprite batch, used for rendering. */
+		virtual void Draw(SpriteBatch *pSpriteBatch);
 
 		virtual void Hit(const float damage);
 

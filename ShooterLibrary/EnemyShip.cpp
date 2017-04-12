@@ -33,6 +33,12 @@ namespace ShooterLibrary
 			}
 		}
 
+		if (IsActive())
+		{
+			m_activationSeconds += pGameTime->GetTimeElapsed();
+			if (m_activationSeconds > 2 && !IsOnScreen()) Deactivate();
+		}
+
 		Ship::Update(pGameTime);
 	}
 

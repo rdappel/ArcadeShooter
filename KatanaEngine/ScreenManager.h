@@ -47,8 +47,8 @@ namespace KatanaEngine
 		virtual void Update(const GameTime *pGameTime);
 
 		/** @brief Called when the game determines it is time to draw a frame.
-			@param pGameTime Timing values including time since last update. */
-		virtual void Draw(const GameTime *pGameTime);
+			@param pSpriteBatch The game's sprite batch, used for rendering. */
+		virtual void Draw(SpriteBatch *pSpriteBatch);
 
 
 	private:
@@ -63,6 +63,6 @@ namespace KatanaEngine
 		std::vector<Screen *>::iterator m_it;
 		std::vector<Screen *>::reverse_iterator m_rit;
 
-		virtual void HandleInput(InputState *pInput);
+		virtual void HandleInput(const InputState *pInput);
 	};
 }

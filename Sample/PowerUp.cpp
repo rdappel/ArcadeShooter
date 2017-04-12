@@ -26,6 +26,8 @@ namespace Sample
 	{
 		if (IsActive())
 		{
+			m_alpha = ((sin(pGameTime->GetTotalTime() * 4) + 1) / 8) + 0.75f;
+
 			if (m_pTarget && !m_pTarget->IsActive()) m_pTarget = nullptr;
 
 			if (m_pTarget)
@@ -58,13 +60,12 @@ namespace Sample
 		GameObject::Update(pGameTime);
 	}
 
-	void PowerUp::Draw(const GameTime *pGameTime)
+	void PowerUp::Draw(SpriteBatch *pSpriteBatch)
 	{
-		float alpha = ((sin(pGameTime->GetTotalTime() * 4) + 1) / 8) + 0.75f;
-		Color c = Color::Orange * alpha;
+		Color c = Color::Orange * m_alpha;
 
-		GetSpriteBatch()->Draw(s_pGlowTexture, GetPosition(), c, s_pTexture->GetSize() / 2, Vector2::One / 2);
-		GetSpriteBatch()->Draw(s_pTexture, GetPosition(), Color::White, s_pTexture->GetSize() / 2, Vector2::One / 2);
+		pSpriteBatch->Draw(s_pGlowTexture, GetPosition(), c, s_pTexture->GetSize() / 2, Vector2::One / 2);
+		pSpriteBatch->Draw(s_pTexture, GetPosition(), Color::White, s_pTexture->GetSize() / 2, Vector2::One / 2);
 	}
 
 	void PowerUp::Activate(const Vector2 position, Level *pLevel)

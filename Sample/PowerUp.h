@@ -26,7 +26,7 @@ namespace Sample
 
 		virtual void Update(const GameTime *pGameTime);
 
-		virtual void Draw(const GameTime *pGameTime);
+		virtual void Draw(SpriteBatch *pSpriteBatch);
 
 		virtual void Activate(const Vector2 position, Level *pLevel);
 
@@ -48,6 +48,8 @@ namespace Sample
 		Level *m_pLevel;
 
 		int m_targetCheck;
+
+		float m_alpha;
 
 	};
 }

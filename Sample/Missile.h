@@ -30,7 +30,7 @@ namespace Sample
 
 		/** @brief Called when the game determines it is time to draw a frame.
 			@param pGameTime Timing values including time since last update. */
-		virtual void Draw(const GameTime *pGameTime);
+		virtual void Draw(SpriteBatch *pSpriteBatch);
 
 		/** @brief Activates the missile.
 			@param position The starting position of the missile.
@@ -45,7 +45,7 @@ namespace Sample
 			@return Returns a string displaying the type of object. */
 		virtual std::string ToString() const { return "Missile"; }
 
-		//virtual void LoadContent(ResourceManager *pResourceManager);
+		//virtual void LoadContent(ResourceManager *pResourceManagerResourceManager *pResourceManager);
 
 
 	protected:

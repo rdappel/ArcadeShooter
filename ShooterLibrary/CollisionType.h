@@ -19,12 +19,12 @@ namespace ShooterLibrary
 	/** @brief Defines the types of game objects that can collide with each other. */
 	enum CollisionTypes : uint32_t
 	{
-		COLLISIONTYPE_NONE			= 0,	/**< Represents an object that has no collision. */
+		COLLISIONTYPE_NONE			= 0,		/**< Represents an object that has no collision. */
 
-		COLLISIONTYPE_PLAYER		= 1,	/**< Represents a player object. */
-		COLLISIONTYPE_ENEMY			= 2,	/**< Represents an enemy object. */
+		COLLISIONTYPE_PLAYER		= 1 << 0,	/**< Represents a player object. */
+		COLLISIONTYPE_ENEMY			= 1 << 1,	/**< Represents an enemy object. */
 
-		COLLISIONTYPE_SHIP			= 4,	/**< Represents a ship object. */
-		COLLISIONTYPE_PROJECTILE	= 8		/**< Represents a projectile object. */
+		COLLISIONTYPE_SHIP			= 1 << 2,	/**< Represents a ship object. */
+		COLLISIONTYPE_PROJECTILE	= 1	<< 3	/**< Represents a projectile object. */
 	};
 }

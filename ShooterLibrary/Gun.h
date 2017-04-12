@@ -16,6 +16,7 @@ _-"   .       '     .              .        ,/   000\ | /000000000MMMMM
 namespace ShooterLibrary
 {
 
+	/** A weapon type that shoots. */
 	template <typename T>
 	class Gun : public Weapon
 	{
@@ -23,8 +24,8 @@ namespace ShooterLibrary
 	public:
 
 		/** @brief Instantiates a new Weapon object.
-			@param pGameObject The game object that the weapon is attached to. */
-		Gun(bool isActive = false) : Weapon(isActive)
+			@param isActive Specifies if the weapon is active. */
+		Gun(bool isActive) : Weapon(isActive)
 		{
 			m_cooldown = 0;
 			m_cooldownSeconds = 0.25;
@@ -41,7 +42,7 @@ namespace ShooterLibrary
 
 		/** @brief Called when the game determines it is time to draw a frame.
 			@param pGameTime Timing values including time since last update. */
-		virtual void Draw(const GameTime *pGameTime) { }
+		virtual void Draw(SpriteBatch *pSpriteBatch) { }
 
 		/** @brief Fires the weapon. */
 		virtual void Fire(TriggerType triggerType)
@@ -65,6 +66,8 @@ namespace ShooterLibrary
 		virtual bool CanFire() const { return m_cooldown <= 0; }
 
 		virtual void SetCooldownSeconds(const float seconds) { m_cooldownSeconds = seconds; }
+
+		virtual void ResetCooldown() { m_cooldown = 0; }
 
 
 	private:

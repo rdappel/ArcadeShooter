@@ -21,9 +21,8 @@
 
 #include "GuardianFinalZero.h"
 
-/** @namespace ShooterLibrary
-	@brief Guardian Final Zero is a Shoote 'em up style 
-	game written by Ryan Appel.
+/** @namespace GuardianFinalZero
+	@brief Guardian Final Zero is a Shmup game.
 	@author Ryan Appel (ryan@ryan-appel.com)
 	@copyright © 2017 Shuriken Studios LLC */
 

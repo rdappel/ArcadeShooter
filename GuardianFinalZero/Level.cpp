@@ -24,9 +24,9 @@ namespace GuardianFinalZero
 		m_pPlayerShip = new	PlayerShip();
 	}
 
-	void Level::LoadContent()
+	void Level::LoadContent(ResourceManager *pResourceManager)
 	{
-		Texture *pTexture = GetResourceManager()->Load<Texture>("Textures\\PlayerShip.png");
+		Texture *pTexture = pResourceManager->Load<Texture>("Textures\\PlayerShip.png");
 		m_pPlayerShip->SetTexture(pTexture);
 		
 		AddGameObject(m_pPlayerShip);
@@ -38,7 +38,7 @@ namespace GuardianFinalZero
 			AddGameObject(pProjectile);
 		}
 
-		ShooterLibrary::Level::LoadContent();
+		ShooterLibrary::Level::LoadContent(pResourceManager);
 	}
 
 	ShooterLibrary::Projectile *Level::GetInactiveProjectile()

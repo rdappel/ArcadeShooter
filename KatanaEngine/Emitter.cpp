@@ -42,14 +42,10 @@ namespace KatanaEngine
 			Particle *pParticle = m_pTemplate->GetInactiveParticle();
 			if (pParticle)
 			{
-				//if (pParticle->IsActive()) std::cout << "A" << std::endl;
-				//else std::cout << "I" << std::endl;
-
 				float value = (float)i + 1 / (float)particlesToDraw;
 				Vector2 position = Vector2::Lerp(m_previousPosition, m_position, value);
 				pParticle->SetPosition(position);
 				m_pTemplate->InitializeParticle(pParticle);
-
 				m_pManager->AddParticle(pParticle);
 			}
 		}

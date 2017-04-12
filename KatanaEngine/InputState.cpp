@@ -162,7 +162,7 @@ namespace KatanaEngine
 		return IsKeyUp(key) && al_key_down(&m_previousKeyboardState, (int)key);
 	}
 
-	bool InputState::IsButtonUp(Button button, int &indexOut, int controllingIndex)
+	bool InputState::IsButtonUp(Button button, int &indexOut, int controllingIndex) const
 	{
 		if (controllingIndex > -1 && controllingIndex < MAX_NUM_GAMEPADSTATES)
 		{
@@ -181,7 +181,7 @@ namespace KatanaEngine
 		}
 	}
 
-	bool InputState::IsButtonDown(Button button, int &indexOut, int controllingIndex)
+	bool InputState::IsButtonDown(Button button, int &indexOut, int controllingIndex) const
 	{
 		if (controllingIndex > -1 && controllingIndex < MAX_NUM_GAMEPADSTATES)
 		{
@@ -200,7 +200,7 @@ namespace KatanaEngine
 		}
 	}
 
-	bool InputState::IsNewButtonPress(Button button, int &indexOut, int controllingIndex)
+	bool InputState::IsNewButtonPress(Button button, int &indexOut, int controllingIndex) const
 	{
 		if (controllingIndex > -1 && controllingIndex < MAX_NUM_GAMEPADSTATES)
 		{
@@ -220,7 +220,7 @@ namespace KatanaEngine
 		}
 	}
 
-	bool InputState::IsNewButtonRelease(Button button, int &indexOut, int controllingIndex)
+	bool InputState::IsNewButtonRelease(Button button, int &indexOut, int controllingIndex) const
 	{
 		if (controllingIndex > -1 && controllingIndex < MAX_NUM_GAMEPADSTATES)
 		{
@@ -240,7 +240,7 @@ namespace KatanaEngine
 		}
 	}
 
-	GamePadState &InputState::GetGamePadState(const int gamePadIndex)
+	GamePadState InputState::GetGamePadState(const int gamePadIndex) const
 	{
 		return m_currentGamePadStates[gamePadIndex];
 	}

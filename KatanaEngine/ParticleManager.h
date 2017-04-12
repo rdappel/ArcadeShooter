@@ -1,5 +1,5 @@
 
-/*	 ██╗  ██╗  █████╗  ████████╗  █████╗  ███╗   ██╗  █████╗ 
+/*	 ██╗  ██╗  █████╗  ████████╗  █████╗  ███╗   ██╗  █████╗
 	 ██║ ██╔╝ ██╔══██╗ ╚══██╔══╝ ██╔══██╗ ████╗  ██║ ██╔══██╗
 	 █████╔╝  ███████║    ██║    ███████║ ██╔██╗ ██║ ███████║
 	 ██╔═██╗  ██╔══██║    ██║    ██╔══██║ ██║╚██╗██║ ██╔══██║
@@ -7,7 +7,7 @@
 	 ╚═╝  ╚═╝ ╚═╝  ╚═╝/\  ╚═╝    ╚═╝  ╚═╝ ╚═╝  ╚═══╝ ╚═╝  ╚═╝
    /vvvvvvvvvvvvvvvvvvv \=========================================,
    `^^^^^^^^^^^^^^^^^^^ /---------------------------------------"
-        Katana Engine \/ © 2012 - Shuriken Studios LLC              */
+		Katana Engine \/ © 2012 - Shuriken Studios LLC              */
 
 #pragma once
 
@@ -30,18 +30,12 @@ namespace KatanaEngine
 		virtual void Update(const GameTime *pGameTime);
 
 		/** @brief Called when the game determines it is time to draw a frame.
-			@param pGameTime Timing values including time since last update. */
-		virtual void Draw(const GameTime *pGameTime);
+			@param pSpriteBatch The game's sprite batch, used for rendering. */
+		virtual void Draw(SpriteBatch *pSpriteBatch);
 
 		/** @brief Add a particle to be managed.
 			@param pScreen A pointer to the particle to be managed. */
-		virtual void AddParticle(Particle *pParticle) { 
-			if (m_particles.size() > 0)
-			{
-				int i;
-			}
-
-			m_particles.push_back(pParticle); }
+		virtual void AddParticle(Particle *pParticle) { m_particles.push_back(pParticle); }
 
 		/** @brief Gets a pointer to the Game.
 			@return A pointer to the game instance. */
@@ -55,10 +49,11 @@ namespace KatanaEngine
 	private:
 
 		Game *m_pGame;
-		SpriteBatch *m_pSpriteBatch;
 
 		std::vector<Particle *> m_particles;
 		std::vector<Particle *>::iterator m_it;
+
+		double temp;
 
 
 	};

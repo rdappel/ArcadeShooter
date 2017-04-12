@@ -32,12 +32,10 @@ namespace KatanaEngine
 		m_isDisplayed = true;
 	}
 
-	void MenuItem::Draw(const GameTime *pGameTime)
+	void MenuItem::Draw(SpriteBatch *pSpriteBatch)
 	{
 		if (m_pFont && m_text.compare("") != 0)
 		{
-			SpriteBatch *pSpriteBatch = m_pMenuScreen->GetSpriteBatch();
-
 			pSpriteBatch->DrawString(m_pFont, &m_text, m_position + m_textOffset, m_color * m_alpha, m_textAlign);
 		}
 	}

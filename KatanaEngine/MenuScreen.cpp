@@ -35,7 +35,7 @@ namespace KatanaEngine
 	}
 
 
-	void MenuScreen::HandleInput(InputState *pInput)
+	void MenuScreen::HandleInput(const InputState *pInput)
 	{
 		if (m_displayCount > 0) m_itemListWraps = false;
 
@@ -107,18 +107,18 @@ namespace KatanaEngine
 		}
 	}
 
-	void MenuScreen::Draw(const GameTime *pGameTime)
+	void MenuScreen::Draw(SpriteBatch *pSpriteBatch)
 	{
-		GetSpriteBatch()->Begin();
+		pSpriteBatch->Begin();
 
 		std::vector<MenuItem *>::iterator it;
 		for (it = m_menuItems.begin(); it != m_menuItems.end(); ++it)
 		{
 			MenuItem *pMenuItem = *it;
 
-			if (pMenuItem->IsDisplayed()) pMenuItem->Draw(pGameTime);
+			if (pMenuItem->IsDisplayed()) pMenuItem->Draw(pSpriteBatch);
 		}
 
-		GetSpriteBatch()->End();
+		pSpriteBatch->End();
 	}
 }

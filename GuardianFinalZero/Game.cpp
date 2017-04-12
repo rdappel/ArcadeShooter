@@ -29,7 +29,7 @@ namespace GuardianFinalZero
 		SetFrameCounterFont(pFont);
 	}
 
-	void Game::LoadContent()
+	void Game::LoadContent(ResourceManager *pResourceManager)
 	{
 		GetScreenManager()->AddScreen(new MainMenuScreen());
 

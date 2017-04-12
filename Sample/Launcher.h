@@ -22,7 +22,7 @@ namespace Sample
 		Launcher(bool isActive) : Gun<Missile>(isActive)
 		{
 			SetFireType(TriggerType::TRIGGERTYPE_SECONDARY);
-			SetCooldownSeconds(0.75f);
+			SetCooldownSeconds(1.25f);
 		}
 
 		virtual ~Launcher() { }

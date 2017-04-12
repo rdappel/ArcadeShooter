@@ -21,9 +21,14 @@ namespace Sample
 		Game();
 		virtual ~Game() { }
 
+		/** @brief Gets the name of the game.
+			@return The name of the game. */
 		virtual std::string GetName() const { return "Sample Game"; }
 
-		virtual void LoadContent();
+		/** @brief Called when resources need to be loaded.
+			@param pResourceManager The game's resource manager, used for loading
+			and managing game resources. */
+		virtual void LoadContent(ResourceManager *pResourceManager);
 
 	private:
 

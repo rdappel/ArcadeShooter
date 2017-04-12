@@ -23,7 +23,7 @@ namespace Sample
 		SetFrameCounterFont(pFont);
 	}
 
-	void Game::LoadContent()
+	void Game::LoadContent(ResourceManager *pResourceManager)
 	{
 		LoadStaticResources();
 

@@ -25,15 +25,21 @@ namespace Sample
 
 		virtual void Update(const GameTime *pGameTime);
 
-		virtual void Draw(const GameTime *pGameTime);
+		virtual void Draw(SpriteBatch *pSpriteBatch);
 
 		virtual void SetLevel(Level *pLevel) { m_pLevel = pLevel; }
 
 		virtual void SetThrusterAnimation(Animation *pAnimation) { m_pThrusterAnimation = pAnimation; }
 
-		virtual void PowerUp() {
+		virtual void PowerUp()
+		{
 			if (!GetWeapon(1)->IsActive()) GetWeapon(1)->Activate();
-			else GetWeapon(2)->Activate();
+			else
+			{
+				GetWeapon(2)->Activate();
+				(static_cast<Launcher *>(GetWeapon(1)))->ResetCooldown();
+				(static_cast<Launcher *>(GetWeapon(2)))->ResetCooldown();
+			}
 		}
 
 

@@ -15,12 +15,12 @@ _-"   .       '     .              .        ,/   000\ | /000000000MMMMM
 
 namespace ShooterLibrary
 {
-
+	/** @brief Base class for all Weapons */
 	class Weapon
 	{ 
 	public:
 
-		Weapon(bool isActive)
+		Weapon(bool isActive = true)
 		{
 			m_isActive = isActive;
 			SetFireType(TRIGGERTYPE_PRIMARY);
@@ -32,7 +32,7 @@ namespace ShooterLibrary
 
 		/** @brief Called when the game determines it is time to draw a frame.
 		@param pGameTime Timing values including time since last update. */
-		virtual void Draw(const GameTime *pGameTime) = 0;
+		virtual void Draw(SpriteBatch *pSpriteBatch) = 0;
 
 		/** @brief Fires the weapon. */
 		virtual void Fire(TriggerType triggerType) = 0;

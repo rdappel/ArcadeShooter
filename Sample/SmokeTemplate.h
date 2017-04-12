@@ -23,9 +23,8 @@ namespace Sample
 
 		SmokeTemplate()
 		{
-			GenerateParticles<T>(1); 
+			GenerateParticles<T>(100); 
 			SetParticleLifespan(1);
-			m_poolExpands = false;
 		}
 
 		virtual ~SmokeTemplate() { }
@@ -38,7 +37,7 @@ namespace Sample
 			ParticleTemplate::InitializeParticle(pT);
 
 			pT->SetScale(Vector2::One * 0.1f);
-			pT->SetAlpha(0.25f);
+			pT->SetAlpha(0.125f);
 
 			pT->SetRotation(Math::GetRandomFloat() * Math::PI * 2);
 			pT->SetRotationVelocity(Math::GetRandomFloat() * 0.2f - 0.1f);
@@ -56,9 +55,7 @@ namespace Sample
 			float value = pT->GetInterpolationValue();
 			float scale = (1 - value) * 0.25f + 0.1f;
 			pT->SetScale(Vector2::One * scale);
-			pT->SetAlpha(value * 0.25f);
-
-			//std::cout << "INTERP: \t" << value << "\tFR: " << frames++ << "\tTT: " << pGameTime->GetTotalTime() << std::endl ;
+			pT->SetAlpha(value * 0.125f);
 
 			float rotation = pT->GetRotation() + pT->GetRotationVelocity();
 

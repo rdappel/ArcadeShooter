@@ -86,5 +86,6 @@ namespace KatanaEngine
 
 		Vector2 m_position;
 		Vector2 m_previousPosition;
+
 	};
 }

@@ -19,20 +19,24 @@
 
 namespace GuardianFinalZero
 {
-	/** @brief Defines the types of game objects that can collide with each other. */
 	enum CollisionType : uint32_t
 	{
-		/* Same as Shooter Library */
-		NONE = 0,
-		PLAYER = 1,
-		ENEMY = 2,
-		SHIP = 4,
-		PROJECTILE = 8,
-		/* ----------------------- */
+		/* ------------------------------ Same as Shooter Library ------------------------------ */
 
-		MISSILE = 16,
+		COLLISIONTYPE_NONE			= 0,
 
-		POWER_UP = 32,
-		EXPLOSION = 64
+		COLLISIONTYPE_PLAYER		= 1 << 0,
+		COLLISIONTYPE_ENEMY			= 1 << 1,
+
+		COLLISIONTYPE_SHIP			= 1 << 2,
+		COLLISIONTYPE_PROJECTILE	= 1	<< 3,
+
+		/* ------------------------------------------------------------------------------------- */
+
+		COLLISIONTYPE_MISSILE		= 1 << 4,
+
+		COLLISIONTYPE_POWERUP		= 1 << 5,
+		COLLISIONTYPE_EXPLOSION		= 1 << 6
+
 	};
 }

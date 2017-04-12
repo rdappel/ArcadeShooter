@@ -30,8 +30,8 @@ namespace GuardianFinalZero
 		ShooterLibrary::PlayerShip::Update(pGameTime);
 	}
 	
-	void PlayerShip::Draw(const GameTime *pGameTime)
+	void PlayerShip::Draw(SpriteBatch *pSpriteBatch)
 	{
-		ShooterLibrary::PlayerShip::Draw(pGameTime);
+		ShooterLibrary::PlayerShip::Draw(pSpriteBatch);
 	}
 }

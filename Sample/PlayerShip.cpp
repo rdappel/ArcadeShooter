@@ -28,14 +28,14 @@ namespace Sample
 		ShooterLibrary::PlayerShip::Update(pGameTime);
 	}
 
-	void PlayerShip::Draw(const GameTime *pGameTime)
+	void PlayerShip::Draw(SpriteBatch *pSpriteBatch)
 	{
 		if (m_pThrusterAnimation)
 		{
 			Vector2 origin(m_pThrusterAnimation->GetCurrentFrame()->Width / 2, 0);
-			GetSpriteBatch()->Draw(m_pThrusterAnimation, GetPosition() + Vector2(-2, 14), Color::White, origin);
+			pSpriteBatch->Draw(m_pThrusterAnimation, GetPosition() + Vector2(-2, 14), Color::White, origin);
 		}
 
-		ShooterLibrary::PlayerShip::Draw(pGameTime);
+		ShooterLibrary::PlayerShip::Draw(pSpriteBatch);
 	}
 }

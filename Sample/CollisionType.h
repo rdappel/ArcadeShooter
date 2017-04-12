@@ -7,7 +7,7 @@
 	oo     .d8P  .8'     `888.   8    Y     888   888          888       o  888       o
 	8""88888P'  o88o     o8888o o8o        o888o o888o        o888ooooood8 o888ooooood8
 
-					        Sample © 2017 - Shuriken Studios LLC                          */
+							Sample © 2017 - Shuriken Studios LLC                          */
 
 #pragma once
 
@@ -16,23 +16,25 @@ namespace Sample
 	/** @brief Defines the types of game objects that can collide with each other. */
 	enum CollisionType : uint32_t
 	{
-		/* --------------------------- Same as Shooter Library ----------------------------- */
+		/* ------------------------------ Same as Shooter Library ------------------------------ */
 
-		COLLISIONTYPE_NONE			= 0,	/**< Represents an object that has no collision. */
+		COLLISIONTYPE_NONE			= 0,		/**< Represents an object that has no collision. */
 
-		COLLISIONTYPE_PLAYER		= 1,	/**< Represents a player object. */
-		COLLISIONTYPE_ENEMY			= 2,	/**< Represents an enemy object. */
+		COLLISIONTYPE_PLAYER		= 1 << 0,	/**< Represents a player object. */
+		COLLISIONTYPE_ENEMY			= 1 << 1,	/**< Represents an enemy object. */
 
-		COLLISIONTYPE_SHIP			= 4,	/**< Represents a ship object. */
-		COLLISIONTYPE_PROJECTILE	= 8,	/**< Represents a projectile object. */
+		COLLISIONTYPE_SHIP			= 1 << 2,	/**< Represents a ship object. */
+		COLLISIONTYPE_PROJECTILE	= 1 << 3,	/**< Represents a projectile object. */
 
-		/* --------------------------------------------------------------------------------- */
+		/* ------------------------------------------------------------------------------------- */
 
+		/* ---------------------------------- Additional Types --------------------------------- */
 
-		/* ------------------------------ Additional Types --------------------------------- */
+		COLLISIONTYPE_MISSILE		= 1 << 4,	/**< Represents a missile object. */
 
-		COLLISIONTYPE_POWERUP		= 16
+		COLLISIONTYPE_POWERUP		= 1 << 5,	/**< Represents a powerup object. */
+		COLLISIONTYPE_EXPLOSION		= 1 << 6	/**< Represents an explosion object. */
 
-		/* --------------------------------------------------------------------------------- */
+		/* ------------------------------------------------------------------------------------- */
 	};
 }

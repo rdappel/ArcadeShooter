@@ -25,9 +25,10 @@ namespace ShooterLibrary
 	}
 
 
-	void Game::Draw(const GameTime *pGameTime)
+	void Game::Draw(SpriteBatch *pSpriteBatch)
 	{
 		DisplayFrameRate();
-		KatanaEngine::Game::Draw(pGameTime);
+
+		KatanaEngine::Game::Draw(pSpriteBatch);
 	}
 }

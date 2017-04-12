@@ -49,7 +49,7 @@ namespace Sample
 		Show();
 	}
 
-	void MainMenuScreen::LoadContent()
+	void MainMenuScreen::LoadContent(ResourceManager *pResourceManager)
 	{
 		const int MENU_ITEM_COUNT = 2;
 		std::string items[MENU_ITEM_COUNT] = { "Start", /*"Options", */"Quit" };
@@ -58,7 +58,7 @@ namespace Sample
 		int x = Game::GetScreenWidth() / 2;
 
 		Font::SetLoadSize(24, true);
-		Font *pFont = GetResourceManager()->Load<Font>("Fonts\\Ethnocentric.ttf");
+		Font *pFont = pResourceManager->Load<Font>("Fonts\\Ethnocentric.ttf");
 
 		for (int i = 0; i < MENU_ITEM_COUNT; i++)
 		{
@@ -75,10 +75,10 @@ namespace Sample
 		GetMenuItem(0)->SetSelectCallback(StartSelect);
 		GetMenuItem(1)->SetSelectCallback(ExitSelect);
 		
-		m_pTexture = GetResourceManager()->Load<Texture>("Textures\\Logo.png", false);
+		m_pTexture = pResourceManager->Load<Texture>("Textures\\Logo.png", false);
 		m_position = Game::GetScreenCenter().ToVector2() - Vector2(0, 150);
 
-		Screen::LoadContent();
+		Screen::LoadContent(pResourceManager);
 	}
 
 	void MainMenuScreen::Update(const GameTime *pGameTime)
@@ -103,15 +103,15 @@ namespace Sample
 		MenuScreen::Update(pGameTime);
 	}
 
-	void MainMenuScreen::Draw(const GameTime *pGameTime)
+	void MainMenuScreen::Draw(SpriteBatch *pSpriteBatch)
 	{
 		if (m_pTexture)
 		{
-			GetSpriteBatch()->Begin();
-			GetSpriteBatch()->Draw(m_pTexture, m_position, Color::White * GetAlpha(), m_pTexture->GetCenter());
-			GetSpriteBatch()->End();
+			pSpriteBatch->Begin();
+			pSpriteBatch->Draw(m_pTexture, m_position, Color::White * GetAlpha(), m_pTexture->GetCenter());
+			pSpriteBatch->End();
 		}
 
-		MenuScreen::Draw(pGameTime);
+		MenuScreen::Draw(pSpriteBatch);
 	}
 }

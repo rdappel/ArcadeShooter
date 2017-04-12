@@ -21,6 +21,8 @@
 
 namespace GuardianFinalZero
 {
+
+	/** @brief Creates and initializes an instance of Guardian FZ. */
 	class Game : public ShooterLibrary::Game
 	{
 
@@ -31,7 +33,7 @@ namespace GuardianFinalZero
 
 		virtual std::string GetName() const { return "Guardian FZ"; }
 
-		virtual void LoadContent();
+		virtual void LoadContent(ResourceManager *pResourceManager);
 
 	};
 }

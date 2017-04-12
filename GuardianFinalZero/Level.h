@@ -21,6 +21,7 @@
 
 namespace GuardianFinalZero
 {
+	/** @brief Base class for all Guardian Final Zero levels. */
 	class Level : public ShooterLibrary::Level
 	{
 
@@ -32,8 +33,8 @@ namespace GuardianFinalZero
 
 		virtual PlayerShip *GetPlayerShip() { return m_pPlayerShip; }
 
-		virtual void LoadContent();
-
+		virtual void LoadContent(ResourceManager *pResourceManager);
+		
 		virtual ShooterLibrary::Projectile *GetInactiveProjectile();
 
 	private:

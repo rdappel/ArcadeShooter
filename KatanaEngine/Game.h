@@ -13,7 +13,8 @@
 
 namespace KatanaEngine
 {
-	/** @brief Base class for all games. Provides graphics initialization, game loop, and rendering code. */
+	/** @brief Base class for all games. Provides graphics initialization, game loop, and rendering code. 
+		Inherit from this class when creating your own game. */
 	class Game
 	{
 
@@ -59,8 +60,10 @@ namespace KatanaEngine
 			@return A pointer to the game's SpriteBatch instance. */
 		virtual SpriteBatch *GetSpriteBatch() const { return m_pSpriteBatch; }
 
-		/** @brief Called when resources need to be loaded. */
-		virtual void LoadContent() { }
+		/** @brief Called when resources need to be loaded.
+			@param pResourceManager The game's resource manager, used for loading
+			and managing game resources. */
+		virtual void LoadContent(ResourceManager *pResourceManager) { }
 
 		/** @brief Called when resources need to be unloaded. Override this method to unload
 			any game-specific resources. */
@@ -71,8 +74,8 @@ namespace KatanaEngine
 		virtual void Update(const GameTime *pGameTime);
 
 		/** @brief Called when the game determines it is time to draw a frame.
-			@param pGameTime Timing values including time since last update. */
-		virtual void Draw(const GameTime *pGameTime);
+			@param pSpriteBatch The game's sprite batch, used for rendering. */
+		virtual void Draw(SpriteBatch *pSpriteBatch);
 
 		/** @brief Quits the game. */
 		virtual void Quit() { m_isRunning = false; }

@@ -39,15 +39,15 @@ namespace ShooterLibrary
 		Ship::Update(pGameTime);
 	}
 
-	void PlayerShip::Draw(const GameTime *pGameTime)
+	void PlayerShip::Draw(SpriteBatch *pSpriteBatch)
 	{
 		if (m_pTexture)
 		{
-			GetSpriteBatch()->Draw(m_pTexture, GetPosition(), Color::White, m_textureOrigin, Vector2::One, 0, 1);
+			pSpriteBatch->Draw(m_pTexture, GetPosition(), Color::White, m_textureOrigin, Vector2::One, 0, 1);
 		}
 	}
 
-	void PlayerShip::HandleInput(InputState *pInput)
+	void PlayerShip::HandleInput(const InputState *pInput)
 	{
 		Vector2 direction = Vector2::Zero;
 		if (pInput->IsKeyDown(Key::DOWN)) direction.Y++;

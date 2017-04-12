@@ -21,11 +21,14 @@ namespace Sample
 		MainMenuScreen();
 		virtual ~MainMenuScreen() { }
 
-		virtual void LoadContent();
+		/** @brief Called when resources need to be loaded.
+			@param pResourceManager The game's resource manager, used for loading
+			and managing game resources. */
+		virtual void LoadContent(ResourceManager *pResourceManager);
 
 		virtual void Update(const GameTime *pGameTime);
 
-		virtual void Draw(const GameTime *pGameTime);
+		virtual void Draw(SpriteBatch *pSpriteBatch);
 
 	private:
 

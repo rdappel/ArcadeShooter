@@ -26,8 +26,10 @@ namespace ShooterLibrary
 		Level();
 		virtual ~Level();
 
-		/** @brief Called when resources need to be loaded. */
-		virtual void LoadContent();
+		/** @brief Called when resources need to be loaded.
+			@param pResourceManager The game's resource manager, used for loading
+			and managing game resources. */
+		virtual void LoadContent(ResourceManager *pResourceManager);
 
 		/** @brief Called when resources need to be unloaded. Override this
 			method to unload any game-specific resources. */
@@ -36,7 +38,7 @@ namespace ShooterLibrary
 		/** @brief Called when the game has determined that player input
 			needs to be processed.
 			@param pInput The current state of all player input devices. */
-		virtual void HandleInput(InputState *pInput);
+		virtual void HandleInput(const InputState *pInput);
 
 		/** @brief Called when the game has determined that game logic needs
 			to be processed.
@@ -44,13 +46,13 @@ namespace ShooterLibrary
 		virtual void Update(const GameTime *pGameTime);
 
 		/** @brief Called when the game determines it is time to draw a frame.
-			@param pGameTime Timing values including time since last update. */
-		virtual void Draw(const GameTime *pGameTime);
+			@param pSpriteBatch The game's sprite batch, used for rendering. */
+		virtual void Draw(SpriteBatch *pSpriteBatch);
 
 		/** @brief Adds a GameObject so it can be managed by the level.
 			@param pGameObject A pointer to the GameObject that will be added
 			to the level. */
-		virtual void AddGameObject(GameObject *pGameObject);
+		virtual void AddGameObject(GameObject *pGameObject) { m_gameObjects.push_back(pGameObject); }
 
 		/** @brief Updates an object's position on the sector grid.
 			@param pGameObject The game object who's position will be updated.
@@ -63,11 +65,7 @@ namespace ShooterLibrary
 			@return Returns a pointer to the player ship.
 			@todo Change this to allow for multi-player support. */
 		virtual PlayerShip *GetPlayerShip() = 0;
-
-		/** @brief Gets the SpriteBatch used to render the level.
-			@return Returns a pointer to the level's SpriteBatch. */
-		virtual SpriteBatch *GetSpriteBatch() const { return m_pGameplayScreen->GetSpriteBatch(); }
-
+		
 		/** @brief Sets the GameplayScreen instance for the level.
 			@param pGameplayscreen A pointer to the GameplayScreen. */
 		virtual void SetGameplayScreen(GameplayScreen *pGameplayscreen) { m_pGameplayScreen = pGameplayscreen; }
@@ -126,11 +124,7 @@ namespace ShooterLibrary
 		/** @brief Gets the GameplayScreen that manages the level.
 			@return Returns a pointer to the GameplayScreen. */
 		GameplayScreen *GetGameplayScreen() const { return m_pGameplayScreen; }
-
-		/** @brief Gets the ResourceManager for loading the level's resources.
-		@return Returns a pointer to the ResourceManager. */
-		ResourceManager *GetResourceManager() const { return m_pGameplayScreen->GetResourceManager(); }
-
+		
 		/** @brief Gets the ParticleManager for loading the level's resources.
 		@return Returns a pointer to the ResourceManager. */
 		ParticleManager *GetParticleManager() const { return m_pGameplayScreen->GetParticleManager(); }
@@ -169,6 +163,6 @@ namespace ShooterLibrary
 		virtual std::vector<GameObject *> *GetSectors() { return m_pSectors; }
 
 		std::vector<ProjectilePool *> m_pProjectilePools;
-
+		
 	};
 }

@@ -77,11 +77,11 @@ namespace KatanaEngine
 		}
 	}
 
-	void Game::Draw(const GameTime *pGameTime)
+	void Game::Draw(SpriteBatch *pSpriteBatch)
 	{
 		if (GetScreenManager())
 		{
-			GetScreenManager()->Draw(m_pGameTime);
+			GetScreenManager()->Draw(pSpriteBatch);
 		}
 	}
 
@@ -135,7 +135,7 @@ namespace KatanaEngine
 		m_pInput = new InputState;
 		m_pGameTime = new GameTime;
 
-		LoadContent();
+		LoadContent(m_pResourceManager);
 
 		al_start_timer(pTimer);
 		ALLEGRO_EVENT alEvent;
@@ -179,7 +179,7 @@ namespace KatanaEngine
 
 				al_clear_to_color(al_map_rgb(0, 0, 0));
 
-				Draw(m_pGameTime);
+				Draw(m_pSpriteBatch);
 
 				m_frameCounter++;
 

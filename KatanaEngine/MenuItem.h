@@ -37,8 +37,8 @@ namespace KatanaEngine
 		virtual void Update(const GameTime *pGameTime) { }
 
 		/** @brief Called when the game determines it is time to draw a frame.
-			@param pGameTime Timing values including time since last update. */
-		virtual void Draw(const GameTime *pGameTime);
+			@param pSpriteBatch The game's sprite batch, used for rendering. */
+		virtual void Draw(SpriteBatch *pSpriteBatch);
 
 		/** @brief Called when the picks this menu option.
 			@param pMenuScreen A pointer to the menu screen. */

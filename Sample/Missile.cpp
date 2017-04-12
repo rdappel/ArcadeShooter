@@ -63,22 +63,22 @@ namespace Sample
 			}
 			
 			Projectile::Update(pGameTime);
-
-			/*if (IsActive() && m_pEmitter)
+			
+			if (IsActive() && m_pEmitter)
 			{
 				m_pEmitter->SetOutput(1);
 				m_pEmitter->SetPosition(GetPosition() - GetDirection() * 18);
 				m_pEmitter->Update(pGameTime);
-			}*/
+			}
 		}
 	}
 
-	void Missile::Draw(const GameTime *pGameTime)
+	void Missile::Draw(SpriteBatch *pSpriteBatch)
 	{
 		if (m_pAnimation)
 		{
 			Vector2 center = m_pAnimation->GetFrame(0)->GetCenter();
-			GetSpriteBatch()->Draw(m_pAnimation, GetPosition(), Color::White, center, Vector2::One * 0.75f, m_angle);
+			pSpriteBatch->Draw(m_pAnimation, GetPosition(), Color::White, center, Vector2::One * 0.75f, m_angle);
 		}
 	}
 

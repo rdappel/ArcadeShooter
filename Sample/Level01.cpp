@@ -20,10 +20,9 @@ namespace Sample
 	}
 
 
-	void Level01::LoadContent()
+	void Level01::LoadContent(ResourceManager *pResourceManager)
 	{
-		ResourceManager *pRes = GetGameplayScreen()->GetResourceManager();
-		Texture *pTexture = pRes->Load<Texture>("Textures\\BioEnemySmall.png");
+		Texture *pTexture = pResourceManager->Load<Texture>("Textures\\BioEnemySmall.png");
 		BioEnemyShip::SetTexture(pTexture);
 
 		for (int i = 0; i < 10; i++)
@@ -33,9 +32,9 @@ namespace Sample
 			AddGameObject(pEnemyShip);
 		}
 
-		PowerUp::SetTexture(pRes->Load<Texture>("Textures\\PowerUp.png"));
-		PowerUp::SetGlowTexture(pRes->Load<Texture>("Textures\\PowerUpGlow.png"));
+		PowerUp::SetTexture(pResourceManager->Load<Texture>("Textures\\PowerUp.png"));
+		PowerUp::SetGlowTexture(pResourceManager->Load<Texture>("Textures\\PowerUpGlow.png"));
 		
-		Level::LoadContent();
+		Level::LoadContent(pResourceManager);
 	}
 }

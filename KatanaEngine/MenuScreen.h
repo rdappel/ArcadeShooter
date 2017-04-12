@@ -27,20 +27,17 @@ namespace KatanaEngine
 		MenuScreen();
 		virtual ~MenuScreen();
 
-		/** @brief Called when resources need to be loaded. */
-		virtual void LoadContent() { Screen::LoadContent(); }
-
 		/** @brief Called when the game has determined that player input needs to be processed.
 			@param pInput The current state of all player input devices. */
-		virtual void HandleInput(InputState *pInput);
+		virtual void HandleInput(const InputState *pInput);
 
 		/** @brief Called when the game has determined that screen logic needs to be processed.
 			@param pGameTime Timing values including time since last update. */
 		virtual void Update(const GameTime *pGameTime);
 
 		/** @brief Called when the game determines it is time to draw a frame.
-			@param pGameTime Timing values including time since last update. */
-		virtual void Draw(const GameTime *pGameTime);
+			@param pSpriteBatch The game's sprite batch, used for rendering. */
+		virtual void Draw(SpriteBatch *pSpriteBatch);
 
 		/** @brief Sets whether scrolling past the end of the menu returns the selection back
 			to the first item.

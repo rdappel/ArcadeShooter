@@ -15,7 +15,7 @@ _-"   .       '     .              .        ,/   000\ | /000000000MMMMM
 
 namespace ShooterLibrary
 {
-	int GameObject::s_count = 0;
+	uint32_t GameObject::s_count = 0;
 	Level *GameObject::s_pCurrentLevel = nullptr;
 
 	GameObject::GameObject()
@@ -59,5 +59,15 @@ namespace ShooterLibrary
 	void GameObject::TranslatePosition(const Vector2 &offset)
 	{
 		TranslatePosition(offset.X, offset.Y);
+	}
+
+	bool GameObject::IsOnScreen() const
+	{
+		if (m_position.Y - GetHalfDimensions().Y >= Game::GetScreenHeight()) return false;
+		if (m_position.Y + GetHalfDimensions().Y <= 0) return false;
+		if (m_position.X - GetHalfDimensions().X >= Game::GetScreenWidth()) return false;
+		if (m_position.X + GetHalfDimensions().X <= 0) return false;
+
+		return true;
 	}
 }

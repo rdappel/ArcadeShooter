@@ -34,12 +34,12 @@ namespace ShooterLibrary
 		virtual void Update(const GameTime *pGameTime);
 
 		/** @brief Called when the game determines it is time to draw a frame.
-			@param pGameTime Timing values including time since last update. */
-		virtual void Draw(const GameTime *pGameTime);
+			@param pSpriteBatch The game's sprite batch, used for rendering. */
+		virtual void Draw(SpriteBatch *pSpriteBatch);
 
 		/** @brief Called when the game has determined that player input needs to be processed.
 			@param pInput The current state of all player input devices. */
-		virtual void HandleInput(InputState *pInput);
+		virtual void HandleInput(const InputState *pInput);
 		
 		/** @brief Set the desired player direction.
 			@param direction The desired direction. */
@@ -58,7 +58,7 @@ namespace ShooterLibrary
 			@return Returns bit-mask value for the collision type.
 			@see CollisionTypes
 			@see CollisionManager */
-		virtual uint32_t GetCollisionType() const { return (IsInvulnurable() ? COLLISIONTYPE_NONE : (COLLISIONTYPE_PLAYER | COLLISIONTYPE_SHIP)); }
+		virtual uint32_t GetCollisionType() const { return (COLLISIONTYPE_PLAYER | COLLISIONTYPE_SHIP); }
 
 
 	protected:
