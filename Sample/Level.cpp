@@ -52,31 +52,31 @@ namespace Sample
 	}
 
 
-	Level::Level()
+	Level::Level(GameplayScreen *pGameplayscreen)
 	{
-		m_pPlayerShip = new	PlayerShip();
+		m_pGameplayScreen = pGameplayscreen;
+		m_isOver = false;
+
 		SetBackground(new Background());
 	}
 
 	void Level::LoadContent(ResourceManager *pResourceManager)
 	{
-
+		// TODO: Move this into some sort of factory function.
+		PlayerShip *pPlayerShip = new PlayerShip();
 		Texture *pTexture = pResourceManager->Load<Texture>("Textures\\PlayerShip.png");
-		m_pPlayerShip->SetTexture(pTexture);
-		m_pPlayerShip->SetLevel(this);
-
+		pPlayerShip->SetTexture(pTexture);
 		Animation *pAnimation = pResourceManager->Load<Animation>("Animations\\Thruster.anim");
 		if (pAnimation)
 		{
 			pAnimation->SetTexture(pResourceManager->Load<Texture>("Textures\\Thruster_01.png"));
 			if (pAnimation->GetTexture())
 			{
-				m_pPlayerShip->SetThrusterAnimation(pAnimation);
+				pPlayerShip->SetThrusterAnimation(pAnimation);
 				pAnimation->Play();
 			}
 		}
 		
-		// weapons
 		ProjectilePool *pPool;
 		pPool = new ProjectilePool(this);
 		AddProjectilePool(pPool);
@@ -88,7 +88,7 @@ namespace Sample
 
 		pBlaster = new Blaster(true);
 		pBlaster->SetProjectilePool(pPool);
-		m_pPlayerShip->AttachWeapon(pBlaster, Vector2::UnitY * -32);
+		pPlayerShip->AttachWeapon(pBlaster, Vector2::UnitY * -32);
 
 		SmokeTemplate<RotatingParticle> *pTemplate = new SmokeTemplate<RotatingParticle>();
 		pTemplate->SetTexture(pResourceManager->Load<Texture>("Textures\\Particle.png"));
@@ -106,12 +106,14 @@ namespace Sample
 
 		pLauncher = new Launcher(true);
 		pLauncher->SetProjectilePool(pPool);
-		m_pPlayerShip->AttachWeapon(pLauncher, Vector2::UnitX * -22);
+		pPlayerShip->AttachWeapon(pLauncher, Vector2::UnitX * -22);
 
 		pLauncher = new Launcher(false);
 		pLauncher->SetProjectilePool(pPool);
-		m_pPlayerShip->AttachWeapon(pLauncher, Vector2::UnitX * 22);
+		pPlayerShip->AttachWeapon(pLauncher, Vector2::UnitX * 22);
 
+		AddPlayerShip(pPlayerShip);
+		// end todo
 
 		ShooterLibrary::Level::LoadContent(pResourceManager);
 
@@ -128,15 +130,74 @@ namespace Sample
 		pC->AddCollisionType(playerShip, enemyShip, PlayerCollidesWithEnemy);
 	}
 
-	void Level::AddGameObject(GameObject *pGameObject)
+	
+	void Level::HandleInput(const InputState *pInput)
 	{
-		ShooterLibrary::Level::AddGameObject(pGameObject);
+		m_playerShipIt = m_playerShips.begin();
+		for (; m_playerShipIt != m_playerShips.end(); m_playerShipIt++)
+		{
+			(*m_playerShipIt)->HandleInput(pInput);
+		}
 	}
 
+	void Level::Update(const GameTime *pGameTime)
+	{
+		if (!m_isOver)
+		{
+			bool isOver = true;
+
+			m_playerShipIt = m_playerShips.begin();
+			for (; m_playerShipIt != m_playerShips.end(); m_playerShipIt++)
+			{
+				if ((*m_playerShipIt)->IsActive())
+				{
+					isOver = false;
+					break;
+				}
+			}
+
+			if (isOver)
+			{
+				m_isOver = true;
+				GetScreenManager()->AddScreen(new LevelOverScreen(m_pGameplayScreen, false));
+			}
+		}
+
+		ShooterLibrary::Level::Update(pGameTime);
+	}
+
+	void Level::AddPlayerShip(PlayerShip *pPlayerShip)
+	{
+		AddGameObject(pPlayerShip);
+		m_playerShips.push_back(pPlayerShip);
+		pPlayerShip->SetLevel(this);
+	}
+
+	
 	void Level::SpawnPowerUp(const Vector2 position)
 	{
 		PowerUp *pPowerUp = new	PowerUp();
 		pPowerUp->Activate(position, this);
 		AddGameObject(pPowerUp);
+	}
+
+	void Level::Complete()
+	{
+		if (!m_isOver)
+		{
+			m_isOver = true;
+			GetScreenManager()->AddScreen(new LevelOverScreen(m_pGameplayScreen, true));
+		}
+	}
+	
+	ParticleManager *Level::GetParticleManager() const 
+	{
+		return m_pGameplayScreen->GetParticleManager(); 
+	}
+
+
+	ScreenManager *Level::GetScreenManager() const
+	{
+		return m_pGameplayScreen->GetScreenManager();
 	}
 }

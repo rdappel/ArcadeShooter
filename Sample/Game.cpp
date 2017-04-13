@@ -28,13 +28,25 @@ namespace Sample
 		LoadStaticResources(pResourceManager);
 
 		GetScreenManager()->AddScreen(new MainMenuScreen());
+
+		ResetGameTime();
 	}
 
 	void Game::LoadStaticResources(ResourceManager *pResourceManager)
 	{
-		Projectile::SetTexture(pResourceManager->Load<Texture>("Textures\\Bullet_02.png"));
+		Texture *pTexture;
+		Animation *pAnimation;
 
-		Animation *pAnimation = pResourceManager->Load<Animation>("Animations\\Missile_01.anim");
+		pTexture = pResourceManager->Load<Texture>("Textures\\Bullet_02.png");
+		Projectile::SetTexture(pTexture);
+
+		pAnimation = pResourceManager->Load<Animation>("Animations\\Missile_01.anim");
 		pAnimation->SetTexture(pResourceManager->Load<Texture>("Textures\\Missile_01.png"));
+
+
+		pTexture = pResourceManager->Load<Texture>("Textures\\GameOver.png");
+		LevelOverScreen::SetGameOverTexture(pTexture);
+		pTexture = pResourceManager->Load<Texture>("Textures\\MissionComplete.png");
+		LevelOverScreen::SetLevelCompleteTexture(pTexture);
 	}
 }

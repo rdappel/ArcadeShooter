@@ -19,7 +19,7 @@
 
 namespace GuardianFinalZero
 {
-	class GameplayScreen : public ShooterLibrary::GameplayScreen
+	class GameplayScreen : public KatanaEngine::Screen
 	{
 
 	public:

@@ -15,17 +15,44 @@ namespace Sample
 {
 
 	/** @brief The gameplay screen for the sample game. */
-	class GameplayScreen : public ShooterLibrary::GameplayScreen
+	class GameplayScreen : public Screen
 	{
 
 	public:
 
 		GameplayScreen();
-		virtual ~GameplayScreen() { }
+		virtual ~GameplayScreen() { delete m_pLevel; }
 
-		/** @brief Called when the game has determined that player input needs to be processed.
-			@param pInput The current state of all player input devices. */
+		/** @brief Called when resources need to be loaded.
+		@param pResourceManager The game's resource manager, used for loading
+		and managing game resources. */
+		virtual void LoadContent(ResourceManager *pResourceManager);
+
+		/** @brief Called when the game has determined that player input
+		needs to be processed.
+		@param pInput The current state of all player input devices. */
 		virtual void HandleInput(const InputState *pInput);
+
+		/** @brief Called when the game has determined that game logic needs
+		to be processed.
+		@param pGameTime Timing values including time since last update. */
+		virtual void Update(const GameTime *pGameTime);
+
+		/** @brief Called when the game determines it is time to draw a frame.
+		@param pSpriteBatch The game's sprite batch, used for rendering. */
+		virtual void Draw(SpriteBatch *pSpriteBatch);
+
+
+	protected:
+
+		/** @brief Get the current level.
+		@return Returns a pointer to the level. */
+		virtual Level *GetLevel() { return m_pLevel; }
+
+
+	private:
+
+		Level *m_pLevel = nullptr;
 		
 	};
 }

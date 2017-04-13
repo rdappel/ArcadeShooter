@@ -25,7 +25,7 @@ namespace GuardianFinalZero
 		@param pScreen The screen that is about to be removed. */
 	void MainMenuScreenRemove(Screen *pScreen)
 	{
-		pScreen->GetScreenManager()->AddScreen(new GameplayScreen(1));
+		//pScreen->GetScreenManager()->AddScreen(new GameplayScreen(1));
 	}
 
 	/** @brief Callback function for start item is selected.

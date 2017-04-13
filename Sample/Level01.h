@@ -20,7 +20,7 @@ namespace Sample
 
 	public:
 
-		Level01();
+		Level01(GameplayScreen *pGameplayScreen);
 		virtual ~Level01() { }
 
 		/** @brief Called when resources need to be loaded.

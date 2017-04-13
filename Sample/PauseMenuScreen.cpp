@@ -46,10 +46,9 @@ namespace Sample
 		m_pGameplayScreen = pGameplayScreen;
 
 		SetTransitionOutTime(pGameplayScreen->GetTransitionOutTime());
+		SetPassthroughFlags(true);
 
 		Show();
-
-		SetPassthroughFlags(true);
 	}
 
 

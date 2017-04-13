@@ -130,6 +130,7 @@
     <ClInclude Include="CollisionType.h" />
     <ClInclude Include="Launcher.h" />
     <ClInclude Include="Level01.h" />
+    <ClInclude Include="LevelOverScreen.h" />
     <ClInclude Include="MainMenuScreen.h" />
     <ClInclude Include="MenuScreen.h" />
     <ClInclude Include="Missile.h" />
@@ -146,6 +147,7 @@
     <ClCompile Include="Background.cpp" />
     <ClCompile Include="BioEnemyShip.cpp" />
     <ClCompile Include="Level01.cpp" />
+    <ClCompile Include="LevelOverScreen.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MainMenuScreen.cpp" />
     <ClCompile Include="MenuScreen.cpp" />

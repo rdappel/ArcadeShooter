@@ -35,11 +35,6 @@ namespace ShooterLibrary
 			method to unload any game-specific resources. */
 		virtual void UnloadContent();
 
-		/** @brief Called when the game has determined that player input
-			needs to be processed.
-			@param pInput The current state of all player input devices. */
-		virtual void HandleInput(const InputState *pInput);
-
 		/** @brief Called when the game has determined that game logic needs
 			to be processed.
 			@param pGameTime Timing values including time since last update. */
@@ -54,21 +49,15 @@ namespace ShooterLibrary
 			to the level. */
 		virtual void AddGameObject(GameObject *pGameObject) { m_gameObjects.push_back(pGameObject); }
 
+		/** @brief Should be called when the victory conditions are met for the level. */
+		virtual void Complete() { }
+
 		/** @brief Updates an object's position on the sector grid.
 			@param pGameObject The game object who's position will be updated.
 			@remark This should happen automatically as long as a game object's
 			Update() calls
 			GameObject::Update(). */
 		virtual void UpdateSectorPosition(GameObject *pGameObject);
-
-		/** @brief Gets the player ship.
-			@return Returns a pointer to the player ship.
-			@todo Change this to allow for multi-player support. */
-		virtual PlayerShip *GetPlayerShip() = 0;
-		
-		/** @brief Sets the GameplayScreen instance for the level.
-			@param pGameplayscreen A pointer to the GameplayScreen. */
-		virtual void SetGameplayScreen(GameplayScreen *pGameplayscreen) { m_pGameplayScreen = pGameplayscreen; }
 
 		/** @brief Get the closest active game object of a specific type.
 			@param position The position from which to determine the closest object.
@@ -121,26 +110,19 @@ namespace ShooterLibrary
 			@return Returns a pointer to the CollisionManager. */
 		virtual CollisionManager *GetCollisionManager() { return m_pCollisionManager; }
 
-		/** @brief Gets the GameplayScreen that manages the level.
-			@return Returns a pointer to the GameplayScreen. */
-		GameplayScreen *GetGameplayScreen() const { return m_pGameplayScreen; }
-		
 		/** @brief Gets the ParticleManager for loading the level's resources.
 			@return Returns a pointer to the ResourceManager. */
-		ParticleManager *GetParticleManager() const { return m_pGameplayScreen->GetParticleManager(); }
+		virtual ParticleManager *GetParticleManager() const = 0;
 
 		/** @brief Adds a pool of projectiles to the level.
 			@param pProjectilePool The pool to add. */
-		void AddProjectilePool(ProjectilePool *pProjectilePool) { m_pProjectilePools.push_back(pProjectilePool); }
+		virtual void AddProjectilePool(ProjectilePool *pProjectilePool) { m_pProjectilePools.push_back(pProjectilePool); }
 
-		/** @brief Adds a pool of projectiles to the level.
+		/** @brief Sets the background object for the level.
 			@param pBackground The level's background. */
-		void SetBackground(Background *pBackground) { m_pBackground = pBackground; }
-
+		virtual void SetBackground(Background *pBackground) { m_pBackground = pBackground; }
 
 	private:
-
-		GameplayScreen *m_pGameplayScreen = nullptr;
 
 		CollisionManager *m_pCollisionManager = nullptr;;
 
@@ -170,6 +152,6 @@ namespace ShooterLibrary
 		virtual unsigned int GetTotalSectorCount() const { return m_totalSectorCount; }
 
 		virtual std::vector<GameObject *> *GetSectors() { return m_pSectors; }
-		
+				
 	};
 }

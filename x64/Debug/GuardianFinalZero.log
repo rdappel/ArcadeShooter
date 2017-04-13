@@ -49,6 +49,7 @@
   Level01.cpp
   Level.cpp
   GameplayScreen.cpp
+c:\users\ryan appel\desktop\arcadeshooter\guardianfinalzero\gameplayscreen.cpp(34): warning C4060: switch statement contains no 'case' or 'default' labels
   Game.cpp
   Generating Code...
   GuardianFinalZero.vcxproj -> C:\Users\Ryan Appel\Desktop\ArcadeShooter\x64\Debug\GuardianFinalZero.exe

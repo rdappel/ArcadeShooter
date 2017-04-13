@@ -17,6 +17,7 @@ using ShooterLibrary::ProjectilePool;
 
 namespace Sample
 {
+	class GameplayScreen;
 	class PlayerShip;
 	class PowerUp;
 	
@@ -27,7 +28,7 @@ namespace Sample
 
 	public:
 
-		Level();
+		Level(GameplayScreen *pGameplayscreen);
 		virtual ~Level() { }
 
 		/** @brief Called when resources need to be loaded.
@@ -35,25 +36,47 @@ namespace Sample
 			and managing game resources. */
 		virtual void LoadContent(ResourceManager *pResourceManager);
 
-		/** @brief Adds a game object to the level.
-			@param pGameObject The game object to add. */
-		virtual void AddGameObject(GameObject *pGameObject);
+		/** @brief Called when the game has determined that game logic needs
+			to be processed.
+			@param pGameTime Timing values including time since last update. */
+		virtual void Update(const GameTime *pGameTime);
 
-		/** @brief Gets the player ship.
-			@return Returns a pointer to the player ship. */
-		virtual ShooterLibrary::PlayerShip *GetPlayerShip() { return m_pPlayerShip; }
+		/** @brief Called when the game has determined that player input
+			needs to be processed.
+			@param pInput The current state of all player input devices. */
+		virtual void HandleInput(const InputState *pInput);
 
 		/** @brief Adds a power up to the level.
 			@param position The position to place the power up. */
 		virtual void SpawnPowerUp(const Vector2 position);
 
+		/** @brief Should be called when the victory conditions are met for the level. */
+		virtual void Complete();
+
+		/** @brief Gets a pointer to the ParticleManager, for managing particle effects.
+			@return A pointer to the game's ParticleManager instance. */
+		virtual ParticleManager *GetParticleManager() const;
+
+		/** @brief Gets a pointer to the ScreenManager, for managing game screens.
+			@return A pointer to the game's ScreenManager instance. */
+		virtual ScreenManager *GetScreenManager() const;
+
+		virtual void AddPlayerShip(PlayerShip *pPlayerShip);
+
 
 	private:
 
-		PlayerShip *m_pPlayerShip;
+		//PlayerShip *m_pPlayerShip;
+
+		std::vector<PlayerShip *> m_playerShips;
+		std::vector<PlayerShip *>::iterator m_playerShipIt;
+
+		GameplayScreen *m_pGameplayScreen = nullptr;
 		
 		std::vector<PowerUp *> m_powerUps;
 		std::vector<PowerUp *>::iterator m_powerUpIt;
+
+		bool m_isOver;
 
 	};
 }

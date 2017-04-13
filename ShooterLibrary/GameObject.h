@@ -19,6 +19,11 @@ namespace ShooterLibrary
 {
 
 	class Level;
+	class GameObject;
+
+	/** @brief Callback function for when a game object is deactivated.
+		@see MenuItem */
+	typedef void(*OnDeactivate)(GameObject *pGameObject);
 	
 	/** @brief Base class for all objects that will be updated and rendered on a GameplayScreen. */
 	class GameObject
@@ -35,6 +40,14 @@ namespace ShooterLibrary
 			@param pLevel A pointer to the current level.
 			@remark This is called automatically when a Level is constructed. */
 		static void SetCurrentLevel(Level *pLevel) { s_pCurrentLevel = pLevel; }
+
+		/** @brief Gets the current level.
+			@return Returns a pointer to the current level. */
+		static Level *GetCurrentLevel() { return s_pCurrentLevel; }
+
+		/** @brief Sets the callback function for when the menu item is selected.
+			@param callback The callback function. */
+		virtual void SetDeactivateCallback(OnDeactivate callback) { m_onDeactivate = callback; }
 
 		/** @brief Updates the game object.
 			@param pGameTime Timing values including time since last update.
@@ -58,7 +71,7 @@ namespace ShooterLibrary
 		virtual void Activate() { m_isActive = true; }
 
 		/** @brief Deactivates the game object. */
-		virtual void Deactivate() { m_isActive = false; }
+		virtual void Deactivate();
 
 		/** @brief Gets the position of the game object.
 			@return Returns the object's position on the screen. */
@@ -108,10 +121,6 @@ namespace ShooterLibrary
 
 
 	protected:
-
-		/** @brief Gets the current level.
-			@return Returns a pointer to the current level. */
-		static Level *GetCurrentLevel() { return s_pCurrentLevel; }
 		
 		/** @brief Sets the collision radius for the object.
 			@param radius The collision radius. */
@@ -148,8 +157,9 @@ namespace ShooterLibrary
 	private:
 
 		static Level *s_pCurrentLevel;
-
 		static uint32_t s_count;
+
+		OnDeactivate m_onDeactivate;
 
 		uint32_t m_index;
 

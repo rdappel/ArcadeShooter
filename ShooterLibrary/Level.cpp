@@ -51,8 +51,6 @@ namespace ShooterLibrary
 	void Level::LoadContent(ResourceManager *pResourceManager)
 	{
 		InitializeCollisionManager();
-
-		AddGameObject(GetPlayerShip());
 		
 		if (m_pBackground) m_pBackground->LoadContent(pResourceManager);
 
@@ -63,12 +61,6 @@ namespace ShooterLibrary
 	void Level::UnloadContent()
 	{
 		if (m_pBackground) m_pBackground->UnloadContent();
-	}
-
-
-	void Level::HandleInput(const InputState *pInput)
-	{
-		GetPlayerShip()->HandleInput(pInput);
 	}
 
 
@@ -136,6 +128,7 @@ namespace ShooterLibrary
 			m_pBackground->Draw(pSpriteBatch);
 			pSpriteBatch->End();
 		}
+
 		//al_set_blender(ALLEGRO_ADD, ALLEGRO_ONE, ALLEGRO_INVERSE_ALPHA);
 		//if (m_pBackground) m_pBackground->Draw(pGameTime);
 
@@ -156,21 +149,25 @@ namespace ShooterLibrary
 		//	}
 		//}
 
-		GetParticleManager()->Draw(pSpriteBatch);
-
-		pSpriteBatch->Begin(SpriteSortMode::BACK_TO_FRONT, BlendState::ALPHA);
-
-		m_gameObjectIt = m_gameObjects.begin();
-		for (; m_gameObjectIt != m_gameObjects.end(); m_gameObjectIt++)
+		ParticleManager *pParticleManager = GetParticleManager();
+		if (pParticleManager)
 		{
-			GameObject *pGameObject = (*m_gameObjectIt);
-			if (pGameObject->IsActive())
-			{
-				pGameObject->Draw(pSpriteBatch);
-			}
-		}
+			pParticleManager->Draw(pSpriteBatch);
 
-		pSpriteBatch->End();
+			pSpriteBatch->Begin(SpriteSortMode::BACK_TO_FRONT, BlendState::ALPHA);
+
+			m_gameObjectIt = m_gameObjects.begin();
+			for (; m_gameObjectIt != m_gameObjects.end(); m_gameObjectIt++)
+			{
+				GameObject *pGameObject = (*m_gameObjectIt);
+				if (pGameObject->IsActive())
+				{
+					pGameObject->Draw(pSpriteBatch);
+				}
+			}
+
+			pSpriteBatch->End();
+		}
 
 		//// Draw explosions
 		//al_set_blender(ALLEGRO_ADD, ALLEGRO_ONE, ALLEGRO_ONE);

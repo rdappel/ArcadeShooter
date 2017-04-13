@@ -21,7 +21,7 @@ namespace KatanaEngine
 
 	/** @brief Callback function for when a menu item is selected.
 		@see MenuItem */
-	typedef void(*OnSelect)(MenuScreen *menuScreen);
+	typedef void(*OnSelect)(MenuScreen *pMenuScreen);
 	
 	/** @brief Class for menu items contained in a MenuScreen. */
 	class MenuItem

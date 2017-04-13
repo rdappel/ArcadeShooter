@@ -25,6 +25,7 @@ namespace ShooterLibrary
 
 		m_isActive = false;
 		m_collisionRadius = 0;
+		m_onDeactivate = nullptr;
 	}
 
 	void GameObject::Update(const GameTime *pGameTime)
@@ -69,5 +70,11 @@ namespace ShooterLibrary
 		if (m_position.X + GetHalfDimensions().X <= 0) return false;
 
 		return true;
+	}
+	
+	void GameObject::Deactivate() 
+	{
+		m_isActive = false; 
+		if (m_onDeactivate) m_onDeactivate(this);
 	}
 }

@@ -36,4 +36,5 @@
 #include "MenuScreen.h"
 #include "MainMenuScreen.h"
 #include "PauseMenuScreen.h"
+#include "LevelOverScreen.h"
 #include "GameplayScreen.h"

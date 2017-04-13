@@ -15,9 +15,19 @@ using ShooterLibrary::EnemyShip;
 
 namespace Sample
 {
-	Level01::Level01()
+
+	/** @brief Callback function for when the level is completed.
+		@param The game object that completed the level. Usually an enenmy
+		that was destroyed. */
+	void Level01Completed(GameObject *pGameObject)
 	{
+		pGameObject->GetCurrentLevel()->Complete();
 	}
+
+
+	Level01::Level01(GameplayScreen *pGameplayScreen)
+		: Level(pGameplayScreen)
+	{ }
 
 
 	void Level01::LoadContent(ResourceManager *pResourceManager)
@@ -25,12 +35,15 @@ namespace Sample
 		Texture *pTexture = pResourceManager->Load<Texture>("Textures\\BioEnemySmall.png");
 		BioEnemyShip::SetTexture(pTexture);
 
+
+		EnemyShip *pEnemyShip;
 		for (int i = 0; i < 10; i++)
 		{
-			EnemyShip *pEnemyShip = new BioEnemyShip();
-			pEnemyShip->Initialize(Vector2(100 * i + 200, -50), 5 * (i + 1));
+			pEnemyShip = new BioEnemyShip();
+			pEnemyShip->Initialize(Vector2(100 * i + 300, -50), 3 * (i + 1));
 			AddGameObject(pEnemyShip);
 		}
+		pEnemyShip->SetDeactivateCallback(Level01Completed);
 
 		PowerUp::SetTexture(pResourceManager->Load<Texture>("Textures\\PowerUp.png"));
 		PowerUp::SetGlowTexture(pResourceManager->Load<Texture>("Textures\\PowerUpGlow.png"));

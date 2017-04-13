@@ -34,19 +34,19 @@ namespace KatanaEngine
 		m_pInput = nullptr;
 		m_pFrameCounterFont = nullptr;
 
-		m_currentTime = 0;
+		m_currentTime = al_get_time();
 		m_previousTime = al_get_time();
 		m_frameCounter = 0;
-		m_actualFramesPerSec = 0;
+		m_actualFramesPerSec = 60;
 		SetTargetFramesPerSecond(60);
 
 		s_windowTitle = "";
 
-		m_pResourceManager = new ResourceManager;
+		m_pResourceManager = new ResourceManager();
 		m_pScreenManager = nullptr;
 		m_pParticleManager = nullptr;
 
-		m_pSpriteBatch = new SpriteBatch;
+		m_pSpriteBatch = new SpriteBatch();
 
 		srand(time(nullptr));
 	}
@@ -132,8 +132,9 @@ namespace KatanaEngine
 			al_register_event_source(pEventQueue, joystickEventSource);
 		}
 
-		m_pInput = new InputState;
-		m_pGameTime = new GameTime;
+		m_pInput = new InputState();
+
+		ResetGameTime();
 
 		LoadContent(m_pResourceManager);
 

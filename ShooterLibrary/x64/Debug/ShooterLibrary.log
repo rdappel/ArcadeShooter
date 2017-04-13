@@ -30,7 +30,6 @@
   Projectile.cpp
   PlayerShip.cpp
   Level.cpp
-  GameplayScreen.cpp
   GameObject.cpp
   Game.cpp
   EnemyShip.cpp

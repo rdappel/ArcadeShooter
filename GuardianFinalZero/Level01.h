@@ -28,5 +28,9 @@ namespace GuardianFinalZero
 
 		virtual ~Level01() { }
 
+		
+		// TODO: Get an ACTUAL particle manager
+		ParticleManager *GetParticleManager() const { return nullptr; }
+
 	};
 }

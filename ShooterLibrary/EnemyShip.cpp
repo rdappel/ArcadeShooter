@@ -21,6 +21,7 @@ namespace ShooterLibrary
 		SetCollisionRadius(20);
 	}
 
+
 	void EnemyShip::Update(const GameTime *pGameTime)
 	{
 		if (m_delaySeconds > 0)
@@ -42,11 +43,18 @@ namespace ShooterLibrary
 		Ship::Update(pGameTime);
 	}
 
+
 	void EnemyShip::Initialize(const Vector2 position, const double delaySeconds)
 	{
 		SetPosition(position);
 		m_delaySeconds = delaySeconds;
 
 		Ship::Initialize();
+	}
+
+
+	void EnemyShip::Hit(const float damage)
+	{
+		Ship::Hit(damage);
 	}
 }

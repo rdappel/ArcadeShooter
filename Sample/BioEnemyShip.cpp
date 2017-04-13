@@ -46,7 +46,7 @@ namespace Sample
 
 	void BioEnemyShip::Hit(const float damage)
 	{
-		Ship::Hit(damage);
+		EnemyShip::Hit(damage);
 
 		if (!IsActive() && ((GetIndex() == 3) || GetIndex() == 7))
 		{

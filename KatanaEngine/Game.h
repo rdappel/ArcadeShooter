@@ -95,30 +95,33 @@ namespace KatanaEngine
 
 		/** @brief Sets the location of the directory where the game's resources are stored.
 			@param path The relative path to the resource directory. */
-		void SetResourceDirectory(const std::string &path) { m_pResourceManager->SetContentPath(path); }
+		virtual void SetResourceDirectory(const std::string &path) { m_pResourceManager->SetContentPath(path); }
 
 		/** @brief Sets the target frame rate for the game.
 			@param frames The target number of frames per second. */
-		void SetTargetFramesPerSecond(int const frames);
+		virtual void SetTargetFramesPerSecond(int const frames);
 
 		/** @brief Sets the font for the frame counter.
 			@param pFont A pointer to the font. */
-		void SetFrameCounterFont(Font *pFont) { m_pFrameCounterFont = pFont; }
+		virtual void SetFrameCounterFont(Font *pFont) { m_pFrameCounterFont = pFont; }
 
 		/** @brief Initializes the game's ScreenManager. */
-		void InitializeScreenManager() { m_pScreenManager = new ScreenManager(this); }
+		virtual void InitializeScreenManager() { m_pScreenManager = new ScreenManager(this); }
 
 		/** @brief Initializes the game's ParticleManager. */
-		void InitializeParticleManager() { m_pParticleManager = new ParticleManager(this); }
+		virtual void InitializeParticleManager() { m_pParticleManager = new ParticleManager(this); }
 
 		/** @brief Displays the game's current frame rate. */
-		void DisplayFrameRate();
+		virtual void DisplayFrameRate();
 
 		/** @brief Sets the game to display in fullscreen mode. */
-		void SetFullScreen(bool isFullScreen) { m_isFullScreen = isFullScreen; }
+		virtual void SetFullScreen(bool isFullScreen) { m_isFullScreen = isFullScreen; }
 
 		/** @brief Sets the OpenGL flag, which forces OpenGL rendering. */
-		void SetOpenGLFlag() { m_requireOpenGL = true; }
+		virtual void SetOpenGLFlag() { m_requireOpenGL = true; }
+
+		/** @brief Resets the game's timing values. */
+		virtual void ResetGameTime() { m_pGameTime = new GameTime(); }
 
 
 	private:

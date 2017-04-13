@@ -25,8 +25,19 @@ namespace Sample
 
 	GameplayScreen::GameplayScreen()
 	{
+		SetTransitionInTime(1.0);
+		SetTransitionOutTime(0.5);
 		SetRemoveCallback(GameplayScreenRemove);
-		SetLevel(new Level01());
+
+		m_pLevel = new Level01(this);
+
+		Show();
+	}
+
+
+	void GameplayScreen::LoadContent(ResourceManager *pResourceManager)
+	{
+		m_pLevel->LoadContent(pResourceManager);
 	}
 
 
@@ -37,6 +48,21 @@ namespace Sample
 			GetScreenManager()->AddScreen(new PauseMenuScreen(this));
 		}
 
-		ShooterLibrary::GameplayScreen::HandleInput(pInput);
+		m_pLevel->HandleInput(pInput);
+	}
+
+
+	void GameplayScreen::Draw(SpriteBatch *pSpriteBatch)
+	{
+		if (!this->NeedsToBeRemoved()) m_pLevel->Draw(pSpriteBatch);
+	}
+
+
+	void GameplayScreen::Update(const GameTime *pGameTime)
+	{
+		if (!this->NeedsToBeRemoved())
+		{
+			m_pLevel->Update(pGameTime);
+		}
 	}
 }

@@ -34,7 +34,7 @@ namespace ShooterLibrary
 			@param pSpriteBatch The game's sprite batch, used for rendering. */
 		virtual void Draw(SpriteBatch *pSpriteBatch) = 0;
 
-		/** @brief Hits the object, dealing damage to it.
+		/** @brief Hits the ship, dealing damage to it.
 			@param damage The amount of damage to inflict. */
 		virtual void Hit(const float damage);
 

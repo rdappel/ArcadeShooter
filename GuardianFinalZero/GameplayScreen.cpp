@@ -30,7 +30,7 @@ namespace GuardianFinalZero
 	{
 		switch (levelIndex)
 		{			
-		case 1: SetLevel(new Level01()); break;
+		//case 1: SetLevel(new Level01()); break;
 		}
 		
 		SetRemoveCallback(GameplayScreenRemove);

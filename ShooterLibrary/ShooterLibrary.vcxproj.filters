@@ -46,9 +46,6 @@
     <ClCompile Include="Game.cpp">
       <Filter>Source Files\Core</Filter>
     </ClCompile>
-    <ClCompile Include="GameplayScreen.cpp">
-      <Filter>Source Files\Core</Filter>
-    </ClCompile>
     <ClCompile Include="Level.cpp">
       <Filter>Source Files\Core</Filter>
     </ClCompile>
@@ -85,9 +82,6 @@
       <Filter>Source Files\Weapons</Filter>
     </ClInclude>
     <ClInclude Include="Game.h">
-      <Filter>Source Files\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="GameplayScreen.h">
       <Filter>Source Files\Core</Filter>
     </ClInclude>
     <ClInclude Include="Level.h">

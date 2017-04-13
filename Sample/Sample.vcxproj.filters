@@ -43,6 +43,9 @@
     <ClCompile Include="PauseMenuScreen.cpp">
       <Filter>SourceFiles\Screens</Filter>
     </ClCompile>
+    <ClCompile Include="LevelOverScreen.cpp">
+      <Filter>SourceFiles\Screens</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -94,6 +97,9 @@
       <Filter>SourceFiles\Screens</Filter>
     </ClInclude>
     <ClInclude Include="PauseMenuScreen.h">
+      <Filter>SourceFiles\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelOverScreen.h">
       <Filter>SourceFiles\Screens</Filter>
     </ClInclude>
   </ItemGroup>

@@ -42,6 +42,10 @@ namespace ShooterLibrary
 		/** @brief Fires the ships weapons. */
 		virtual void Fire() { }
 
+		/** @brief Hits the ship, dealing damage to it.
+			@param damage The amount of damage to inflict. */
+		virtual void Hit(const float damage);
+
 		/** @brief Gets a string representation of the enemy ship.
 			@return Returns a string displaying the type of object. */
 		virtual std::string ToString() const { return "EnemyShip"; }
