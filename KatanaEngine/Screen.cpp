@@ -33,7 +33,7 @@ namespace KatanaEngine
 		m_onExit = nullptr;
 		m_onRemove = nullptr;
 
-		SetPassThroughFlags();
+		SetPassthroughFlags();
 	}
 
 	void Screen::UpdateTransition(const GameTime *pGameTime)
@@ -129,7 +129,7 @@ namespace KatanaEngine
 		return GetGame()->GetParticleManager();
 	}
 
-	void Screen::SetPassThroughFlags(const bool draw, const bool update, const bool handleInput)
+	void Screen::SetPassthroughFlags(const bool draw, const bool update, const bool handleInput)
 	{
 		m_drawBelow = draw;
 		m_updateBelow = update;

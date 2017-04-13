@@ -16,14 +16,17 @@
 
 namespace KatanaEngine
 {
-	MenuItem::MenuItem()
+	MenuItem::MenuItem() : MenuItem("")	{ }
+
+	MenuItem::MenuItem(std::string text)
 	{
 		m_onSelect = nullptr;
 		m_pFont = nullptr;
 
+		m_text = text;
+
 		m_color = Color::White;
 		m_alpha = 1.0f;
-		m_text = "";
 
 		m_position = Vector2::Zero;
 		m_textOffset = Vector2::Zero;

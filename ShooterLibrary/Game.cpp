@@ -27,8 +27,8 @@ namespace ShooterLibrary
 
 	void Game::Draw(SpriteBatch *pSpriteBatch)
 	{
-		DisplayFrameRate();
-
 		KatanaEngine::Game::Draw(pSpriteBatch);
+
+		DisplayFrameRate();
 	}
 }

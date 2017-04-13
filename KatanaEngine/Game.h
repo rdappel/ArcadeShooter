@@ -38,7 +38,7 @@ namespace KatanaEngine
 
 		/** @brief Gets the screen size in pixels.
 			@return A Point representing the width and height of the screen. */
-		static Point GetScreenCenter() { return (Point(s_screenWidth / 2, s_screenHeight / 2)); }
+		static Vector2 GetScreenCenter() { return (Vector2(s_screenWidth / 2, s_screenHeight / 2)); }
 
 		/** @brief Gets the name of the game.
 			@return The name of the game. */

@@ -131,7 +131,9 @@
     <ClInclude Include="Launcher.h" />
     <ClInclude Include="Level01.h" />
     <ClInclude Include="MainMenuScreen.h" />
+    <ClInclude Include="MenuScreen.h" />
     <ClInclude Include="Missile.h" />
+    <ClInclude Include="PauseMenuScreen.h" />
     <ClInclude Include="PowerUp.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameplayScreen.h" />
@@ -146,7 +148,9 @@
     <ClCompile Include="Level01.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MainMenuScreen.cpp" />
+    <ClCompile Include="MenuScreen.cpp" />
     <ClCompile Include="Missile.cpp" />
+    <ClCompile Include="PauseMenuScreen.cpp" />
     <ClCompile Include="PowerUp.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameplayScreen.cpp" />

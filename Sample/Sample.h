@@ -33,5 +33,7 @@
 #include "Level.h"
 #include "Level01.h"
 #include "Game.h"
+#include "MenuScreen.h"
 #include "MainMenuScreen.h"
+#include "PauseMenuScreen.h"
 #include "GameplayScreen.h"

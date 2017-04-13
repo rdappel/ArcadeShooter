@@ -94,7 +94,7 @@ namespace GuardianFinalZero
 
 		m_pLogoTexture = pResourceManager->Load<Texture>("Textures\\LogoText.png");
 
-		m_targetPosition = Game::GetScreenCenter().ToVector2() - Vector2(0, 150);
+		m_targetPosition = Game::GetScreenCenter() - Vector2(0, 150);
 		m_position = m_targetPosition - Vector2(0, 400);
 
 		Screen::LoadContent(pResourceManager);

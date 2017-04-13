@@ -26,10 +26,20 @@ namespace KatanaEngine
 	/** @brief Class for menu items contained in a MenuScreen. */
 	class MenuItem
 	{
+		friend class MenuScreen;
 
 	public:
 
+
+		/** @brief Instantiate a menu item. */
 		MenuItem();
+
+		/** @brief Instantiate a menu item.
+			@param text The text that the item will display.
+			
+			@overload */
+		MenuItem(std::string text);
+
 		virtual ~MenuItem() { }
 
 		/** @brief Called when the game has determined that screen logic needs to be processed.
@@ -101,8 +111,16 @@ namespace KatanaEngine
 			@param callback The callback function. */
 		virtual void SetSelectCallback(OnSelect callback) { m_onSelect = callback; }
 
+		/** @brief Gets the index of the menu item.
+			@return Returns the menu item's index. */
+		virtual int GetIndex() const { return m_index; }
+
 
 	protected:
+
+		/** @brief Sets the index of the menu item.
+			@param index The index value. */
+		virtual void SetIndex(const int index) { m_index = index; }
 
 		/** @brief Gets the menu screen that contains this item.
 			@return Returns a pointer to the menu screen. */
@@ -118,6 +136,8 @@ namespace KatanaEngine
 
 
 	private:
+
+		int m_index;
 
 		std::string m_text;
 

@@ -28,4 +28,15 @@ namespace Sample
 		SetRemoveCallback(GameplayScreenRemove);
 		SetLevel(new Level01());
 	}
+
+
+	void GameplayScreen::HandleInput(const InputState *pInput)
+	{
+		if (pInput->IsNewKeyPress(Key::ESCAPE))
+		{
+			GetScreenManager()->AddScreen(new PauseMenuScreen(this));
+		}
+
+		ShooterLibrary::GameplayScreen::HandleInput(pInput);
+	}
 }

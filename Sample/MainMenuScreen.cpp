@@ -22,7 +22,7 @@ namespace Sample
 		pScreen->GetScreenManager()->AddScreen(new GameplayScreen());
 	}
 
-	/** @brief Callback function for start item is selected.
+	/** @brief Callback function for when the start item is selected.
 		@param pMenuScreen The menu screen that contains the menu item. */
 	void StartSelect(MenuScreen *pMenuScreen)
 	{
@@ -30,7 +30,7 @@ namespace Sample
 		pMenuScreen->Exit();
 	}
 
-	/** @brief Callback function for exit item is selected.
+	/** @brief Callback function for when the exit item is selected.
 		@param pMenuScreen The menu screen that contains the menu item. */
 	void ExitSelect(MenuScreen *pMenuScreen)
 	{
@@ -38,82 +38,43 @@ namespace Sample
 		pMenuScreen->GetScreenManager()->GetGame()->Quit();
 	}
 
+
 	MainMenuScreen::MainMenuScreen()
 	{
-		// Setup the menu items
-		m_selectedColor = Color(0, 0.5f, 1);
-		m_unselectedColor = Color(1, 1, 1);
-		SetItemListWrapping(false);
-
 		m_pTexture = nullptr;
 
-		SetTransitionInTime(1.0);
-		SetTransitionOutTime(0.5);
-
-		//SetUseRenderTarget();
 		Show();
 	}
 
+
 	void MainMenuScreen::LoadContent(ResourceManager *pResourceManager)
 	{
+		MenuScreen::LoadContent(pResourceManager);
+		Vector2 position = Game::GetScreenCenter() + Vector2::UnitY * 160;
+		SetMenuPosition(position);
+
 		const int MENU_ITEM_COUNT = 2;
-		std::string items[MENU_ITEM_COUNT] = { "Start", /*"Options", */"Quit" };
+		std::string items[MENU_ITEM_COUNT] = { "Start", "Quit" };
 		SetDisplayCount(MENU_ITEM_COUNT);
 
-		int x = Game::GetScreenWidth() / 2;
+		AddMenuItem(new MenuItem(items[0]));
+		AddMenuItem(new MenuItem(items[1]));
 
-		Font::SetLoadSize(24, true);
-		Font *pFont = pResourceManager->Load<Font>("Fonts\\Ethnocentric.ttf");
-
-		for (int i = 0; i < MENU_ITEM_COUNT; i++)
-		{
-			MenuItem *pMenuItem = new MenuItem;
-
-			pMenuItem->SetFont(pFont);
-			pMenuItem->SetText(items[i]);
-			pMenuItem->SetTextAlign(TextAlign::CENTER);
-			pMenuItem->SetPosition(Vector2(x, 600 + (40 * i)));
-
-			AddMenuItem(pMenuItem);
-		}
-
-		GetMenuItem(0)->SetSelectCallback(StartSelect);
-		GetMenuItem(1)->SetSelectCallback(ExitSelect);
+		GetMenuItem(0)->SetSelectCallback((KatanaEngine::OnSelect)StartSelect);
+		GetMenuItem(1)->SetSelectCallback((KatanaEngine::OnSelect)ExitSelect);
 		
 		m_pTexture = pResourceManager->Load<Texture>("Textures\\Logo.png", false);
-		m_position = Game::GetScreenCenter().ToVector2() - Vector2(0, 150);
-
-		Screen::LoadContent(pResourceManager);
+		m_texturePosition = Game::GetScreenCenter() - Vector2::UnitY * 200;
 	}
 
-	void MainMenuScreen::Update(const GameTime *pGameTime)
-	{
-		// Calculations to make the selected menu item pulse
-		float sinValue = (float)((1.0f + sin(pGameTime->GetTotalTime() * 6)) * 0.5);
-		m_selectedAlpha = 0.5f + 0.5f * sinValue;
 
-		// Set the menu item colors
-		for (int i = 0; i < GetDisplayCount(); i++)
-		{
-			Color color = m_unselectedColor;
-
-			if (GetMenuItem(i)->IsSelected())
-			{
-				color = m_selectedColor * m_selectedAlpha;
-			}
-
-			GetMenuItem(i)->SetColor(color * GetAlpha());
-		}
-
-		MenuScreen::Update(pGameTime);
-	}
 
 	void MainMenuScreen::Draw(SpriteBatch *pSpriteBatch)
 	{
 		if (m_pTexture)
 		{
 			pSpriteBatch->Begin();
-			pSpriteBatch->Draw(m_pTexture, m_position, Color::White * GetAlpha(), m_pTexture->GetCenter());
+			pSpriteBatch->Draw(m_pTexture, m_texturePosition, Color::White * GetAlpha(), m_pTexture->GetCenter());
 			pSpriteBatch->End();
 		}
 

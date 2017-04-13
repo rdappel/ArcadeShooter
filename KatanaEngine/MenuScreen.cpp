@@ -121,4 +121,12 @@ namespace KatanaEngine
 
 		pSpriteBatch->End();
 	}
+
+
+	void MenuScreen::AddMenuItem(MenuItem *pItem) 
+	{
+		pItem->SetIndex(m_menuItems.size());
+		pItem->SetMenuScreen(this);
+		m_menuItems.push_back(pItem);
+	}
 }

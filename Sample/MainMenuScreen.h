@@ -28,9 +28,6 @@ namespace Sample
 			and managing game resources. */
 		virtual void LoadContent(ResourceManager *pResourceManager);
 
-		/** @brief Called when the game has determined that screen logic needs to be processed.
-			@param pGameTime Timing values including time since last update. */
-		virtual void Update(const GameTime *pGameTime);
 
 		/** @brief Called when the game determines it is time to draw a frame.
 			@param pSpriteBatch The game's sprite batch, used for rendering. */
@@ -39,14 +36,9 @@ namespace Sample
 
 	private:
 
-		Color m_selectedColor;
-		Color m_unselectedColor;
-
-		float m_selectedAlpha;
-
 		Texture *m_pTexture;
 
-		Vector2 m_position;
+		Vector2 m_texturePosition;
 
 	};
 }

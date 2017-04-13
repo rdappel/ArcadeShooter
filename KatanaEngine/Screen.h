@@ -113,6 +113,10 @@ namespace KatanaEngine
 			@param callback The callback function. */
 		virtual void SetRemoveCallback(OnRemove callback) { m_onRemove = callback; }
 
+		/** @brief Get the time in seconds that the screen will transition out.
+			@return Returns the transition time in seconds. */
+		virtual double GetTransitionOutTime() const { return m_transitionOutTime; }
+
 
 	protected:
 
@@ -130,38 +134,34 @@ namespace KatanaEngine
 			@param draw Set this flag to true if the underlaying screen should render.
 			@param update Set this flag to true if the underlaying screen should update.
 			@param handleInput Set this flag to true if the underlaying screen should handle user input. */
-		void SetPassThroughFlags(const bool draw = false, const bool update = false, const bool handleInput = false);
+		virtual void SetPassthroughFlags(const bool draw = false, const bool update = false, const bool handleInput = false);
 
 		/** @brief Set the time in seconds that the screen should transition in.
 			@param seconds The transition time. */
-		void SetTransitionInTime(double seconds) { m_transitionInTime = seconds; }
+		virtual void SetTransitionInTime(double seconds) { m_transitionInTime = seconds; }
 
 		/** @brief Set the time in seconds that the screen should transition out.
 			@param seconds The transition time. */
-		void SetTransitionOutTime(double seconds) { m_transitionOutTime = seconds; }
+		virtual void SetTransitionOutTime(double seconds) { m_transitionOutTime = seconds; }
 
 
 		/** @brief Get the time in seconds that the screen will transition in.
 			@return Returns the transition time in seconds. */
-		double GetTransitionInTime() const { return m_transitionInTime; }
-
-		/** @brief Get the time in seconds that the screen will transition out.
-			@return Returns the transition time in seconds. */
-		double GetTransitionOutTime() const { return m_transitionOutTime; }
+		virtual double GetTransitionInTime() const { return m_transitionInTime; }
 
 		/** @brief Get the current transition state of the screen.
 			@return Returns the current transition. */
-		ScreenTransition GetTransition() const { return m_transition; }
+		virtual ScreenTransition GetTransition() const { return m_transition; }
 
 		/** @brief Get the interpolated value (between zero and one) of the screen transition.
 			@return Returns a value that represents the percentage of the transition. Zero means
 			the screen is entirely transitioned of, and one means it's entirely on. */
-		float GetTransitionValue() const { return m_transitionValue; }
+		virtual float GetTransitionValue() const { return m_transitionValue; }
 
 		/** @brief Determines if the screen has completely faded out and needs to be removed by
 			the ScreenManager.
 			@return Returns true if the screen needs to be removed, false otherwise. */
-		bool NeedsToBeRemoved() const { return m_needsToBeRemoved; }
+		virtual bool NeedsToBeRemoved() const { return m_needsToBeRemoved; }
 
 
 	private:
