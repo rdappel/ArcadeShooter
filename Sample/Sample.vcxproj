@@ -124,6 +124,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Background.h" />
     <ClInclude Include="BioEnemyShip.h" />
     <ClInclude Include="Blaster.h" />
     <ClInclude Include="CollisionType.h" />
@@ -140,6 +141,7 @@
     <ClInclude Include="SmokeTemplate.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Background.cpp" />
     <ClCompile Include="BioEnemyShip.cpp" />
     <ClCompile Include="Level01.cpp" />
     <ClCompile Include="Main.cpp" />

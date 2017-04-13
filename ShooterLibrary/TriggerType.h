@@ -18,13 +18,13 @@ namespace ShooterLibrary
 	/** @brief Defines the ways that triggering weapons can occur. */
 	enum TriggerType : uint32_t
 	{
-		TRIGGERTYPE_NONE		= 0,
+		TRIGGERTYPE_NONE		= 0,				/**< Represents an untriggerable weapon. */
 
-		TRIGGERTYPE_PRIMARY		= 1 << 0,
-		TRIGGERTYPE_SECONDARY	= 1 << 1,
+		TRIGGERTYPE_PRIMARY		= 1 << 0,			/**< Represents a primary trigger type. */
+		TRIGGERTYPE_SECONDARY	= 1 << 1,			/**< Represents a secondary trigger type. */
 
-		TRIGGERTYPE_SPECIAL		= 1 << 2,
+		TRIGGERTYPE_SPECIAL		= 1 << 2,			/**< Represents a special trigger type. */
 
-		TRIGGERTYPE_ALL			= ((uint32_t)-1)
+		TRIGGERTYPE_ALL			= ((uint32_t)-1)	/**< Represents all trigger types. */
 	};
 }

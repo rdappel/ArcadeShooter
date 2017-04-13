@@ -55,10 +55,12 @@ namespace Sample
 	Level::Level()
 	{
 		m_pPlayerShip = new	PlayerShip();
+		SetBackground(new Background());
 	}
 
 	void Level::LoadContent(ResourceManager *pResourceManager)
 	{
+
 		Texture *pTexture = pResourceManager->Load<Texture>("Textures\\PlayerShip.png");
 		m_pPlayerShip->SetTexture(pTexture);
 		m_pPlayerShip->SetLevel(this);

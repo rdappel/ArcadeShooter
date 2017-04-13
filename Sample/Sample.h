@@ -29,6 +29,7 @@
 #include "EnemyShip.h"
 #include "BioEnemyShip.h"
 #include "PowerUp.h"
+#include "Background.h"
 #include "Level.h"
 #include "Level01.h"
 #include "Game.h"

@@ -130,8 +130,12 @@ namespace ShooterLibrary
 
 	void Level::Draw(SpriteBatch *pSpriteBatch)
 	{
-		if (m_pBackground) m_pBackground->Draw(pSpriteBatch);
-
+		if (m_pBackground)
+		{
+			pSpriteBatch->Begin(SpriteSortMode::BACK_TO_FRONT, BlendState::ALPHA);
+			m_pBackground->Draw(pSpriteBatch);
+			pSpriteBatch->End();
+		}
 		//al_set_blender(ALLEGRO_ADD, ALLEGRO_ONE, ALLEGRO_INVERSE_ALPHA);
 		//if (m_pBackground) m_pBackground->Draw(pGameTime);
 

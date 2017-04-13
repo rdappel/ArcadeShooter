@@ -1,5 +1,5 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(387,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (SampleLibrary.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  BioEnemyShip.cpp
+  Background.cpp
   
   
            ██╗  ██╗  █████╗  ████████╗  █████╗  ███╗   ██╗  █████╗ 
@@ -38,17 +38,5 @@
   
   					        Sample © 2017 - Shuriken Studios LLC
   
-  Generating Code...
-  Skipping... (no relevant changes detected)
-  Sample.cpp
-  PowerUp.cpp
-  PlayerShip.cpp
-  Missile.cpp
-  MainMenuScreen.cpp
-  Main.cpp
-  Level01.cpp
-  Level.cpp
-  GameplayScreen.cpp
-  Game.cpp
   Sample.vcxproj -> C:\Users\Ryan Appel\Desktop\ArcadeShooter\x64\Debug\Sample.exe
   Sample.vcxproj -> C:\Users\Ryan Appel\Desktop\ArcadeShooter\x64\Debug\Sample.pdb (Partial PDB)

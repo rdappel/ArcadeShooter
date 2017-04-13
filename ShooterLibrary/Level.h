@@ -133,6 +133,9 @@ namespace ShooterLibrary
 			@param pProjectilePool The pool to add. */
 		void AddProjectilePool(ProjectilePool *pProjectilePool) { m_pProjectilePools.push_back(pProjectilePool); }
 
+		/** @brief Adds a pool of projectiles to the level.
+			@param pBackground The level's background. */
+		void SetBackground(Background *pBackground) { m_pBackground = pBackground; }
 
 
 	private:

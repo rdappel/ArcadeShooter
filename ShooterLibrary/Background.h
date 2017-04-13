@@ -22,8 +22,8 @@ namespace ShooterLibrary
 
 	public:
 
-		Background();
-		virtual ~Background();
+		Background() { }
+		virtual ~Background() { }
 
 		/** @brief Called when resources need to be loaded.
 			@param pResourceManager The game's resource manager, used for loading
@@ -41,6 +41,9 @@ namespace ShooterLibrary
 		/** @brief Called when the game determines it is time to draw a frame.
 			@param pSpriteBatch The game's sprite batch, used for rendering. */
 		virtual void Draw(SpriteBatch *pSpriteBatch) = 0;
+
+
+	protected:
 
 		/** @brief Gets the scrolling speed of the background, measured in pixels per second. */
 		virtual int GetScrollSpeed() const { return 100; }

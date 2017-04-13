@@ -125,14 +125,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ProjectReference Include="..\KatanaEngine\KatanaEngine.vcxproj">
-      <Project>{3f571c9e-f48e-4d5e-853d-e2be8e37ff35}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\ShooterLibrary\ShooterLibrary.vcxproj">
-      <Project>{b6885345-281c-4c2f-9842-e126812947b2}</Project>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="CollisionType.h" />
     <ClInclude Include="GameplayScreen.h" />
     <ClInclude Include="Game.h" />
@@ -156,6 +148,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\KatanaEngine\KatanaEngine.vcxproj">
+      <Project>{3f571c9e-f48e-4d5e-853d-e2be8e37ff35}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\ShooterLibrary\ShooterLibrary.vcxproj">
+      <Project>{b6885345-281c-4c2f-9842-e126812947b2}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

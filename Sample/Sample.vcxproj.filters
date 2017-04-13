@@ -34,6 +34,9 @@
     <ClCompile Include="Missile.cpp">
       <Filter>SourceFiles\Game Objects</Filter>
     </ClCompile>
+    <ClCompile Include="Background.cpp">
+      <Filter>SourceFiles\Levels</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -77,6 +80,9 @@
     </ClInclude>
     <ClInclude Include="Launcher.h">
       <Filter>SourceFiles\Weapons</Filter>
+    </ClInclude>
+    <ClInclude Include="Background.h">
+      <Filter>SourceFiles\Levels</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
