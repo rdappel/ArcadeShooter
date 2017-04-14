@@ -30,7 +30,7 @@ namespace Sample
 
 		/** @brief Instantiate the level.
 			@param pGameplayScreen The gameplay screen that is controlling the level. */
-		Level(GameplayScreen *pGameplayscreen);
+		Level(GameplayScreen *pGameplayScreen);
 		virtual ~Level() { }
 
 		/** @brief Called when resources need to be loaded.

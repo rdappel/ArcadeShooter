@@ -54,9 +54,9 @@ namespace Sample
 	}
 
 
-	Level::Level(GameplayScreen *pGameplayscreen)
+	Level::Level(GameplayScreen *pGameplayScreen)
 	{
-		m_pGameplayScreen = pGameplayscreen;
+		m_pGameplayScreen = pGameplayScreen;
 		m_isOver = false;
 
 		SetBackground(new Background());
