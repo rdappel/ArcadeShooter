@@ -1,4 +1,7 @@
 # Arcade Shooter
+
+![screenshot](https://cloud.githubusercontent.com/assets/5315168/25036603/4f886d2e-20ba-11e7-8aa2-acbe0f7f712b.png)
+
 ## Shooter Game for Arcade Cabinet
 
 [![GitHub stars](https://img.shields.io/badge/build-passing-brightgreen.svg?style=flat-square)](https://github.com/RDAppel/ArcadeShooter)
