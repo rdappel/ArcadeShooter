@@ -3,8 +3,6 @@
 
 [![GitHub stars](https://img.shields.io/badge/build-passing-brightgreen.svg?style=flat-square)](https://github.com/RDAppel/ArcadeShooter)
 
-https://img.shields.io/badge/doxygen-4%2F14%2F17-003399.svg
-
 ### About the Project
 
 [![GitHub issues](https://img.shields.io/github/issues/RDAppel/ArcadeShooter.svg?style=flat-square)](https://github.com/RDAppel/ArcadeShooter/issues)
@@ -21,7 +19,9 @@ The Arcade Shooter is currently split into the four projects described below:
 
 ### Documentation
 
-[![Arcade Shooter Documentation](https://img.shields.io/badge/doxygen-4%2F14%2F17-003399.svg)](http://ryan-appel.com/arcade_shooter/api/)
+[![Arcade Shooter Documentation](https://img.shields.io/badge/doxygen-4%2F14%2F17-003399.svg?style=flat-square)](http://ryan-appel.com/arcade_shooter/api/)
+
+[Arcade Shooter Documentation](http://ryan-appel.com/arcade_shooter/api/)
 
 <sub><sup>Documentation is generated using [Doxygen](http://www.stack.nl/~dimitri/doxygen/index.html).</sup></sub>
 
@@ -30,7 +30,7 @@ The Arcade Shooter is currently split into the four projects described below:
 [![GitHub forks](https://img.shields.io/github/forks/RDAppel/ArcadeShooter.svg?style=flat-square)](https://github.com/RDAppel/ArcadeShooter/network)
 [![GitHub stars](https://img.shields.io/github/stars/RDAppel/ArcadeShooter.svg?style=flat-square)](https://github.com/RDAppel/ArcadeShooter/stargazers)
 
-Coming Soon
+To get started, fork this project to your Github account. Then setup your own project by following the tutorial (coming soon).
 
 ### Completion List:
 - [x] Katana Engine
