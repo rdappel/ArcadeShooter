@@ -2,12 +2,14 @@
 ### Shooter Game for Arcade Cabinet
 
 [![GitHub stars](https://img.shields.io/badge/build-passing-brightgreen.svg?style=flat-square)](https://github.com/RDAppel/ArcadeShooter)
-[![GitHub issues](https://img.shields.io/github/issues/RDAppel/ArcadeShooter.svg?style=flat-square)](https://github.com/RDAppel/ArcadeShooter/issues)
-[![GitHub issues](https://img.shields.io/github/issues-closed/RDAppel/ArcadeShooter.svg?style=flat-square)](https://github.com/RDAppel/ArcadeShooter/issues)
-[![GitHub forks](https://img.shields.io/github/forks/RDAppel/ArcadeShooter.svg?style=flat-square)](https://github.com/RDAppel/ArcadeShooter/network)
-[![GitHub stars](https://img.shields.io/github/stars/RDAppel/ArcadeShooter.svg?style=flat-square)](https://github.com/RDAppel/ArcadeShooter/stargazers)
+
+https://img.shields.io/badge/doxygen-4%2F14%2F17-003399.svg
 
 ### About the Project
+
+[![GitHub issues](https://img.shields.io/github/issues/RDAppel/ArcadeShooter.svg?style=flat-square)](https://github.com/RDAppel/ArcadeShooter/issues)
+[![GitHub issues](https://img.shields.io/github/issues-closed/RDAppel/ArcadeShooter.svg?style=flat-square)](https://github.com/RDAppel/ArcadeShooter/issues)
+
 The Arcade Shooter is currently split into the four projects described below:
 
 | **Project**             | **Description** | **Namespace API** |
@@ -18,11 +20,15 @@ The Arcade Shooter is currently split into the four projects described below:
 | **Sample**              | Sample is a sample game to use as a template for creating your own games utilizing the Katana Engine and Shooter Library. | [Sample API](http://ryan-appel.com/arcade_shooter/api/namespace_sample.html) |
 
 ### Documentation
-[Arcade Shooter Documentation](http://ryan-appel.com/arcade_shooter/api/)
+
+[![Arcade Shooter Documentation](https://img.shields.io/badge/doxygen-4%2F14%2F17-003399.svg)](http://ryan-appel.com/arcade_shooter/api/)
 
 <sub><sup>Documentation is generated using [Doxygen](http://www.stack.nl/~dimitri/doxygen/index.html).</sup></sub>
 
 ### Getting Started
+
+[![GitHub forks](https://img.shields.io/github/forks/RDAppel/ArcadeShooter.svg?style=flat-square)](https://github.com/RDAppel/ArcadeShooter/network)
+[![GitHub stars](https://img.shields.io/github/stars/RDAppel/ArcadeShooter.svg?style=flat-square)](https://github.com/RDAppel/ArcadeShooter/stargazers)
 
 Coming Soon
 
