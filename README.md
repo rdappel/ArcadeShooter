@@ -32,7 +32,7 @@ The Arcade Shooter is currently split into the four projects described below:
 
 To get started, fork this project to your Github account. Then setup your own project by following the steps below.
 
-### Seting up your Shooter Project:
+### Setting up your Shooter Project:
 
 **Create your Game Project:**
 
