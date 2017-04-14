@@ -2,9 +2,13 @@
 
 ![screenshot](https://cloud.githubusercontent.com/assets/5315168/25036603/4f886d2e-20ba-11e7-8aa2-acbe0f7f712b.png)
 
+<br>
+
 ## Shooter Game for Arcade Cabinet
 
 [![GitHub stars](https://img.shields.io/badge/build-passing-brightgreen.svg?style=flat-square)](https://github.com/RDAppel/ArcadeShooter)
+
+<br>
 
 ## About the Project
 
@@ -20,6 +24,8 @@ The Arcade Shooter is currently split into the four projects described below:
 | **Guardian Final Zero** | Guardian FZ it the main game that will be playable at launch. <br>_**Note:** Guardian FZ is not included in the documentation._ | N/A |
 | **Sample**              | Sample is a sample game to use as a template for creating your own games utilizing the Katana Engine and Shooter Library. | [Sample API](http://ryan-appel.com/arcade_shooter/api/namespace_sample.html) |
 
+<br>
+
 ## Getting Started
 
 [![GitHub forks](https://img.shields.io/github/forks/RDAppel/ArcadeShooter.svg?style=flat-square)](https://github.com/RDAppel/ArcadeShooter/network)
@@ -27,9 +33,10 @@ The Arcade Shooter is currently split into the four projects described below:
 
 To get started, fork this project to your Github account. Then setup your own project by following the steps below.
 
-### Setting up your Shooter Project:
+### Setup Tutorial:
 
-**Create your Game Project:**
+<details> 
+  <summary><span>Create your Game Project</span> (Click to expand):</summary>
 
 - Open up the _Arcade Shooter_ solution in Visual Studio.
 - In the Solution Explorer you will see two folders; _Games_ and _Libraries_.
@@ -45,7 +52,10 @@ To get started, fork this project to your Github account. Then setup your own pr
 You now have your own project! But, there's still some setup to do... Katana Engine is built upon a graphics library called Allegro.
 Luckily, there is a NuGet package for it, so installation is pretty simple:
 
-**Install and Setup Allegro:**
+</details>
+<br>
+<details> 
+  <summary><span>Install and Setup Allegro</span> (Click to expand):</summary>
 
 - In the Solution Explorer, right-click on _your project_, and select _Manage NuGet Packages_.
 - Click _Browse_, and search for "allegro".
@@ -63,7 +73,10 @@ Luckily, there is a NuGet package for it, so installation is pretty simple:
 
 Okay, Allegro is all ready to go! Now, let's write a little code:
 
-**Create an entry point, and link to Katana Engine and Shooter Library:**
+</details>
+<br>
+<details> 
+  <summary><span>Create an entry point, and link to Katana Engine and Shooter Library</span> (Click to expand):</summary>
 
 - Within _your project_, locate the _Source Files_ folder.
 - Right-click on it, and select _Add > New Item..._
@@ -97,7 +110,10 @@ int main() { return 0; }
 
 Now you can incorporate all of the code from both of those projects! Last step in this tutorial:
 
-**Create and run _Your Game Class_:**
+</details>
+<br>
+<details> 
+  <summary><span>Create and run Your Game class:</span> (Click to expand):</summary>
 
 - Add another item to _your project_ (Right-click, _Add > New Item..._).
 - This time it needs to be a header file.
@@ -110,7 +126,7 @@ Now you can incorporate all of the code from both of those projects! Last step i
 ```c++
 #pragma once
 
-#include "ShooterLibrary.h"						// Include the shooter library code!
+#include "ShooterLibrary.h"				// Include the shooter library code!
 
 class MyGame : public ShooterLibrary::Game		// "MyGame" inherits from the Shooter Game
 {
@@ -137,6 +153,10 @@ int main() { return (new MyGame())->Run(); }
 Okay, I admit it. It's not too exciting. However, your game is running, and (as proof) you can see the name in the title bar.
 
 More tutorials to come! In the mean time, look at the Sample game code (found in the solution), and the documentation (found below).
+
+</details>
+
+<br>
 
 ## Documentation
 
