@@ -30,10 +30,20 @@ The Arcade Shooter is currently split into the four projects described below:
 [![GitHub forks](https://img.shields.io/github/forks/RDAppel/ArcadeShooter.svg?style=flat-square)](https://github.com/RDAppel/ArcadeShooter/network)
 [![GitHub stars](https://img.shields.io/github/stars/RDAppel/ArcadeShooter.svg?style=flat-square)](https://github.com/RDAppel/ArcadeShooter/stargazers)
 
-To get started, fork this project to your Github account. Then setup your own project by following the tutorial (coming soon).
+To get started, fork this project to your Github account. Then setup your own project by following the steps below.
 
-### Completion List:
-- [x] Katana Engine
-- [ ] Shooter Library
-- [ ] Guardian FZ
-- [ ] Sample
+#### Seting up your Shooter Project:
+
+Create your Game Project:
+- [ ] Open up the _Arcade Shooter_ solution in Visual Studio.
+- [ ] In the Solution Explorer you will see two folders; _Games_ and _Libraries_.
+![Solution Explorer](https://img.shields.io/github/forks/RDAppel/ArcadeShooter.svg)
+- [ ] Right-click on the _Games_ folder, and select Add > New Project...
+- [ ] Select Visual C++ (on the left) and select the Empty Project type.
+- [ ] Next, enter the name of your game, and click OK.
+
+Setup your game to use Katana Engine and Shooter Library.
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
