@@ -27,10 +27,10 @@ The Arcade Shooter is currently split into the four projects described below:
 
 To get started, fork this project to your Github account. Then setup your own project by following the steps below.
 
-### Setting up your Shooter Project:
+### Setup Tutorial:
 
 <details> 
-  <summary><span>Create your Game Project</h4> (Click to expand):</summary>
+  <summary><span>Create your Game Project</span> (Click to expand):</summary>
 
 - Open up the _Arcade Shooter_ solution in Visual Studio.
 - In the Solution Explorer you will see two folders; _Games_ and _Libraries_.
