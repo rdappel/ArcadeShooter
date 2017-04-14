@@ -29,8 +29,9 @@ To get started, fork this project to your Github account. Then setup your own pr
 
 ### Setting up your Shooter Project:
 
+
 <details> 
-  <summary>**Create your Game Project:**</summary>
+  <summary><span style="font-weight:bold;">Create your Game Project</span> (Click to expand):</summary>
 
 - Open up the _Arcade Shooter_ solution in Visual Studio.
 - In the Solution Explorer you will see two folders; _Games_ and _Libraries_.
@@ -48,8 +49,9 @@ Luckily, there is a NuGet package for it, so installation is pretty simple:
 
 </details>
 
+
 <details> 
-  <summary><span>**Install and Setup Allegro:**</span></summary>
+  <summary><span style="font-weight:bold;">Install and Setup Allegro</span> (Click to expand):</summary>
 
 - In the Solution Explorer, right-click on _your project_, and select _Manage NuGet Packages_.
 - Click _Browse_, and search for "allegro".
@@ -70,7 +72,7 @@ Okay, Allegro is all ready to go! Now, let's write a little code:
 </details>
 
 <details> 
-  <summary>**Create an entry point, and link to Katana Engine and Shooter Library:**</summary>
+  <summary><span style="font-weight:bold;">Create an entry point, and link to Katana Engine and Shooter Library</span> (Click to expand):</summary>
 
 - Within _your project_, locate the _Source Files_ folder.
 - Right-click on it, and select _Add > New Item..._
@@ -107,7 +109,7 @@ Now you can incorporate all of the code from both of those projects! Last step i
 </details>
 
 <details> 
-  <summary>**Create and run _Your Game Class_:**</summary>
+  <summary><span style="font-weight:bold;">Create and run Your Game class:</span> (Click to expand):</summary>
 
 - Add another item to _your project_ (Right-click, _Add > New Item..._).
 - This time it needs to be a header file.
