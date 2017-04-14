@@ -2,10 +2,12 @@
 
 ![screenshot](https://cloud.githubusercontent.com/assets/5315168/25036603/4f886d2e-20ba-11e7-8aa2-acbe0f7f712b.png)
 
+<br>
 ## Shooter Game for Arcade Cabinet
 
 [![GitHub stars](https://img.shields.io/badge/build-passing-brightgreen.svg?style=flat-square)](https://github.com/RDAppel/ArcadeShooter)
 
+<br>
 ## About the Project
 
 [![GitHub issues](https://img.shields.io/github/issues/RDAppel/ArcadeShooter.svg?style=flat-square)](https://github.com/RDAppel/ArcadeShooter/issues)
@@ -20,6 +22,7 @@ The Arcade Shooter is currently split into the four projects described below:
 | **Guardian Final Zero** | Guardian FZ it the main game that will be playable at launch. <br>_**Note:** Guardian FZ is not included in the documentation._ | N/A |
 | **Sample**              | Sample is a sample game to use as a template for creating your own games utilizing the Katana Engine and Shooter Library. | [Sample API](http://ryan-appel.com/arcade_shooter/api/namespace_sample.html) |
 
+<br>
 ## Getting Started
 
 [![GitHub forks](https://img.shields.io/github/forks/RDAppel/ArcadeShooter.svg?style=flat-square)](https://github.com/RDAppel/ArcadeShooter/network)
@@ -150,6 +153,7 @@ More tutorials to come! In the mean time, look at the Sample game code (found in
 
 </details>
 
+<br>
 ## Documentation
 
 [![Arcade Shooter Documentation](https://img.shields.io/badge/doxygen-4%2F14%2F17-003399.svg?style=flat-square)](http://ryan-appel.com/arcade_shooter/api/)
