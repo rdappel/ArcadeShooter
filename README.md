@@ -49,7 +49,7 @@ Luckily, there is a NuGet package for it, so installation is pretty simple:
 </details>
 
 <details> 
-  <summary>**Install and Setup Allegro:**</summary>
+  <summary><span>**Install and Setup Allegro:**</span></summary>
 
 - In the Solution Explorer, right-click on _your project_, and select _Manage NuGet Packages_.
 - Click _Browse_, and search for "allegro".
