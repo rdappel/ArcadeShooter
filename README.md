@@ -30,11 +30,7 @@ To get started, fork this project to your Github account. Then setup your own pr
 ### Setting up your Shooter Project:
 
 <details> 
-  <summary>
-  
-**Create your Game Project:**
-
-  </summary>
+  <summary>**Create your Game Project:**</summary>
 
 - Open up the _Arcade Shooter_ solution in Visual Studio.
 - In the Solution Explorer you will see two folders; _Games_ and _Libraries_.
@@ -52,7 +48,8 @@ Luckily, there is a NuGet package for it, so installation is pretty simple:
 
 </details>
 
-**Install and Setup Allegro:**
+<details> 
+  <summary>**Install and Setup Allegro:**</summary>
 
 - In the Solution Explorer, right-click on _your project_, and select _Manage NuGet Packages_.
 - Click _Browse_, and search for "allegro".
@@ -70,7 +67,10 @@ Luckily, there is a NuGet package for it, so installation is pretty simple:
 
 Okay, Allegro is all ready to go! Now, let's write a little code:
 
-**Create an entry point, and link to Katana Engine and Shooter Library:**
+</details>
+
+<details> 
+  <summary>**Create an entry point, and link to Katana Engine and Shooter Library:**</summary>
 
 - Within _your project_, locate the _Source Files_ folder.
 - Right-click on it, and select _Add > New Item..._
@@ -104,7 +104,10 @@ int main() { return 0; }
 
 Now you can incorporate all of the code from both of those projects! Last step in this tutorial:
 
-**Create and run _Your Game Class_:**
+</details>
+
+<details> 
+  <summary>**Create and run _Your Game Class_:**</summary>
 
 - Add another item to _your project_ (Right-click, _Add > New Item..._).
 - This time it needs to be a header file.
@@ -117,7 +120,7 @@ Now you can incorporate all of the code from both of those projects! Last step i
 ```c++
 #pragma once
 
-#include "ShooterLibrary.h"						// Include the shooter library code!
+#include "ShooterLibrary.h"				// Include the shooter library code!
 
 class MyGame : public ShooterLibrary::Game		// "MyGame" inherits from the Shooter Game
 {
@@ -144,6 +147,8 @@ int main() { return (new MyGame())->Run(); }
 Okay, I admit it. It's not too exciting. However, your game is running, and (as proof) you can see the name in the title bar.
 
 More tutorials to come! In the mean time, look at the Sample game code (found in the solution), and the documentation (found below).
+
+</details>
 
 ## Documentation
 
