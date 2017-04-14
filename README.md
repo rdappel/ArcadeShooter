@@ -29,7 +29,6 @@ To get started, fork this project to your Github account. Then setup your own pr
 
 ### Setting up your Shooter Project:
 
-
 <details> 
   <summary><span style="font-weight:bold;">Create your Game Project</span> (Click to expand):</summary>
 
@@ -48,8 +47,7 @@ You now have your own project! But, there's still some setup to do... Katana Eng
 Luckily, there is a NuGet package for it, so installation is pretty simple:
 
 </details>
-
-
+<br><br>
 <details> 
   <summary><span style="font-weight:bold;">Install and Setup Allegro</span> (Click to expand):</summary>
 
@@ -70,7 +68,7 @@ Luckily, there is a NuGet package for it, so installation is pretty simple:
 Okay, Allegro is all ready to go! Now, let's write a little code:
 
 </details>
-
+<br><br>
 <details> 
   <summary><span style="font-weight:bold;">Create an entry point, and link to Katana Engine and Shooter Library</span> (Click to expand):</summary>
 
@@ -107,7 +105,7 @@ int main() { return 0; }
 Now you can incorporate all of the code from both of those projects! Last step in this tutorial:
 
 </details>
-
+<br><br>
 <details> 
   <summary><span style="font-weight:bold;">Create and run Your Game class:</span> (Click to expand):</summary>
 
