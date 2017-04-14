@@ -85,7 +85,7 @@ namespace KatanaEngine
 		/** @brief Gets a pointer to the Game.
 			@return A pointer to the game instance. */
 		virtual Game *GetGame() const;
-		
+
 		/** @brief Gets a pointer to the ParticleManager, for creating and managing particles.
 			@return A pointer to the game's ParticleManager instance. */
 		virtual ParticleManager *GetParticleManager() const;
@@ -98,7 +98,7 @@ namespace KatanaEngine
 		virtual void Show();
 
 		/** @brief Tells the screen to transition out. When the screen has completed
-			its transition, UnloadContent() will be called, and the ScreenManager 
+			its transition, UnloadContent() will be called, and the ScreenManager
 			will remove it.
 			@remark SetExitCallback() and SetRemoveCallback() can be used to trigger
 			events involving the exiting process. */
@@ -144,7 +144,6 @@ namespace KatanaEngine
 			@param seconds The transition time. */
 		virtual void SetTransitionOutTime(double seconds) { m_transitionOutTime = seconds; }
 
-
 		/** @brief Get the time in seconds that the screen will transition in.
 			@return Returns the transition time in seconds. */
 		virtual double GetTransitionInTime() const { return m_transitionInTime; }
@@ -162,6 +161,18 @@ namespace KatanaEngine
 			the ScreenManager.
 			@return Returns true if the screen needs to be removed, false otherwise. */
 		virtual bool NeedsToBeRemoved() const { return m_needsToBeRemoved; }
+
+		/** @brief Forces all screen rendering to a render target. */
+		virtual void UseRenderTarget();
+
+		/** @brief Get screen's render target.
+			@return Returns a pointer to the render target, or nullptr if the screen doesn't
+			use one. */
+		virtual RenderTarget *GetRenderTarget() const { return m_pRenderTarget; }
+
+		/** @brief Get the color that will be used to tint the render target.
+			@return Returns the render target draw tint. */
+		virtual Color GetRenderTargetColor() const { return Color::White * GetAlpha(); }
 
 
 	private:
@@ -185,6 +196,8 @@ namespace KatanaEngine
 		double m_transitionTime;
 
 		ScreenManager *m_pScreenManager;
+
+		RenderTarget *m_pRenderTarget;
 
 		void TransitionIn();
 		void TransitionOut();

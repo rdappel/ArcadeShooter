@@ -48,5 +48,9 @@ namespace Sample
 		LevelOverScreen::SetGameOverTexture(pTexture);
 		pTexture = pResourceManager->Load<Texture>("Textures\\MissionComplete.png");
 		LevelOverScreen::SetLevelCompleteTexture(pTexture);
+
+		pAnimation = pResourceManager->Load<Animation>("Animations\\Explosion.anim");
+		pAnimation->SetTexture(pResourceManager->Load<Texture>("Textures\\Explosion_01.png"));
+		pAnimation->Stop();
 	}
 }

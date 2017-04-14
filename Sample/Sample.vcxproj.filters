@@ -46,6 +46,9 @@
     <ClCompile Include="LevelOverScreen.cpp">
       <Filter>SourceFiles\Screens</Filter>
     </ClCompile>
+    <ClCompile Include="Explosion.cpp">
+      <Filter>SourceFiles\Levels</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -101,6 +104,9 @@
     </ClInclude>
     <ClInclude Include="LevelOverScreen.h">
       <Filter>SourceFiles\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="Explosion.h">
+      <Filter>SourceFiles\Levels</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -23,9 +23,11 @@ namespace ShooterLibrary
 		m_pTexture = nullptr;
 		m_textureOrigin = Vector2::Zero;
 
+		m_isConfinedToScreen = false;
+
 		m_responsiveness = 0.1f;
 
-		SetPosition(Game::GetScreenCenter().X, Game::GetScreenHeight() - 100);
+		SetPosition(Game::GetScreenCenter().X, Game::GetScreenHeight() + 100);
 		SetCollisionRadius(40);
 	}
 
@@ -34,7 +36,33 @@ namespace ShooterLibrary
 		Vector2 targetVelocity = m_desiredDirection * GetSpeed() * pGameTime->GetTimeElapsed();
 		m_velocity = Vector2::Lerp(m_velocity, targetVelocity, GetResponsiveness());
 		TranslatePosition(m_velocity);
-		ConfineToScreen();
+
+		if (m_isConfinedToScreen)
+		{
+			const int PADDING = 4;
+			const int TOP = PADDING;
+			const int LEFT = PADDING;
+			const int RIGHT = Game::GetScreenWidth() - PADDING;
+			const int BOTTOM = Game::GetScreenHeight() - PADDING;
+
+			Vector2 *pPosition = &GetPosition();
+			if (pPosition->X - m_textureOrigin.X < LEFT)
+			{
+				SetPosition(LEFT + m_textureOrigin.X, pPosition->Y);
+			}
+			if (pPosition->X + m_textureOrigin.X > RIGHT)
+			{
+				SetPosition(RIGHT - m_textureOrigin.X, pPosition->Y);
+			}
+			if (pPosition->Y - m_textureOrigin.Y < TOP)
+			{
+				SetPosition(pPosition->X, TOP + m_textureOrigin.Y);
+			}
+			if (pPosition->Y + m_textureOrigin.Y > BOTTOM)
+			{
+				SetPosition(pPosition->X, BOTTOM - m_textureOrigin.Y);
+			}
+		}
 
 		Ship::Update(pGameTime);
 	}
@@ -74,33 +102,6 @@ namespace ShooterLibrary
 		FireWeapons((TriggerType)type);
 		
 	}
-
-	void PlayerShip::ConfineToScreen(const int padding)
-	{
-		const int LEFT = padding;
-		const int RIGHT = Game::GetScreenWidth() - padding;
-		const int TOP = padding;
-		const int BOTTOM = Game::GetScreenHeight() - padding;
-
-		Vector2 *pPosition = &GetPosition();
-		if (pPosition->X - m_textureOrigin.X < LEFT)
-		{
-			SetPosition(LEFT + m_textureOrigin.X, pPosition->Y);
-		}
-		if (pPosition->X + m_textureOrigin.X > RIGHT)
-		{
-			SetPosition(RIGHT - m_textureOrigin.X, pPosition->Y);
-		}
-		if (pPosition->Y - m_textureOrigin.Y < TOP)
-		{
-			SetPosition(pPosition->X, TOP + m_textureOrigin.Y);
-		}
-		if (pPosition->Y + m_textureOrigin.Y > BOTTOM)
-		{
-			SetPosition(pPosition->X, BOTTOM - m_textureOrigin.Y);
-		}
-	}
-
 
 	void PlayerShip::SetTexture(Texture *pTexture)
 	{

@@ -36,19 +36,27 @@ namespace Sample
 			and managing game resources. */
 		virtual void LoadContent(ResourceManager *pResourceManager);
 
-		/** @brief Called when the game has determined that game logic needs
-			to be processed.
-			@param pGameTime Timing values including time since last update. */
-		virtual void Update(const GameTime *pGameTime);
-
 		/** @brief Called when the game has determined that player input
 			needs to be processed.
 			@param pInput The current state of all player input devices. */
 		virtual void HandleInput(const InputState *pInput);
 
+		/** @brief Called when the game has determined that game logic needs
+			to be processed.
+			@param pGameTime Timing values including time since last update. */
+		virtual void Update(const GameTime *pGameTime);
+
+		/** @brief Called when the game determines it is time to draw a frame.
+			@param pSpriteBatch The game's sprite batch, used for rendering. */
+		virtual void Draw(SpriteBatch *pSpriteBatch);
+
 		/** @brief Adds a power up to the level.
 			@param position The position to place the power up. */
 		virtual void SpawnPowerUp(const Vector2 position);
+
+		/** @brief Adds an explosion to the level.
+			@param position The position to place the explosion. */
+		virtual void SpawnExplosion(const Vector2 position, const float scale = 1);
 
 		/** @brief Should be called when the victory conditions are met for the level. */
 		virtual void Complete();
@@ -66,17 +74,19 @@ namespace Sample
 
 	private:
 
-		//PlayerShip *m_pPlayerShip;
+
+		GameplayScreen *m_pGameplayScreen = nullptr;
+
+		bool m_isOver;
 
 		std::vector<PlayerShip *> m_playerShips;
 		std::vector<PlayerShip *>::iterator m_playerShipIt;
-
-		GameplayScreen *m_pGameplayScreen = nullptr;
 		
 		std::vector<PowerUp *> m_powerUps;
 		std::vector<PowerUp *>::iterator m_powerUpIt;
 
-		bool m_isOver;
+		std::vector<Explosion *> m_explosions;
+		std::vector<Explosion *>::iterator m_explosionIt;
 
 	};
 }

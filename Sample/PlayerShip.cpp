@@ -18,14 +18,37 @@ namespace Sample
 	PlayerShip::PlayerShip()
 	{
 		SetSpeed(450);
+		m_isAIControlled = false;
 	}
+
 
 	void PlayerShip::Update(const GameTime *pGameTime)
 	{
 		if (m_pThrusterAnimation) m_pThrusterAnimation->Update(pGameTime);
 
-		ShooterLibrary::PlayerShip::Update(pGameTime);
+		if (m_isAIControlled)
+		{
+			Vector2 targetBefore = m_targetPosition - GetPosition();
+			Vector2 normalized = targetBefore;
+			normalized.Normalize();
+
+			SetDesiredDirection(normalized);
+			ShooterLibrary::PlayerShip::Update(pGameTime);
+
+			Vector2 targetAfter = m_targetPosition - GetPosition();
+			if (targetBefore.LengthSquared() < targetAfter.LengthSquared())
+			{
+				SetPosition(m_targetPosition);
+				m_isAIControlled = false;
+				ConfineToScreen();
+			}
+		}
+		else
+		{
+			ShooterLibrary::PlayerShip::Update(pGameTime);
+		}
 	}
+
 
 	void PlayerShip::Draw(SpriteBatch *pSpriteBatch)
 	{
@@ -36,5 +59,10 @@ namespace Sample
 		}
 
 		ShooterLibrary::PlayerShip::Draw(pSpriteBatch);
+	}
+
+	void PlayerShip::HandleInput(const InputState *pInput)
+	{
+		if (!m_isAIControlled) ShooterLibrary::PlayerShip::HandleInput(pInput);
 	}
 }

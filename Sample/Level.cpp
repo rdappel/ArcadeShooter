@@ -115,6 +115,13 @@ namespace Sample
 		AddPlayerShip(pPlayerShip);
 		// end todo
 
+		for (int i = 0; i < 20; i++)
+		{
+			Explosion *pExplosion = new Explosion();
+			pExplosion->SetAnimation(pResourceManager->Load<Animation>("Animations\\Explosion.anim"));
+			m_explosions.push_back(pExplosion);
+		}
+
 		ShooterLibrary::Level::LoadContent(pResourceManager);
 
 		CollisionManager *pC = GetCollisionManager();
@@ -162,8 +169,34 @@ namespace Sample
 				GetScreenManager()->AddScreen(new LevelOverScreen(m_pGameplayScreen, false));
 			}
 		}
+		else
+		{
+
+		}
+
+		m_explosionIt = m_explosions.begin();
+		for (; m_explosionIt != m_explosions.end(); m_explosionIt++)
+		{
+			(*m_explosionIt)->Update(pGameTime);
+		}
 
 		ShooterLibrary::Level::Update(pGameTime);
+	}
+
+	void Level::Draw(SpriteBatch *pSpriteBatch)
+	{
+
+		pSpriteBatch->Begin(SpriteSortMode::BACK_TO_FRONT);
+		ShooterLibrary::Level::Draw(pSpriteBatch);
+		pSpriteBatch->End();
+		
+		pSpriteBatch->Begin(SpriteSortMode::BACK_TO_FRONT, BlendState::ADDITIVE);
+		m_explosionIt = m_explosions.begin();
+		for (; m_explosionIt != m_explosions.end(); m_explosionIt++)
+		{
+			(*m_explosionIt)->Draw(pSpriteBatch);
+		}
+		pSpriteBatch->End();
 	}
 
 	void Level::AddPlayerShip(PlayerShip *pPlayerShip)
@@ -171,6 +204,7 @@ namespace Sample
 		AddGameObject(pPlayerShip);
 		m_playerShips.push_back(pPlayerShip);
 		pPlayerShip->SetLevel(this);
+		pPlayerShip->SetAITarget(pPlayerShip->GetPosition() - Vector2::UnitY * 300);
 	}
 
 	
@@ -179,6 +213,21 @@ namespace Sample
 		PowerUp *pPowerUp = new	PowerUp();
 		pPowerUp->Activate(position, this);
 		AddGameObject(pPowerUp);
+	}
+
+	
+	void Level::SpawnExplosion(const Vector2 position, const float scale)
+	{
+		m_explosionIt = m_explosions.begin();
+		for (; m_explosionIt != m_explosions.end(); m_explosionIt++)
+		{
+			Explosion *pExplosion = *m_explosionIt;
+			if (!pExplosion->IsActive())
+			{
+				pExplosion->Activate(position, scale);
+				break;
+			}
+		}
 	}
 
 	void Level::Complete()

@@ -48,10 +48,16 @@ namespace Sample
 	{
 		EnemyShip::Hit(damage);
 
-		if (!IsActive() && ((GetIndex() == 3) || GetIndex() == 7))
+		if (!IsActive())
 		{
 			Level *pLevel = static_cast<Level *>(GetCurrentLevel());
-			pLevel->SpawnPowerUp(GetPosition());
+
+			if (GetIndex() == 3 || GetIndex() == 7)
+			{
+				pLevel->SpawnPowerUp(GetPosition());
+			}
+			
+			pLevel->SpawnExplosion(GetPosition(), 0.75f);
 		}
 	}
 }

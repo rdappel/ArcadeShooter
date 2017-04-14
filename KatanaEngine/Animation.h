@@ -77,6 +77,11 @@ namespace KatanaEngine
 		/** @brief Stops the animation. */
 		virtual void Stop();
 
+		/** @brief Sets how many times the animation will run before it stops.
+			@param loops The number of loops to play. Setting loops to -1 will
+			make the animation loop infinitely. */
+		virtual void SetLoopCount(uint16_t loops = -1) { m_loopCounter = loops; }
+
 
 	private:
 

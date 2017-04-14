@@ -1,14 +1,14 @@
 ﻿
-/*      .                         ,'`.       .                         
-   .                  .."    _.-;' ⁄‚ `.              .			`      
-              _.-"`.##%"_.--" ,' ⁄`     `.           "#"     ___,,od000
-           ,'"-_ _.-.--"\   ,'            `-_       '%#%',,/00000000000
-         ,'     |_.'     )`/-     __..--""`-_`-._    J L/00000000000000
+/*      .                         ,'`.       .
+   .                  .."    _.-;' ⁄‚ `.              .			`
+			  _.-"`.##%"_.--" ,' ⁄`     `.           "#"     ___,,od000
+		   ,'"-_ _.-.--"\   ,'            `-_       '%#%',,/00000000000
+		 ,'     |_.'     )`/-     __..--""`-_`-._    J L/00000000000000
  . +   ,'   _.-"        / /   _-""           `-._`-_/___\///0000   000M
-     .'_.-""      '    :_/_.-'                 _,`-/__V__\0000    00MMM
+	 .'_.-""      '    :_/_.-'                 _,`-/__V__\0000    00MMM
  . _-""                         .        '   _,/000\  |  /000    0MMMMM
 _-"   .       '     .              .        ,/   000\ | /000000000MMMMM
-       `       Shooter Library       '     ,/     000\|/000000000MMMMMM
+	   `       Shooter Library       '     ,/     000\|/000000000MMMMMM
 .       © 2017 - Shuriken Studios LLC     ,/0    00000|0000000000MMMMMM */
 
 #include "ShooterLibrary.h"
@@ -51,7 +51,7 @@ namespace ShooterLibrary
 	void Level::LoadContent(ResourceManager *pResourceManager)
 	{
 		InitializeCollisionManager();
-		
+
 		if (m_pBackground) m_pBackground->LoadContent(pResourceManager);
 
 		//al_init_primitives_addon();
@@ -122,68 +122,41 @@ namespace ShooterLibrary
 
 	void Level::Draw(SpriteBatch *pSpriteBatch)
 	{
+		SpriteSortMode spriteSortMode;
+		BlendState blendState;
+		ALLEGRO_TRANSFORM *pTransform = nullptr;
+		pSpriteBatch->GetBatchSettings(spriteSortMode, blendState, pTransform);
+		
 		if (m_pBackground)
 		{
-			pSpriteBatch->Begin(SpriteSortMode::BACK_TO_FRONT, BlendState::ALPHA);
+			pSpriteBatch->End();
+			pSpriteBatch->Begin(SpriteSortMode::IMMEDIATE, BlendState::ALPHA);
 			m_pBackground->Draw(pSpriteBatch);
 			pSpriteBatch->End();
+			pSpriteBatch->Begin(spriteSortMode, blendState, pTransform);
 		}
-
-		//al_set_blender(ALLEGRO_ADD, ALLEGRO_ONE, ALLEGRO_INVERSE_ALPHA);
-		//if (m_pBackground) m_pBackground->Draw(pGameTime);
-
-		//al_set_blender(ALLEGRO_ADD, ALLEGRO_ALPHA, ALLEGRO_INVERSE_ALPHA);
-		//m_particleManager.Draw(pGameTime);
-
-		//al_set_blender(ALLEGRO_ADD, ALLEGRO_ONE, ALLEGRO_INVERSE_ALPHA);
-
-		//// Draw the sector primitive if it contains a game object
-		//for (unsigned int i = 0; i < m_totalSectorCount; i++)
-		//{
-		//	if (m_pSectors[i].size() > 0)
-		//	{
-		//		int x = (i % (int)m_sectorCount.X) * m_sectorSize.X;
-		//		int y = (i / (int)m_sectorCount.X) * m_sectorSize.Y;
-
-		//		al_draw_filled_rectangle(x, y, x + m_sectorSize.X, y + m_sectorSize.Y, al_map_rgba_f(1, 1, 1, 0.2f));
-		//	}
-		//}
 
 		ParticleManager *pParticleManager = GetParticleManager();
 		if (pParticleManager)
 		{
-			pParticleManager->Draw(pSpriteBatch);
-
-			pSpriteBatch->Begin(SpriteSortMode::BACK_TO_FRONT, BlendState::ALPHA);
-
-			m_gameObjectIt = m_gameObjects.begin();
-			for (; m_gameObjectIt != m_gameObjects.end(); m_gameObjectIt++)
-			{
-				GameObject *pGameObject = (*m_gameObjectIt);
-				if (pGameObject->IsActive())
-				{
-					pGameObject->Draw(pSpriteBatch);
-				}
-			}
-
 			pSpriteBatch->End();
+			pSpriteBatch->Begin(SpriteSortMode::DEFERRED, BlendState::ADDITIVE);
+			pParticleManager->Draw(pSpriteBatch);
+			pSpriteBatch->End();
+			pSpriteBatch->Begin(spriteSortMode, blendState, pTransform);
 		}
 
-		//// Draw explosions
-		//al_set_blender(ALLEGRO_ADD, ALLEGRO_ONE, ALLEGRO_ONE);
-		//m_explosionIt = m_explosions.begin();
-		//for (; m_explosionIt != m_explosions.end(); m_explosionIt++)
-		//{
-		//	Explosion *pExplosion = (*m_explosionIt);
-		//	if (pExplosion->IsActive())
-		//	{
-		//		pExplosion->Draw(pGameTime);
-		//	}
-		//}
-
-		//al_set_blender(ALLEGRO_ADD, ALLEGRO_ALPHA, ALLEGRO_INVERSE_ALPHA);
+		m_gameObjectIt = m_gameObjects.begin();
+		for (; m_gameObjectIt != m_gameObjects.end(); m_gameObjectIt++)
+		{
+			GameObject *pGameObject = (*m_gameObjectIt);
+			if (pGameObject->IsActive())
+			{
+				pGameObject->Draw(pSpriteBatch);
+			}
+		}
 	}
-	
+
 	void Level::UpdateSectorPosition(GameObject *pGameObject)
 	{
 		Vector2 position = pGameObject->GetPosition();

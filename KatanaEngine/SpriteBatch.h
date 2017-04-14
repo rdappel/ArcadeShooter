@@ -52,10 +52,10 @@ namespace KatanaEngine
 		/** @brief Begins a sprite batch operation.
 			@param sortMode Defines how to sort the sprites for rendering.
 			@param blendState Defines how to blend overlaping sprites.
-			@param transformation Defines a screen space transformation to use. */
+			@param pTransformation Defines a screen space transformation to use. */
 		void Begin(const SpriteSortMode sortMode = SpriteSortMode::DEFERRED,
 			const BlendState blendState = BlendState::ALPHA,
-			ALLEGRO_TRANSFORM *transformation = NULL);
+			ALLEGRO_TRANSFORM *pTransformation = NULL);
 
 		/** @brief Flushes the sprite batch and restores the device state to how
 		it was before Begin was called. */
@@ -128,6 +128,12 @@ namespace KatanaEngine
 			const Vector2 scale = Vector2::One, const float rotation = 0,
 			float drawDepth = 0);
 
+		/** @brief Gets the current settings from the sprite batch.
+			@param sortMode Defines how to sort the sprites for rendering.
+			@param blendState Defines how to blend overlaping sprites.
+			@param pTransformation Defines a screen space transformation to use. */
+		void GetBatchSettings(SpriteSortMode &sortMode, BlendState &blendState, ALLEGRO_TRANSFORM *pTransformation);
+
 
 	private:
 
@@ -183,7 +189,9 @@ namespace KatanaEngine
 
 		SpriteSortMode m_sortMode;
 
-		ALLEGRO_TRANSFORM *m_transformation;
+		BlendState m_blendState;
+
+		ALLEGRO_TRANSFORM *m_pTransformation;
 
 		bool m_isStarted;
 

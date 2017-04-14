@@ -60,6 +60,10 @@ namespace ShooterLibrary
 			@see CollisionManager */
 		virtual uint32_t GetCollisionType() const { return (COLLISIONTYPE_PLAYER | COLLISIONTYPE_SHIP); }
 
+		/** @brief Confines the player ship to the screen.
+			@param isConfined Determines if the ship is confined or not. */
+		virtual void ConfineToScreen(const bool isConfined = true) { m_isConfinedToScreen = isConfined; }
+
 
 	protected:
 
@@ -75,10 +79,6 @@ namespace ShooterLibrary
 		/** @brief Get the desired player direction.
 			@return Returns the desired direction. */
 		virtual Vector2 GetDesiredDirection() const { return m_desiredDirection; }
-
-		/** @brief Confines the player ship to the screen.
-			@param padding The amount of padding around the screen. */
-		virtual void ConfineToScreen(const int padding = 5);
 		
 
 	private:
@@ -90,6 +90,8 @@ namespace ShooterLibrary
 		Vector2 m_velocity;
 
 		float m_responsiveness;
+
+		bool m_isConfinedToScreen;
 
 	};
 }

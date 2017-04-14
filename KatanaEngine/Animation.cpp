@@ -1,5 +1,5 @@
 ﻿
-/*	 ██╗  ██╗  █████╗  ████████╗  █████╗  ███╗   ██╗  █████╗ 
+/*	 ██╗  ██╗  █████╗  ████████╗  █████╗  ███╗   ██╗  █████╗
 	 ██║ ██╔╝ ██╔══██╗ ╚══██╔══╝ ██╔══██╗ ████╗  ██║ ██╔══██╗
 	 █████╔╝  ███████║    ██║    ███████║ ██╔██╗ ██║ ███████║
 	 ██╔═██╗  ██╔══██║    ██║    ██╔══██║ ██║╚██╗██║ ██╔══██║
@@ -7,7 +7,7 @@
 	 ╚═╝  ╚═╝ ╚═╝  ╚═╝/\  ╚═╝    ╚═╝  ╚═╝ ╚═╝  ╚═══╝ ╚═╝  ╚═╝
    /vvvvvvvvvvvvvvvvvvv \=========================================,
    `^^^^^^^^^^^^^^^^^^^ /---------------------------------------"
-        Katana Engine \/ © 2012 - Shuriken Studios LLC              */
+		Katana Engine \/ © 2012 - Shuriken Studios LLC              */
 
 #include "KatanaEngine.h"
 
@@ -47,15 +47,9 @@ namespace KatanaEngine
 
 				if (m_currentIndex == m_frames.size())
 				{
-					if (m_loopCounter > 0)
-					{
-						m_loopCounter--;
-					}
-
-					if (m_loopCounter != 0)
-					{
-						m_currentIndex = 0;
-					}
+					if (m_loopCounter > 0) m_loopCounter--;
+					else if (m_loopCounter == 0) Stop();
+					else m_currentIndex = 0;
 				}
 			}
 		}
@@ -130,6 +124,9 @@ namespace KatanaEngine
 		clone->m_pTexture = m_pTexture;
 		clone->m_frames = m_frames;
 		clone->m_secondsPerFrame = m_secondsPerFrame;
+		clone->m_isPlaying = m_isPlaying;
+		clone->m_currentFrameTime = m_currentFrameTime;
+		clone->m_currentIndex = m_currentIndex;
 
 		return clone;
 	}

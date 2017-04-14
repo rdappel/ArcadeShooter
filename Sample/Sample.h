@@ -30,6 +30,7 @@
 #include "BioEnemyShip.h"
 #include "PowerUp.h"
 #include "Background.h"
+#include "Explosion.h"
 #include "Level.h"
 #include "Level01.h"
 #include "Game.h"

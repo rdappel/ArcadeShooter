@@ -123,7 +123,20 @@ namespace KatanaEngine
 		{
 			for (m_rit = m_screensToDraw.rbegin(); m_rit != m_screensToDraw.rend(); ++m_rit)
 			{
+				Screen *pScreen = *m_rit;
+				RenderTarget *pRenderTarget = pScreen->GetRenderTarget();
+
+				if (pRenderTarget) RenderTarget::Set(pRenderTarget);
+
 				(*m_rit)->Draw(pSpriteBatch);
+
+				if (pRenderTarget)
+				{
+					RenderTarget::Set(nullptr);
+					pSpriteBatch->Begin(SpriteSortMode::DEFERRED, BlendState::ALPHA);
+					pSpriteBatch->Draw(pRenderTarget, Vector2::Zero, pScreen->GetRenderTargetColor());
+					pSpriteBatch->End();
+				}
 			}
 
 			m_screensToDraw.clear();

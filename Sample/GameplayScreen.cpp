@@ -29,6 +29,8 @@ namespace Sample
 		SetTransitionOutTime(0.5);
 		SetRemoveCallback(GameplayScreenRemove);
 
+		UseRenderTarget();
+
 		m_pLevel = new Level01(this);
 
 		Show();

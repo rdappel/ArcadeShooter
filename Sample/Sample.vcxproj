@@ -128,6 +128,7 @@
     <ClInclude Include="BioEnemyShip.h" />
     <ClInclude Include="Blaster.h" />
     <ClInclude Include="CollisionType.h" />
+    <ClInclude Include="Explosion.h" />
     <ClInclude Include="Launcher.h" />
     <ClInclude Include="Level01.h" />
     <ClInclude Include="LevelOverScreen.h" />
@@ -146,6 +147,7 @@
   <ItemGroup>
     <ClCompile Include="Background.cpp" />
     <ClCompile Include="BioEnemyShip.cpp" />
+    <ClCompile Include="Explosion.cpp" />
     <ClCompile Include="Level01.cpp" />
     <ClCompile Include="LevelOverScreen.cpp" />
     <ClCompile Include="Main.cpp" />

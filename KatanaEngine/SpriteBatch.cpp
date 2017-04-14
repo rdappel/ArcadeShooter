@@ -14,7 +14,7 @@
 namespace KatanaEngine
 {
 	void SpriteBatch::Begin(const SpriteSortMode sortMode, 
-		const BlendState blendState, ALLEGRO_TRANSFORM *transformation)
+		const BlendState blendState, ALLEGRO_TRANSFORM *pTransformation)
 	{
 		m_isStarted = true;
 		m_it = m_inactiveDrawables.begin();
@@ -23,12 +23,14 @@ namespace KatanaEngine
 
 		if (sortMode == SpriteSortMode::IMMEDIATE)
 		{
-			if (transformation != NULL) al_use_transform(transformation);
+			if (pTransformation != NULL) al_use_transform(pTransformation);
 		}
 		else
 		{
-			m_transformation = transformation;
+			m_pTransformation = pTransformation;
 		}
+
+		m_blendState = blendState;
 
 		switch (blendState)
 		{
@@ -48,7 +50,7 @@ namespace KatanaEngine
 
 		if (m_sortMode != SpriteSortMode::IMMEDIATE)
 		{
-			if (m_transformation != NULL) al_use_transform(m_transformation);
+			if (m_pTransformation != NULL) al_use_transform(m_pTransformation);
 
 			switch (m_sortMode)
 			{
@@ -256,5 +258,15 @@ namespace KatanaEngine
 	{
 		Draw(pAnimation->GetTexture(), position, *pAnimation->GetCurrentFrame(),
 			color, origin, scale, rotation, drawDepth);
+	}
+
+	void SpriteBatch::GetBatchSettings(SpriteSortMode &sortMode,
+		BlendState &blendState, ALLEGRO_TRANSFORM *pTransformation)
+	{
+		assert(m_isStarted && "Begin must be called before the settings can be retrieved.");
+
+		sortMode = m_sortMode;
+		blendState = m_blendState;
+		pTransformation = m_pTransformation;
 	}
 }

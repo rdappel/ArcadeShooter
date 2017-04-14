@@ -32,6 +32,10 @@ namespace Sample
 			@param pSpriteBatch The game's sprite batch, used for rendering. */
 		virtual void Draw(SpriteBatch *pSpriteBatch);
 
+		/** @brief Called when the game has determined that player input needs to be processed.
+			@param pInput The current state of all player input devices. */
+		virtual void HandleInput(const InputState *pInput);
+
 		/** @brief Sets the current level.
 			@param pLevel The current level. */
 		virtual void SetLevel(Level *pLevel) { m_pLevel = pLevel; }
@@ -39,6 +43,15 @@ namespace Sample
 		/** @brief Sets the animation for the ships thruster.
 			@param pAnimation The thruster animation. */
 		virtual void SetThrusterAnimation(Animation *pAnimation) { m_pThrusterAnimation = pAnimation; }
+
+		/** @brief Sets the target position for the AI to move to.
+			@param position The position to move to. */
+		virtual void SetAITarget(Vector2 position) 
+		{
+			m_isAIControlled = true;
+			m_targetPosition = position;
+			ConfineToScreen(false);
+		}
 
 		/** @brief Powers up the ship.
 			@todo This is just a test to see that gaining a power up does something. This
@@ -55,12 +68,15 @@ namespace Sample
 		}
 
 
-
 	private:
 
 		Level *m_pLevel;
 
 		Animation *m_pThrusterAnimation;
+
+		Vector2 m_targetPosition;
+
+		bool m_isAIControlled;
 
 	};
 }

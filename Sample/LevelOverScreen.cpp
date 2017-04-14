@@ -32,7 +32,7 @@ namespace Sample
 		m_pGameplayScreen = pGameplayScreen;
 		m_levelCompleted = levelCompleted;
 
-		SetTransitionInTime(1.0);
+		SetTransitionInTime(3.0);
 		SetTransitionOutTime(pGameplayScreen->GetTransitionOutTime());
 		SetPassthroughFlags(true, true);
 

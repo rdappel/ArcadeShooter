@@ -28,6 +28,8 @@ namespace KatanaEngine
 
 		m_transition = ScreenTransition::NONE;
 
+		m_pRenderTarget = nullptr;
+
 		m_transitionValue = 0.0f;
 
 		m_onExit = nullptr;
@@ -134,5 +136,10 @@ namespace KatanaEngine
 		m_drawBelow = draw;
 		m_updateBelow = update;
 		m_handleInputBelow = handleInput;
+	}
+
+	void Screen::UseRenderTarget()
+	{
+		m_pRenderTarget = new RenderTarget(Game::GetScreenWidth(), Game::GetScreenHeight());
 	}
 }
