@@ -106,7 +106,7 @@ namespace Sample
 			pPool->Add(pMissile);
 		}
 
-		pLauncher = new Launcher(true);
+		pLauncher = new Launcher(false);
 		pLauncher->SetProjectilePool(pPool);
 		pPlayerShip->AttachWeapon(pLauncher, Vector2::UnitX * -22);
 

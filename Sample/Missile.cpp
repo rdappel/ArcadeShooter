@@ -87,8 +87,6 @@ namespace Sample
 
 	void Missile::Activate(const Vector2 &position, bool wasShotByPlayer)
 	{
-		GameObject::Activate();
-
 		ResetTargetingDelay();
 		SetTarget();
 
