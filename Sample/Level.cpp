@@ -48,7 +48,9 @@ namespace Sample
 	{
 		bool m = pObject1->HasMask(COLLISIONTYPE_PLAYER);
 		PlayerShip *pPlayerShip = static_cast<PlayerShip *>((m) ? pObject1 : pObject2);
-		pPlayerShip->Hit(1000);
+		EnemyShip *pEnemyShip = static_cast<EnemyShip *>((!m) ? pObject1 : pObject2);
+		pPlayerShip->Hit(std::numeric_limits<float>::max());
+		pEnemyShip->Hit(std::numeric_limits<float>::max());
 	}
 
 

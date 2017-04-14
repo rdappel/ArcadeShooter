@@ -36,6 +36,10 @@ namespace Sample
 			@param pInput The current state of all player input devices. */
 		virtual void HandleInput(const InputState *pInput);
 
+		/** @brief Hits the ship, dealing damage to it.
+			@param damage The amount of damage to inflict. */
+		virtual void Hit(const float damage);
+
 		/** @brief Sets the current level.
 			@param pLevel The current level. */
 		virtual void SetLevel(Level *pLevel) { m_pLevel = pLevel; }

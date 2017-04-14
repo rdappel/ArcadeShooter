@@ -22,6 +22,12 @@ namespace Sample
 	}
 
 
+	void PlayerShip::HandleInput(const InputState *pInput)
+	{
+		if (!m_isAIControlled) ShooterLibrary::PlayerShip::HandleInput(pInput);
+	}
+
+
 	void PlayerShip::Update(const GameTime *pGameTime)
 	{
 		if (m_pThrusterAnimation) m_pThrusterAnimation->Update(pGameTime);
@@ -61,8 +67,15 @@ namespace Sample
 		ShooterLibrary::PlayerShip::Draw(pSpriteBatch);
 	}
 
-	void PlayerShip::HandleInput(const InputState *pInput)
+
+	void PlayerShip::Hit(const float damage)
 	{
-		if (!m_isAIControlled) ShooterLibrary::PlayerShip::HandleInput(pInput);
+		ShooterLibrary::PlayerShip::Hit(damage);
+
+		if (!IsActive())
+		{
+			Level *pLevel = (Level *)GetCurrentLevel();
+			pLevel->SpawnExplosion(GetPosition(), 1);
+		}
 	}
 }
