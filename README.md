@@ -68,7 +68,7 @@ Luckily, there is a NuGet package for it, so installation is pretty simple:
 Okay, Allegro is all ready to go! Now, let's write a little code:
 
 </details>
-<br><br>
+<br>
 <details> 
   <summary><span style="font-weight:bold;">Create an entry point, and link to Katana Engine and Shooter Library</span> (Click to expand):</summary>
 
