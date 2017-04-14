@@ -13,28 +13,21 @@
 
 namespace Sample
 {
-	/** @brief Defines the types of game objects that can collide with each other. */
-	enum CollisionType : uint32_t
+
+	class CollisionType : public ShooterLibrary::CollisionType
 	{
-		/* ------------------------------ Same as Shooter Library ------------------------------ */
 
-		COLLISIONTYPE_NONE			= 0,		/**< Represents an object that has no collision. */
+	public:
 
-		COLLISIONTYPE_PLAYER		= 1 << 0,	/**< Represents a player object. */
-		COLLISIONTYPE_ENEMY			= 1 << 1,	/**< Represents an enemy object. */
+		static const CollisionType MISSILE;
+		static const CollisionType POWERUP;
+		static const CollisionType EXPLOSION;
 
-		COLLISIONTYPE_SHIP			= 1 << 2,	/**< Represents a ship object. */
-		COLLISIONTYPE_PROJECTILE	= 1 << 3,	/**< Represents a projectile object. */
 
-		/* ------------------------------------------------------------------------------------- */
+	protected:
 
-		/* ---------------------------------- Additional Types --------------------------------- */
+		CollisionType(uint32_t value) : ShooterLibrary::CollisionType(value) { }
 
-		COLLISIONTYPE_MISSILE		= 1 << 4,	/**< Represents a missile object. */
-
-		COLLISIONTYPE_POWERUP		= 1 << 5,	/**< Represents a powerup object. */
-		COLLISIONTYPE_EXPLOSION		= 1 << 6	/**< Represents an explosion object. */
-
-		/* ------------------------------------------------------------------------------------- */
 	};
+
 }

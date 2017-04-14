@@ -15,7 +15,7 @@ _-"   .       '     .              .        ,/   000\ | /000000000MMMMM
 
 namespace ShooterLibrary
 {
-	void CollisionManager::AddCollisionType(const uint32_t type1, const uint32_t type2, OnCollision callback)
+	void CollisionManager::AddCollisionType(const CollisionType type1, const CollisionType type2, OnCollision callback)
 	{
 		Collision c;
 		c.Type1 = (type1 < type2) ? type1 : type2;
@@ -27,10 +27,10 @@ namespace ShooterLibrary
 
 	void CollisionManager::CheckCollision(GameObject *pGameObject1, GameObject *pGameObject2)
 	{
-		uint32_t t1 = pGameObject1->GetCollisionType();
-		uint32_t t2 = pGameObject2->GetCollisionType();
+		CollisionType t1 = pGameObject1->GetCollisionType();
+		CollisionType t2 = pGameObject2->GetCollisionType();
 
-		if (t1 == t2 || t1 == COLLISIONTYPE_NONE || t2 == COLLISIONTYPE_NONE) return;
+		if (t1 == t2 || t1 == CollisionType::NONE || t2 == CollisionType::NONE) return;
 
 		bool swapped = false;
 		if (t1 > t2)
@@ -69,7 +69,7 @@ namespace ShooterLibrary
 		AddNonCollisionType(t1, t2);
 	}
 
-	void CollisionManager::AddNonCollisionType(const uint32_t type1, const uint32_t type2)
+	void CollisionManager::AddNonCollisionType(const CollisionType type1, const CollisionType type2)
 	{
 		NonCollision nc;
 		nc.Type1 = (type1 < type2) ? type1 : type2;

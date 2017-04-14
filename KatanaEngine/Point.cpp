@@ -43,11 +43,11 @@ namespace KatanaEngine
 
 	Point &Point::operator=(const Point &point)
 	{
-		if (this == &point)
-			return *this;
-
-		X = point.X;
-		Y = point.Y;
+		if (this != &point)
+		{
+			X = point.X;
+			Y = point.Y;
+		}
 
 		return *this;
 	}

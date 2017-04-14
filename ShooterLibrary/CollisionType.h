@@ -15,16 +15,102 @@ _-"   .       '     .              .        ,/   000\ | /000000000MMMMM
 
 namespace ShooterLibrary
 {
-
-	/** @brief Defines the types of game objects that can collide with each other. */
-	enum CollisionTypes : uint32_t
+	class CollisionType
 	{
-		COLLISIONTYPE_NONE			= 0,		/**< Represents an object that has no collision. */
 
-		COLLISIONTYPE_PLAYER		= 1 << 0,	/**< Represents a player object. */
-		COLLISIONTYPE_ENEMY			= 1 << 1,	/**< Represents an enemy object. */
+	public:
 
-		COLLISIONTYPE_SHIP			= 1 << 2,	/**< Represents a ship object. */
-		COLLISIONTYPE_PROJECTILE	= 1	<< 3	/**< Represents a projectile object. */
+		virtual ~CollisionType() { }
+
+		static const CollisionType NONE;
+
+		static const CollisionType PLAYER;
+		static const CollisionType ENEMY;
+
+		static const CollisionType SHIP;
+		static const CollisionType PROJECTILE;
+
+
+
+		CollisionType &CollisionType::operator=(const CollisionType &type)
+		{
+			m_value = type.m_value;
+
+			return *this;
+		}
+
+		bool CollisionType::operator==(const CollisionType &type) const
+		{
+			return m_value == type.m_value;
+		}
+
+		bool CollisionType::operator!=(const CollisionType &type) const
+		{
+			return m_value != type.m_value;
+		}
+
+		bool CollisionType::operator<(const CollisionType &type) const
+		{
+			return m_value < type.m_value;
+		}
+
+		bool CollisionType::operator>(const CollisionType &type) const
+		{
+			return m_value > type.m_value;
+		}
+
+		const CollisionType operator|(const CollisionType &type) const
+		{
+			return (CollisionType)(m_value | type.m_value);
+		}
+
+		CollisionType &CollisionType::operator|=(const CollisionType &type)
+		{
+			m_value |= type.m_value;
+
+			return *this;
+		}
+
+		const CollisionType operator&(const CollisionType &type) const
+		{
+			return (CollisionType)(m_value & type.m_value);
+		}
+
+		CollisionType &CollisionType::operator&=(const CollisionType &type)
+		{
+			m_value &= type.m_value;
+
+			return *this;
+		}
+
+		const CollisionType operator^(const CollisionType &type) const
+		{
+			return (CollisionType)(m_value ^ type.m_value);
+		}
+
+		CollisionType &CollisionType::operator^=(const CollisionType &type)
+		{
+			m_value ^= type.m_value;
+
+			return *this;
+		}
+
+		bool Contains(const CollisionType &type)
+		{
+			return (m_value & type.m_value) > 0;
+		}
+
+
+
+	protected:
+
+		CollisionType(uint32_t value) { m_value = value; }
+
+
+	private:
+
+		uint32_t m_value;
+
 	};
+
 }

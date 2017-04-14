@@ -54,7 +54,7 @@ namespace ShooterLibrary
 			@return Returns bit-mask value for the collision type.
 			@see CollisionTypes
 			@see CollisionManager */
-		virtual uint32_t GetCollisionType() const { return COLLISIONTYPE_ENEMY | COLLISIONTYPE_SHIP; }
+		virtual CollisionType GetCollisionType() const { return CollisionType::ENEMY | CollisionType::SHIP; }
 
 
 	protected:

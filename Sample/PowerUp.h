@@ -49,7 +49,7 @@ namespace Sample
 			@return Returns bit-mask value for the collision type.
 			@see CollisionTypes
 			@see CollisionManager */
-		virtual uint32_t GetCollisionType() const { return COLLISIONTYPE_POWERUP; }
+		virtual ShooterLibrary::CollisionType GetCollisionType() const { return CollisionType::POWERUP; }
 
 		/** @brief Gets a string representation of the power up.
 			@return Returns a string displaying the type of object. */

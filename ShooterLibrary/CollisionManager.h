@@ -39,7 +39,7 @@ namespace ShooterLibrary
 			@param type1 The collision mask type of the first object. 
 			@param type2 The collision mask type of the second object.
 			@param callback The callback function that should run when the specified object types collide. */
-		virtual void AddCollisionType(const uint32_t type1, const uint32_t type2, OnCollision callback);
+		virtual void AddCollisionType(const CollisionType type1, const CollisionType type2, OnCollision callback);
 
 		/** @brief Adds a type of collision occurance to make the manager ignore.
 			@param type1 The collision mask type of the first object.
@@ -47,7 +47,7 @@ namespace ShooterLibrary
 			@remark This function is used as an optimization for objects that commonly collide and don't
 			have any affect on gameplay. For example, a player ship that colldes with a projectile that was
 			shot by a player. */
-		virtual void AddNonCollisionType(const uint32_t type1, const uint32_t type2);
+		virtual void AddNonCollisionType(const CollisionType type1, const CollisionType type2);
 
 		/** @brief Checks to see if two objects are colliding. If they are the specified callback function
 			is run.
@@ -62,15 +62,15 @@ namespace ShooterLibrary
 
 		struct NonCollision
 		{
-			uint32_t Type1;
-			uint32_t Type2;
+			CollisionType Type1 = CollisionType::NONE;
+			CollisionType Type2 = CollisionType::NONE;
 		};
 
 		struct Collision
 		{
-			uint32_t Type1;
-			uint32_t Type2;
-			OnCollision Callback;
+			CollisionType Type1 = CollisionType::NONE;
+			CollisionType Type2 = CollisionType::NONE;
+			OnCollision Callback = nullptr;
 		};
 
 		std::vector<NonCollision> m_nonCollisions;

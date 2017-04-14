@@ -92,11 +92,11 @@ namespace KatanaEngine
 
 	Vector2 &Vector2::operator=(const Vector2 &vector)
 	{
-		if (this == &vector)
-			return *this;
-
-		X = vector.X;
-		Y = vector.Y;
+		if (this != &vector)
+		{
+			X = vector.X;
+			Y = vector.Y;
+		}
 
 		return *this;
 	}
@@ -153,12 +153,12 @@ namespace KatanaEngine
 		return Vector2(*this) /= scalar;
 	}
 
-	bool Vector2::operator== (const Vector2 &vector) const
+	bool Vector2::operator==(const Vector2 &vector) const
 	{
 		return ((X == vector.X) && (Y == vector.Y));
 	}
 
-	bool Vector2::operator!= (const Vector2 &vector) const
+	bool Vector2::operator!=(const Vector2 &vector) const
 	{
 		return !((X == vector.X) && (Y == vector.Y));
 	}

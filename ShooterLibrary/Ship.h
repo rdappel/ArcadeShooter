@@ -56,7 +56,7 @@ namespace ShooterLibrary
 			@return Returns bit-mask value for the collision type.
 			@see CollisionTypes
 			@see CollisionManager */
-		virtual uint32_t GetCollisionType() const = 0;
+		virtual CollisionType GetCollisionType() const = 0;
 
 		/** @brief Attaches a weapon to the ship.
 			@param pWeapon The weapon to attach.

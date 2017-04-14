@@ -66,8 +66,9 @@ namespace ShooterLibrary
 		return ((WasShotByPlayer()) ? "Player " : "Enemy ") + GetProjectileTypeString();
 	}
 
-	uint32_t Projectile::GetCollisionType() const
+	CollisionType Projectile::GetCollisionType() const
 	{
-		return ((WasShotByPlayer()) ? COLLISIONTYPE_PLAYER : COLLISIONTYPE_ENEMY) | GetProjectileType();
+		CollisionType shipType = WasShotByPlayer() ? CollisionType::PLAYER : CollisionType::ENEMY;
+		return (shipType | GetProjectileType());
 	}
 }

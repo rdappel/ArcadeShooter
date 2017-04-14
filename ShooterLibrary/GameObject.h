@@ -97,7 +97,7 @@ namespace ShooterLibrary
 			@return Returns bit-mask value for the collision type.
 			@see CollisionTypes
 			@see CollisionManager */
-		virtual uint32_t GetCollisionType() const = 0;
+		virtual CollisionType GetCollisionType() const = 0;
 
 		/** @brief Gets the collision radius.
 			@return Returns the collision radius. */
@@ -111,13 +111,13 @@ namespace ShooterLibrary
 			@param mask The mask to test.
 			@return Returns true if the object's collision mask matches or contains
 			part of the bit-mask, false otherwise. */
-		virtual bool HasMask(uint32_t mask) const { return (GetCollisionType() & mask) > 0; }
+		virtual bool HasMask(CollisionType mask) const { return mask.Contains(GetCollisionType()); }
 
 		/** @brief Determines if the object matches a collision bit-mask.
 			@param mask The mask to test.
 			@return Returns true if the object's collision mask matches the bit-mask,
 			false otherwise. */
-		virtual bool IsMask(uint32_t mask) const { return (GetCollisionType() == mask); }
+		virtual bool IsMask(CollisionType mask) const { return (GetCollisionType() == mask); }
 
 
 	protected:

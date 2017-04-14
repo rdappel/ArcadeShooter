@@ -19,24 +19,33 @@
 
 namespace GuardianFinalZero
 {
-	enum CollisionType : uint32_t
+
+	class CollisionType : public ShooterLibrary::CollisionType
 	{
-		/* ------------------------------ Same as Shooter Library ------------------------------ */
 
-		COLLISIONTYPE_NONE			= 0,
+	public:
 
-		COLLISIONTYPE_PLAYER		= 1 << 0,
-		COLLISIONTYPE_ENEMY			= 1 << 1,
+		static const CollisionType MISSILE;
+		static const CollisionType POWERUP;
+		static const CollisionType EXPLOSION;
 
-		COLLISIONTYPE_SHIP			= 1 << 2,
-		COLLISIONTYPE_PROJECTILE	= 1	<< 3,
 
-		/* ------------------------------------------------------------------------------------- */
+	protected:
 
-		COLLISIONTYPE_MISSILE		= 1 << 4,
-
-		COLLISIONTYPE_POWERUP		= 1 << 5,
-		COLLISIONTYPE_EXPLOSION		= 1 << 6
+		CollisionType(uint32_t value) : ShooterLibrary::CollisionType(value) { }
 
 	};
+
+	//// These are the Shooter Library Collision Types that we inherit.
+
+	//const CollisionType CollisionType::NONE		= CollisionType(0);
+	//const CollisionType CollisionType::PLAYER		= CollisionType(1 << 1);
+	//const CollisionType CollisionType::ENEMY		= CollisionType(1 << 2);
+	//const CollisionType CollisionType::SHIP		= CollisionType(1 << 3);
+	//const CollisionType CollisionType::PROJECTILE	= CollisionType(1 << 4);
+
+	const CollisionType CollisionType::MISSILE		= CollisionType(1 << 5);
+	const CollisionType CollisionType::POWERUP		= CollisionType(1 << 6);
+	const CollisionType CollisionType::EXPLOSION	= CollisionType(1 << 7);
+
 }

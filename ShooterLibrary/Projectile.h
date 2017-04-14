@@ -52,9 +52,9 @@ namespace ShooterLibrary
 
 		/** @brief Gets the collision type mask.
 			@return Returns bit-mask value for the collision type.
-			@see CollisionTypes
+			@see CollisionType
 			@see CollisionManager */
-		virtual uint32_t GetCollisionType() const;
+		virtual CollisionType GetCollisionType() const;
 
 
 	protected:
@@ -86,7 +86,7 @@ namespace ShooterLibrary
 		/** @brief Gets the collision type mask for the projectile.
 			@return Returns bit-mask value for the collision type, not including the ship
 			type. */
-		virtual uint32_t GetProjectileType() const { return COLLISIONTYPE_PROJECTILE; }
+		virtual CollisionType GetProjectileType() const { return CollisionType::PROJECTILE; }
 
 		/** @brief Gets a string representation of the projectile.
 			@return Returns a string displaying the type of projectile, not including the

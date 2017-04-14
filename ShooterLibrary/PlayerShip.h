@@ -58,7 +58,7 @@ namespace ShooterLibrary
 			@return Returns bit-mask value for the collision type.
 			@see CollisionTypes
 			@see CollisionManager */
-		virtual uint32_t GetCollisionType() const { return (COLLISIONTYPE_PLAYER | COLLISIONTYPE_SHIP); }
+		virtual CollisionType GetCollisionType() const { return (CollisionType::PLAYER | CollisionType::SHIP); }
 
 		/** @brief Confines the player ship to the screen.
 			@param isConfined Determines if the ship is confined or not. */

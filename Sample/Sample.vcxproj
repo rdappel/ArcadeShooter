@@ -147,6 +147,7 @@
   <ItemGroup>
     <ClCompile Include="Background.cpp" />
     <ClCompile Include="BioEnemyShip.cpp" />
+    <ClCompile Include="CollisionType.cpp" />
     <ClCompile Include="Explosion.cpp" />
     <ClCompile Include="Level01.cpp" />
     <ClCompile Include="LevelOverScreen.cpp" />

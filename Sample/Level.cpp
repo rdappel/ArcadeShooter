@@ -22,7 +22,7 @@ namespace Sample
 		@param pObject2 The second game object in the collision. */
 	void PlayerShootsEnemy(GameObject *pObject1, GameObject *pObject2)
 	{
-		bool m = pObject1->HasMask(COLLISIONTYPE_ENEMY);
+		bool m = pObject1->HasMask((ShooterLibrary::CollisionType)CollisionType::ENEMY);
 		EnemyShip *pEnemyShip = static_cast<EnemyShip *>((m) ? pObject1 : pObject2);
 		Projectile *pPlayerProjectile = static_cast<Projectile *>((!m) ? pObject1 : pObject2);
 		pEnemyShip->Hit(pPlayerProjectile->GetDamage());
@@ -34,7 +34,7 @@ namespace Sample
 		@param pObject2 The second game object in the collision. */
 	void PlayerCollectsPowerUp(GameObject *pObject1, GameObject *pObject2)
 	{
-		bool m = pObject1->HasMask(COLLISIONTYPE_POWERUP);
+		bool m = pObject1->HasMask((ShooterLibrary::CollisionType)CollisionType::POWERUP);
 		PowerUp *pPowerUp = static_cast<PowerUp *>((m) ? pObject1 : pObject2);
 		PlayerShip *pPlayerShip = static_cast<PlayerShip *>((!m) ? pObject1 : pObject2);
 		pPowerUp->Deactivate();
@@ -46,7 +46,7 @@ namespace Sample
 		@param pObject2 The second game object in the collision. */
 	void PlayerCollidesWithEnemy(GameObject *pObject1, GameObject *pObject2)
 	{
-		bool m = pObject1->HasMask(COLLISIONTYPE_PLAYER);
+		bool m = pObject1->HasMask((ShooterLibrary::CollisionType)CollisionType::PLAYER);
 		PlayerShip *pPlayerShip = static_cast<PlayerShip *>((m) ? pObject1 : pObject2);
 		EnemyShip *pEnemyShip = static_cast<EnemyShip *>((!m) ? pObject1 : pObject2);
 		pPlayerShip->Hit(std::numeric_limits<float>::max());
@@ -128,10 +128,10 @@ namespace Sample
 
 		CollisionManager *pC = GetCollisionManager();
 
-		uint32_t playerShip = (COLLISIONTYPE_PLAYER | COLLISIONTYPE_SHIP);
-		uint32_t playerProjectile = (COLLISIONTYPE_PLAYER | COLLISIONTYPE_PROJECTILE);
-		uint32_t enemyShip = (COLLISIONTYPE_ENEMY | COLLISIONTYPE_SHIP);
-		uint32_t powerUp = (COLLISIONTYPE_POWERUP);
+		ShooterLibrary::CollisionType playerShip		= (CollisionType::PLAYER | CollisionType::SHIP);
+		ShooterLibrary::CollisionType playerProjectile	= (CollisionType::PLAYER | CollisionType::PROJECTILE);
+		ShooterLibrary::CollisionType enemyShip			= (CollisionType::ENEMY | CollisionType::SHIP);
+		ShooterLibrary::CollisionType powerUp			= (CollisionType::POWERUP);
 
 		pC->AddNonCollisionType(playerShip, playerProjectile);
 		pC->AddCollisionType(playerProjectile, enemyShip, PlayerShootsEnemy);
