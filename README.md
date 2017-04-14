@@ -17,14 +17,6 @@ The Arcade Shooter is currently split into the four projects described below:
 | **Guardian Final Zero** | Guardian FZ it the main game that will be playable at launch. <br>_**Note:** Guardian FZ is not included in the documentation._ | N/A |
 | **Sample**              | Sample is a sample game to use as a template for creating your own games utilizing the Katana Engine and Shooter Library. | [Sample API](http://ryan-appel.com/arcade_shooter/api/namespace_sample.html) |
 
-## Documentation
-
-[![Arcade Shooter Documentation](https://img.shields.io/badge/doxygen-4%2F14%2F17-003399.svg?style=flat-square)](http://ryan-appel.com/arcade_shooter/api/)
-
-[Arcade Shooter Documentation](http://ryan-appel.com/arcade_shooter/api/)
-
-<sub><sup>Documentation is generated using [Doxygen](http://www.stack.nl/~dimitri/doxygen/index.html).</sup></sub>
-
 ## Getting Started
 
 [![GitHub forks](https://img.shields.io/github/forks/RDAppel/ArcadeShooter.svg?style=flat-square)](https://github.com/RDAppel/ArcadeShooter/network)
@@ -58,7 +50,7 @@ Luckily, there is a NuGet package for it, so installation is pretty simple:
 ![nuget_allegro](https://cloud.githubusercontent.com/assets/5315168/25034427/f029ffd6-20ab-11e7-8654-0a1b12192d7e.png)
 
 - Select the latest _Allegro 5_ package.
-- Make sure that the Latest **Stable** version is selected, and click install. _You may have a "Review Changes" box pop-up. Just click OK._ 
+- Make sure that the Latest **Stable** version is selected, and click install. _You may have a "Review Changes" box pop-up. Just click OK_. 
 - Right-click on _your project_ again (in the Solution Explorer), and select _properties_.
 - Expand _Allegro 5_ (on the left) and select _Add-ons_, and then change all the _Addon_ values to "Yes."
 
@@ -92,11 +84,62 @@ int main() { return 0; }
 
 ![additional_include](https://cloud.githubusercontent.com/assets/5315168/25035360/cbee30b8-20b2-11e7-8c03-06671d32a594.png)
 
-- Click _OK_
+- Click _OK_.
+- Next, we need to add a couple of project references. Right-click on _your project_ and select _Add > Reference..._
+- Check the checkboxes next to Katana Engine and Shooter Library.
+
+![add_references](https://cloud.githubusercontent.com/assets/5315168/25036061/f8e4c704-20b6-11e7-9b5d-2248ea439763.png)
+
+- Click _OK_.
 
 Now you can incorporate all of the code from both of those projects! Last step in this tutorial:
 
 **Create and run _Your Game Class_:**
 
-- 
+- Add another item to _your project_ (Right-click, _Add > New Item..._).
+- This time it needs to be a header file.
+
+![add_game_header](https://cloud.githubusercontent.com/assets/5315168/25035669/8f0e212e-20b4-11e7-98bd-cbe4485f910e.png)
+
+- Click _Add_.
+- Copy and paste the following code:
+
+```c++
+#pragma once
+
+#include "ShooterLibrary.h"						// Include the shooter library code!
+
+class MyGame : public ShooterLibrary::Game		// "MyGame" inherits from the Shooter Game
+{
+public:
+
+	virtual ~MyGame() { }
+
+	virtual std::string GetName() const { return "My Game!!!"; }
+
+};
+```
+
+- Switch over to Main.cpp and change the code to:
+
+```c++
+#include "MyGame.h"
+
+int main() { return (new MyGame())->Run(); }
+```
+
+- To run your game, you'll need to set it as the "Startup Project." This can be found under the _Project_ Menu (_Project > Set as Startup Project_).
+- Press _F5_ to Build and Run!
+
+Okay, I admit it. It's not too exciting. However, your game is running, and (as proof) you can see the name in the title bar.
+
+More tutorials to come! In the mean time, look at the Sample game code (found in the solution), and the documentation (found below).
+
+## Documentation
+
+[![Arcade Shooter Documentation](https://img.shields.io/badge/doxygen-4%2F14%2F17-003399.svg?style=flat-square)](http://ryan-appel.com/arcade_shooter/api/)
+
+[Arcade Shooter Documentation](http://ryan-appel.com/arcade_shooter/api/)
+
+<sub><sup>Documentation is generated using [Doxygen](http://www.stack.nl/~dimitri/doxygen/index.html).</sup></sub>
 
