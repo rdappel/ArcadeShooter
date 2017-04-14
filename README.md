@@ -34,7 +34,7 @@ To get started, fork this project to your Github account. Then setup your own pr
 
 ### Seting up your Shooter Project:
 
-####Create your Game Project:
+**Create your Game Project:**
 
 - Open up the _Arcade Shooter_ solution in Visual Studio.
 - In the Solution Explorer you will see two folders; _Games_ and _Libraries_.
@@ -50,7 +50,7 @@ To get started, fork this project to your Github account. Then setup your own pr
 You now have your own project! But, there's still some setup to do... Katana Engine is built upon a graphics library called Allegro.
 Luckily, there is a NuGet package for it, so installation is pretty simple:
 
-####Install and Setup Allegro:
+**Install and Setup Allegro:**
 
 - In the Solution Explorer, right-click on _your project_, and select _Manage NuGet Packages_.
 - Click _Browse_, and search for "allegro".
@@ -66,7 +66,22 @@ Luckily, there is a NuGet package for it, so installation is pretty simple:
 
 - Click _OK_.
 
-Okay, Allegro is all ready to go! 
+Okay, Allegro is all ready to go! Now, let's write a little code:
+
+**Creating an entry point:**
+
+- Within _your project_, locate the _Source Files_ folder.
+- Right-click on it, and select _Add > New Item..._
+- Name the file _Main.cpp_, and click _Add_.
+
+![add_main](https://cloud.githubusercontent.com/assets/5315168/25035021/7aab0df4-20b0-11e7-8c6c-f28a56e1639f.png)
+
+- Then type (or copy/paste) the following line:
+
+```c++
+int main() { return 0; }
+```
+
 
 
 
