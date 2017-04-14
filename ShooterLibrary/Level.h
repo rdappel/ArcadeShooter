@@ -44,7 +44,7 @@ namespace ShooterLibrary
 			@param pSpriteBatch The game's sprite batch, used for rendering. */
 		virtual void Draw(SpriteBatch *pSpriteBatch);
 
-		/** @brief Adds a GameObject so it can be managed by the level.
+		/** @brief Adds a game object so it can be managed by the level.
 			@param pGameObject A pointer to the GameObject that will be added
 			to the level. */
 		virtual void AddGameObject(GameObject *pGameObject) { m_gameObjects.push_back(pGameObject); }

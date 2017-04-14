@@ -30,15 +30,24 @@ namespace Sample
 			@param pSpriteBatch The game's sprite batch, used for rendering. */
 		virtual void Draw(SpriteBatch *pSpriteBatch);
 
+		/** @brief Sets the explosion's animation.
+			@param pAnimation The animation to set. */
 		virtual void SetAnimation(Animation *pAnimation) { m_pAnimation = pAnimation; }
 
+		/** @brief Activates the explosion.
+			@param position The position to place the explosion.
+			@param scale The scale of the explosion.  */
 		virtual void Activate(const Vector2 position, const float scale = 1);
 
+		/** @brief Determines if the explosion is active.
+			@return Returns true if the explosion is active, false otherwise. */
 		virtual bool IsActive() const { return m_pAnimation->IsPlaying(); }
 
 
 	protected:
 
+		/** @brief Sets the explosion's position.
+		@param position The explosion's new position. */
 		virtual void SetPosition(const Vector2 position) { m_position = position; }
 
 

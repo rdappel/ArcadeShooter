@@ -28,6 +28,8 @@ namespace Sample
 
 	public:
 
+		/** @brief Instantiate the level.
+			@param pGameplayScreen The gameplay screen that is controlling the level. */
 		Level(GameplayScreen *pGameplayscreen);
 		virtual ~Level() { }
 
@@ -55,7 +57,8 @@ namespace Sample
 		virtual void SpawnPowerUp(const Vector2 position);
 
 		/** @brief Adds an explosion to the level.
-			@param position The position to place the explosion. */
+			@param position The position to place the explosion.
+			@param scale The scale of the explosion.  */
 		virtual void SpawnExplosion(const Vector2 position, const float scale = 1);
 
 		/** @brief Should be called when the victory conditions are met for the level. */
@@ -69,6 +72,11 @@ namespace Sample
 			@return A pointer to the game's ScreenManager instance. */
 		virtual ScreenManager *GetScreenManager() const;
 
+		/** @brief Adds a player ship to the level's game objects.
+			@param pPlayerShip The player ship to add.
+			@remark If using this method to add a player ship, the ship should not
+			be passed to AddGameObject(), because it's called internally.
+			@see AddGameObject() */
 		virtual void AddPlayerShip(PlayerShip *pPlayerShip);
 
 

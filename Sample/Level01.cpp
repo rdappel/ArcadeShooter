@@ -17,7 +17,7 @@ namespace Sample
 {
 
 	/** @brief Callback function for when the level is completed.
-		@param The game object that completed the level. Usually an enenmy
+		@param pGameObject The game object that completed the level. Usually an enenmy
 		that was destroyed. */
 	void Level01Completed(GameObject *pGameObject)
 	{

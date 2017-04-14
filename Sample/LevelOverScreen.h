@@ -22,7 +22,9 @@ namespace Sample
 	public:
 
 		/** @brief Instantiate a pause menu screen.
-			@param pGameplayScreen The underlaying gameplay screen. */
+			@param pGameplayScreen The underlaying gameplay screen.
+			@param levelCompleted True should be passed if the level was completed
+			successfully. False should be passed if the level was lost. */
 		LevelOverScreen(GameplayScreen *pGameplayScreen, const bool levelCompleted);
 		virtual ~LevelOverScreen() { }
 

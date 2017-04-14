@@ -20,7 +20,11 @@ namespace Sample
 
 	public:
 
+
+		/** @brief Instantiate the level.
+			@param pGameplayScreen The gameplay screen that is controlling the level. */
 		Level01(GameplayScreen *pGameplayScreen);
+
 		virtual ~Level01() { }
 
 		/** @brief Called when resources need to be loaded.
