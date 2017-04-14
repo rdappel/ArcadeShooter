@@ -62,13 +62,13 @@ Luckily, there is a NuGet package for it, so installation is pretty simple:
 - Right-click on _your project_ again (in the Solution Explorer), and select _properties_.
 - Expand _Allegro 5_ (on the left) and select _Add-ons_, and then change all the _Addon_ values to "Yes."
 
-![allegro_addons](https://cloud.githubusercontent.com/assets/5315168/25034732/41901656-20ae-11e7-90c9-c10eeb2653ef.png)
+![allegro_addons](https://cloud.githubusercontent.com/assets/5315168/25035140/58335c12-20b1-11e7-96c2-78369315f141.png)
 
 - Click _OK_.
 
 Okay, Allegro is all ready to go! Now, let's write a little code:
 
-**Creating an entry point:**
+**Create an entry point, and link to Katana Engine and Shooter Library:**
 
 - Within _your project_, locate the _Source Files_ folder.
 - Right-click on it, and select _Add > New Item..._
@@ -82,13 +82,21 @@ Okay, Allegro is all ready to go! Now, let's write a little code:
 int main() { return 0; }
 ```
 
+- Now, let's build the solution. There are a number of ways to do this. I find _Ctrl + Shift + B_ to be the quickest.
+- After building, we will now have an additional section in the project settings (Right-click on _your project_ and select _properties_).
+- Notice, the _C/C++_ area? Click on _General_, and next to _Additional Include Directories_ add the following:
 
+```
+..\ShooterLibrary;..\KatanaEngine;
+```
 
+![additional_include](https://cloud.githubusercontent.com/assets/5315168/25035360/cbee30b8-20b2-11e7-8c03-06671d32a594.png)
 
+- Click _OK_
 
-Last step:
+Now you can incorporate all of the code from both of those projects! Last step in this tutorial:
 
-####Setup your project to use Katana Engine and Shooter Library:
+**Create and run _Your Game Class_:**
 
 - 
 
