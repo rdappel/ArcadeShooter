@@ -37,10 +37,13 @@ To get started, fork this project to your Github account. Then setup your own pr
 Create your Game Project:
 - [ ] Open up the _Arcade Shooter_ solution in Visual Studio.
 - [ ] In the Solution Explorer you will see two folders; _Games_ and _Libraries_.
-![Solution Explorer](https://img.shields.io/github/forks/RDAppel/ArcadeShooter.svg)
+
+![solution_explorer](https://cloud.githubusercontent.com/assets/5315168/25034178/39c97f56-20aa-11e7-999b-941d5292624f.png)
 - [ ] Right-click on the _Games_ folder, and select Add > New Project...
 - [ ] Select Visual C++ (on the left) and select the Empty Project type.
 - [ ] Next, enter the name of your game, and click OK.
+
+![add_new_project](https://cloud.githubusercontent.com/assets/5315168/25034192/4cd2146e-20aa-11e7-96f4-8c39f903d2f1.png)
 
 Setup your game to use Katana Engine and Shooter Library.
 - [ ] 
