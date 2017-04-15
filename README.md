@@ -1,6 +1,6 @@
 # Arcade Shooter
 
-![screenshot](https://cloud.githubusercontent.com/assets/5315168/25036603/4f886d2e-20ba-11e7-8aa2-acbe0f7f712b.png)
+![screenshot](https://cloud.githubusercontent.com/assets/5315168/25066698/7527f330-21f3-11e7-9914-e34baec6ecdd.png)
 
 <br>
 
