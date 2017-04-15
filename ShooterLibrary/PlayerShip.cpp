@@ -16,18 +16,16 @@ _-"   .       '     .              .        ,/   000\ | /000000000MMMMM
 
 namespace ShooterLibrary
 {
-	PlayerShip::PlayerShip()
+	PlayerShip::PlayerShip(const uint8_t playerIndex)
 	{
 		GameObject::Activate();
 
-		m_pTexture = nullptr;
-		m_textureOrigin = Vector2::Zero;
+		m_playerIndex = playerIndex;
 
 		m_isConfinedToScreen = false;
 
 		m_responsiveness = 0.1f;
 
-		SetPosition(Game::GetScreenCenter().X, Game::GetScreenHeight() + 100);
 		SetCollisionRadius(40);
 	}
 
@@ -36,7 +34,7 @@ namespace ShooterLibrary
 		Vector2 targetVelocity = m_desiredDirection * GetSpeed() * pGameTime->GetTimeElapsed();
 		m_velocity = Vector2::Lerp(m_velocity, targetVelocity, GetResponsiveness());
 		TranslatePosition(m_velocity);
-
+		
 		if (m_isConfinedToScreen)
 		{
 			const int PADDING = 4;
@@ -46,33 +44,29 @@ namespace ShooterLibrary
 			const int BOTTOM = Game::GetScreenHeight() - PADDING;
 
 			Vector2 *pPosition = &GetPosition();
-			if (pPosition->X - m_textureOrigin.X < LEFT)
+			if (pPosition->X - GetHalfDimensions().X < LEFT)
 			{
-				SetPosition(LEFT + m_textureOrigin.X, pPosition->Y);
+				SetPosition(LEFT + GetHalfDimensions().X, pPosition->Y);
+				m_velocity.X = 0;
 			}
-			if (pPosition->X + m_textureOrigin.X > RIGHT)
+			if (pPosition->X + GetHalfDimensions().X > RIGHT)
 			{
-				SetPosition(RIGHT - m_textureOrigin.X, pPosition->Y);
+				SetPosition(RIGHT - GetHalfDimensions().X, pPosition->Y);
+				m_velocity.X = 0;
 			}
-			if (pPosition->Y - m_textureOrigin.Y < TOP)
+			if (pPosition->Y - GetHalfDimensions().Y < TOP)
 			{
-				SetPosition(pPosition->X, TOP + m_textureOrigin.Y);
+				SetPosition(pPosition->X, TOP + GetHalfDimensions().Y);
+				m_velocity.Y = 0;
 			}
-			if (pPosition->Y + m_textureOrigin.Y > BOTTOM)
+			if (pPosition->Y + GetHalfDimensions().Y > BOTTOM)
 			{
-				SetPosition(pPosition->X, BOTTOM - m_textureOrigin.Y);
+				SetPosition(pPosition->X, BOTTOM - GetHalfDimensions().Y);
+				m_velocity.Y = 0;
 			}
 		}
 
 		Ship::Update(pGameTime);
-	}
-
-	void PlayerShip::Draw(SpriteBatch *pSpriteBatch)
-	{
-		if (m_pTexture)
-		{
-			pSpriteBatch->Draw(m_pTexture, GetPosition(), Color::White, m_textureOrigin, Vector2::One, 0, 1);
-		}
 	}
 
 	void PlayerShip::HandleInput(const InputState *pInput)
@@ -95,18 +89,12 @@ namespace ShooterLibrary
 
 		SetDesiredDirection(direction);
 
-		uint32_t type = TRIGGERTYPE_NONE;
-		if (pInput->IsKeyDown(Key::F)) type |= TRIGGERTYPE_PRIMARY;
-		if (pInput->IsKeyDown(Key::D)) type |= TRIGGERTYPE_SECONDARY;
-		if (pInput->IsKeyDown(Key::S)) type |= TRIGGERTYPE_SPECIAL;
-		FireWeapons((TriggerType)type);
+		TriggerType type = TriggerType::NONE;
+		if (pInput->IsKeyDown(Key::F)) type |= TriggerType::PRIMARY;
+		if (pInput->IsKeyDown(Key::D)) type |= TriggerType::SECONDARY;
+		if (pInput->IsKeyDown(Key::S)) type |= TriggerType::SPECIAL;
+		FireWeapons(type);
 		
-	}
-
-	void PlayerShip::SetTexture(Texture *pTexture)
-	{
-		m_pTexture = pTexture;
-		m_textureOrigin.Set(m_pTexture->GetCenter());
 	}
 
 	void PlayerShip::SetResponsiveness(const float responsiveness)

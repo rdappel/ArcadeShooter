@@ -73,7 +73,7 @@ namespace Sample
 		m_pLevel = pLevel;
 		m_pTarget = nullptr;
 		m_targetCheck = 0;
-		m_velocity = Vector2::GetRandom(true);
+		m_velocity = Vector2::GetRandom(true) + Vector2::UnitY * 0.4f;
 
 		GameObject::Activate();
 		SetPosition(position);

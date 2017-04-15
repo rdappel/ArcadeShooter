@@ -20,6 +20,7 @@ namespace ShooterLibrary
 
 	public:
 
+		CollisionType() { m_value = 0; }
 		virtual ~CollisionType() { }
 
 		static const CollisionType NONE;

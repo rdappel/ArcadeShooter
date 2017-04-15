@@ -55,6 +55,9 @@
     <ClCompile Include="CollisionType.cpp">
       <Filter>Source Files\Collision</Filter>
     </ClCompile>
+    <ClCompile Include="TriggerType.cpp">
+      <Filter>Source Files\Weapons</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ShooterLibrary.h">

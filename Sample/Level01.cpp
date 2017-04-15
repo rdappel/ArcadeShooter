@@ -21,7 +21,8 @@ namespace Sample
 		that was destroyed. */
 	void Level01Completed(GameObject *pGameObject)
 	{
-		pGameObject->GetCurrentLevel()->Complete();
+		Level *pLevel = (Level *)(pGameObject->GetCurrentLevel());
+		pLevel->BeginCompletionCountdown();
 	}
 
 
@@ -37,10 +38,10 @@ namespace Sample
 
 
 		EnemyShip *pEnemyShip;
-		for (int i = 0; i < 10; i++)
+		for (int i = 0; i < 20; i++)
 		{
 			pEnemyShip = new BioEnemyShip();
-			pEnemyShip->Initialize(Vector2(100 * i + 300, -50), 3 * (i + 1));
+			pEnemyShip->Initialize(Vector2(100 * (i % 10) + 300, -50), 2 * (i + 1) + 2);
 			AddGameObject(pEnemyShip);
 		}
 		pEnemyShip->SetDeactivateCallback(Level01Completed);

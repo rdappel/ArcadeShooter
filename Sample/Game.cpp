@@ -37,11 +37,11 @@ namespace Sample
 		Texture *pTexture;
 		Animation *pAnimation;
 
-		pTexture = pResourceManager->Load<Texture>("Textures\\Bullet_02.png");
+		pTexture = pResourceManager->Load<Texture>("Textures\\Bullet02.png");
 		Projectile::SetTexture(pTexture);
 
-		pAnimation = pResourceManager->Load<Animation>("Animations\\Missile_01.anim");
-		pAnimation->SetTexture(pResourceManager->Load<Texture>("Textures\\Missile_01.png"));
+		pAnimation = pResourceManager->Load<Animation>("Animations\\Missile.anim");
+		pAnimation->SetTexture(pResourceManager->Load<Texture>("Textures\\Missile01.png"));
 
 
 		pTexture = pResourceManager->Load<Texture>("Textures\\GameOver.png");
@@ -50,7 +50,7 @@ namespace Sample
 		LevelOverScreen::SetLevelCompleteTexture(pTexture);
 
 		pAnimation = pResourceManager->Load<Animation>("Animations\\Explosion.anim");
-		pAnimation->SetTexture(pResourceManager->Load<Texture>("Textures\\Explosion_01.png"));
+		pAnimation->SetTexture(pResourceManager->Load<Texture>("Textures\\Explosion01.png"));
 		pAnimation->Stop();
 	}
 }

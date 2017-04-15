@@ -56,6 +56,18 @@ namespace ShooterLibrary
 			@see CollisionManager */
 		virtual CollisionType GetCollisionType() const;
 
+		/** @brief Determines if the level should draw the projectile.
+			@return Returns true if the level should be responsible for drawing the
+			projectile.
+			@remark We may want to manually render some projectiles so we can set
+			the blend type to additive. */
+		virtual bool IsDrawnByLevel() const { return m_drawnByLevel; }
+
+		/** @brief Sets if the level should draw the projectile.
+			@param drawManually True should be passed if you want to manually render
+			the projectile. False if you want the level to be responsible. */
+		virtual void SetManualDraw(const bool drawManually = true) { m_drawnByLevel = !drawManually; }
+
 
 	protected:
 
@@ -104,5 +116,7 @@ namespace ShooterLibrary
 		Vector2 m_direction;
 
 		bool m_wasShotByPlayer;
+
+		bool m_drawnByLevel;
 	};
 }

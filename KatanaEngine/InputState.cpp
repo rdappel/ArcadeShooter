@@ -162,7 +162,7 @@ namespace KatanaEngine
 		return IsKeyUp(key) && al_key_down(&m_previousKeyboardState, (int)key);
 	}
 
-	bool InputState::IsButtonUp(Button button, int &indexOut, int controllingIndex) const
+	bool InputState::IsButtonUp(Button button, int8_t &indexOut, int8_t controllingIndex) const
 	{
 		if (controllingIndex > -1 && controllingIndex < MAX_NUM_GAMEPADSTATES)
 		{
@@ -181,7 +181,7 @@ namespace KatanaEngine
 		}
 	}
 
-	bool InputState::IsButtonDown(Button button, int &indexOut, int controllingIndex) const
+	bool InputState::IsButtonDown(Button button, int8_t &indexOut, int8_t controllingIndex) const
 	{
 		if (controllingIndex > -1 && controllingIndex < MAX_NUM_GAMEPADSTATES)
 		{
@@ -200,7 +200,7 @@ namespace KatanaEngine
 		}
 	}
 
-	bool InputState::IsNewButtonPress(Button button, int &indexOut, int controllingIndex) const
+	bool InputState::IsNewButtonPress(Button button, int8_t &indexOut, int8_t controllingIndex) const
 	{
 		if (controllingIndex > -1 && controllingIndex < MAX_NUM_GAMEPADSTATES)
 		{
@@ -220,7 +220,7 @@ namespace KatanaEngine
 		}
 	}
 
-	bool InputState::IsNewButtonRelease(Button button, int &indexOut, int controllingIndex) const
+	bool InputState::IsNewButtonRelease(Button button, int8_t &indexOut, int8_t controllingIndex) const
 	{
 		if (controllingIndex > -1 && controllingIndex < MAX_NUM_GAMEPADSTATES)
 		{
@@ -240,12 +240,12 @@ namespace KatanaEngine
 		}
 	}
 
-	GamePadState InputState::GetGamePadState(const int gamePadIndex) const
+	GamePadState InputState::GetGamePadState(const int8_t gamePadIndex) const
 	{
 		return m_currentGamePadStates[gamePadIndex];
 	}
 
-	int InputState::GetGamePadIndex(ALLEGRO_JOYSTICK *pId)
+	int8_t InputState::GetGamePadIndex(ALLEGRO_JOYSTICK *pId)
 	{
 		return m_map[pId];
 	}

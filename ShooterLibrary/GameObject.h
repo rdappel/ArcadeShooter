@@ -33,7 +33,7 @@ namespace ShooterLibrary
 	public:
 		
 		GameObject();
-		virtual ~GameObject() { }
+		virtual ~GameObject() { s_count--; }
 
 		
 		/** @brief Sets the current game level.
@@ -83,7 +83,7 @@ namespace ShooterLibrary
 
 		/** @brief Gets a string representation of the game object.
 			@return Returns a string displaying the type of object. */
-		virtual std::string ToString() const { return "GameObject"; }
+		virtual std::string ToString() const = 0;
 
 		/** @brief Gets the half dimensions of the game object.
 			@return Returns the half dimensions of the object. */
@@ -118,6 +118,13 @@ namespace ShooterLibrary
 			@return Returns true if the object's collision mask matches the bit-mask,
 			false otherwise. */
 		virtual bool IsMask(CollisionType mask) const { return (GetCollisionType() == mask); }
+
+
+		/** @brief Determines if the level should draw the game object.
+			@return Returns true if the level should be responsible for drawing the
+			game object. 
+			@remark Override this method if you want to manually draw it. */
+		virtual bool IsDrawnByLevel() const { return true; }
 
 
 	protected:

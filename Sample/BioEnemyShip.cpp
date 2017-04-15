@@ -50,7 +50,7 @@ namespace Sample
 
 		if (!IsActive())
 		{
-			Level *pLevel = static_cast<Level *>(GetCurrentLevel());
+			Level *pLevel = (Level *)GetCurrentLevel();
 
 			if (GetIndex() == 3 || GetIndex() == 7)
 			{

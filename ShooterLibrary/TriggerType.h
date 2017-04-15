@@ -15,16 +15,103 @@ _-"   .       '     .              .        ,/   000\ | /000000000MMMMM
 
 namespace ShooterLibrary
 {
-	/** @brief Defines the ways that triggering weapons can occur. */
-	enum TriggerType : uint32_t
+	class TriggerType
 	{
-		TRIGGERTYPE_NONE		= 0,				/**< Represents an untriggerable weapon. */
 
-		TRIGGERTYPE_PRIMARY		= 1 << 0,			/**< Represents a primary trigger type. */
-		TRIGGERTYPE_SECONDARY	= 1 << 1,			/**< Represents a secondary trigger type. */
+	public:
 
-		TRIGGERTYPE_SPECIAL		= 1 << 2,			/**< Represents a special trigger type. */
+		TriggerType() { m_value = 0; }
+		virtual ~TriggerType() { }
 
-		TRIGGERTYPE_ALL			= ((uint32_t)-1)	/**< Represents all trigger types. */
+		static const TriggerType NONE;
+
+		static const TriggerType PRIMARY;
+		static const TriggerType SECONDARY;
+
+		static const TriggerType SPECIAL;
+
+		static const TriggerType ALL;
+
+
+		TriggerType &TriggerType::operator=(const TriggerType &type)
+		{
+			m_value = type.m_value;
+
+			return *this;
+		}
+
+		bool TriggerType::operator==(const TriggerType &type) const
+		{
+			return m_value == type.m_value;
+		}
+
+		bool TriggerType::operator!=(const TriggerType &type) const
+		{
+			return m_value != type.m_value;
+		}
+
+		bool TriggerType::operator<(const TriggerType &type) const
+		{
+			return m_value < type.m_value;
+		}
+
+		bool TriggerType::operator>(const TriggerType &type) const
+		{
+			return m_value > type.m_value;
+		}
+
+		const TriggerType operator|(const TriggerType &type) const
+		{
+			return (TriggerType)(m_value | type.m_value);
+		}
+
+		TriggerType &TriggerType::operator|=(const TriggerType &type)
+		{
+			m_value |= type.m_value;
+
+			return *this;
+		}
+
+		const TriggerType operator&(const TriggerType &type) const
+		{
+			return (TriggerType)(m_value & type.m_value);
+		}
+
+		TriggerType &TriggerType::operator&=(const TriggerType &type)
+		{
+			m_value &= type.m_value;
+
+			return *this;
+		}
+
+		const TriggerType operator^(const TriggerType &type) const
+		{
+			return (TriggerType)(m_value ^ type.m_value);
+		}
+
+		TriggerType &TriggerType::operator^=(const TriggerType &type)
+		{
+			m_value ^= type.m_value;
+
+			return *this;
+		}
+
+		bool Contains(const TriggerType &type)
+		{
+			return (m_value & type.m_value) > 0;
+		}
+
+
+
+	protected:
+
+		TriggerType(uint32_t value) { m_value = value; }
+
+
+	private:
+
+		uint32_t m_value;
+
 	};
+
 }

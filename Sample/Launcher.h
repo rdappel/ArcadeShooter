@@ -24,7 +24,7 @@ namespace Sample
 			@param isActive Specifies if the weapon is active. */
 		Launcher(const bool isActive) : Gun<Missile>(isActive)
 		{
-			SetTriggerType(TriggerType::TRIGGERTYPE_SECONDARY);
+			SetTriggerType(TriggerType::SECONDARY);
 			SetCooldownSeconds(1.25f);
 		}
 

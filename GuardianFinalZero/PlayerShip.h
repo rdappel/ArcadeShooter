@@ -26,13 +26,21 @@ namespace GuardianFinalZero
 
 	public:
 
-		PlayerShip();
+		PlayerShip(const uint8_t playerIndex);
 
 		virtual ~PlayerShip() { }
 
 		virtual void Update(const GameTime *pGameTime);
 
 		virtual void Draw(SpriteBatch *pSpriteBatch);
+
+		virtual Vector2 GetHalfDimensions() const { return m_textureOrigin; }
+
+
+	private:
+
+		Texture *m_pTexture;
+		Vector2 m_textureOrigin;
 		
 	};
 }

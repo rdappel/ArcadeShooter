@@ -62,15 +62,15 @@ namespace ShooterLibrary
 
 		struct NonCollision
 		{
-			CollisionType Type1 = CollisionType::NONE;
-			CollisionType Type2 = CollisionType::NONE;
+			CollisionType Type1;
+			CollisionType Type2;
 		};
 
 		struct Collision
 		{
-			CollisionType Type1 = CollisionType::NONE;
-			CollisionType Type2 = CollisionType::NONE;
-			OnCollision Callback = nullptr;
+			CollisionType Type1;
+			CollisionType Type2;
+			OnCollision Callback;
 		};
 
 		std::vector<NonCollision> m_nonCollisions;

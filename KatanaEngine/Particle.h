@@ -26,7 +26,7 @@ namespace KatanaEngine
 	public:
 
 		Particle();
-		virtual ~Particle() { }
+		virtual ~Particle() { s_count--; }
 
 		/** @brief A value representing the percentage of the particle's lifespan.
 			@return Returns the interpolated lifespan value. */

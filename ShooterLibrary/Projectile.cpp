@@ -23,6 +23,8 @@ namespace ShooterLibrary
 		SetDamage(1);
 		SetDirection(-Vector2::UnitY);
 		SetCollisionRadius(9);
+
+		m_drawnByLevel = true;
 	}
 
 	void Projectile::Update(const GameTime *pGameTime)
@@ -47,7 +49,7 @@ namespace ShooterLibrary
 
 	void Projectile::Draw(SpriteBatch *pSpriteBatch)
 	{
-		if (s_pTexture)
+		if (IsActive())
 		{
 			pSpriteBatch->Draw(s_pTexture, GetPosition(), Color::White, s_pTexture->GetCenter());
 		}

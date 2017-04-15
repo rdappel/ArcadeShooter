@@ -45,6 +45,12 @@ namespace ShooterLibrary
 
 		std::vector<ProjectilePool *>::iterator it = m_pProjectilePools.begin();
 		for (; it != m_pProjectilePools.end(); it++) delete *it;
+
+		m_gameObjectIt = m_gameObjects.begin();
+		for (; m_gameObjectIt != m_gameObjects.end(); m_gameObjectIt++)
+		{
+			delete (*m_gameObjectIt);
+		}
 	}
 
 
@@ -122,39 +128,32 @@ namespace ShooterLibrary
 
 	void Level::Draw(SpriteBatch *pSpriteBatch)
 	{
-		SpriteSortMode spriteSortMode;
-		BlendState blendState;
-		ALLEGRO_TRANSFORM *pTransform = nullptr;
-		pSpriteBatch->GetBatchSettings(spriteSortMode, blendState, pTransform);
-		
 		if (m_pBackground)
 		{
-			pSpriteBatch->End();
 			pSpriteBatch->Begin(SpriteSortMode::IMMEDIATE, BlendState::ALPHA);
 			m_pBackground->Draw(pSpriteBatch);
 			pSpriteBatch->End();
-			pSpriteBatch->Begin(spriteSortMode, blendState, pTransform);
 		}
 
 		ParticleManager *pParticleManager = GetParticleManager();
 		if (pParticleManager)
 		{
-			pSpriteBatch->End();
 			pSpriteBatch->Begin(SpriteSortMode::DEFERRED, BlendState::ADDITIVE);
 			pParticleManager->Draw(pSpriteBatch);
 			pSpriteBatch->End();
-			pSpriteBatch->Begin(spriteSortMode, blendState, pTransform);
 		}
 
+		pSpriteBatch->Begin(SpriteSortMode::BACK_TO_FRONT);
 		m_gameObjectIt = m_gameObjects.begin();
 		for (; m_gameObjectIt != m_gameObjects.end(); m_gameObjectIt++)
 		{
 			GameObject *pGameObject = (*m_gameObjectIt);
-			if (pGameObject->IsActive())
+			if (pGameObject->IsActive() && pGameObject->IsDrawnByLevel())
 			{
 				pGameObject->Draw(pSpriteBatch);
 			}
 		}
+		pSpriteBatch->End();
 	}
 
 	void Level::UpdateSectorPosition(GameObject *pGameObject)

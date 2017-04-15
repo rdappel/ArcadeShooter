@@ -21,13 +21,12 @@ namespace GuardianFinalZero
 {
 	Level::Level()
 	{
-		m_pPlayerShip = new	PlayerShip();
+		m_pPlayerShip = new	PlayerShip(0);
 	}
 
 	void Level::LoadContent(ResourceManager *pResourceManager)
 	{
-		Texture *pTexture = pResourceManager->Load<Texture>("Textures\\PlayerShip.png");
-		m_pPlayerShip->SetTexture(pTexture);
+		//m_pPlayerShip->LoadContent(pResourceManager);
 		
 		AddGameObject(m_pPlayerShip);
 

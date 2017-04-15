@@ -48,7 +48,7 @@ namespace ShooterLibrary
 
 		/** @brief Gets a string representation of the enemy ship.
 			@return Returns a string displaying the type of object. */
-		virtual std::string ToString() const { return "EnemyShip"; }
+		virtual std::string ToString() const { return "Enemy Ship"; }
 
 		/** @brief Gets the collision type mask.
 			@return Returns bit-mask value for the collision type.

@@ -19,7 +19,8 @@
 
 namespace GuardianFinalZero
 {
-	PlayerShip::PlayerShip()
+	PlayerShip::PlayerShip(const uint8_t playerIndex)
+		: ShooterLibrary::PlayerShip(playerIndex)
 	{
 		SetSpeed(450);
 	}
@@ -31,6 +32,5 @@ namespace GuardianFinalZero
 	
 	void PlayerShip::Draw(SpriteBatch *pSpriteBatch)
 	{
-		ShooterLibrary::PlayerShip::Draw(pSpriteBatch);
 	}
 }

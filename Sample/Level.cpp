@@ -23,8 +23,8 @@ namespace Sample
 	void PlayerShootsEnemy(GameObject *pObject1, GameObject *pObject2)
 	{
 		bool m = pObject1->HasMask((ShooterLibrary::CollisionType)CollisionType::ENEMY);
-		EnemyShip *pEnemyShip = static_cast<EnemyShip *>((m) ? pObject1 : pObject2);
-		Projectile *pPlayerProjectile = static_cast<Projectile *>((!m) ? pObject1 : pObject2);
+		EnemyShip *pEnemyShip = (EnemyShip *)((m) ? pObject1 : pObject2);
+		Projectile *pPlayerProjectile = (Projectile *)((!m) ? pObject1 : pObject2);
 		pEnemyShip->Hit(pPlayerProjectile->GetDamage());
 		pPlayerProjectile->Deactivate();
 	}
@@ -35,8 +35,8 @@ namespace Sample
 	void PlayerCollectsPowerUp(GameObject *pObject1, GameObject *pObject2)
 	{
 		bool m = pObject1->HasMask((ShooterLibrary::CollisionType)CollisionType::POWERUP);
-		PowerUp *pPowerUp = static_cast<PowerUp *>((m) ? pObject1 : pObject2);
-		PlayerShip *pPlayerShip = static_cast<PlayerShip *>((!m) ? pObject1 : pObject2);
+		PowerUp *pPowerUp = (PowerUp *)((m) ? pObject1 : pObject2);
+		PlayerShip *pPlayerShip = (PlayerShip *)((!m) ? pObject1 : pObject2);
 		pPowerUp->Deactivate();
 		pPlayerShip->PowerUp();
 	}
@@ -47,8 +47,8 @@ namespace Sample
 	void PlayerCollidesWithEnemy(GameObject *pObject1, GameObject *pObject2)
 	{
 		bool m = pObject1->HasMask((ShooterLibrary::CollisionType)CollisionType::PLAYER);
-		PlayerShip *pPlayerShip = static_cast<PlayerShip *>((m) ? pObject1 : pObject2);
-		EnemyShip *pEnemyShip = static_cast<EnemyShip *>((!m) ? pObject1 : pObject2);
+		PlayerShip *pPlayerShip = (PlayerShip *)((m) ? pObject1 : pObject2);
+		EnemyShip *pEnemyShip = (EnemyShip *)((!m) ? pObject1 : pObject2);
 		pPlayerShip->Hit(std::numeric_limits<float>::max());
 		pEnemyShip->Hit(std::numeric_limits<float>::max());
 	}
@@ -59,64 +59,76 @@ namespace Sample
 		m_pGameplayScreen = pGameplayScreen;
 		m_isOver = false;
 
+		m_finalCountdownBegan = false;
+		m_finalCountdownSeconds = 5;
+
 		SetBackground(new Background());
 	}
 
 	void Level::LoadContent(ResourceManager *pResourceManager)
 	{
-		// TODO: Move this into some sort of factory function.
-		PlayerShip *pPlayerShip = new PlayerShip();
-		Texture *pTexture = pResourceManager->Load<Texture>("Textures\\PlayerShip.png");
-		pPlayerShip->SetTexture(pTexture);
-		Animation *pAnimation = pResourceManager->Load<Animation>("Animations\\Thruster.anim");
-		if (pAnimation)
-		{
-			pAnimation->SetTexture(pResourceManager->Load<Texture>("Textures\\Thruster_01.png"));
-			if (pAnimation->GetTexture())
-			{
-				pPlayerShip->SetThrusterAnimation(pAnimation);
-				pAnimation->Play();
-			}
-		}
-		
-		ProjectilePool *pPool;
-		pPool = new ProjectilePool(this);
-		AddProjectilePool(pPool);
-		Launcher *pLauncher;
-		Blaster *pBlaster;
-		Missile *pMissile;
-
-		for (int i = 0; i < 100; i++) pPool->Add(new Projectile());
-
-		pBlaster = new Blaster(true);
-		pBlaster->SetProjectilePool(pPool);
-		pPlayerShip->AttachWeapon(pBlaster, Vector2::UnitY * -32);
-
+		// smoke particle for missiles
 		SmokeTemplate<RotatingParticle> *pTemplate = new SmokeTemplate<RotatingParticle>();
 		pTemplate->SetTexture(pResourceManager->Load<Texture>("Textures\\Particle.png"));
 
+		// generate projectile pools
+		ProjectilePool *pBlasterPool = new ProjectilePool(this);
+		AddProjectilePool(pBlasterPool);
+		m_pDrawPools.push_back(pBlasterPool); // render this one separately...
 
-		pPool = new ProjectilePool(this);
-		AddProjectilePool(pPool);
+		ProjectilePool *pMissilePool = new ProjectilePool(this);
+		AddProjectilePool(pMissilePool);
+
+		// regualar projectiles
 		for (int i = 0; i < 100; i++)
+		{
+			Projectile *pProjectile = new Projectile();
+			pProjectile->SetManualDraw(); // ... here too
+			pBlasterPool->Add(pProjectile);
+		}
+
+		// missiles
+		Missile *pMissile;
+		for (int i = 0; i < 20; i++)
 		{
 			pMissile = new Missile();
 			pMissile->SetEmitter(new Emitter(GetParticleManager(), pTemplate, 100));
-			pMissile->SetAnimation(pResourceManager->Load<Animation>("Animations\\Missile_01.anim"));
-			pPool->Add(pMissile);
+			pMissile->SetAnimation(pResourceManager->Load<Animation>("Animations\\Missile.anim"));
+			pMissilePool->Add(pMissile);
 		}
 
-		pLauncher = new Launcher(false);
-		pLauncher->SetProjectilePool(pPool);
-		pPlayerShip->AttachWeapon(pLauncher, Vector2::UnitX * -22);
+		// create player ships
+		for (int i = 0; i < 4; i++)
+		{
+			PlayerShip *pPlayerShip = new PlayerShip(i);
 
-		pLauncher = new Launcher(false);
-		pLauncher->SetProjectilePool(pPool);
-		pPlayerShip->AttachWeapon(pLauncher, Vector2::UnitX * 22);
+			Blaster *pBlaster;
 
-		AddPlayerShip(pPlayerShip);
-		// end todo
+			pBlaster = new Blaster(true);
+			pBlaster->SetProjectilePool(pBlasterPool);
+			pPlayerShip->AttachWeapon(pBlaster, Vector2::UnitY * -32);
 
+			Launcher *pLauncher;
+
+			pLauncher = new Launcher(false);
+			pLauncher->SetProjectilePool(pMissilePool);
+			pPlayerShip->AttachWeapon(pLauncher, Vector2::UnitX * -22);
+
+			pLauncher = new Launcher(false);
+			pLauncher->SetProjectilePool(pMissilePool);
+			pPlayerShip->AttachWeapon(pLauncher, Vector2::UnitX * 22);
+
+			pPlayerShip->LoadContent(pResourceManager);
+			AddPlayerShip(pPlayerShip);
+		}
+
+		m_playerShipIt = m_playerShips.begin();
+		for (; m_playerShipIt != m_playerShips.end(); m_playerShipIt++)
+		{
+			(*m_playerShipIt)->Initialize(this);
+		}
+
+		// create explosions
 		for (int i = 0; i < 20; i++)
 		{
 			Explosion *pExplosion = new Explosion();
@@ -126,6 +138,7 @@ namespace Sample
 
 		ShooterLibrary::Level::LoadContent(pResourceManager);
 
+		// setup collision types
 		CollisionManager *pC = GetCollisionManager();
 
 		ShooterLibrary::CollisionType playerShip		= (CollisionType::PLAYER | CollisionType::SHIP);
@@ -151,31 +164,49 @@ namespace Sample
 
 	void Level::Update(const GameTime *pGameTime)
 	{
+		if (m_finalCountdownBegan && m_finalCountdownSeconds > 0)
+		{
+			m_finalCountdownSeconds -= pGameTime->GetTimeElapsed();
+			if (m_finalCountdownSeconds <= 0) Complete();
+		}
+
 		if (!m_isOver)
 		{
+			// check if players are still alive
 			bool isOver = true;
-
 			m_playerShipIt = m_playerShips.begin();
 			for (; m_playerShipIt != m_playerShips.end(); m_playerShipIt++)
 			{
 				if ((*m_playerShipIt)->IsActive())
 				{
-					isOver = false;
+					// at least one is alive so the game is not over.
+					isOver = false; 
 					break;
 				}
 			}
 
-			if (isOver)
+			if (isOver) // all players are dead
 			{
 				m_isOver = true;
 				GetScreenManager()->AddScreen(new LevelOverScreen(m_pGameplayScreen, false));
 			}
 		}
-		else
+		else // mission completed successfully
 		{
-
+			m_playerShipIt = m_playerShips.begin();
+			for (; m_playerShipIt != m_playerShips.end(); m_playerShipIt++)
+			{
+				PlayerShip *pPlayerShip = (*m_playerShipIt);
+				if (pPlayerShip->IsActive())
+				{
+					Vector2 target = pPlayerShip->GetPosition();
+					target.Y = -100;
+					pPlayerShip->SetAITarget(target);
+				}
+			}
 		}
-
+		
+		
 		m_explosionIt = m_explosions.begin();
 		for (; m_explosionIt != m_explosions.end(); m_explosionIt++)
 		{
@@ -187,17 +218,22 @@ namespace Sample
 
 	void Level::Draw(SpriteBatch *pSpriteBatch)
 	{
-
-		pSpriteBatch->Begin(SpriteSortMode::BACK_TO_FRONT);
 		ShooterLibrary::Level::Draw(pSpriteBatch);
-		pSpriteBatch->End();
 		
-		pSpriteBatch->Begin(SpriteSortMode::BACK_TO_FRONT, BlendState::ADDITIVE);
+		pSpriteBatch->Begin(SpriteSortMode::DEFERRED, BlendState::ADDITIVE);
+
 		m_explosionIt = m_explosions.begin();
 		for (; m_explosionIt != m_explosions.end(); m_explosionIt++)
 		{
 			(*m_explosionIt)->Draw(pSpriteBatch);
 		}
+
+		m_pDrawPoolIt = m_pDrawPools.begin();
+		for (; m_pDrawPoolIt != m_pDrawPools.end(); m_pDrawPoolIt++)
+		{
+			(*m_pDrawPoolIt)->Draw(pSpriteBatch);
+		}
+		
 		pSpriteBatch->End();
 	}
 
@@ -205,8 +241,6 @@ namespace Sample
 	{
 		AddGameObject(pPlayerShip);
 		m_playerShips.push_back(pPlayerShip);
-		pPlayerShip->SetLevel(this);
-		pPlayerShip->SetAITarget(pPlayerShip->GetPosition() - Vector2::UnitY * 300);
 	}
 
 	
@@ -232,6 +266,7 @@ namespace Sample
 		}
 	}
 
+	
 	void Level::Complete()
 	{
 		if (!m_isOver)
@@ -241,6 +276,7 @@ namespace Sample
 		}
 	}
 	
+
 	ParticleManager *Level::GetParticleManager() const 
 	{
 		return m_pGameplayScreen->GetParticleManager(); 

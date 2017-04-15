@@ -15,7 +15,7 @@ namespace Sample
 {
 	Missile::Missile()
 	{
-		SetSpeed(320);
+		SetSpeed(350);
 		SetDamage(3);
 		SetTurnSpeed(Math::PI);
 		Deactivate();

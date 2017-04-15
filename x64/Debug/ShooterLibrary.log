@@ -33,14 +33,7 @@
   Level.cpp
   GameObject.cpp
   EnemyShip.cpp
+  CollisionType.cpp
   CollisionManager.cpp
   Generating Code...
-Projectile.obj : warning LNK4006: "public: static class ShooterLibrary::CollisionType const ShooterLibrary::CollisionType::PLAYER" (?PLAYER@CollisionType@ShooterLibrary@@2V12@B) already defined in ShooterLibrary.obj; second definition ignored
-Projectile.obj : warning LNK4006: "public: static class ShooterLibrary::CollisionType const ShooterLibrary::CollisionType::ENEMY" (?ENEMY@CollisionType@ShooterLibrary@@2V12@B) already defined in ShooterLibrary.obj; second definition ignored
-Projectile.obj : warning LNK4006: "public: static class ShooterLibrary::CollisionType const ShooterLibrary::CollisionType::PROJECTILE" (?PROJECTILE@CollisionType@ShooterLibrary@@2V12@B) already defined in ShooterLibrary.obj; second definition ignored
-PlayerShip.obj : warning LNK4006: "public: static class ShooterLibrary::CollisionType const ShooterLibrary::CollisionType::PLAYER" (?PLAYER@CollisionType@ShooterLibrary@@2V12@B) already defined in ShooterLibrary.obj; second definition ignored
-PlayerShip.obj : warning LNK4006: "public: static class ShooterLibrary::CollisionType const ShooterLibrary::CollisionType::SHIP" (?SHIP@CollisionType@ShooterLibrary@@2V12@B) already defined in ShooterLibrary.obj; second definition ignored
-EnemyShip.obj : warning LNK4006: "public: static class ShooterLibrary::CollisionType const ShooterLibrary::CollisionType::ENEMY" (?ENEMY@CollisionType@ShooterLibrary@@2V12@B) already defined in ShooterLibrary.obj; second definition ignored
-EnemyShip.obj : warning LNK4006: "public: static class ShooterLibrary::CollisionType const ShooterLibrary::CollisionType::SHIP" (?SHIP@CollisionType@ShooterLibrary@@2V12@B) already defined in ShooterLibrary.obj; second definition ignored
-CollisionManager.obj : warning LNK4006: "public: static class ShooterLibrary::CollisionType const ShooterLibrary::CollisionType::NONE" (?NONE@CollisionType@ShooterLibrary@@2V12@B) already defined in ShooterLibrary.obj; second definition ignored
   ShooterLibrary.vcxproj -> C:\Users\Ryan Appel\Desktop\ArcadeShooter\x64\Debug\ShooterLibrary.lib

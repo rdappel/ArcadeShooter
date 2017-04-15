@@ -22,12 +22,12 @@ namespace ShooterLibrary
 
 	public:
 
-		PlayerShip();
+
+		/** @brief Instantiate a player ship object.
+			@param playerIndex The controlling player's index. */
+		PlayerShip(const uint8_t playerIndex);
+
 		virtual ~PlayerShip() { }
-		
-		/** @brief Sets the texture of the player ship.
-			@param pTexture A pointer to the texture resource. */
-		virtual void SetTexture(Texture *pTexture);
 
 		/** @brief Called when the game determines it is time to draw a frame.
 			@param pGameTime Timing values including time since last update. */
@@ -35,7 +35,7 @@ namespace ShooterLibrary
 
 		/** @brief Called when the game determines it is time to draw a frame.
 			@param pSpriteBatch The game's sprite batch, used for rendering. */
-		virtual void Draw(SpriteBatch *pSpriteBatch);
+		virtual void Draw(SpriteBatch *pSpriteBatch) = 0;
 
 		/** @brief Called when the game has determined that player input needs to be processed.
 			@param pInput The current state of all player input devices. */
@@ -47,12 +47,11 @@ namespace ShooterLibrary
 
 		/** @brief Gets a string representation of the player ship.
 			@return Returns a string displaying the type of object. */
-		virtual std::string ToString() const { return "PlayerShip"; }
+		virtual std::string ToString() const { return "Player Ship"; }
 
 		/** @brief Gets the half dimensions of the game object.
-			@return Returns the half dimensions of the object.
-			@callergraph */
-		virtual Vector2 GetHalfDimensions() const { return m_textureOrigin; }
+			@return Returns the half dimensions of the object. */
+		virtual Vector2 GetHalfDimensions() const = 0;
 
 		/** @brief Gets the collision type mask.
 			@return Returns bit-mask value for the collision type.
@@ -63,6 +62,14 @@ namespace ShooterLibrary
 		/** @brief Confines the player ship to the screen.
 			@param isConfined Determines if the ship is confined or not. */
 		virtual void ConfineToScreen(const bool isConfined = true) { m_isConfinedToScreen = isConfined; }
+
+		/** @brief Sets the index of the player that controls the ship.
+			@param index The controlling player's index. */
+		virtual void SetPlayerIndex(const uint8_t index) { m_playerIndex = index; }
+
+		/** @brief Gets the index of the player that controls the ship.
+			@return Returns the controlling player's index. */
+		virtual uint8_t GetPlayerIndex() const { return m_playerIndex; }
 
 
 	protected:
@@ -83,15 +90,14 @@ namespace ShooterLibrary
 
 	private:
 
-		Texture *m_pTexture;
-		Vector2 m_textureOrigin;
-
 		Vector2 m_desiredDirection;
 		Vector2 m_velocity;
 
 		float m_responsiveness;
 
 		bool m_isConfinedToScreen;
+
+		uint8_t m_playerIndex;
 
 	};
 }

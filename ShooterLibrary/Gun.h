@@ -46,7 +46,7 @@ namespace ShooterLibrary
 		{
 			if (IsActive() && CanFire())
 			{
-				if (GetTriggerType() & triggerType)
+				if (triggerType.Contains(GetTriggerType()))
 				{
 					Projectile *pProjectile = m_pProjectilePool->GetInactiveProjectile<T>();
 					if (pProjectile)

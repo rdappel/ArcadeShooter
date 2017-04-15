@@ -39,8 +39,8 @@ namespace Sample
 	void MenuScreen::Update(const GameTime *pGameTime)
 	{
 		// Calculations to make the selected menu item pulse
-		float sinValue = (float)((1.0f + sin(pGameTime->GetTotalTime() * 6)) * 0.5);
-		m_selectedAlpha =  (0.5f + 0.5f * sinValue);
+		float sineValue = (float)((1.0f + sin(pGameTime->GetTotalTime() * 6)) * 0.5);
+		m_selectedAlpha =  (0.5f + 0.5f * sineValue);
 
 		// Set the menu item colors
 		for (int i = 0; i < GetDisplayCount(); i++)

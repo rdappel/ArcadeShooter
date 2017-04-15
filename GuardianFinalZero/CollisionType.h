@@ -39,13 +39,13 @@ namespace GuardianFinalZero
 	//// These are the Shooter Library Collision Types that we inherit.
 
 	//const CollisionType CollisionType::NONE		= CollisionType(0);
-	//const CollisionType CollisionType::PLAYER		= CollisionType(1 << 1);
-	//const CollisionType CollisionType::ENEMY		= CollisionType(1 << 2);
-	//const CollisionType CollisionType::SHIP		= CollisionType(1 << 3);
-	//const CollisionType CollisionType::PROJECTILE	= CollisionType(1 << 4);
+	//const CollisionType CollisionType::PLAYER		= CollisionType(1 << 0);
+	//const CollisionType CollisionType::ENEMY		= CollisionType(1 << 1);
+	//const CollisionType CollisionType::SHIP		= CollisionType(1 << 2);
+	//const CollisionType CollisionType::PROJECTILE	= CollisionType(1 << 3);
 
-	const CollisionType CollisionType::MISSILE		= CollisionType(1 << 5);
-	const CollisionType CollisionType::POWERUP		= CollisionType(1 << 6);
-	const CollisionType CollisionType::EXPLOSION	= CollisionType(1 << 7);
+	const CollisionType CollisionType::MISSILE		= CollisionType(1 << 4);
+	const CollisionType CollisionType::POWERUP		= CollisionType(1 << 5);
+	const CollisionType CollisionType::EXPLOSION	= CollisionType(1 << 6);
 
 }

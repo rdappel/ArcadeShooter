@@ -21,7 +21,10 @@ namespace Sample
 	public:
 
 		GameplayScreen();
-		virtual ~GameplayScreen() { delete m_pLevel; }
+		virtual ~GameplayScreen()
+		{
+			delete m_pLevel;
+		}
 
 		/** @brief Called when resources need to be loaded.
 			@param pResourceManager The game's resource manager, used for loading

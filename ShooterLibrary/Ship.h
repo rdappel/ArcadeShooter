@@ -82,7 +82,7 @@ namespace ShooterLibrary
 
 		/** @brief Fires the ship's weapons.
 			@param type The type mask for weapons that should be fired. */
-		virtual void FireWeapons(TriggerType type = TRIGGERTYPE_ALL);
+		virtual void FireWeapons(TriggerType type = TriggerType::ALL);
 
 		/** @brief Gets the weapon at the specified index.
 			@param index The index of the desired weapon.

@@ -106,9 +106,9 @@ namespace GuardianFinalZero
 		// Calculations to make the selected menu item pulse
 		const static float pulseSpeed = 6;
 		const static float startOffset = (float)GetTransitionInTime();
-		float sinParam = pGameTime->GetTotalTime() * pulseSpeed + startOffset;
-		float sinValue = (float)((1.0f + sin(sinParam)) * 0.5);
-		m_selectedAlpha = 0.5f + 0.5f * sinValue;
+		float sineParam = pGameTime->GetTotalTime() * pulseSpeed + startOffset;
+		float sineValue = (float)((1.0f + sin(sineParam)) * 0.5);
+		m_selectedAlpha = 0.5f + 0.5f * sineValue;
 
 
 		// Delay the menu items until the logo has faded in

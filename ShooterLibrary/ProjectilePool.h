@@ -34,6 +34,14 @@ namespace ShooterLibrary
 
 		virtual ~ProjectilePool() { }
 
+		/** @brief Renders all of the projectiles in the pool.
+			@param pSpriteBatch The game's sprite batch, used for rendering.
+			@remark This is used for manual drawing and is not called by the
+			level.
+			@see Projectile::SetManualDraw()
+			@see Projectile::IsDrawnByLevel() */
+		virtual void Draw(SpriteBatch *pSpriteBatch);
+
 
 		/** @brief Add a projectile to the pool.
 			@param pProjectile The projectile to add. */

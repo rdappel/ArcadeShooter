@@ -61,6 +61,10 @@ namespace Sample
 			@param scale The scale of the explosion.  */
 		virtual void SpawnExplosion(const Vector2 position, const float scale = 1);
 
+		/** @brief Begins the count down to the end of the mission.
+			@remark This usually means that the final enemay has been destroyed. */
+		virtual void BeginCompletionCountdown() { m_finalCountdownBegan = true; }
+
 		/** @brief Should be called when the victory conditions are met for the level. */
 		virtual void Complete();
 
@@ -79,13 +83,19 @@ namespace Sample
 			@see AddGameObject() */
 		virtual void AddPlayerShip(PlayerShip *pPlayerShip);
 
+		/** @brief Gets the current number of player ships playing the level.
+			@return Returns The count of player ships in the level. */
+		virtual uint8_t GetPlayerCount() { return m_playerShips.size(); }
+
 
 	private:
-
-
+		
 		GameplayScreen *m_pGameplayScreen = nullptr;
 
 		bool m_isOver;
+
+		double m_finalCountdownSeconds;
+		bool m_finalCountdownBegan;
 
 		std::vector<PlayerShip *> m_playerShips;
 		std::vector<PlayerShip *>::iterator m_playerShipIt;
@@ -95,6 +105,9 @@ namespace Sample
 
 		std::vector<Explosion *> m_explosions;
 		std::vector<Explosion *>::iterator m_explosionIt;
+
+		std::vector<ProjectilePool *> m_pDrawPools;
+		std::vector<ProjectilePool *>::iterator m_pDrawPoolIt;
 
 	};
 }

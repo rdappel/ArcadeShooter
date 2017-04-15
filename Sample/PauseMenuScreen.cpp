@@ -7,19 +7,21 @@
 	oo     .d8P  .8'     `888.   8    Y     888   888          888       o  888       o
 	8""88888P'  o88o     o8888o o8o        o888o o888o        o888ooooood8 o888ooooood8
 
-					        Sample © 2017 - Shuriken Studios LLC                          */
+							Sample © 2017 - Shuriken Studios LLC                          */
 
 #include "Sample.h"
 
 namespace Sample
 {
 
+	#pragma region Callback Functions
+
 	/** @brief Callback function for when the pause menu is removed from
 		the screen manager.
 		@param pScreen The screen that is about to be removed. */
 	void PauseMenuScreenRemove(Screen *pScreen)
 	{
-		PauseMenuScreen *pPauseMenuScreen = static_cast<PauseMenuScreen *>(pScreen);
+		PauseMenuScreen *pPauseMenuScreen = (PauseMenuScreen *)pScreen;
 		pPauseMenuScreen->GetGameplayScreen()->Exit();
 	}
 
@@ -34,12 +36,14 @@ namespace Sample
 		@param pMenuScreen The menu screen that contains the menu item. */
 	void QuitSelect(MenuScreen *pMenuScreen)
 	{
-		PauseMenuScreen *pPauseMenuScreen = static_cast<PauseMenuScreen *>(pMenuScreen);
+		PauseMenuScreen *pPauseMenuScreen = (PauseMenuScreen *)pMenuScreen;
 		//pPauseMenuScreen->SetRemoveCallback((KatanaEngine::OnRemove)PauseMenuScreenRemove);
 		pPauseMenuScreen->GetGameplayScreen()->Exit();
 		pPauseMenuScreen->Exit();
 	}
-	
+
+	#pragma endregion
+
 
 	PauseMenuScreen::PauseMenuScreen(GameplayScreen *pGameplayScreen)
 	{

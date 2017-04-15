@@ -34,7 +34,7 @@ namespace Sample
 			@param pParticle The particle to initialize. */
 		virtual void InitializeParticle(Particle *pParticle)
 		{
-			RotatingParticle *pT = static_cast<RotatingParticle *>(pParticle);
+			RotatingParticle *pT = (RotatingParticle *)pParticle;
 			assert(pT && "Type of template T is not compatible.");
 
 			ParticleTemplate::InitializeParticle(pT);
@@ -54,7 +54,7 @@ namespace Sample
 			@param pGameTime Timing values including time since last update. */
 		virtual void UpdateParticle(Particle *pParticle, const GameTime *pGameTime)
 		{
-			RotatingParticle *pT = static_cast<RotatingParticle *>(pParticle);
+			RotatingParticle *pT = (RotatingParticle *)pParticle;
 			assert(pT && "Type of template T is not compatible.");
 
 			float value = pT->GetInterpolationValue();

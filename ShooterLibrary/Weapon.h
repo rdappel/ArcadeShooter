@@ -25,7 +25,7 @@ namespace ShooterLibrary
 		Weapon(bool isActive = true)
 		{
 			m_isActive = isActive;
-			SetTriggerType(TRIGGERTYPE_PRIMARY);
+			SetTriggerType(TriggerType::PRIMARY);
 		}
 
 		virtual ~Weapon() { }

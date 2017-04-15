@@ -41,7 +41,7 @@ namespace KatanaEngine
 
 		if (m_menuItems.size() > 0)
 		{
-			int playerIndexOut;
+			int8_t playerIndexOut;
 
 			const int FIRST_INDEX = 0;
 			const int LAST_INDEX = (int)(m_menuItems.size() - 1);

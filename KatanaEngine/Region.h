@@ -106,6 +106,25 @@ namespace KatanaEngine
 			@return Returns the center position. */
 		Vector2 GetCenter() { return GetTopLeft().ToVector2() + (Vector2(Width, Height) / 2); }
 
+		/** @brief Moves the region by the specified amount.
+			@param x The amount to move the region on the x-axis. 
+			@param y The amount to move the region on the y-axis. */
+		void Translate(const int x, const int y)
+		{
+			X += x;
+			Y += y;
+		}
+
+		/** @brief Moves the region by the specified amount.
+			@param point The amount to move the region.
+
+			@overload */
+		void Translate(const Point &point)
+		{
+			X += point.X;
+			Y += point.Y;
+		}
+
 
 		int X;		/**< @brief The left side of the region. */
 		int Y;		/**< @brief The top of the region. */

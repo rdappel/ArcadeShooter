@@ -68,7 +68,7 @@ namespace KatanaEngine
 			for (; m_it != m_particles.end(); ++m_it)
 			{
 				bool active = (*m_it)->IsActive();
-				if (!active) return static_cast<T *>(*m_it);
+				if (!active) return (T *)(*m_it);
 			}
 
 			if (m_poolExpands) return GenerateParticles<T>();
@@ -86,7 +86,7 @@ namespace KatanaEngine
 			for (int i = 0; i < count; ++i)
 			{
 				pT = new T();
-				Particle *pParticle = static_cast<Particle *>(pT);
+				Particle *pParticle = (Particle *)pT;
 				pParticle->SetTemplate(this);
 				m_particles.push_back(pParticle);
 			}

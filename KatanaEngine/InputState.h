@@ -22,7 +22,7 @@ namespace KatanaEngine
 	public:
 
 		/** @brief The maximum number of Xbox controllers that the system can manage. */
-		static const int MAX_NUM_GAMEPADSTATES = 4;
+		static const uint8_t MAX_NUM_GAMEPADSTATES = 4;
 
 		InputState();
 		virtual ~InputState() { }
@@ -90,7 +90,7 @@ namespace KatanaEngine
 			is not valid, all controllers will be tested indexOut will be set to the first detected
 			index matching the condition.
 			@return Returns true if the button is up, false otherwise. */
-		bool IsButtonUp(Button button, int &indexOut, int controllingIndex = -1) const;
+		bool IsButtonUp(Button button, int8_t &indexOut, int8_t controllingIndex = -1) const;
 
 		/** @brief Determines if a the button on an Xbox controller is down.
 			@param button The button to test.
@@ -99,7 +99,7 @@ namespace KatanaEngine
 			is not valid, all controllers will be tested indexOut will be set to the first detected
 			index matching the condition.
 			@return Returns true if the button is down, false otherwise. */
-		bool IsButtonDown(Button button, int &indexOut, int controllingIndex = -1) const;
+		bool IsButtonDown(Button button, int8_t &indexOut, int8_t controllingIndex = -1) const;
 
 		/** @brief Determines if a the button on an Xbox controller was just pressed this frame.
 			@param button The button to test.
@@ -108,7 +108,7 @@ namespace KatanaEngine
 			is not valid, all controllers will be tested indexOut will be set to the first detected
 			index matching the condition.
 			@return Returns true if the button was just pressed, false otherwise. */
-		bool IsNewButtonPress(Button button, int &indexOut, int controllingIndex = -1) const;
+		bool IsNewButtonPress(Button button, int8_t &indexOut, int8_t controllingIndex = -1) const;
 
 		/** @brief Determines if a the button on an Xbox controller just released this frame.
 			@param button The button to test.
@@ -117,12 +117,12 @@ namespace KatanaEngine
 			is not valid, all controllers will be tested indexOut will be set to the first detected
 			index matching the condition.
 			@return Returns true if the button was just released, false otherwise. */
-		bool IsNewButtonRelease(Button button, int &indexOut, int controllingIndex = -1) const;
+		bool IsNewButtonRelease(Button button, int8_t &indexOut, int8_t controllingIndex = -1) const;
 
 		/** @brief Get the current state of an Xbox controller.
 			@param gamePadIndex The index of the desired game pad state.
 			@return The game pad's current state. */
-		GamePadState GetGamePadState(const int gamePadIndex) const;
+		GamePadState GetGamePadState(const int8_t gamePadIndex) const;
 
 
 	private:
@@ -140,7 +140,7 @@ namespace KatanaEngine
 
 		void Update();
 
-		int GetGamePadIndex(ALLEGRO_JOYSTICK *pId);
+		int8_t GetGamePadIndex(ALLEGRO_JOYSTICK *pId);
 
 		void InitializeGamePads();
 

@@ -21,8 +21,16 @@ namespace Sample
 
 	public:
 
-		PlayerShip();
+		/** @brief Instantiate a player ship object.
+			@param playerIndex The controlling player's index. */
+		PlayerShip(const uint8_t playerIndex);
+
 		virtual ~PlayerShip() { }
+
+		/** @brief Called when resources need to be loaded.
+			@param pResourceManager The game's resource manager, used for loading
+			and managing game resources. */
+		virtual void LoadContent(ResourceManager *pResourceManager);
 
 		/** @brief Called when the game has determined that game logic needs to be processed.
 			@param pGameTime Timing values including time since last update. */
@@ -40,22 +48,26 @@ namespace Sample
 			@param damage The amount of damage to inflict. */
 		virtual void Hit(const float damage);
 
-		/** @brief Sets the current level.
+		/** @brief Initializes the player ship at the start of the level.
 			@param pLevel The current level. */
-		virtual void SetLevel(Level *pLevel) { m_pLevel = pLevel; }
-
-		/** @brief Sets the animation for the ships thruster.
-			@param pAnimation The thruster animation. */
-		virtual void SetThrusterAnimation(Animation *pAnimation) { m_pThrusterAnimation = pAnimation; }
+		virtual void Initialize(Level *pLevel);
 
 		/** @brief Sets the target position for the AI to move to.
 			@param position The position to move to. */
-		virtual void SetAITarget(Vector2 position) 
+		virtual void SetAITarget(Vector2 position)
 		{
 			m_isAIControlled = true;
 			m_targetPosition = position;
 			ConfineToScreen(false);
 		}
+
+		/** @brief Gets the half dimensions of the game object.
+			@return Returns the half dimensions of the object. */
+		virtual Vector2 GetHalfDimensions() const;
+
+		/** @brief Determines if the player ship is currently being controlled by AI.
+			@return Returns true if the ship being is controlled by AI, false otherwise. */
+		virtual bool IsAIControlled() const { return m_isAIControlled; }
 
 		/** @brief Powers up the ship.
 			@todo This is just a test to see that gaining a power up does something. This
@@ -66,17 +78,26 @@ namespace Sample
 			else
 			{
 				GetWeapon(2)->Activate();
-				(static_cast<Launcher *>(GetWeapon(1)))->ResetCooldown();
-				(static_cast<Launcher *>(GetWeapon(2)))->ResetCooldown();
+				((Launcher *)GetWeapon(1))->ResetCooldown();
+				((Launcher *)GetWeapon(2))->ResetCooldown();
 			}
 		}
 
 
 	private:
 
+		Animation *m_pAnimation;
+		Animation *m_pColorAnimation;
+
 		Level *m_pLevel;
 
+		Color m_color;
+
+		float m_scale = 1.5f;
+
 		Animation *m_pThrusterAnimation;
+		Vector2 m_thrusterOffset[2];
+		float m_thrusterScale;
 
 		Vector2 m_targetPosition;
 
