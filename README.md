@@ -160,7 +160,7 @@ More tutorials to come! In the mean time, look at the Sample game code (found in
 
 ## Documentation
 
-[![Arcade Shooter Documentation](https://img.shields.io/badge/doxygen-4%2F14%2F17-003399.svg?style=flat-square)](http://ryan-appel.com/arcade_shooter/api/)
+[![Arcade Shooter Documentation](https://img.shields.io/badge/doxygen-4%2F15%2F17-003399.svg?style=flat-square)](http://ryan-appel.com/arcade_shooter/api/)
 
 [Arcade Shooter Documentation](http://ryan-appel.com/arcade_shooter/api/)
 
