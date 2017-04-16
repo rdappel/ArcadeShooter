@@ -162,7 +162,7 @@ More tutorials to come! In the mean time, look at the Sample game code (found in
 
 [![Arcade Shooter Documentation](https://img.shields.io/badge/doxygen-4%2F15%2F17-003399.svg?style=flat-square)](http://ryan-appel.com/arcade_shooter/api/)
 
-[Arcade Shooter Documentation](http://ryan-appel.com/arcade_shooter/api/)
+<a href="http://ryan-appel.com/arcade_shooter/api/" target="_blank">Arcade Shooter Documentation</a>
 
-<sub><sup>Documentation is generated using [Doxygen](http://www.stack.nl/~dimitri/doxygen/index.html).</sup></sub>
+<sub><sup>Documentation is generated using <a href="http://www.stack.nl/~dimitri/doxygen/index.html" target="_blank">Doxygen</a>.</sup></sub>
 
