@@ -39,12 +39,12 @@ namespace KatanaEngine
 			@return Returns the scaled color. */
 		const Color operator*(const float scalar) const;
 
-		/** @brief Checks to see if two colors are equal.
+		/** @brief Determines if two colors are equal.
 			@param color The color to compare.
 			@return Returns true if the colors are equal, false otherwise. */
 		bool operator==(const Color& color) const;
 
-		/** @brief Checks to see if two colors are not equal.
+		/** @brief Determines if two colors are not equal.
 			@param color The color to compare.
 			@return Returns true if the colors are not equal, false otherwise. */
 		bool operator!=(const Color& color) const;

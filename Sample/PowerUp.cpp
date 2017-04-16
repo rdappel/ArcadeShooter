@@ -15,6 +15,7 @@ namespace Sample
 {
 	Texture *PowerUp::s_pTexture = nullptr;
 	Texture *PowerUp::s_pGlowTexture = nullptr;
+	Texture *PowerUp::s_pColorTexture = nullptr;
 
 	PowerUp::PowerUp()
 	{
@@ -62,10 +63,12 @@ namespace Sample
 
 	void PowerUp::Draw(SpriteBatch *pSpriteBatch)
 	{
-		Color c = Color::Orange * m_alpha;
 
-		pSpriteBatch->Draw(s_pGlowTexture, GetPosition(), c, s_pTexture->GetSize() / 2, Vector2::One / 2);
-		pSpriteBatch->Draw(s_pTexture, GetPosition(), Color::White, s_pTexture->GetSize() / 2, Vector2::One / 2);
+		Color color = Color::Orange;
+
+		pSpriteBatch->Draw(s_pGlowTexture, GetPosition(), color * m_alpha, s_pTexture->GetCenter(), Vector2::One * 0.525f);
+		pSpriteBatch->Draw(s_pColorTexture, GetPosition(), color, s_pTexture->GetCenter(), Vector2::One * 0.5f);
+		pSpriteBatch->Draw(s_pTexture, GetPosition(), Color::White, s_pTexture->GetCenter(), Vector2::One * 0.5f);
 	}
 
 	void PowerUp::Activate(const Vector2 position, Level *pLevel)

@@ -13,7 +13,7 @@
 
 namespace Sample
 {
-	Texture *BioEnemyShip::s_pTexture = nullptr;
+
 
 	BioEnemyShip::BioEnemyShip()
 	{
@@ -22,12 +22,16 @@ namespace Sample
 		SetCollisionRadius(20);
 	}
 
+
 	void BioEnemyShip::Update(const GameTime *pGameTime)
 	{
 		if (IsActive())
 		{
-			float x = sin(pGameTime->GetTotalTime() * Math::PI) * GetSpeed() / 60;
-			TranslatePosition(x, GetSpeed() * pGameTime->GetTimeElapsed());
+			m_pAnimation->Update(pGameTime);
+
+			float x = sin(pGameTime->GetTotalTime() * Math::PI  + GetIndex()) * GetSpeed() / 60;
+			if (GetSpeed() < 200) x *= 1.6f; // todo: remove this
+			TranslatePosition(x, GetSpeed() * pGameTime->GetTimeElapsed() * 1.2f);
 
 			if (GetPosition().Y > Game::GetScreenHeight() + 50) Deactivate();
 		}
@@ -35,11 +39,15 @@ namespace Sample
 		EnemyShip::Update(pGameTime);
 	}
 
+
 	void BioEnemyShip::Draw(SpriteBatch *pSpriteBatch)
 	{
 		if (IsActive())
 		{
-			pSpriteBatch->Draw(s_pTexture, GetPosition(), Color::White, s_pTexture->GetCenter());
+			Region frame = *(m_pAnimation->GetCurrentFrame());
+			frame.X = 0;
+			frame.Y = 0;
+			pSpriteBatch->Draw(m_pAnimation, GetPosition(), Color::White, frame.GetCenter(), Vector2::One, Math::PI, 1);
 		}
 	}
 

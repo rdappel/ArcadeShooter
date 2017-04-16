@@ -14,17 +14,18 @@
 namespace Sample
 {
 
+	/** @brief Defines the types of game objects that can collide with each other. */
 	class CollisionType : public ShooterLibrary::CollisionType
 	{
 
 	public:
 
-		static const CollisionType MISSILE;
-		static const CollisionType POWERUP;
-		static const CollisionType EXPLOSION;
+		static const CollisionType MISSILE;		/**< @brief Represents a missile. */
+		static const CollisionType POWERUP;		/**< @brief Represents a power up. */
+		static const CollisionType EXPLOSION;	/**< @brief Represents an explosion. */
 
 
-	protected:
+	private:
 
 		CollisionType(uint32_t value) : ShooterLibrary::CollisionType(value) { }
 

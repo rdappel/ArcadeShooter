@@ -17,8 +17,10 @@ namespace KatanaEngine
 	/** @brief Defines the buttons for a mouse. */
 	enum class MouseButton
 	{
-		LEFT,	/**< Represents the Left mouse button. */
-		RIGHT,	/**< Represents the Right mouse button. */
-		CENTER	/**< Represents the Center mouse button. */
+		LEFT = 1,	/**< Represents the Left mouse button. */
+		RIGHT,		/**< Represents the Right mouse button. */
+		CENTER,		/**< Represents the Center mouse button. */
+		BACK,		/**< Represents the Back mouse button. */
+		FORWARD		/**< Represents the Foreward mouse button. */
 	};
 }

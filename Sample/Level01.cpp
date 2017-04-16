@@ -33,21 +33,69 @@ namespace Sample
 
 	void Level01::LoadContent(ResourceManager *pResourceManager)
 	{
-		Texture *pTexture = pResourceManager->Load<Texture>("Textures\\BioEnemySmall.png");
-		BioEnemyShip::SetTexture(pTexture);
+		Animation *pAnimation;
+		Texture *pTexture = pResourceManager->Load<Texture>("Textures\\BioMech.png");
 
+		BioEnemyShip *pEnemyShip;
 
-		EnemyShip *pEnemyShip;
-		for (int i = 0; i < 20; i++)
+		// Enemies
+		for (int i = 0; i < 5; i++)
 		{
 			pEnemyShip = new BioEnemyShip();
-			pEnemyShip->Initialize(Vector2(100 * (i % 10) + 300, -50), 2 * (i + 1) + 2);
+			pAnimation = pResourceManager->Load<Animation>("Animations\\BioMechSmall.anim");
+			pAnimation->SetTexture(pTexture);
+			pEnemyShip->SetAnimation(pAnimation);
 			AddGameObject(pEnemyShip);
+			pEnemyShip->Initialize(Vector2(600, -50), 4.0 + 0.45 * i);
 		}
+
+		for (int i = 0; i < 5; i++)
+		{
+			pEnemyShip = new BioEnemyShip();
+			pAnimation = pResourceManager->Load<Animation>("Animations\\BioMechSmall.anim");
+			pAnimation->SetTexture(pTexture);
+			pEnemyShip->SetAnimation(pAnimation);
+			AddGameObject(pEnemyShip);
+			pEnemyShip->Initialize(Vector2(1000, -50), 10.0 + 0.45 * i);
+		}
+
+		for (int i = 0; i < 7; i++)
+		{
+			pEnemyShip = new BioEnemyShip();
+			pAnimation = pResourceManager->Load<Animation>("Animations\\BioMechSmall.anim");
+			pAnimation->SetTexture(pTexture);
+			pEnemyShip->SetAnimation(pAnimation);
+			AddGameObject(pEnemyShip);
+			pEnemyShip->Initialize(Vector2(400, -50), 16.0 + 0.65 * i);
+		}
+
+		for (int i = 0; i < 7; i++)
+		{
+			pEnemyShip = new BioEnemyShip();
+			pAnimation = pResourceManager->Load<Animation>("Animations\\BioMechSmall.anim");
+			pAnimation->SetTexture(pTexture);
+			pEnemyShip->SetAnimation(pAnimation);
+			AddGameObject(pEnemyShip);
+			pEnemyShip->Initialize(Vector2(1200, -50), 22.0 + 0.65 * i);
+		}
+
+		for (int i = 0; i < 3; i++)
+		{
+			pEnemyShip = new BioEnemyShip();
+			pAnimation = pResourceManager->Load<Animation>("Animations\\BioMechMedium.anim");
+			pAnimation->SetTexture(pTexture);
+			pEnemyShip->SetAnimation(pAnimation);
+			pEnemyShip->SetSpeed(140);
+			pEnemyShip->SetMaxHitPoints(6);
+			AddGameObject(pEnemyShip);
+			pEnemyShip->Initialize(Vector2(800, -50), 28.0 + 0.54 * i);
+		}
+
 		pEnemyShip->SetDeactivateCallback(Level01Completed);
 
 		PowerUp::SetTexture(pResourceManager->Load<Texture>("Textures\\PowerUp.png"));
 		PowerUp::SetGlowTexture(pResourceManager->Load<Texture>("Textures\\PowerUpGlow.png"));
+		PowerUp::SetColorTexture(pResourceManager->Load<Texture>("Textures\\PowerUpColor.png"));
 		
 		Level::LoadContent(pResourceManager);
 	}

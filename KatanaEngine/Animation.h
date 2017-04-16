@@ -47,6 +47,10 @@ namespace KatanaEngine
 			@return Returns a Region that defines the size and position of the current frame. */
 		virtual Region *GetCurrentFrame() { return m_frames[m_currentIndex]; }
 
+		/** @brief Gets the index of the current frame.
+			@return Returns the current frame's index. */
+		virtual int GetCurrentIndex() { return m_currentIndex; }
+
 		/** @brief Gets a pointer to the indexed frame.
 			@return Returns a Region that defines the size and position of the indexed frame. */
 		virtual Region *GetFrame(const int index) { return m_frames[index]; }
@@ -64,7 +68,7 @@ namespace KatanaEngine
 			@remark If the indexed frame is invalid it will be ignored. */
 		virtual void SetCurrentFrame(const unsigned int index);
 
-		/** @brief Checks to see if the animation is playing.
+		/** @brief Determines if the animation is playing.
 			@return Returns true if the animation is playing, false otherwise. */
 		virtual bool IsPlaying() const { return m_isPlaying; }
 

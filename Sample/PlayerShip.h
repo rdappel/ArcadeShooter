@@ -96,7 +96,7 @@ namespace Sample
 		float m_scale = 1.5f;
 
 		Animation *m_pThrusterAnimation;
-		Vector2 m_thrusterOffset[2];
+		Vector2 m_thrusterOffset[2][3];
 		float m_thrusterScale;
 
 		Vector2 m_targetPosition;

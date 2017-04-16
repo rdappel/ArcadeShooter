@@ -63,12 +63,6 @@ namespace ShooterLibrary
 			@param position The position, on the ship, to attach the weapon. */
 		virtual void AttachWeapon(Weapon *pWeapon, Vector2 position);
 
-
-	protected:
-
-		/** @brief Initializes the ship. */
-		virtual void Initialize();
-
 		/** @brief Gets the speed of the projectile in pixels per second. */
 		virtual float GetSpeed() const { return m_speed; }
 
@@ -80,6 +74,12 @@ namespace ShooterLibrary
 			@param hitPoints The desired hit point maximum. */
 		virtual void SetMaxHitPoints(const float hitPoints) { m_maxHitPoints = hitPoints; }
 
+
+	protected:
+
+		/** @brief Initializes the ship. */
+		virtual void Initialize();
+
 		/** @brief Fires the ship's weapons.
 			@param type The type mask for weapons that should be fired. */
 		virtual void FireWeapons(TriggerType type = TriggerType::ALL);
@@ -88,6 +88,14 @@ namespace ShooterLibrary
 			@param index The index of the desired weapon.
 			@return Returns a pointer to the specified weapon. */
 		virtual Weapon *GetWeapon(const int index) { return m_weapons[index]; }
+
+		/** @brief Gets the amount of hit points that the ship has.
+			@return Returns the amount of hit points remaining. */
+		virtual float GetHitPoints() const { return m_hitPoints; }
+
+		/** @brief Gets the maximum amount of hit points that the ship has.
+		@return Returns the maximum amount of hit points. */
+		virtual float GetMaxHitPoints() const { return m_maxHitPoints; }
 
 
 	private:

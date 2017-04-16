@@ -98,7 +98,8 @@ namespace Sample
 		}
 
 		// create player ships
-		for (int i = 0; i < 4; i++)
+		const int NUM_PLAYERS = 1;
+		for (int i = 0; i < NUM_PLAYERS; i++)
 		{
 			PlayerShip *pPlayerShip = new PlayerShip(i);
 
@@ -150,6 +151,8 @@ namespace Sample
 		pC->AddCollisionType(playerProjectile, enemyShip, PlayerShootsEnemy);
 		pC->AddCollisionType(playerShip, powerUp, PlayerCollectsPowerUp);
 		pC->AddCollisionType(playerShip, enemyShip, PlayerCollidesWithEnemy);
+
+		m_levelSeconds = 0;
 	}
 
 	
@@ -160,10 +163,24 @@ namespace Sample
 		{
 			(*m_playerShipIt)->HandleInput(pInput);
 		}
+
+		if (true && pInput->IsKeyDown(Key::R))
+		{
+			if (pInput->IsNewMouseButtonPress(MouseButton::LEFT))
+			{
+				std::cout << m_levelSeconds << ", " << pInput->GetMousePosition().ToString() << std::endl;
+			}
+			else if (pInput->IsNewMouseButtonPress(MouseButton::RIGHT))
+			{
+				std::cout << std::endl;
+			}
+		}
 	}
 
 	void Level::Update(const GameTime *pGameTime)
 	{
+		m_levelSeconds += pGameTime->GetTimeElapsed();
+
 		if (m_finalCountdownBegan && m_finalCountdownSeconds > 0)
 		{
 			m_finalCountdownSeconds -= pGameTime->GetTimeElapsed();

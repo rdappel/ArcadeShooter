@@ -1,2 +1,56 @@
-﻿  GuardianFinalZero.vcxproj -> C:\Users\Ryan Appel\Desktop\ArcadeShooter\x64\Debug\GuardianFinalZero.exe
+﻿  GuardianFinalZero.cpp
+  
+  
+           ██╗  ██╗  █████╗  ████████╗  █████╗  ███╗   ██╗  █████╗ 
+           ██║ ██╔╝ ██╔══██╗ ╚══██╔══╝ ██╔══██╗ ████╗  ██║ ██╔══██╗
+           █████╔╝  ███████║    ██║    ███████║ ██╔██╗ ██║ ███████║
+           ██╔═██╗  ██╔══██║    ██║    ██╔══██║ ██║╚██╗██║ ██╔══██║
+           ██║  ██╗ ██║  ██║    ██║    ██║  ██║ ██║ ╚████║ ██║  ██║
+           ╚═╝  ╚═╝ ╚═╝  ╚═╝/\  ╚═╝    ╚═╝  ╚═╝ ╚═╝  ╚═══╝ ╚═╝  ╚═╝
+         /vvvvvvvvvvvvvvvvvvv \=======================================,
+         `^^^^^^^^^^^^^^^^^^^ /-------------------------------------"
+              Katana Engine \/ © 2012 - Shuriken Studios LLC
+  
+  
+  
+           .                         ,'`.       .                         
+      .                  .."    _.-;' ⁄‚ `.              .			`   
+                 _.-"`.##%"_.--" ,' ⁄`     `.           "#"     ___,,od000
+              ,'"-_ _.-.--"\   ,'            `-_       '%#%',,/00000000000
+            ,'     |_.'     )`/-     __..--""`-_`-._    J L/00000000000000
+    . +   ,'   _.-"        / /   _-""           `-._`-_/___\///0000   000M
+        .'_.-""      '    :_/_.-'                 _,`-/__V__\0000    00MMM
+    . _-""                         .        '   _,/000\  |  /000    0MMMMM
+   _-"   .       '     .              .        ,/   000\ | /000000000MMMMM
+          `       Shooter Library       '     ,/     000\|/000000000MMMMMM
+   .       © 2017 - Shuriken Studios LLC     ,/0    00000|0000000000MMMMMM
+  
+  
+  
+                    '888 88888888888 888888888',8888'
+                      88 888888888888 8888888',8888'
+                       8 8888             ,8',8888'
+            ==̲=̲=̲=̲=̲=̲=== 8 8888 ========== ,8 ,̲8̲88̲8_==============
+            /  ____/__ 8_̲88̲8̲8̲8̲88̲88̲8̲8̲8__ ,̲8__/ //_/____ _ ____
+           / /  __ / / / /ˊ __ `// ___/ˊ __  /__ ˊ __ `// __ \
+          / /__/ // /_/ // /_/ // /   / /_/ // // /_/ // / / /
+          \_____/ \__,_/ \__,_//_/    \__,_//_/ \__,_//_/ /_/
+        ============== 8 8888 ===== ,8',8888' ===============
+                      88 8888      ,8',8888888888888
+                     ,88 8888     ,8',888888888888888,
+  
+  				             ファイナル ゼロ
+  
+                 Guardian FZ © 2017 - Shuriken Studios LLC
+  
+  PlayerShip.cpp
+  MainMenuScreen.cpp
+  Main.cpp
+  Level01.cpp
+  Level.cpp
+  GameplayScreen.cpp
+c:\users\ryan appel\desktop\arcadeshooter\guardianfinalzero\gameplayscreen.cpp(34): warning C4060: switch statement contains no 'case' or 'default' labels
+  Game.cpp
+  Generating Code...
+  GuardianFinalZero.vcxproj -> C:\Users\Ryan Appel\Desktop\ArcadeShooter\x64\Debug\GuardianFinalZero.exe
   GuardianFinalZero.vcxproj -> C:\Users\Ryan Appel\Desktop\ArcadeShooter\x64\Debug\GuardianFinalZero.pdb (Partial PDB)

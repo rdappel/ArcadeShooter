@@ -71,7 +71,6 @@ namespace KatanaEngine
 						m_currentGamePadStates[i].IsConnected = true;
 
 						m_map.emplace(std::pair<ALLEGRO_JOYSTICK *, int>(joystick, i));
-
 						break;
 					}
 				}

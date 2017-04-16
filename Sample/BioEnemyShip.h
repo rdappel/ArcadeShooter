@@ -23,9 +23,9 @@ namespace Sample
 		BioEnemyShip();
 		virtual ~BioEnemyShip() { }
 
-		/** @brief Sets the texture of the bio enemies.
-			@param pTexture A pointer to the texture resource. */
-		static void SetTexture(Texture *pTexture) { s_pTexture = pTexture; }
+		/** @brief Sets the animation of the bio enemies.
+			@param pAnimation A pointer to the animation resource. */
+		void SetAnimation(Animation *pAnimation) { m_pAnimation = pAnimation; }
 
 		/** @brief Called when the game determines it is time to draw a frame.
 			@param pGameTime Timing values including time since last update. */
@@ -42,7 +42,7 @@ namespace Sample
 
 	private:
 
-		static Texture *s_pTexture;
+		Animation *m_pAnimation;
 
 	};
 }

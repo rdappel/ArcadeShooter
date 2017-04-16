@@ -97,6 +97,8 @@ namespace Sample
 		double m_finalCountdownSeconds;
 		bool m_finalCountdownBegan;
 
+		double m_levelSeconds;
+
 		std::vector<PlayerShip *> m_playerShips;
 		std::vector<PlayerShip *>::iterator m_playerShipIt;
 		

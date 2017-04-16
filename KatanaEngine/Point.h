@@ -83,12 +83,12 @@ namespace KatanaEngine
 			@return Returns the resulting point. */
 		const Point operator-(const Point &point) const;
 
-		/** @brief Checks to see if two points are equal.
+		/** @brief Determines if two points are equal.
 			@param point The point to compare.
 			@return Returns true if the points are equal, false otherwise. */
 		bool operator==(const Point &point) const;
 
-		/** @brief Checks to see if two points are not equal.
+		/** @brief Determines if two points are not equal.
 			@param point The point to compare.
 			@return Returns true if the points are not equal, false otherwise. */
 		bool operator!=(const Point &point) const;

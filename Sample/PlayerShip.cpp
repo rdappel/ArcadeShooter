@@ -25,7 +25,13 @@ namespace Sample
 		Color colors[4] = { Color::Red, Color::DarkGreen, Color::Purple, Color::Yellow };
 		m_color = colors[playerIndex];
 
-		for (int i = 0; i < 3; i++) m_thrusterOffset[i] = Vector2::Zero;
+		for (int i = 0; i < 2; i++) // ship can have 2 thrusters
+		{
+			for (int j = 0; j < 3; j++) // left, center, right
+			{
+				m_thrusterOffset[i][j] = Vector2::Zero;
+			}
+		}
 		m_thrusterScale = 1;
 	}
 
@@ -39,39 +45,57 @@ namespace Sample
 
 		switch (GetPlayerIndex())
 		{
-		//case 1:
-		//	shipPath = "Animations\\PlayerShip02.anim";
-		//	colorPath = "Animations\\PlayerShip02_Color.anim";
-		//	pBlaster->SetCooldownSeconds(0.67);
-		//	m_thrusterOffset[0] = Vector2(-2, 16);
-		//	SetSpeed(400);
-		//	break;
-		//case 2:
-		//	shipPath = "Animations\\PlayerShip03.anim";
-		//	colorPath = "Animations\\PlayerShip03_Color.anim";
-		//	m_thrusterOffset[0] = Vector2(-10, 3);
-		//	m_thrusterOffset[1] = Vector2(  7, 3);
-		//	m_thrusterScale = 0.5f;
-		//	pBlaster->SetCooldownSeconds(0.43);
-		//	SetSpeed(510);
-		//	break;
+		case 1:
+			shipPath = "Animations\\PlayerShip02.anim";
+			colorPath = "Animations\\PlayerShip02_Color.anim";
+			pBlaster->SetCooldownSeconds(0.67);
+			m_thrusterOffset[0][0] = Vector2(-2, 19);
+			m_thrusterOffset[0][1] = Vector2(-2, 19);
+			m_thrusterOffset[0][2] = Vector2(-2, 19);
+			m_thrusterScale = 0.8f;
+			pBlaster->SetCooldownSeconds(0.28);
+			SetSpeed(400);
+			break;
+		case 2:
+			shipPath = "Animations\\PlayerShip03.anim";
+			colorPath = "Animations\\PlayerShip03_Color.anim";
+			// left turn
+			m_thrusterOffset[0][0] = Vector2(-8, 4);	// left thruster
+			m_thrusterOffset[1][0] = Vector2(5, 4);		// right thruster
+			// straight
+			m_thrusterOffset[0][1] = Vector2(-10, 4);	// left thruster
+			m_thrusterOffset[1][1] = Vector2(7, 4);		// right thruster
+			// right turn
+			m_thrusterOffset[0][2] = Vector2(-8, 4);	// left thruster
+			m_thrusterOffset[1][2] = Vector2(5, 4);		// right thruster
+			m_thrusterScale = 0.6f;
+			pBlaster->SetCooldownSeconds(0.32);
+			SetSpeed(510);
+			break;
 		case 3:
 			shipPath = "Animations\\PlayerShip04.anim";
 			colorPath = "Animations\\PlayerShip04_Color.anim";
-			m_thrusterOffset[0] = Vector2(-10, 6);
-			m_thrusterOffset[1] = Vector2(  7, 6);
+			// left turn
+			m_thrusterOffset[0][0] = Vector2(-5, 5);	// left thruster
+			m_thrusterOffset[1][0] = Vector2(4, 6);		// right thruster
+			// straight
+			m_thrusterOffset[0][1] = Vector2(-10, 6);	// left thruster
+			m_thrusterOffset[1][1] = Vector2(7, 6);		// right thruster
+			// right turn
+			m_thrusterOffset[0][2] = Vector2(-8, 6);	// left thruster
+			m_thrusterOffset[1][2] = Vector2(2, 5);		// right thruster
+
 			m_thrusterScale = 0.8f;
-			pBlaster->SetCooldownSeconds(0.56);
-			GetWeapon(0)->Dectivate();
-			GetWeapon(1)->Activate();
-			GetWeapon(2)->Activate();
+			pBlaster->SetCooldownSeconds(0.30);
 			SetSpeed(480);
 			break;
 		default:
 			shipPath = "Animations\\PlayerShip01.anim";
 			colorPath = "Animations\\PlayerShip01_Color.anim";
-			m_thrusterOffset[0] = Vector2(-2, 14);
-			pBlaster->SetCooldownSeconds(0.61);
+			m_thrusterOffset[0][0] = Vector2(-2, 14);
+			m_thrusterOffset[0][1] = Vector2(-2, 14);
+			m_thrusterOffset[0][2] = Vector2(-2, 14);
+			pBlaster->SetCooldownSeconds(0.22);
 			SetSpeed(450);
 		}
 
@@ -147,11 +171,15 @@ namespace Sample
 	void PlayerShip::Draw(SpriteBatch *pSpriteBatch)
 	{
 		Vector2 origin(m_pThrusterAnimation->GetCurrentFrame()->Width / 2, 0);
-		for (int i = 0; i < 3; i++)
+		for (int i = 0; i < 2; i++)
 		{
-			if (m_thrusterOffset[i].IsZero()) break;
-			Vector2 position = GetPosition() + m_thrusterOffset[i];
-			pSpriteBatch->Draw(m_pThrusterAnimation, position, Color::White, origin, Vector2::One * m_thrusterScale, 0, 0.001 * GetPlayerIndex());
+			if (m_thrusterOffset[i][0].IsZero()) break;
+
+			for (int j = 0; j < 3; j++)
+			{
+				Vector2 position = GetPosition() + m_thrusterOffset[i][m_pAnimation->GetCurrentIndex()];
+				pSpriteBatch->Draw(m_pThrusterAnimation, position, Color::White, origin, Vector2::One * m_thrusterScale, 0, 0.001 * GetPlayerIndex());
+			}
 		}
 
 		Region frame = *(m_pAnimation->GetCurrentFrame());

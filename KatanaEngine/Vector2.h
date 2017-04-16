@@ -170,14 +170,14 @@ namespace KatanaEngine
 		const Vector2 operator/(const float scalar) const;
 				
 
-		/** @brief Checks to see if two vectors are equal.
-			@param vector The color to compare.
-			@return Returns true if the vector are equal, false otherwise. */
+		/** @brief Determines if two vectors are equal.
+			@param vector The vector to compare.
+			@return Returns true if the vectors are equal, false otherwise. */
 		bool operator==(const Vector2 &vector) const;
 
-		/** @brief Checks to see if two vectors are not equal.
-			@param vector The color to compare.
-			@return Returns true if the vector are not equal, false otherwise. */
+		/** @brief Determines if two vectors are not equal.
+			@param vector The vector to compare.
+			@return Returns true if the vectors are not equal, false otherwise. */
 		bool operator!=(const Vector2 &vector) const;
 		
 

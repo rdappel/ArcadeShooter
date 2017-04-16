@@ -54,11 +54,14 @@ namespace Sample
 
 	void LevelOverScreen::Update(const GameTime *pGameTime)
 	{
-		m_secondsUntilExit -= pGameTime->GetTimeElapsed();
-		if (m_secondsUntilExit <= 0)
+		if (m_secondsUntilExit >= 0)
 		{
-			m_pGameplayScreen->Exit();
-			Exit();
+			m_secondsUntilExit -= pGameTime->GetTimeElapsed();
+			if (m_secondsUntilExit < 0)
+			{
+				m_pGameplayScreen->Exit();
+				Exit();
+			}
 		}
 	}
 

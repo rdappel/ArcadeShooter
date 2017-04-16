@@ -31,6 +31,10 @@ namespace Sample
 			@param pTexture A pointer to the texture resource. */
 		static void SetGlowTexture(Texture *pTexture) { s_pGlowTexture = pTexture; }
 
+		/** @brief Sets the color texture of the power up.
+			@param pTexture A pointer to the texture resource. */
+		static void SetColorTexture(Texture *pTexture) { s_pColorTexture = pTexture; }
+
 		/** @brief Called when the game has determined that game logic needs
 			to be processed.
 			@param pGameTime Timing values including time since last update. */
@@ -60,6 +64,7 @@ namespace Sample
 
 		static Texture *s_pTexture;
 		static Texture *s_pGlowTexture;
+		static Texture *s_pColorTexture;
 
 		Vector2 m_velocity;
 

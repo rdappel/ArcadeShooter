@@ -49,7 +49,7 @@ namespace ShooterLibrary
 			shot by a player. */
 		virtual void AddNonCollisionType(const CollisionType type1, const CollisionType type2);
 
-		/** @brief Checks to see if two objects are colliding. If they are the specified callback function
+		/** @brief Determines if two objects are colliding. If they are the specified callback function
 			is run.
 			@param pGameObject1 The first GameObject. 
 			@param pGameObject2 The second GameObject.
