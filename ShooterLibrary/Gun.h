@@ -70,6 +70,10 @@ namespace ShooterLibrary
 			@param seconds The time between firing shots. */
 		virtual void SetCooldownSeconds(const float seconds) { m_cooldownSeconds = seconds; }
 
+		/** @brief Gets the time in seconds that the weapon takes between firing.
+			@return Returns the time between firing shots. */
+		virtual float GetCooldownSeconds() { return m_cooldownSeconds; }
+
 		/** @brief Instantly cools the weapon, making it ready to fire. */
 		virtual void ResetCooldown() { m_cooldown = 0; }
 

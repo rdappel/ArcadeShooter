@@ -64,7 +64,7 @@ namespace Sample
 	void PowerUp::Draw(SpriteBatch *pSpriteBatch)
 	{
 
-		Color color = Color::Orange;
+		Color color = m_color;
 
 		pSpriteBatch->Draw(s_pGlowTexture, GetPosition(), color * m_alpha, s_pTexture->GetCenter(), Vector2::One * 0.525f);
 		pSpriteBatch->Draw(s_pColorTexture, GetPosition(), color, s_pTexture->GetCenter(), Vector2::One * 0.5f);
@@ -76,7 +76,9 @@ namespace Sample
 		m_pLevel = pLevel;
 		m_pTarget = nullptr;
 		m_targetCheck = 0;
+
 		m_velocity = Vector2::GetRandom(true) + Vector2::UnitY * 0.4f;
+		m_color = (m_powerUpType == PowerUpType::FireRate) ? Color::Blue : Color::Orange;
 
 		GameObject::Activate();
 		SetPosition(position);

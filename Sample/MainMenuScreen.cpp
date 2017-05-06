@@ -14,12 +14,14 @@
 namespace Sample
 {
 
+	#pragma region Callback Functions
+
 	/** @brief Callback function for when the main menu is removed from
 		the screen manager.
 		@param pScreen The screen that is about to be removed. */
 	void MainMenuScreenRemove(Screen *pScreen)
 	{
-		pScreen->GetScreenManager()->AddScreen(new GameplayScreen());
+		pScreen->GetScreenManager()->AddScreen(new LevelSelectMenu());
 	}
 
 	/** @brief Callback function for when the start item is selected.
@@ -37,6 +39,8 @@ namespace Sample
 		pMenuScreen->Exit();
 		pMenuScreen->GetScreenManager()->GetGame()->Quit();
 	}
+
+	#pragma endregion
 
 
 	MainMenuScreen::MainMenuScreen()

@@ -14,6 +14,12 @@
 namespace Sample
 {
 
+	enum class PowerUpType
+	{
+		FireRate,
+		MissileLauncher
+	};
+
 	/** @brief Class for power ups. */
 	class PowerUp : public ShooterLibrary::GameObject
 	{
@@ -59,6 +65,14 @@ namespace Sample
 			@return Returns a string displaying the type of object. */
 		virtual std::string ToString() const { return "Power Up"; }
 
+		/** @brief Gets power up type.
+			@return Returns the type of the power up. */
+		virtual PowerUpType GetPowerUpType() const { return m_powerUpType; }
+
+		/** @brief Sets the power up type.
+			@param powerUpType Sets the type of the power up. */
+		virtual void SetPowerUpType(PowerUpType powerUpType) { m_powerUpType = powerUpType; }
+
 
 	private:
 
@@ -66,7 +80,11 @@ namespace Sample
 		static Texture *s_pGlowTexture;
 		static Texture *s_pColorTexture;
 
+		Color m_color;
+
 		Vector2 m_velocity;
+
+		PowerUpType m_powerUpType;
 
 		PlayerShip *m_pTarget;
 		int m_pMagnetDistance;

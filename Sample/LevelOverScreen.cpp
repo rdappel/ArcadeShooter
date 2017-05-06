@@ -13,19 +13,6 @@
 
 namespace Sample
 {
-	
-	#pragma region Callback Functions
-
-	/** @brief Callback function for when the level over screen is
-		removed from the screen manager.
-		@param pScreen The screen that is about to be removed. */
-	void LevelOverScreenRemove(Screen *pScreen)
-	{
-		LevelOverScreen *pLevelOverScreen = (LevelOverScreen *)pScreen;
-		pLevelOverScreen->GetGameplayScreen()->Exit();
-	}
-	
-	#pragma endregion
 
 	Texture *LevelOverScreen::s_pGameOverTexture = nullptr;
 	Texture *LevelOverScreen::s_pLevelCompleteTexture = nullptr;
@@ -59,8 +46,8 @@ namespace Sample
 			m_secondsUntilExit -= pGameTime->GetTimeElapsed();
 			if (m_secondsUntilExit < 0)
 			{
-				m_pGameplayScreen->Exit();
 				Exit();
+				m_pGameplayScreen->Exit();
 			}
 		}
 	}

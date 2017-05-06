@@ -52,6 +52,13 @@
     <ClCompile Include="CollisionType.cpp">
       <Filter>SourceFiles</Filter>
     </ClCompile>
+    <ClCompile Include="Level02.cpp">
+      <Filter>SourceFiles\Levels</Filter>
+    </ClCompile>
+    <ClCompile Include="SaveData.cpp">
+      <Filter>SourceFiles\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelSelectMenu.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -111,6 +118,13 @@
     <ClInclude Include="Explosion.h">
       <Filter>SourceFiles\Levels</Filter>
     </ClInclude>
+    <ClInclude Include="Level02.h">
+      <Filter>SourceFiles\Levels</Filter>
+    </ClInclude>
+    <ClInclude Include="SaveData.h">
+      <Filter>SourceFiles\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelSelectMenu.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="SourceFiles">
@@ -133,6 +147,9 @@
     </Filter>
     <Filter Include="SourceFiles\Weapons">
       <UniqueIdentifier>{ecc1f7ce-338c-439b-9773-7f76b1c6d197}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFiles\Resources">
+      <UniqueIdentifier>{00ba0d95-a89a-4f36-be1e-30e49c79dd50}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

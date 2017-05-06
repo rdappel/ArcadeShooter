@@ -11,6 +11,7 @@
          `^^^^^^^^^^^^^^^^^^^ /-------------------------------------"
               Katana Engine \/ © 2012 - Shuriken Studios LLC
   
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\menuscreen.h(76): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
   Vector2.cpp
   Texture.cpp
   SpriteBatch.cpp

@@ -54,7 +54,7 @@ namespace Sample
 
 		/** @brief Adds a power up to the level.
 			@param position The position to place the power up. */
-		virtual void SpawnPowerUp(const Vector2 position);
+		virtual void SpawnPowerUp(const Vector2 position, const PowerUpType powerUpType);
 
 		/** @brief Adds an explosion to the level.
 			@param position The position to place the explosion.
@@ -67,6 +67,9 @@ namespace Sample
 
 		/** @brief Should be called when the victory conditions are met for the level. */
 		virtual void Complete();
+
+		/** @brief Should be called when the victory conditions are met for the level. */
+		virtual bool IsComplete() { return m_isComplete; }
 
 		/** @brief Gets a pointer to the ParticleManager, for managing particle effects.
 			@return A pointer to the game's ParticleManager instance. */
@@ -84,8 +87,12 @@ namespace Sample
 		virtual void AddPlayerShip(PlayerShip *pPlayerShip);
 
 		/** @brief Gets the current number of player ships playing the level.
-			@return Returns The count of player ships in the level. */
+			@return Returns the count of player ships in the level. */
 		virtual uint8_t GetPlayerCount() { return m_playerShips.size(); }
+
+		/** @brief Gets the index of the next level.
+			@return Returns the next level's index. */
+		virtual int GetNextLevelIndex() const = 0;
 
 
 	private:
@@ -93,9 +100,10 @@ namespace Sample
 		GameplayScreen *m_pGameplayScreen = nullptr;
 
 		bool m_isOver;
+		bool m_isComplete;
 
-		double m_finalCountdownSeconds;
 		bool m_finalCountdownBegan;
+		double m_finalCountdownSeconds;
 
 		double m_levelSeconds;
 

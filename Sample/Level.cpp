@@ -38,7 +38,7 @@ namespace Sample
 		PowerUp *pPowerUp = (PowerUp *)((m) ? pObject1 : pObject2);
 		PlayerShip *pPlayerShip = (PlayerShip *)((!m) ? pObject1 : pObject2);
 		pPowerUp->Deactivate();
-		pPlayerShip->PowerUp();
+		pPlayerShip->PowerUp((int)pPowerUp->GetPowerUpType());
 	}
 
 	/** @brief Callback function for when a player collides with an enemy.
@@ -57,7 +57,9 @@ namespace Sample
 	Level::Level(GameplayScreen *pGameplayScreen)
 	{
 		m_pGameplayScreen = pGameplayScreen;
+
 		m_isOver = false;
+		m_isComplete = false;
 
 		m_finalCountdownBegan = false;
 		m_finalCountdownSeconds = 5;
@@ -261,9 +263,10 @@ namespace Sample
 	}
 
 	
-	void Level::SpawnPowerUp(const Vector2 position)
+	void Level::SpawnPowerUp(const Vector2 position, const PowerUpType powerUpType)
 	{
 		PowerUp *pPowerUp = new	PowerUp();
+		pPowerUp->SetPowerUpType(powerUpType);
 		pPowerUp->Activate(position, this);
 		AddGameObject(pPowerUp);
 	}
@@ -289,6 +292,7 @@ namespace Sample
 		if (!m_isOver)
 		{
 			m_isOver = true;
+			m_isComplete = true;
 			GetScreenManager()->AddScreen(new LevelOverScreen(m_pGameplayScreen, true));
 		}
 	}

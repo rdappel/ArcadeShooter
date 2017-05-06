@@ -32,5 +32,9 @@ namespace Sample
 			and managing game resources. */
 		virtual void LoadContent(ResourceManager *pResourceManager);
 
+		/** @brief Gets the index of the next level.
+			@return Returns the next level's index. */
+		virtual int GetNextLevelIndex() const { return 2; }
+
 	};
 }

@@ -211,4 +211,24 @@ namespace Sample
 		return frame.GetCenter() * m_scale;
 	}
 
+
+	void PlayerShip::PowerUp(const int powerUpType)
+	{
+		if (powerUpType == (int)PowerUpType::FireRate)
+		{
+			Blaster *pBlaster = ((Blaster *)GetWeapon(0));
+			pBlaster->SetCooldownSeconds(pBlaster->GetCooldownSeconds() * 0.8f);
+		}
+		else if (powerUpType == (int)PowerUpType::MissileLauncher)
+		{
+			if (!GetWeapon(1)->IsActive()) GetWeapon(1)->Activate();
+			else
+			{
+				GetWeapon(2)->Activate();
+				((Launcher *)GetWeapon(1))->ResetCooldown();
+				((Launcher *)GetWeapon(2))->ResetCooldown();
+			}
+		}
+	}
+
 }

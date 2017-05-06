@@ -7,7 +7,7 @@
 	oo     .d8P  .8'     `888.   8    Y     888   888          888       o  888       o
 	8""88888P'  o88o     o8888o o8o        o888o o888o        o888ooooood8 o888ooooood8
 
-					        Sample © 2017 - Shuriken Studios LLC                          */
+							Sample © 2017 - Shuriken Studios LLC                          */
 
 #include "Sample.h"
 
@@ -19,27 +19,43 @@ namespace Sample
 		@param pScreen The screen that is about to be removed. */
 	void GameplayScreenRemove(Screen *pScreen)
 	{
-		pScreen->GetScreenManager()->AddScreen(new MainMenuScreen());
+		GameplayScreen *pGameplayScreen = (GameplayScreen *)pScreen;
+
+		int nextLevel = pGameplayScreen->GetNextLevelIndex();
+		pScreen->GetScreenManager()->AddScreen(new GameplayScreen(nextLevel));
 	}
 
 
-	GameplayScreen::GameplayScreen()
+	GameplayScreen::GameplayScreen(const int levelToLoad)
 	{
-		SetTransitionInTime(1.0);
-		SetTransitionOutTime(0.5);
-		SetRemoveCallback(GameplayScreenRemove);
+		m_pLevel = nullptr;
+		switch (levelToLoad)
+		{
+		case 1: m_pLevel = new Level01(this); break;
+		case 2: m_pLevel = new Level02(this); break;
+		}
 
-		UseRenderTarget();
+		if (m_pLevel)
+		{
+			SetTransitionInTime(1.0);
+			SetTransitionOutTime(0.5);
+			SetRemoveCallback(GameplayScreenRemove);
 
-		m_pLevel = new Level01(this);
-
-		Show();
+			UseRenderTarget();
+			Show();
+		}
 	}
 
 
 	void GameplayScreen::LoadContent(ResourceManager *pResourceManager)
 	{
-		m_pLevel->LoadContent(pResourceManager);
+		if (m_pLevel) m_pLevel->LoadContent(pResourceManager);
+		else
+		{
+			GetScreenManager()->AddScreen(new MainMenuScreen());
+			SetTransitionOutTime(0);
+			Exit();
+		}
 	}
 
 
@@ -66,5 +82,15 @@ namespace Sample
 		{
 			m_pLevel->Update(pGameTime);
 		}
+	}
+
+	int GameplayScreen::GetNextLevelIndex() const
+	{
+		if (m_pLevel &&m_pLevel->IsComplete())
+		{
+			return m_pLevel->GetNextLevelIndex();
+		}
+
+		return -1;
 	}
 }

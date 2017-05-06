@@ -71,6 +71,10 @@ namespace KatanaEngine
 			@return Returns the number of displayed menu items. */
 		virtual int GetDisplayCount() const { return m_displayCount; }
 
+		/** @brief Get the total number of menu items.
+			@return Returns the total number of menu items. */
+		virtual int GetCount() const { return m_menuItems.size(); }
+
 		/** @brief Get the index corresponding to the first displayed menu item.
 			@return Returns index of the first displayed menu item. */
 		virtual int GetDisplayStartIndex() const { return m_displayStartIndex; }

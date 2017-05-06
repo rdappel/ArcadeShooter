@@ -1,5 +1,5 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(387,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (SampleLibrary.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  Level01.cpp
+  LevelSelectMenu.cpp
   
   
            ██╗  ██╗  █████╗  ████████╗  █████╗  ███╗   ██╗  █████╗ 
@@ -12,6 +12,7 @@
          `^^^^^^^^^^^^^^^^^^^ /-------------------------------------"
               Katana Engine \/ © 2012 - Shuriken Studios LLC
   
+c:\users\ryan appel\desktop\arcadeshooter\katanaengine\menuscreen.h(76): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
   
   
            .                         ,'`.       .                         
@@ -38,6 +39,6 @@
   
   					        Sample © 2017 - Shuriken Studios LLC
   
-c:\users\ryan appel\desktop\arcadeshooter\sample\level.h(88): warning C4267: 'return': conversion from 'size_t' to 'uint8_t', possible loss of data
+c:\users\ryan appel\desktop\arcadeshooter\sample\level.h(91): warning C4267: 'return': conversion from 'size_t' to 'uint8_t', possible loss of data
   Sample.vcxproj -> C:\Users\Ryan Appel\Desktop\ArcadeShooter\x64\Debug\Sample.exe
   Sample.vcxproj -> C:\Users\Ryan Appel\Desktop\ArcadeShooter\x64\Debug\Sample.pdb (Partial PDB)

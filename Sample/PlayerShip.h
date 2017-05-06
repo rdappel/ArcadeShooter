@@ -70,18 +70,8 @@ namespace Sample
 		virtual bool IsAIControlled() const { return m_isAIControlled; }
 
 		/** @brief Powers up the ship.
-			@todo This is just a test to see that gaining a power up does something. This
-			will eventually be replaced when specific power up types are created. */
-		virtual void PowerUp()
-		{
-			if (!GetWeapon(1)->IsActive()) GetWeapon(1)->Activate();
-			else
-			{
-				GetWeapon(2)->Activate();
-				((Launcher *)GetWeapon(1))->ResetCooldown();
-				((Launcher *)GetWeapon(2))->ResetCooldown();
-			}
-		}
+			@param powerUpType The type of power up that the ship collected. */
+		virtual void PowerUp(const int powerUpType);
 
 
 	private:

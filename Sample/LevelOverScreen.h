@@ -24,7 +24,9 @@ namespace Sample
 		/** @brief Instantiate a pause menu screen.
 			@param pGameplayScreen The underlaying gameplay screen.
 			@param levelCompleted True should be passed if the level was completed
-			successfully. False should be passed if the level was lost. */
+			successfully. False should be passed if the level was lost.
+			@param nextLevelIndex The index of the level to load.
+			@remark Passing an invalid level index will return to the main menu. */
 		LevelOverScreen(GameplayScreen *pGameplayScreen, const bool levelCompleted);
 		virtual ~LevelOverScreen() { }
 
@@ -52,7 +54,7 @@ namespace Sample
 			@return Returns a pointer to the gameplay screen underneath the pause
 			menu screen. */
 		virtual GameplayScreen *GetGameplayScreen() const { return m_pGameplayScreen; }
-
+		
 
 	private:
 

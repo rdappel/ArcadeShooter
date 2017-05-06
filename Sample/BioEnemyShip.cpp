@@ -60,9 +60,13 @@ namespace Sample
 		{
 			Level *pLevel = (Level *)GetCurrentLevel();
 
-			if (GetIndex() == 3 || GetIndex() == 7)
+			if (GetIndex() == 5 || GetIndex() == 13)
 			{
-				pLevel->SpawnPowerUp(GetPosition());
+				pLevel->SpawnPowerUp(GetPosition(), PowerUpType::FireRate);
+			}
+			if (GetIndex() == 8 || GetIndex() == 11)
+			{
+				pLevel->SpawnPowerUp(GetPosition(), PowerUpType::MissileLauncher);
 			}
 			
 			pLevel->SpawnExplosion(GetPosition(), 0.75f);

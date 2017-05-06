@@ -20,7 +20,7 @@ namespace Sample
 
 	public:
 
-		GameplayScreen();
+		GameplayScreen(const int levelToLoad = 1);
 		virtual ~GameplayScreen()
 		{
 			delete m_pLevel;
@@ -40,10 +40,13 @@ namespace Sample
 			to be processed.
 			@param pGameTime Timing values including time since last update. */
 		virtual void Update(const GameTime *pGameTime);
-
+		
 		/** @brief Called when the game determines it is time to draw a frame.
 			@param pSpriteBatch The game's sprite batch, used for rendering. */
 		virtual void Draw(SpriteBatch *pSpriteBatch);
+
+
+		virtual int GetNextLevelIndex() const;
 
 
 	protected:
@@ -57,5 +60,7 @@ namespace Sample
 
 		Level *m_pLevel = nullptr;
 		
+		ResourceManager *m_pResourceManager;
+				
 	};
 }

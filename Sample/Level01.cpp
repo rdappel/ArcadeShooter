@@ -86,7 +86,7 @@ namespace Sample
 			pAnimation->SetTexture(pTexture);
 			pEnemyShip->SetAnimation(pAnimation);
 			pEnemyShip->SetSpeed(140);
-			pEnemyShip->SetMaxHitPoints(6);
+			pEnemyShip->SetMaxHitPoints(4);
 			AddGameObject(pEnemyShip);
 			pEnemyShip->Initialize(Vector2(800, -50), 28.0 + 0.54 * i);
 		}
