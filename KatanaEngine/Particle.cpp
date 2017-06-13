@@ -20,7 +20,7 @@ namespace KatanaEngine
 	{
 		m_lifeSeconds = 0;
 		m_color = Color::White;
-		m_scale = Vector2::One;
+		m_scale = Vector2::ONE;
 		m_alpha = 0;
 		m_rotation = 0;
 

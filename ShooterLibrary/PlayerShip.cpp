@@ -71,7 +71,7 @@ namespace ShooterLibrary
 
 	void PlayerShip::HandleInput(const InputState *pInput)
 	{
-		Vector2 direction = Vector2::Zero;
+		Vector2 direction = Vector2::ZERO;
 		if (pInput->IsKeyDown(Key::DOWN)) direction.Y++;
 		if (pInput->IsKeyDown(Key::UP)) direction.Y--;
 		if (pInput->IsKeyDown(Key::RIGHT)) direction.X++;
@@ -83,18 +83,31 @@ namespace ShooterLibrary
 			direction *= Math::NORMALIZE_PI_OVER4;
 		}
 
-		// gamepad overrides keyboard input
-		//Vector2 thumbstick = pInput->GetGamePadState(0).Thumbsticks.Left;
-		//if (thumbstick != Vector2::Zero()) direction = thumbstick;
-
-		SetDesiredDirection(direction);
-
 		TriggerType type = TriggerType::NONE;
+
 		if (pInput->IsKeyDown(Key::F)) type |= TriggerType::PRIMARY;
 		if (pInput->IsKeyDown(Key::D)) type |= TriggerType::SECONDARY;
 		if (pInput->IsKeyDown(Key::S)) type |= TriggerType::SPECIAL;
-		FireWeapons(type);
+
+
+		GamePadState *pState = &pInput->GetGamePadState(0);
+		if (pState->IsConnected)
+		{
+			// gamepad overrides keyboard input
+			Vector2 thumbstick = pState->Thumbsticks.Left;
+			if (thumbstick.LengthSquared() < 0.08f) thumbstick = Vector2::ZERO;
+			if (thumbstick != Vector2::ZERO) direction = thumbstick;
+
+			type = TriggerType::NONE;
+
+			if (pState->Triggers.Right > 0.5f) type |= TriggerType::PRIMARY;
+			if (pState->Triggers.Left > 0.5f) type |= TriggerType::SECONDARY;
+			if (pState->IsButtonDown(Button::Y)) type |= TriggerType::SPECIAL;
+		}
+
 		
+		SetDesiredDirection(direction);
+		FireWeapons(type);
 	}
 
 	void PlayerShip::SetResponsiveness(const float responsiveness)

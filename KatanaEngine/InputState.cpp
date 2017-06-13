@@ -1,5 +1,5 @@
 ﻿
-/*	 ██╗  ██╗  █████╗  ████████╗  █████╗  ███╗   ██╗  █████╗ 
+/*	 ██╗  ██╗  █████╗  ████████╗  █████╗  ███╗   ██╗  █████╗
 	 ██║ ██╔╝ ██╔══██╗ ╚══██╔══╝ ██╔══██╗ ████╗  ██║ ██╔══██╗
 	 █████╔╝  ███████║    ██║    ███████║ ██╔██╗ ██║ ███████║
 	 ██╔═██╗  ██╔══██║    ██║    ██╔══██║ ██║╚██╗██║ ██╔══██║
@@ -7,7 +7,7 @@
 	 ╚═╝  ╚═╝ ╚═╝  ╚═╝/\  ╚═╝    ╚═╝  ╚═╝ ╚═╝  ╚═══╝ ╚═╝  ╚═╝
    /vvvvvvvvvvvvvvvvvvv \=========================================,
    `^^^^^^^^^^^^^^^^^^^ /---------------------------------------"
-        Katana Engine \/ © 2012 - Shuriken Studios LLC              */
+		Katana Engine \/ © 2012 - Shuriken Studios LLC              */
 
 #include "KatanaEngine.h"
 
@@ -16,8 +16,11 @@ namespace KatanaEngine
 	InputState::InputState()
 	{
 		al_install_keyboard();
-		al_install_joystick();
 		al_install_mouse();
+
+
+		al_set_config_value(al_get_system_config(), "joystick", "driver", "xinput");
+		al_install_joystick();
 
 
 		for (int i = 0; i < MAX_NUM_GAMEPADSTATES; i++)
@@ -60,15 +63,18 @@ namespace KatanaEngine
 		{
 			ALLEGRO_JOYSTICK *joystick = al_get_joystick(i);
 
-			if (strcmp(al_get_joystick_name(joystick), "Controller (XBOX 360 For Windows)") == 0)
+			//if (strcmp(al_get_joystick_name(joystick), "Controller (XBOX 360 For Windows)") == 0)
+			//if (strcmp(al_get_joystick_name(joystick), "XInput Joystick 0") == 0)
 			{
 				for (int i = 0; i < MAX_NUM_GAMEPADSTATES; i++)
 				{
 					if (m_currentGamePadStates[i].ID == nullptr)
 					{
 						m_currentGamePadStates[i].ID = joystick;
-						m_previousGamePadStates[i].ID = joystick;
 						m_currentGamePadStates[i].IsConnected = true;
+						m_currentGamePadStates[i].Reset();
+
+						m_previousGamePadStates[i] = m_currentGamePadStates[i];
 
 						m_map.emplace(std::pair<ALLEGRO_JOYSTICK *, int>(joystick, i));
 						break;
@@ -95,6 +101,11 @@ namespace KatanaEngine
 
 		if (index > -1)
 		{
+			//std::cout << "Stick: " << alEvent.joystick.stick << std::endl;
+			//std::cout << "Pos: " << alEvent.joystick.pos << std::endl;
+			//std::cout << "Axis: " << alEvent.joystick.axis << std::endl;
+			//std::cout << "-------------------" << std::endl;
+
 			if (alEvent.joystick.stick == 0 && alEvent.joystick.axis == 0)
 			{
 				m_currentGamePadStates[index].Thumbsticks.Left.X = alEvent.joystick.pos;
@@ -103,11 +114,6 @@ namespace KatanaEngine
 			{
 				m_currentGamePadStates[index].Thumbsticks.Left.Y = alEvent.joystick.pos;
 			}
-			else if (alEvent.joystick.stick == 0 && alEvent.joystick.axis == 2)
-			{
-				if (alEvent.joystick.pos >= 0) m_currentGamePadStates[index].Triggers.Left = alEvent.joystick.pos;
-				else if (alEvent.joystick.pos >= 0) m_currentGamePadStates[index].Triggers.Right = -alEvent.joystick.pos;
-			}
 			else if (alEvent.joystick.stick == 1 && alEvent.joystick.axis == 0)
 			{
 				m_currentGamePadStates[index].Thumbsticks.Right.X = alEvent.joystick.pos;
@@ -115,6 +121,14 @@ namespace KatanaEngine
 			else if (alEvent.joystick.stick == 1 && alEvent.joystick.axis == 1)
 			{
 				m_currentGamePadStates[index].Thumbsticks.Right.Y = alEvent.joystick.pos;
+			}
+			else if (alEvent.joystick.stick == 2)
+			{
+				m_currentGamePadStates[index].Triggers.Left = alEvent.joystick.pos;
+			}
+			else if (alEvent.joystick.stick == 3)
+			{
+				m_currentGamePadStates[index].Triggers.Right = alEvent.joystick.pos;
 			}
 		}
 	}
@@ -125,18 +139,33 @@ namespace KatanaEngine
 
 		if (index > -1)
 		{
+			GamePadButtons *pButtons = &m_currentGamePadStates[index].Buttons;
+			GamePadDPad *pDPad = &m_currentGamePadStates[index].DPad;
+
+			//std::cout << "Button Index " << alEvent.joystick.button;
+			//if (state == ButtonState::PRESSED) std::cout << " was pressed." << std::endl;
+			//else std::cout << " was released." << std::endl;
+
 			switch (alEvent.joystick.button)
 			{
-			case 0:	m_currentGamePadStates[index].Buttons.A = state;				break;
-			case 1:	m_currentGamePadStates[index].Buttons.B = state;				break;
-			case 2:	m_currentGamePadStates[index].Buttons.X = state;				break;
-			case 3:	m_currentGamePadStates[index].Buttons.Y = state;				break;
-			case 4:	m_currentGamePadStates[index].Buttons.LeftShoulder = state;		break;
-			case 5:	m_currentGamePadStates[index].Buttons.RightShoulder = state;	break;
-			case 6:	m_currentGamePadStates[index].Buttons.Back = state;				break;
-			case 7:	m_currentGamePadStates[index].Buttons.Start = state;			break;
-			case 8:	m_currentGamePadStates[index].Buttons.LeftStick = state;		break;
-			case 9:	m_currentGamePadStates[index].Buttons.RightStick = state;		break;
+			case 0:	pButtons->A = state;	break;
+			case 1: pButtons->B = state;	break;
+			case 2:	pButtons->X = state;	break;
+			case 3:	pButtons->Y = state;	break;
+
+			case 4:	pButtons->RightShoulder = state;		break;
+			case 5:	pButtons->LeftShoulder = state;	break;
+
+			case 6:	pButtons->RightStick = state;	break;
+			case 7:	pButtons->LeftStick = state;	break;
+
+			case 8:	pButtons->Back = state;		break;
+			case 9:	pButtons->Start = state;	break;
+
+			case 10: pDPad->Right = state;	break;
+			case 11: pDPad->Left = state;	break;
+			case 12: pDPad->Down = state;	break;
+			case 13: pDPad->Up = state;		break;
 			}
 		}
 	}

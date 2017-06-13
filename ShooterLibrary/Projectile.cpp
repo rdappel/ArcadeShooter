@@ -21,7 +21,7 @@ namespace ShooterLibrary
 	{
 		SetSpeed(500);
 		SetDamage(1);
-		SetDirection(-Vector2::UnitY);
+		SetDirection(-Vector2::UNIT_Y);
 		SetCollisionRadius(9);
 
 		m_drawnByLevel = true;

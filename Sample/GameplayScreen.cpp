@@ -61,7 +61,10 @@ namespace Sample
 
 	void GameplayScreen::HandleInput(const InputState *pInput)
 	{
-		if (pInput->IsNewKeyPress(Key::ESCAPE))
+		int8_t playerIndex = -1;
+
+		if (pInput->IsNewKeyPress(Key::ESCAPE) ||
+			pInput->IsNewButtonPress(Button::START, playerIndex))
 		{
 			GetScreenManager()->AddScreen(new PauseMenuScreen(this));
 		}

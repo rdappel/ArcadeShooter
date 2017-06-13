@@ -39,7 +39,7 @@ namespace Sample
 
 			ParticleTemplate::InitializeParticle(pT);
 
-			pT->SetScale(Vector2::One * 0.1f);
+			pT->SetScale(Vector2::ONE * 0.1f);
 			pT->SetAlpha(0.125f);
 
 			pT->SetRotation(Math::GetRandomFloat() * Math::PI * 2);
@@ -59,7 +59,7 @@ namespace Sample
 
 			float value = pT->GetInterpolationValue();
 			float scale = (1 - value) * 0.25f + 0.1f;
-			pT->SetScale(Vector2::One * scale);
+			pT->SetScale(Vector2::ONE * scale);
 			pT->SetAlpha(value * 0.125f);
 
 			float rotation = pT->GetRotation() + pT->GetRotationVelocity();

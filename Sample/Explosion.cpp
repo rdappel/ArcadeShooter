@@ -25,7 +25,7 @@ namespace Sample
 		if (IsActive())
 		{
 			Vector2 center = m_pAnimation->GetFrame(0)->GetCenter();
-			pSpriteBatch->Draw(m_pAnimation, m_position, Color::White, center, Vector2::One * m_scale, m_rotation);
+			pSpriteBatch->Draw(m_pAnimation, m_position, Color::White, center, Vector2::ONE * m_scale, m_rotation);
 		}
 	}
 

@@ -33,7 +33,10 @@ namespace Sample
 
 	void LevelOverScreen::HandleInput(const InputState *pInput) 
 	{
-		if (pInput->IsNewKeyPress(Key::ENTER))
+		int8_t playerIndex = -1;
+
+		if (pInput->IsNewKeyPress(Key::ENTER) ||
+			pInput->IsNewButtonPress(Button::A, playerIndex))
 		{
 			m_secondsUntilExit = 0;
 		}

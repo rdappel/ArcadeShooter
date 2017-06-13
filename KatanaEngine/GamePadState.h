@@ -128,7 +128,7 @@ namespace KatanaEngine
 		GamePadButtons Buttons;			/**< @brief The current state of the GamePad's Buttons. */
 		GamePadThumbSticks Thumbsticks;	/**< @brief The current state of the GamePad's Thumbsticks. */
 		GamePadTriggers Triggers;		/**< @brief The current state of the GamePad's Triggers. */
-		GamePadDPad Dpad;				/**< @brief The current state of the GamePad's Dpad. */
+		GamePadDPad DPad;				/**< @brief The current state of the GamePad's DPad. */
 		ALLEGRO_JOYSTICK *ID;			/**< @brief The underlaying allegro joystick id. */
 
 		/** @brief Determines if a button is pressed down.
@@ -150,6 +150,11 @@ namespace KatanaEngine
 			case Button::LEFT_SHOULDER: return (Buttons.LeftShoulder == ButtonState::PRESSED);
 			case Button::RIGHT_STICK: return (Buttons.RightStick == ButtonState::PRESSED);
 			case Button::RIGHT_SHOULDER: return (Buttons.RightShoulder == ButtonState::PRESSED);
+
+			case Button::DPAD_UP: return (DPad.Up == ButtonState::PRESSED);
+			case Button::DPAD_DOWN: return (DPad.Down == ButtonState::PRESSED);
+			case Button::DPAD_LEFT: return (DPad.Left == ButtonState::PRESSED);
+			case Button::DPAD_RIGHT: return (DPad.Right == ButtonState::PRESSED);
 			}
 
 			return false;
@@ -159,5 +164,32 @@ namespace KatanaEngine
 			@param button The button to test.
 			@return Returns true if the button is up, false otherwise. */
 		bool IsButtonUp(Button button) const { return !IsButtonDown(button); }
+
+		void Reset()
+		{
+			Buttons.A = ButtonState::RELEASED;
+			Buttons.B = ButtonState::RELEASED;
+			Buttons.X = ButtonState::RELEASED;
+			Buttons.Y = ButtonState::RELEASED;
+
+			Buttons.Start = ButtonState::RELEASED;
+			Buttons.Back = ButtonState::RELEASED;
+
+			Buttons.LeftStick = ButtonState::RELEASED;
+			Buttons.LeftShoulder = ButtonState::RELEASED;
+			Buttons.RightStick = ButtonState::RELEASED;
+			Buttons.RightShoulder = ButtonState::RELEASED;
+
+			DPad.Up = ButtonState::RELEASED;
+			DPad.Down = ButtonState::RELEASED;
+			DPad.Left = ButtonState::RELEASED;
+			DPad.Right = ButtonState::RELEASED;
+
+			Thumbsticks.Left = Vector2::ZERO;
+			Thumbsticks.Right = Vector2::ZERO;
+
+			Triggers.Left = 0;
+			Triggers.Right = 0;
+		}
 	};
 }

@@ -80,7 +80,7 @@ namespace Sample
 		if (m_pAnimation)
 		{
 			Vector2 center = m_pAnimation->GetFrame(0)->GetCenter();
-			pSpriteBatch->Draw(m_pAnimation, GetPosition(), Color::White, center, Vector2::One * 0.75f, m_angle);
+			pSpriteBatch->Draw(m_pAnimation, GetPosition(), Color::White, center, Vector2::ONE * 0.75f, m_angle);
 		}
 	}
 
@@ -94,7 +94,7 @@ namespace Sample
 
 		if (wasShotByPlayer)
 		{
-			SetDirection(-Vector2::UnitY);
+			SetDirection(-Vector2::UNIT_Y);
 			SetAngle(-0.5f * Math::PI);
 		}
 

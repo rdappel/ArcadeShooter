@@ -28,8 +28,8 @@ namespace KatanaEngine
 		m_color = Color::White;
 		m_alpha = 1.0f;
 
-		m_position = Vector2::Zero;
-		m_textOffset = Vector2::Zero;
+		m_position = Vector2::ZERO;
+		m_textOffset = Vector2::ZERO;
 
 		m_textAlign = TextAlign::LEFT;
 		m_isDisplayed = true;

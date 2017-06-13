@@ -64,7 +64,7 @@ namespace Sample
 
 		pItem->SetFont(m_pFont);
 		pItem->SetTextAlign(TextAlign::CENTER);
-		pItem->SetPosition(m_position + (Vector2::UnitY * 40 * pItem->GetIndex()));
+		pItem->SetPosition(m_position + (Vector2::UNIT_Y * 40 * pItem->GetIndex()));
 	}
 
 }

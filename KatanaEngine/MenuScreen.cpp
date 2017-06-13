@@ -46,7 +46,8 @@ namespace KatanaEngine
 			const int FIRST_INDEX = 0;
 			const int LAST_INDEX = (int)(m_menuItems.size() - 1);
 
-			if (pInput->IsNewKeyPress(Key::ENTER))
+			if (pInput->IsNewKeyPress(Key::ENTER) ||
+				pInput->IsNewButtonPress(Button::A, playerIndexOut))
 			{
 				m_menuItems[m_selectedItemIndex]->Select(this);
 			}

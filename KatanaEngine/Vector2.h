@@ -26,10 +26,10 @@ namespace KatanaEngine
 		Vector2(const float x = 0, const float y = 0);
 
 		
-		static const Vector2 Zero;	/**< @brief A vector with both of its components set to zero. */
-		static const Vector2 One;	/**< @brief A vector with both of its components set to one. */
-		static const Vector2 UnitX;	/**< @brief A unit vector on the x-axis. */
-		static const Vector2 UnitY;	/**< @brief A unit vector on the y-axis. */
+		static const Vector2 ZERO;	/**< @brief A vector with both of its components set to zero. */
+		static const Vector2 ONE;	/**< @brief A vector with both of its components set to one. */
+		static const Vector2 UNIT_X;	/**< @brief A unit vector on the x-axis. */
+		static const Vector2 UNIT_Y;	/**< @brief A unit vector on the y-axis. */
 
 		
 		/** @brief Calculates the length of the vector squared.

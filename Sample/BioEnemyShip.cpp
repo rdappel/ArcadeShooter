@@ -47,7 +47,7 @@ namespace Sample
 			Region frame = *(m_pAnimation->GetCurrentFrame());
 			frame.X = 0;
 			frame.Y = 0;
-			pSpriteBatch->Draw(m_pAnimation, GetPosition(), Color::White, frame.GetCenter(), Vector2::One, Math::PI, 1);
+			pSpriteBatch->Draw(m_pAnimation, GetPosition(), Color::White, frame.GetCenter(), Vector2::ONE, Math::PI, 1);
 		}
 	}
 

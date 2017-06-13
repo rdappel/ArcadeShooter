@@ -66,9 +66,9 @@ namespace Sample
 
 		Color color = m_color;
 
-		pSpriteBatch->Draw(s_pGlowTexture, GetPosition(), color * m_alpha, s_pTexture->GetCenter(), Vector2::One * 0.525f);
-		pSpriteBatch->Draw(s_pColorTexture, GetPosition(), color, s_pTexture->GetCenter(), Vector2::One * 0.5f);
-		pSpriteBatch->Draw(s_pTexture, GetPosition(), Color::White, s_pTexture->GetCenter(), Vector2::One * 0.5f);
+		pSpriteBatch->Draw(s_pGlowTexture, GetPosition(), color * m_alpha, s_pTexture->GetCenter(), Vector2::ONE * 0.525f);
+		pSpriteBatch->Draw(s_pColorTexture, GetPosition(), color, s_pTexture->GetCenter(), Vector2::ONE * 0.5f);
+		pSpriteBatch->Draw(s_pTexture, GetPosition(), Color::White, s_pTexture->GetCenter(), Vector2::ONE * 0.5f);
 	}
 
 	void PowerUp::Activate(const Vector2 position, Level *pLevel)
@@ -77,7 +77,7 @@ namespace Sample
 		m_pTarget = nullptr;
 		m_targetCheck = 0;
 
-		m_velocity = Vector2::GetRandom(true) + Vector2::UnitY * 0.4f;
+		m_velocity = Vector2::GetRandom(true) + Vector2::UNIT_Y * 0.4f;
 		m_color = (m_powerUpType == PowerUpType::FireRate) ? Color::Blue : Color::Orange;
 
 		GameObject::Activate();

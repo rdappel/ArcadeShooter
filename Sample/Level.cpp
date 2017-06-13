@@ -109,17 +109,17 @@ namespace Sample
 
 			pBlaster = new Blaster(true);
 			pBlaster->SetProjectilePool(pBlasterPool);
-			pPlayerShip->AttachWeapon(pBlaster, Vector2::UnitY * -32);
+			pPlayerShip->AttachWeapon(pBlaster, Vector2::UNIT_Y * -32);
 
 			Launcher *pLauncher;
 
 			pLauncher = new Launcher(false);
 			pLauncher->SetProjectilePool(pMissilePool);
-			pPlayerShip->AttachWeapon(pLauncher, Vector2::UnitX * -22);
+			pPlayerShip->AttachWeapon(pLauncher, Vector2::UNIT_X * -22);
 
 			pLauncher = new Launcher(false);
 			pLauncher->SetProjectilePool(pMissilePool);
-			pPlayerShip->AttachWeapon(pLauncher, Vector2::UnitX * 22);
+			pPlayerShip->AttachWeapon(pLauncher, Vector2::UNIT_X * 22);
 
 			pPlayerShip->LoadContent(pResourceManager);
 			AddPlayerShip(pPlayerShip);

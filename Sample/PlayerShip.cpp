@@ -29,7 +29,7 @@ namespace Sample
 		{
 			for (int j = 0; j < 3; j++) // left, center, right
 			{
-				m_thrusterOffset[i][j] = Vector2::Zero;
+				m_thrusterOffset[i][j] = Vector2::ZERO;
 			}
 		}
 		m_thrusterScale = 1;
@@ -178,15 +178,15 @@ namespace Sample
 			for (int j = 0; j < 3; j++)
 			{
 				Vector2 position = GetPosition() + m_thrusterOffset[i][m_pAnimation->GetCurrentIndex()];
-				pSpriteBatch->Draw(m_pThrusterAnimation, position, Color::White, origin, Vector2::One * m_thrusterScale, 0, 0.001 * GetPlayerIndex());
+				pSpriteBatch->Draw(m_pThrusterAnimation, position, Color::White, origin, Vector2::ONE * m_thrusterScale, 0, 0.001 * GetPlayerIndex());
 			}
 		}
 
 		Region frame = *(m_pAnimation->GetCurrentFrame());
 		frame.X = 0;
 		frame.Y = 0;
-		pSpriteBatch->Draw(m_pColorAnimation, GetPosition(), m_color, frame.GetCenter(), Vector2::One * m_scale, 0, 0.98 + 0.001 * GetPlayerIndex());
-		pSpriteBatch->Draw(m_pAnimation, GetPosition(), Color::White, frame.GetCenter(), Vector2::One * m_scale, 0, 0.99 + 0.001 * GetPlayerIndex());
+		pSpriteBatch->Draw(m_pColorAnimation, GetPosition(), m_color, frame.GetCenter(), Vector2::ONE * m_scale, 0, 0.98 + 0.001 * GetPlayerIndex());
+		pSpriteBatch->Draw(m_pAnimation, GetPosition(), Color::White, frame.GetCenter(), Vector2::ONE * m_scale, 0, 0.99 + 0.001 * GetPlayerIndex());
 
 	}
 

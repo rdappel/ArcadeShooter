@@ -134,7 +134,7 @@ namespace KatanaEngine
 				{
 					RenderTarget::Set(nullptr);
 					pSpriteBatch->Begin(SpriteSortMode::DEFERRED, BlendState::ALPHA);
-					pSpriteBatch->Draw(pRenderTarget, Vector2::Zero, pScreen->GetRenderTargetColor());
+					pSpriteBatch->Draw(pRenderTarget, Vector2::ZERO, pScreen->GetRenderTargetColor());
 					pSpriteBatch->End();
 				}
 			}

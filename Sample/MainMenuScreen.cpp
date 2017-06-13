@@ -54,7 +54,7 @@ namespace Sample
 	void MainMenuScreen::LoadContent(ResourceManager *pResourceManager)
 	{
 		MenuScreen::LoadContent(pResourceManager);
-		Vector2 position = Game::GetScreenCenter() + Vector2::UnitY * 160;
+		Vector2 position = Game::GetScreenCenter() + Vector2::UNIT_Y * 160;
 		SetMenuPosition(position);
 
 		const int MENU_ITEM_COUNT = 2;
@@ -68,7 +68,7 @@ namespace Sample
 		GetMenuItem(1)->SetSelectCallback((KatanaEngine::OnSelect)ExitSelect);
 		
 		m_pTexture = pResourceManager->Load<Texture>("Textures\\Logo.png", false);
-		m_texturePosition = Game::GetScreenCenter() - Vector2::UnitY * 200;
+		m_texturePosition = Game::GetScreenCenter() - Vector2::UNIT_Y * 200;
 	}
 
 

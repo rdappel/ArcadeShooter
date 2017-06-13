@@ -126,13 +126,13 @@ namespace KatanaEngine
 		al_register_event_source(pEventQueue, al_get_timer_event_source(pTimer));
 		al_register_event_source(pEventQueue, al_get_display_event_source(pDisplay));
 
+		m_pInput = new InputState();
+
 		ALLEGRO_EVENT_SOURCE *joystickEventSource = al_get_joystick_event_source();
 		if (joystickEventSource)
 		{
 			al_register_event_source(pEventQueue, joystickEventSource);
 		}
-
-		m_pInput = new InputState();
 
 		ResetGameTime();
 
@@ -152,13 +152,6 @@ namespace KatanaEngine
 				Quit();
 				break;
 
-			case ALLEGRO_EVENT_TIMER:
-				m_pGameTime->Update();
-				m_pInput->Update();
-				Update(m_pGameTime);
-				redraw = true;
-				break;
-
 			case ALLEGRO_EVENT_JOYSTICK_CONFIGURATION:
 				m_pInput->UpdateConfigurationEvent();
 				break;
@@ -171,6 +164,13 @@ namespace KatanaEngine
 				break;
 			case ALLEGRO_EVENT_JOYSTICK_BUTTON_DOWN:
 				m_pInput->UpdateButtonEvent(alEvent, ButtonState::PRESSED);
+				break;
+
+			case ALLEGRO_EVENT_TIMER:
+				m_pGameTime->Update();
+				Update(m_pGameTime);
+				m_pInput->Update();
+				redraw = true;
 				break;
 			}
 

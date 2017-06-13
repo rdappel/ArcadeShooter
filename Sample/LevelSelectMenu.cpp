@@ -37,7 +37,7 @@ namespace Sample
 	void LevelSelectMenu::LoadContent(ResourceManager *pResourceManager)
 	{
 		MenuScreen::LoadContent(pResourceManager);
-		Vector2 position = Game::GetScreenCenter() - Vector2::UnitY * 160;
+		Vector2 position = Game::GetScreenCenter() - Vector2::UNIT_Y * 160;
 		SetMenuPosition(position);
 
 		const int MENU_ITEM_COUNT = 3;

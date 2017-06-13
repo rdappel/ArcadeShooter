@@ -88,8 +88,8 @@ namespace KatanaEngine
 			by the SpriteSortMode arguement that is passed to SpriteBatch::Begin(). The
 			default is zero.*/
 		void Draw(const Texture *pTexture, const Vector2 position, const Region region,
-			const Color color = Color::White, const Vector2 origin = Vector2::Zero, 
-			const Vector2 scale = Vector2::One, const float rotation = 0, 
+			const Color color = Color::White, const Vector2 origin = Vector2::ZERO, 
+			const Vector2 scale = Vector2::ONE, const float rotation = 0, 
 			const float drawDepth = 0);
 
 		/** @brief Adds a sprite to a batch of sprites to be rendered.
@@ -106,8 +106,8 @@ namespace KatanaEngine
 
 			@overload */
 		void Draw(const Texture *pTexture, const Vector2 position,
-			const Color color = Color::White, const Vector2 origin = Vector2::Zero,
-			const Vector2 scale = Vector2::One, const float rotation = 0,
+			const Color color = Color::White, const Vector2 origin = Vector2::ZERO,
+			const Vector2 scale = Vector2::ONE, const float rotation = 0,
 			const float drawDepth = 0);
 
 		/** @brief Adds a sprite to a batch of sprites to be rendered.
@@ -124,8 +124,8 @@ namespace KatanaEngine
 
 			@overload */
 		void Draw(Animation *pAnimation, const Vector2 position,
-			const Color color = Color::White, const Vector2 origin = Vector2::Zero,
-			const Vector2 scale = Vector2::One, const float rotation = 0,
+			const Color color = Color::White, const Vector2 origin = Vector2::ZERO,
+			const Vector2 scale = Vector2::ONE, const float rotation = 0,
 			float drawDepth = 0);
 
 		/** @brief Gets the current settings from the sprite batch.
