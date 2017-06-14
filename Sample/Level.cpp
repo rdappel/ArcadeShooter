@@ -100,35 +100,44 @@ namespace Sample
 		}
 
 		// create player ships
-		const int NUM_PLAYERS = 1;
-		for (int i = 0; i < NUM_PLAYERS; i++)
+		for (int i = 0; i < InputState::MAX_NUM_GAMEPADSTATES; i++)
 		{
-			PlayerShip *pPlayerShip = new PlayerShip(i);
+			PlayerData playerData = m_pGameplayScreen->GetPlayerData()[i];
+			if (playerData.IsActive)
+			{
+				PlayerShip *pPlayerShip = new PlayerShip(i);
+				pPlayerShip->SetBodyStyleIndex(playerData.BodyStyleIndex);
 
-			Blaster *pBlaster;
+				Blaster *pBlaster;
 
-			pBlaster = new Blaster(true);
-			pBlaster->SetProjectilePool(pBlasterPool);
-			pPlayerShip->AttachWeapon(pBlaster, Vector2::UNIT_Y * -32);
+				pBlaster = new Blaster(true);
+				pBlaster->SetProjectilePool(pBlasterPool);
+				pPlayerShip->AttachWeapon(pBlaster, Vector2::UNIT_Y * -32);
 
-			Launcher *pLauncher;
+				Launcher *pLauncher;
 
-			pLauncher = new Launcher(false);
-			pLauncher->SetProjectilePool(pMissilePool);
-			pPlayerShip->AttachWeapon(pLauncher, Vector2::UNIT_X * -22);
+				pLauncher = new Launcher(false);
+				pLauncher->SetProjectilePool(pMissilePool);
+				pPlayerShip->AttachWeapon(pLauncher, Vector2::UNIT_X * -22);
 
-			pLauncher = new Launcher(false);
-			pLauncher->SetProjectilePool(pMissilePool);
-			pPlayerShip->AttachWeapon(pLauncher, Vector2::UNIT_X * 22);
+				pLauncher = new Launcher(false);
+				pLauncher->SetProjectilePool(pMissilePool);
+				pPlayerShip->AttachWeapon(pLauncher, Vector2::UNIT_X * 22);
 
-			pPlayerShip->LoadContent(pResourceManager);
-			AddPlayerShip(pPlayerShip);
+				pPlayerShip->LoadContent(pResourceManager);
+				AddPlayerShip(pPlayerShip);
+			}
 		}
+
+		int position = 1;
+		float spacing = Game::GetScreenWidth() / (GetPlayerCount() + 1);
+		int y = Game::GetScreenHeight() + 100;
 
 		m_playerShipIt = m_playerShips.begin();
 		for (; m_playerShipIt != m_playerShips.end(); m_playerShipIt++)
 		{
-			(*m_playerShipIt)->Initialize(this);
+			(*m_playerShipIt)->Initialize(this, Vector2(spacing * position, y));
+			position++;
 		}
 
 		// create explosions

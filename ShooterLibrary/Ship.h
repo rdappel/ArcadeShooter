@@ -87,7 +87,7 @@ namespace ShooterLibrary
 		/** @brief Gets the weapon at the specified index.
 			@param index The index of the desired weapon.
 			@return Returns a pointer to the specified weapon. */
-		virtual Weapon *GetWeapon(const int index) { return m_weapons[index]; }
+		virtual Weapon *GetWeapon(const int index) { if (index < m_weapons.size()) return m_weapons[index]; return nullptr; }
 
 		/** @brief Gets the amount of hit points that the ship has.
 			@return Returns the amount of hit points remaining. */

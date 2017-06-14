@@ -107,10 +107,12 @@ namespace KatanaEngine
 
 	void SpriteBatch::DrawFont(Drawable *pDrawable)
 	{
-		al_draw_text(pDrawable->Union.pFont,
-			pDrawable->color, 
-			pDrawable->x, pDrawable->y, 
-			(int)pDrawable->Union.align, 
+		al_draw_multiline_text(
+			pDrawable->Union.pFont,
+			pDrawable->color,
+			pDrawable->x, pDrawable->y,
+			Game::GetScreenWidth(), 0,
+			(int)pDrawable->Union.align,
 			pDrawable->Union.text->c_str());
 	}
 

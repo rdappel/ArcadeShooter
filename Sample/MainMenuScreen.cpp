@@ -19,7 +19,7 @@ namespace Sample
 	/** @brief Callback function for when the main menu is removed from
 		the screen manager.
 		@param pScreen The screen that is about to be removed. */
-	void RemoveToLevelSelect(Screen *pScreen)
+	void RemoveMainMenuToLevelSelect(Screen *pScreen)
 	{
 		pScreen->GetScreenManager()->AddScreen(new LevelSelectMenu());
 	}
@@ -27,7 +27,7 @@ namespace Sample
 	/** @brief Callback function for when the main menu is removed from
 		the screen manager.
 		@param pScreen The screen that is about to be removed. */
-	void RemoveToShipSelect(Screen *pScreen)
+	void RemoveMainMenuToShipSelect(Screen *pScreen)
 	{
 		pScreen->GetScreenManager()->AddScreen(new ShipSelectScreen());
 	}
@@ -36,8 +36,8 @@ namespace Sample
 		@param pMenuScreen The menu screen that contains the menu item. */
 	void StartSelect(MenuScreen *pMenuScreen)
 	{
-		//pMenuScreen->SetRemoveCallback(RemoveToLevelSelect);
-		pMenuScreen->SetRemoveCallback(RemoveToShipSelect);
+		//pMenuScreen->SetRemoveCallback(RemoveMainMenuToLevelSelect);
+		pMenuScreen->SetRemoveCallback(RemoveMainMenuToShipSelect);
 		pMenuScreen->Exit();
 	}
 

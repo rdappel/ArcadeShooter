@@ -21,14 +21,21 @@ namespace Sample
 	{
 		GameplayScreen *pGameplayScreen = (GameplayScreen *)pScreen;
 
-		int nextLevel = pGameplayScreen->GetNextLevelIndex();
-		pScreen->GetScreenManager()->AddScreen(new GameplayScreen(nextLevel));
+		uint8_t nextLevel = pGameplayScreen->GetNextLevelIndex();
+		pScreen->GetScreenManager()->AddScreen(new GameplayScreen(nextLevel, pGameplayScreen->GetPlayerData()));
 	}
 
 
-	GameplayScreen::GameplayScreen(const int levelToLoad)
+	GameplayScreen::GameplayScreen(const uint8_t levelToLoad, PlayerData *pPlayerData)
 	{
 		m_pLevel = nullptr;
+		GameObject::SetCurrentLevel(nullptr);
+
+		for (int i = 0; i < InputState::MAX_NUM_GAMEPADSTATES; i++)
+		{
+			m_playerData[i] = pPlayerData[i];
+		}
+
 		switch (levelToLoad)
 		{
 		case 1: m_pLevel = new Level01(this); break;

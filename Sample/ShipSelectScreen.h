@@ -13,6 +13,7 @@
 
 namespace Sample
 {
+	class GameplayScreen;
 
 	/** @brief Screen that allows players to select their ship. */
 	class ShipSelectScreen : public Screen
@@ -21,7 +22,7 @@ namespace Sample
 	public:
 
 		ShipSelectScreen(int8_t controllingPlayerIndex = 0);
-		virtual ~ShipSelectScreen() { }
+		virtual ~ShipSelectScreen();
 
 		/** @brief Called when resources need to be loaded.
 			@param pResourceManager The game's resource manager, used for loading
@@ -40,10 +41,24 @@ namespace Sample
 			@param pSpriteBatch The game's sprite batch, used for rendering. */
 		virtual void Draw(SpriteBatch *pSpriteBatch);
 
+		virtual PlayerData *GetPlayerData() { return playerData; }
+
 
 	private:
 
+		static const int MAX_PLAYERS = (int)InputState::MAX_NUM_GAMEPADSTATES;
+
+		bool m_gamePadActive[MAX_PLAYERS];
+		bool m_hasJoined[MAX_PLAYERS];
+		int8_t m_bodyStyleIndices[MAX_PLAYERS];
+
+		PlayerShip *m_pPlayerShips[MAX_PLAYERS];
+
+		PlayerData playerData[MAX_PLAYERS];
+
 		int8_t m_controllingPlayerIndex;
+
+		int8_t m_activeGamePadCount;
 
 		Font *m_pFont;
 

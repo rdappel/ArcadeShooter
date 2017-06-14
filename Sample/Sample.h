@@ -18,6 +18,7 @@
 
 
 #include "CollisionType.h"
+#include "PlayerData.h"
 #include "SmokeTemplate.h"
 #include "GameObject.h"
 #include "Projectile.h"

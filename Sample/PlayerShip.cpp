@@ -24,9 +24,10 @@ namespace Sample
 		Color(1.0f, 1.0f, 0.0f)		// Yellow
 	};
 
-	PlayerShip::PlayerShip(const uint8_t playerIndex)
+	PlayerShip::PlayerShip(const uint8_t playerIndex, const uint8_t bodyStyleIndex)
 		: ShooterLibrary::PlayerShip(playerIndex)
 	{
+		SetBodyStyleIndex(bodyStyleIndex);
 		SetSpeed(450);
 		m_isAIControlled = false;
 
@@ -49,19 +50,27 @@ namespace Sample
 		std::string shipPath;
 		std::string colorPath;
 
-		Blaster *pBlaster = (Blaster *)GetWeapon(0);
+		
+		Blaster *pBlaster = nullptr;
+		if (GetWeapon(0)) pBlaster = (Blaster *)GetWeapon(0);
 
-		switch (GetPlayerIndex())
+		m_thrusterOffset[0][0] = Vector2::ZERO;
+		m_thrusterOffset[0][1] = Vector2::ZERO;
+		m_thrusterOffset[0][2] = Vector2::ZERO;
+		m_thrusterOffset[1][0] = Vector2::ZERO;
+		m_thrusterOffset[1][1] = Vector2::ZERO;
+		m_thrusterOffset[1][2] = Vector2::ZERO;
+
+		switch (m_bodyStyleIndex)
 		{
 		case 1:
 			shipPath = "Animations\\PlayerShip02.anim";
 			colorPath = "Animations\\PlayerShip02_Color.anim";
-			pBlaster->SetCooldownSeconds(0.67);
 			m_thrusterOffset[0][0] = Vector2(-2, 19);
 			m_thrusterOffset[0][1] = Vector2(-2, 19);
 			m_thrusterOffset[0][2] = Vector2(-2, 19);
 			m_thrusterScale = 0.8f;
-			pBlaster->SetCooldownSeconds(0.28);
+			if (pBlaster) pBlaster->SetCooldownSeconds(0.28);
 			SetSpeed(400);
 			break;
 		case 2:
@@ -77,7 +86,7 @@ namespace Sample
 			m_thrusterOffset[0][2] = Vector2(-8, 4);	// left thruster
 			m_thrusterOffset[1][2] = Vector2(5, 4);		// right thruster
 			m_thrusterScale = 0.6f;
-			pBlaster->SetCooldownSeconds(0.32);
+			if (pBlaster) pBlaster->SetCooldownSeconds(0.32);
 			SetSpeed(510);
 			break;
 		case 3:
@@ -94,7 +103,7 @@ namespace Sample
 			m_thrusterOffset[1][2] = Vector2(2, 5);		// right thruster
 
 			m_thrusterScale = 0.8f;
-			pBlaster->SetCooldownSeconds(0.30);
+			if (pBlaster) pBlaster->SetCooldownSeconds(0.30);
 			SetSpeed(480);
 			break;
 		default:
@@ -103,7 +112,7 @@ namespace Sample
 			m_thrusterOffset[0][0] = Vector2(-2, 14);
 			m_thrusterOffset[0][1] = Vector2(-2, 14);
 			m_thrusterOffset[0][2] = Vector2(-2, 14);
-			pBlaster->SetCooldownSeconds(0.22);
+			if (pBlaster) pBlaster->SetCooldownSeconds(0.22);
 			SetSpeed(450);
 		}
 
@@ -123,14 +132,11 @@ namespace Sample
 	}
 
 
-	void PlayerShip::Initialize(Level *pLevel)
+	void PlayerShip::Initialize(Level *pLevel, Vector2 &startPosition)
 	{
 		m_pLevel = pLevel;
-		float spacing = Game::GetScreenWidth() / (pLevel->GetPlayerCount() + 1);
-		float x = (GetPlayerIndex() + 1) * spacing;
-		float y = Game::GetScreenHeight() + 100;
-		SetPosition(x, y);
-		SetAITarget(Vector2(x, y - 300));
+		SetPosition(startPosition);
+		SetAITarget(startPosition - Vector2::UNIT_Y * 300);
 	}
 
 
@@ -186,16 +192,24 @@ namespace Sample
 			for (int j = 0; j < 3; j++)
 			{
 				Vector2 position = GetPosition() + m_thrusterOffset[i][m_pAnimation->GetCurrentIndex()];
-				pSpriteBatch->Draw(m_pThrusterAnimation, position, Color::White, origin, Vector2::ONE * m_thrusterScale, 0, 0.001 * GetPlayerIndex());
+				pSpriteBatch->Draw(m_pThrusterAnimation, position, Color::White, origin, Vector2::ONE * m_thrusterScale, 0, 0.99 - 0.001 * GetPlayerIndex());
 			}
 		}
 
 		Region frame = *(m_pAnimation->GetCurrentFrame());
 		frame.X = 0;
 		frame.Y = 0;
-		pSpriteBatch->Draw(m_pColorAnimation, GetPosition(), m_color, frame.GetCenter(), Vector2::ONE * m_scale, 0, 0.98 + 0.001 * GetPlayerIndex());
-		pSpriteBatch->Draw(m_pAnimation, GetPosition(), Color::White, frame.GetCenter(), Vector2::ONE * m_scale, 0, 0.99 + 0.001 * GetPlayerIndex());
+		pSpriteBatch->Draw(m_pColorAnimation, GetPosition(), m_color, frame.GetCenter(), Vector2::ONE * m_scale, 0, 0.99 - 0.001 * GetPlayerIndex());
+		pSpriteBatch->Draw(m_pAnimation, GetPosition(), Color::White, frame.GetCenter(), Vector2::ONE * m_scale, 0, 0.99 - 0.001 * GetPlayerIndex());
 
+	}
+
+
+	void PlayerShip::SetAITarget(Vector2 position)
+	{
+		m_isAIControlled = true;
+		m_targetPosition = position;
+		ConfineToScreen(false);
 	}
 
 

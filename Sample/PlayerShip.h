@@ -22,10 +22,13 @@ namespace Sample
 	public:
 
 		/** @brief Instantiate a player ship object.
-			@param playerIndex The controlling player's index. */
-		PlayerShip(const uint8_t playerIndex);
+			@param playerIndex The controlling player's index.
+			@param bodyStyleIndex The body style index of the ship. */
+		PlayerShip(const uint8_t playerIndex, const uint8_t bodyStyleIndex = 0);
 
 		virtual ~PlayerShip() { }
+
+		static const int BODY_STYLE_COUNT = 4;
 
 		static Color GetShipColor(const uint8_t playerIndex) { return s_colors[playerIndex]; }
 
@@ -51,17 +54,22 @@ namespace Sample
 		virtual void Hit(const float damage);
 
 		/** @brief Initializes the player ship at the start of the level.
-			@param pLevel The current level. */
-		virtual void Initialize(Level *pLevel);
+			@param pLevel The current level.
+			@param startPosition The screen position where the ship will start. */
+		virtual void Initialize(Level *pLevel, Vector2 &startPosition);
 
 		/** @brief Sets the target position for the AI to move to.
 			@param position The position to move to. */
-		virtual void SetAITarget(Vector2 position)
-		{
-			m_isAIControlled = true;
-			m_targetPosition = position;
-			ConfineToScreen(false);
-		}
+		virtual void SetAITarget(Vector2 position);
+
+		/** @brief Sets the position of the ship for display purposes.
+			@param position The position to move to. */
+		virtual void SetDisplayPosition(Vector2 position) { SetPosition(position); }
+
+		/** @brief Sets the body style of the player ship.
+			@param bodyStyleIndex Sets the body style index of the ship.
+			@remark LoadContent must be called to reflect body style changes. */
+		virtual void SetBodyStyleIndex(const uint8_t bodyStyleIndex = 0) { m_bodyStyleIndex = bodyStyleIndex; }
 
 		/** @brief Gets the half dimensions of the game object.
 			@return Returns the half dimensions of the object. */
@@ -86,6 +94,8 @@ namespace Sample
 		Level *m_pLevel;
 
 		Color m_color;
+
+		uint8_t m_bodyStyleIndex = 0;
 
 		float m_scale = 1.5f;
 

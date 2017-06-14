@@ -90,13 +90,13 @@ namespace ShooterLibrary
 		if (pInput->IsKeyDown(Key::S)) type |= TriggerType::SPECIAL;
 
 
-		GamePadState *pState = &pInput->GetGamePadState(0);
+		GamePadState *pState = &pInput->GetGamePadState(m_playerIndex);
 		if (pState->IsConnected)
 		{
 			// gamepad overrides keyboard input
 			Vector2 thumbstick = pState->Thumbsticks.Left;
 			if (thumbstick.LengthSquared() < 0.08f) thumbstick = Vector2::ZERO;
-			if (thumbstick != Vector2::ZERO) direction = thumbstick;
+			direction = thumbstick;
 
 			type = TriggerType::NONE;
 

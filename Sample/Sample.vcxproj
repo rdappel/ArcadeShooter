@@ -138,6 +138,7 @@
     <ClInclude Include="MenuScreen.h" />
     <ClInclude Include="Missile.h" />
     <ClInclude Include="PauseMenuScreen.h" />
+    <ClInclude Include="PlayerData.h" />
     <ClInclude Include="PowerUp.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameplayScreen.h" />

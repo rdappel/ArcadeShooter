@@ -22,7 +22,7 @@ namespace Sample
 	{
 		LevelSelectMenu *pLevelSelectMenu = (LevelSelectMenu *)pMenuScreen;
 		int levelIndex = pLevelSelectMenu->GetLevelIndex();
-		pMenuScreen->GetScreenManager()->AddScreen(new GameplayScreen(levelIndex));
+		//pMenuScreen->GetScreenManager()->AddScreen(new GameplayScreen(levelIndex));
 		pMenuScreen->Exit();
 	}
 
