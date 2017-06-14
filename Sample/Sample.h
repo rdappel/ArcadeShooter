@@ -37,6 +37,7 @@
 #include "SaveData.h"
 #include "Game.h"
 #include "MenuScreen.h"
+#include "ShipSelectScreen.h"
 #include "LevelSelectMenu.h"
 #include "MainMenuScreen.h"
 #include "PauseMenuScreen.h"

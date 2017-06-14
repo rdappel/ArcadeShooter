@@ -58,7 +58,10 @@
     <ClCompile Include="SaveData.cpp">
       <Filter>SourceFiles\Resources</Filter>
     </ClCompile>
-    <ClCompile Include="LevelSelectMenu.cpp" />
+    <ClCompile Include="ShipSelectScreen.cpp" />
+    <ClCompile Include="LevelSelectMenu.cpp">
+      <Filter>SourceFiles\Screens</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -124,7 +127,10 @@
     <ClInclude Include="SaveData.h">
       <Filter>SourceFiles\Resources</Filter>
     </ClInclude>
-    <ClInclude Include="LevelSelectMenu.h" />
+    <ClInclude Include="ShipSelectScreen.h" />
+    <ClInclude Include="LevelSelectMenu.h">
+      <Filter>SourceFiles\Screens</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="SourceFiles">

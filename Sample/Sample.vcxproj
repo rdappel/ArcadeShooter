@@ -145,6 +145,7 @@
     <ClInclude Include="Sample.h" />
     <ClInclude Include="PlayerShip.h" />
     <ClInclude Include="SaveData.h" />
+    <ClInclude Include="ShipSelectScreen.h" />
     <ClInclude Include="SmokeTemplate.h" />
   </ItemGroup>
   <ItemGroup>
@@ -168,6 +169,7 @@
     <ClCompile Include="Sample.cpp" />
     <ClCompile Include="PlayerShip.cpp" />
     <ClCompile Include="SaveData.cpp" />
+    <ClCompile Include="ShipSelectScreen.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\KatanaEngine\KatanaEngine.vcxproj">

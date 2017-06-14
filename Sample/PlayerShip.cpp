@@ -15,6 +15,14 @@ using ShooterLibrary::Projectile;
 
 namespace Sample
 {
+	Color PlayerShip::s_colors[] =
+	{
+		Color(1.0f, 0.0f, 0.0f),	// Red
+		Color(0.0f, 0.2f, 1.0f),	// Blue
+		Color(0.0f, 0.65f, 0.0f),	// Green
+		//Color(0.63f, 0.13f, 0.94f),	// Purple
+		Color(1.0f, 1.0f, 0.0f)		// Yellow
+	};
 
 	PlayerShip::PlayerShip(const uint8_t playerIndex)
 		: ShooterLibrary::PlayerShip(playerIndex)
@@ -22,8 +30,8 @@ namespace Sample
 		SetSpeed(450);
 		m_isAIControlled = false;
 
-		Color colors[4] = { Color::Red, Color::DarkGreen, Color::Purple, Color::Yellow };
-		m_color = colors[playerIndex];
+		//Color colors[4] = { Color::Red, Color::DarkGreen, Color::Purple, Color::Yellow };
+		m_color = s_colors[playerIndex];
 
 		for (int i = 0; i < 2; i++) // ship can have 2 thrusters
 		{

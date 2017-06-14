@@ -27,6 +27,8 @@ namespace Sample
 
 		virtual ~PlayerShip() { }
 
+		static Color GetShipColor(const uint8_t playerIndex) { return s_colors[playerIndex]; }
+
 		/** @brief Called when resources need to be loaded.
 			@param pResourceManager The game's resource manager, used for loading
 			and managing game resources. */
@@ -75,6 +77,8 @@ namespace Sample
 
 
 	private:
+
+		static Color s_colors[4];
 
 		Animation *m_pAnimation;
 		Animation *m_pColorAnimation;
