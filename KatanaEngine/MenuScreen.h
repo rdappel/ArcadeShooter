@@ -73,7 +73,7 @@ namespace KatanaEngine
 
 		/** @brief Get the total number of menu items.
 			@return Returns the total number of menu items. */
-		virtual int GetCount() const { return m_menuItems.size(); }
+		virtual size_t GetCount() const { return m_menuItems.size(); }
 
 		/** @brief Get the index corresponding to the first displayed menu item.
 			@return Returns index of the first displayed menu item. */

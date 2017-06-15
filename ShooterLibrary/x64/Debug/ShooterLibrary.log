@@ -36,6 +36,5 @@
   EnemyShip.cpp
   CollisionType.cpp
   CollisionManager.cpp
-c:\users\ryan appel\desktop\arcadeshooter\shooterlibrary\collisionmanager.cpp(20): error C2280: 'ShooterLibrary::CollisionManager::Collision::Collision(void)': attempting to reference a deleted function
-  c:\users\ryan appel\desktop\arcadeshooter\shooterlibrary\collisionmanager.h(74): note: compiler has generated 'ShooterLibrary::CollisionManager::Collision::Collision' here
   Generating Code...
+  ShooterLibrary.vcxproj -> C:\Users\Ryan Appel\Desktop\ArcadeShooter\x64\Debug\ShooterLibrary.lib

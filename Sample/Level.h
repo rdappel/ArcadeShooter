@@ -88,7 +88,7 @@ namespace Sample
 
 		/** @brief Gets the current number of player ships playing the level.
 			@return Returns the count of player ships in the level. */
-		virtual uint8_t GetPlayerCount() { return m_playerShips.size(); }
+		virtual int8_t GetPlayerCount() { return (int8_t)m_playerShips.size(); }
 
 		/** @brief Gets the index of the next level.
 			@return Returns the next level's index. */

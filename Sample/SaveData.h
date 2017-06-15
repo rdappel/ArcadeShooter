@@ -14,6 +14,7 @@
 namespace Sample
 {
 
+	/** @brief Class used to save game data. */
 	class SaveData : public KatanaEngine::Resource
 	{
 
