@@ -113,7 +113,7 @@ Now you can incorporate all of the code from both of those projects! Last step i
 </details>
 <br>
 <details> 
-  <summary><span>Create and run Your Game class:</span> (Click to Expand):</summary>
+  <summary><span>Create and Run your Game class:</span> (Click to Expand):</summary>
 
 - Add another item to _your project_ (Right-click, _Add > New Item..._).
 - This time it needs to be a header file.
