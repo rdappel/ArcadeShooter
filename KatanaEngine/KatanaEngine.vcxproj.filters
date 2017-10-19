@@ -29,9 +29,6 @@
     <Filter Include="Source Files\Core\Graphics">
       <UniqueIdentifier>{fb788e05-a986-49c1-9d0b-984d681517e3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Packages">
-      <UniqueIdentifier>{4f81e134-ebc0-458a-b259-a69bd03ea653}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Vector2.cpp">
@@ -188,8 +185,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config">
-      <Filter>Packages</Filter>
-    </None>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>

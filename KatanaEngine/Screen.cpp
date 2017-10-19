@@ -52,7 +52,7 @@ namespace KatanaEngine
 				}
 				else
 				{
-					m_transitionValue = 0;
+					m_transitionValue = 1;
 				}
 			}
 

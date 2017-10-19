@@ -1,0 +1,15 @@
+﻿  MainMenuScreen.cpp
+  
+  
+           ██╗  ██╗  █████╗  ████████╗  █████╗  ███╗   ██╗  █████╗ 
+           ██║ ██╔╝ ██╔══██╗ ╚══██╔══╝ ██╔══██╗ ████╗  ██║ ██╔══██╗
+           █████╔╝  ███████║    ██║    ███████║ ██╔██╗ ██║ ███████║
+           ██╔═██╗  ██╔══██║    ██║    ██╔══██║ ██║╚██╗██║ ██╔══██║
+           ██║  ██╗ ██║  ██║    ██║    ██║  ██║ ██║ ╚████║ ██║  ██║
+           ╚═╝  ╚═╝ ╚═╝  ╚═╝/\  ╚═╝    ╚═╝  ╚═╝ ╚═╝  ╚═══╝ ╚═╝  ╚═╝
+         /vvvvvvvvvvvvvvvvvvv \=======================================,
+         `^^^^^^^^^^^^^^^^^^^ /-------------------------------------"
+              Katana Engine \/ © 2012 - Shuriken Studios LLC
+  
+  SpaceFighter.vcxproj -> C:\Users\appel\Desktop\ArcadeShooter\x64\Debug\SpaceFighter.exe
+  SpaceFighter.vcxproj -> C:\Users\appel\Desktop\ArcadeShooter\x64\Debug\SpaceFighter.pdb (Partial PDB)

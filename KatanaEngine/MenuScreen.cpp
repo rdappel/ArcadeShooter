@@ -126,7 +126,7 @@ namespace KatanaEngine
 
 	void MenuScreen::AddMenuItem(MenuItem *pItem) 
 	{
-		pItem->SetIndex(m_menuItems.size());
+		pItem->SetIndex((int)m_menuItems.size());
 		pItem->SetMenuScreen(this);
 		m_menuItems.push_back(pItem);
 	}

@@ -26,15 +26,15 @@
    .       © 2017 - Shuriken Studios LLC     ,/0    00000|0000000000MMMMMM
   
   TriggerType.cpp
+  Game.cpp
   Ship.cpp
   ProjectilePool.cpp
   Projectile.cpp
   PlayerShip.cpp
   Level.cpp
   GameObject.cpp
-  Game.cpp
   EnemyShip.cpp
   CollisionType.cpp
   CollisionManager.cpp
   Generating Code...
-  ShooterLibrary.vcxproj -> C:\Users\Ryan Appel\Desktop\ArcadeShooter\x64\Debug\ShooterLibrary.lib
+  ShooterLibrary.vcxproj -> C:\Users\appel\Desktop\ArcadeShooter\x64\Debug\ShooterLibrary.lib
