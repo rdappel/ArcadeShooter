@@ -124,7 +124,7 @@ namespace ShooterLibrary
 
 	private:
 
-		CollisionManager *m_pCollisionManager = nullptr;;
+		CollisionManager *m_pCollisionManager = nullptr;
 
 		std::vector<GameObject *> *m_pSectors;
 
