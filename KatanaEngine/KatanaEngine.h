@@ -12,6 +12,7 @@
 #pragma message("       /vvvvvvvvvvvvvvvvvvv \\=======================================,")
 #pragma message("       `^^^^^^^^^^^^^^^^^^^ /-------------------------------------\"")
 #pragma message("            Katana Engine \\/ © 2012 - Shuriken Studios LLC")
+#pragma message("                    http://www.shurikenstudios.com")
 #pragma message("")
 
 

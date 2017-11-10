@@ -11,7 +11,7 @@ public:
 
 	MainMenuScreen();
 
-	virtual ~MainMenuScreen() {}
+	virtual ~MainMenuScreen() { }
 
 	virtual void LoadContent(ResourceManager *pResourceManager);
 	
@@ -19,10 +19,18 @@ public:
 
 	virtual void Draw(SpriteBatch *pSpriteBatch);
 
+
+	virtual void SetQuitFlag() { m_isQuittingGame = true; }
+
+	virtual bool IsQuittingGame() { return m_isQuittingGame; }
+
+
 private:
 	
 	Texture *m_pTexture;
 
 	Vector2 m_texturePosition;
+
+	bool m_isQuittingGame = false;
 
 };

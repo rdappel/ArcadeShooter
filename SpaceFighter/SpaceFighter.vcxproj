@@ -127,9 +127,21 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BioEnemyShip.cpp" />
+    <ClCompile Include="CollisionManager.cpp" />
+    <ClCompile Include="CollisionType.cpp" />
+    <ClCompile Include="EnemyShip.cpp" />
+    <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="GameplayScreen.cpp" />
+    <ClCompile Include="Level.cpp" />
+    <ClCompile Include="Level01.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MainMenuScreen.cpp" />
+    <ClCompile Include="PlayerShip.cpp" />
+    <ClCompile Include="Projectile.cpp" />
+    <ClCompile Include="Ship.cpp" />
     <ClCompile Include="SpaceFighter.cpp" />
+    <ClCompile Include="TriggerType.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\KatanaEngine\KatanaEngine.vcxproj">
@@ -137,8 +149,22 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BioEnemyShip.h" />
+    <ClInclude Include="Blaster.h" />
+    <ClInclude Include="CollisionManager.h" />
+    <ClInclude Include="CollisionType.h" />
+    <ClInclude Include="EnemyShip.h" />
+    <ClInclude Include="GameObject.h" />
+    <ClInclude Include="GameplayScreen.h" />
+    <ClInclude Include="Level.h" />
+    <ClInclude Include="Level01.h" />
     <ClInclude Include="MainMenuScreen.h" />
+    <ClInclude Include="PlayerShip.h" />
+    <ClInclude Include="Projectile.h" />
+    <ClInclude Include="Ship.h" />
     <ClInclude Include="SpaceFighter.h" />
+    <ClInclude Include="TriggerType.h" />
+    <ClInclude Include="Weapon.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

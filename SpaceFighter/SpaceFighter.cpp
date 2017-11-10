@@ -2,6 +2,7 @@
 #include "KatanaEngine.h"
 #include "SpaceFighter.h"
 #include "MainMenuScreen.h"
+#include "Projectile.h"
 
 using namespace KatanaEngine;
 
@@ -31,6 +32,10 @@ void SpaceFighter::Draw(SpriteBatch *pSpriteBatch)
 
 void SpaceFighter::LoadContent(ResourceManager *pResourceManager) 
 {
+	// Load static resources
+	Projectile::SetTexture(pResourceManager->Load<Texture>("Textures\\Bullet.png"));
+
+
 	GetScreenManager()->AddScreen(new MainMenuScreen());
 
 	ResetGameTime();

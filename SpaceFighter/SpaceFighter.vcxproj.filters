@@ -12,27 +12,123 @@
     <Filter Include="Source Files\Screens">
       <UniqueIdentifier>{04df9619-3990-4ac5-b80e-a5f0a6e611b6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Game Objects">
+      <UniqueIdentifier>{37ceaf9c-b31b-4fd9-be1d-4efb30628398}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Levels">
+      <UniqueIdentifier>{52ab34a6-2e76-4806-a015-ac20618ee517}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Core">
+      <UniqueIdentifier>{955b61f8-745d-4fd8-bca2-899f932712d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game Objects\Collision">
+      <UniqueIdentifier>{cf3553db-3d16-4e40-a5c7-f2eec8a101a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game Objects\Ships">
+      <UniqueIdentifier>{da23781e-2596-4491-a58c-763a7b598a93}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game Objects\Weapons">
+      <UniqueIdentifier>{c089d2d3-9dc9-4cba-a1d0-c222f814133c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SpaceFighter.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="MainMenuScreen.cpp">
       <Filter>Source Files\Screens</Filter>
     </ClCompile>
+    <ClCompile Include="GameplayScreen.cpp">
+      <Filter>Source Files\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>Source Files\Game Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Level.cpp">
+      <Filter>Source Files\Levels</Filter>
+    </ClCompile>
+    <ClCompile Include="SpaceFighter.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Level01.cpp">
+      <Filter>Source Files\Levels</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionManager.cpp">
+      <Filter>Source Files\Game Objects\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionType.cpp">
+      <Filter>Source Files\Game Objects\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerShip.cpp">
+      <Filter>Source Files\Game Objects\Ships</Filter>
+    </ClCompile>
+    <ClCompile Include="Ship.cpp">
+      <Filter>Source Files\Game Objects\Ships</Filter>
+    </ClCompile>
+    <ClCompile Include="TriggerType.cpp">
+      <Filter>Source Files\Game Objects\Weapons</Filter>
+    </ClCompile>
+    <ClCompile Include="Projectile.cpp">
+      <Filter>Source Files\Game Objects\Weapons</Filter>
+    </ClCompile>
+    <ClCompile Include="BioEnemyShip.cpp">
+      <Filter>Source Files\Game Objects\Ships</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyShip.cpp">
+      <Filter>Source Files\Game Objects\Ships</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="SpaceFighter.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="MainMenuScreen.h">
       <Filter>Source Files\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="GameplayScreen.h">
+      <Filter>Source Files\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="Level.h">
+      <Filter>Source Files\Levels</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>Source Files\Game Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="SpaceFighter.h">
+      <Filter>Source Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Level01.h">
+      <Filter>Source Files\Levels</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionManager.h">
+      <Filter>Source Files\Game Objects\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionType.h">
+      <Filter>Source Files\Game Objects\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerShip.h">
+      <Filter>Source Files\Game Objects\Ships</Filter>
+    </ClInclude>
+    <ClInclude Include="Ship.h">
+      <Filter>Source Files\Game Objects\Ships</Filter>
+    </ClInclude>
+    <ClInclude Include="Weapon.h">
+      <Filter>Source Files\Game Objects\Weapons</Filter>
+    </ClInclude>
+    <ClInclude Include="TriggerType.h">
+      <Filter>Source Files\Game Objects\Weapons</Filter>
+    </ClInclude>
+    <ClInclude Include="Projectile.h">
+      <Filter>Source Files\Game Objects\Weapons</Filter>
+    </ClInclude>
+    <ClInclude Include="Blaster.h">
+      <Filter>Source Files\Game Objects\Weapons</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyShip.h">
+      <Filter>Source Files\Game Objects\Ships</Filter>
+    </ClInclude>
+    <ClInclude Include="BioEnemyShip.h">
+      <Filter>Source Files\Game Objects\Ships</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

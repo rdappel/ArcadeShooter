@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.16
+VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "KatanaEngine", "KatanaEngine\KatanaEngine.vcxproj", "{3F571C9E-F48E-4D5E-853D-E2BE8E37FF35}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Games", "Games", "{3B8BD3C9-A32F-4CD2-B4A8-9CC26CE85C8B}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Game", "Game", "{3B8BD3C9-A32F-4CD2-B4A8-9CC26CE85C8B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{F1D84723-3508-4EC5-92BD-D28D20A76FA6}"
 EndProject
@@ -42,5 +42,8 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{3F571C9E-F48E-4D5E-853D-E2BE8E37FF35} = {F1D84723-3508-4EC5-92BD-D28D20A76FA6}
 		{4167A878-2DAB-45E6-A6B9-E6700366C09B} = {3B8BD3C9-A32F-4CD2-B4A8-9CC26CE85C8B}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {57CD840E-AED6-46A6-97C5-E1166034413A}
 	EndGlobalSection
 EndGlobal
