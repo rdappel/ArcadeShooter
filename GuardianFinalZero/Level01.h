@@ -24,13 +24,15 @@ namespace GuardianFinalZero
 
 	public:
 
-		Level01();
+		Level01(GameplayScreen *pGameplayScreen);
 
 		virtual ~Level01() { }
 
 		
 		// TODO: Get an ACTUAL particle manager
 		ParticleManager *GetParticleManager() const { return nullptr; }
+
+		virtual int GetNextLevelIndex() const { return 2; }
 
 	};
 }

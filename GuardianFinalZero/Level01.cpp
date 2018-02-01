@@ -19,7 +19,7 @@
 
 namespace GuardianFinalZero
 {
-	Level01::Level01()
+	Level01::Level01(GameplayScreen *pGameplayScreen) : Level(pGameplayScreen)
 	{
 	}
 }

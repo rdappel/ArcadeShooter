@@ -19,9 +19,11 @@
 
 namespace GuardianFinalZero
 {
-	Level::Level()
+	Level::Level(GameplayScreen *pGameplayScreen)
 	{
+		m_isComplete = false;
 		m_pPlayerShip = new	PlayerShip(0);
+		m_pGameplayScreen = pGameplayScreen;
 	}
 
 	void Level::LoadContent(ResourceManager *pResourceManager)
@@ -40,6 +42,11 @@ namespace GuardianFinalZero
 		ShooterLibrary::Level::LoadContent(pResourceManager);
 	}
 
+	void Level::HandleInput(const InputState *pInput)
+	{
+
+	}
+	
 	ShooterLibrary::Projectile *Level::GetInactiveProjectile()
 	{
 		m_projectileIt = m_projectiles.begin();

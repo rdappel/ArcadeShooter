@@ -36,6 +36,8 @@ namespace KatanaEngine
 		m_onRemove = nullptr;
 
 		SetPassthroughFlags();
+
+		m_controllingPlayerIndex = -1;
 	}
 
 	void Screen::UpdateTransition(const GameTime *pGameTime)
@@ -105,7 +107,7 @@ namespace KatanaEngine
 
 	void Screen::TransitionIn()
 	{
-		if (m_transition == ScreenTransition::NONE)
+		if (m_transition != ScreenTransition::IN)
 		{
 			m_transitionTime = m_transitionInTime;
 			m_transition = ScreenTransition::IN;
@@ -114,7 +116,7 @@ namespace KatanaEngine
 
 	void Screen::TransitionOut()
 	{
-		if (m_transition == ScreenTransition::NONE)
+		if (m_transition != ScreenTransition::OUT)
 		{
 			m_transitionTime = m_transitionOutTime;
 			m_transition = ScreenTransition::OUT;

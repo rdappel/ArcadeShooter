@@ -23,11 +23,36 @@ namespace GuardianFinalZero
 	{
 
 	public:
-		GameplayScreen(const uint32_t levelIndex);
+		
+		GameplayScreen(const uint8_t levelToLoad, PlayerData *pPlayerData);
+		virtual ~GameplayScreen();
 
-		virtual ~GameplayScreen() { }
+		virtual void LoadContent(ResourceManager *pResourceManager);
+
+		virtual void HandleInput(const InputState *pInput);
+
+		virtual void Update(const GameTime *pGameTime);
+
+		virtual void Draw(SpriteBatch *pSpriteBatch);
+
+
+		virtual int GetNextLevelIndex() const;
+
+		virtual PlayerData *GetPlayerData() { return m_playerData; }
+
+
+	protected:
+
+		virtual Level *GetLevel() { return m_pLevel; }
+
 
 	private:
+
+		Level *m_pLevel = nullptr;
+
+		PlayerData m_playerData[InputState::MAX_NUM_GAMEPADSTATES];
+
+		ResourceManager *m_pResourceManager;
 
 	};
 }

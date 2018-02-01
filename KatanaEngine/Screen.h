@@ -117,6 +117,10 @@ namespace KatanaEngine
 			@return Returns the transition time in seconds. */
 		virtual double GetTransitionOutTime() const { return m_transitionOutTime; }
 
+		/** @brief Get index of the controlling player.
+			@return Returns the player index. An result of -1 indicates that there is no controlling player. */
+		virtual int8_t GetControllingPlayerIndex() const { return m_controllingPlayerIndex; }
+
 
 	protected:
 
@@ -186,6 +190,8 @@ namespace KatanaEngine
 		bool m_isExiting;
 
 		bool m_needsToBeRemoved;
+
+		int8_t m_controllingPlayerIndex;
 
 		double m_transitionInTime;
 		double m_transitionOutTime;

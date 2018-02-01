@@ -17,16 +17,25 @@ namespace Sample
 	Texture *LevelOverScreen::s_pGameOverTexture = nullptr;
 	Texture *LevelOverScreen::s_pLevelCompleteTexture = nullptr;
 
+	void LevelOverRemove(Screen *pScreen)
+	{
+		int i = 0;
+	}
+
+
 	LevelOverScreen::LevelOverScreen(GameplayScreen *pGameplayScreen, const bool levelCompleted)
 	{
 		m_pGameplayScreen = pGameplayScreen;
 		m_levelCompleted = levelCompleted;
 
 		SetTransitionInTime(3.0);
+
 		SetTransitionOutTime(pGameplayScreen->GetTransitionOutTime());
 		SetPassthroughFlags(true, true);
 
 		m_secondsUntilExit = 10;
+
+		SetRemoveCallback(LevelOverRemove);
 
 		Show();
 	}
@@ -49,6 +58,7 @@ namespace Sample
 			m_secondsUntilExit -= pGameTime->GetTimeElapsed();
 			if (m_secondsUntilExit < 0)
 			{
+				SetTransitionOutTime(0);
 				Exit();
 				m_pGameplayScreen->Exit();
 			}
