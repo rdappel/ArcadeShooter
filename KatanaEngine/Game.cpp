@@ -128,10 +128,16 @@ namespace KatanaEngine
 
 		m_pInput = new InputState();
 
-		ALLEGRO_EVENT_SOURCE *joystickEventSource = al_get_joystick_event_source();
-		if (joystickEventSource)
+		ALLEGRO_EVENT_SOURCE *pKeyboardEventSource = al_get_keyboard_event_source();
+		if (pKeyboardEventSource)
 		{
-			al_register_event_source(pEventQueue, joystickEventSource);
+			al_register_event_source(pEventQueue, pKeyboardEventSource);
+		}
+
+		ALLEGRO_EVENT_SOURCE *pJoystickEventSource = al_get_joystick_event_source();
+		if (pJoystickEventSource)
+		{
+			al_register_event_source(pEventQueue, pJoystickEventSource);
 		}
 
 		ResetGameTime();

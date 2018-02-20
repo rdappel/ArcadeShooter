@@ -96,7 +96,7 @@ namespace Sample
 
 	int GameplayScreen::GetNextLevelIndex() const
 	{
-		if (m_pLevel &&m_pLevel->IsComplete())
+		if (m_pLevel && m_pLevel->IsComplete())
 		{
 			return m_pLevel->GetNextLevelIndex();
 		}

@@ -17,22 +17,100 @@
 
 #include "GuardianFinalZero.h"
 
+using namespace ShooterLibrary;
+
 namespace GuardianFinalZero
 {
-	// Removal Callback Function
+
 	void GameplayScreenRemove(Screen *pScreen)
 	{
-		pScreen->GetScreenManager()->AddScreen(new MainMenuScreen());
+		GameplayScreen *pGameplayScreen = (GameplayScreen *)pScreen;
+
+		uint8_t nextLevel = pGameplayScreen->GetNextLevelIndex();
+		pScreen->GetScreenManager()->AddScreen(new GameplayScreen(nextLevel, pGameplayScreen->GetPlayerData()));
 	}
 
 
-	GameplayScreen::GameplayScreen(const uint32_t levelIndex)
+	GameplayScreen::GameplayScreen(const uint8_t levelToLoad, PlayerData *pPlayerData)
 	{
-		switch (levelIndex)
-		{			
-		//case 1: SetLevel(new Level01()); break;
+		m_pLevel = nullptr;
+		GameObject::SetCurrentLevel(nullptr);
+
+		for (int i = 0; i < InputState::MAX_NUM_GAMEPADSTATES; i++)
+		{
+			m_playerData[i] = pPlayerData[i];
 		}
-		
-		SetRemoveCallback(GameplayScreenRemove);
+
+		switch (levelToLoad)
+		{
+		case 1: m_pLevel = new Level01(this); break;
+		//case 2: m_pLevel = new Level02(this); break;
+		}
+
+		if (m_pLevel)
+		{
+			SetTransitionInTime(1.0);
+			SetTransitionOutTime(0.5);
+			SetRemoveCallback(GameplayScreenRemove);
+
+			UseRenderTarget();
+			Show();
+		}
+	}
+
+	GameplayScreen::~GameplayScreen()
+	{
+		delete m_pLevel;
+	}
+
+
+	void GameplayScreen::LoadContent(ResourceManager *pResourceManager)
+	{
+		if (m_pLevel) m_pLevel->LoadContent(pResourceManager);
+		else
+		{
+			GetScreenManager()->AddScreen(new MainMenuScreen());
+			SetTransitionOutTime(0);
+			Exit();
+		}
+	}
+
+
+	void GameplayScreen::HandleInput(const InputState *pInput)
+	{
+		int8_t playerIndex = -1;
+
+		if (pInput->IsNewKeyPress(Key::ESCAPE) ||
+			pInput->IsNewButtonPress(Button::START, playerIndex))
+		{
+			//GetScreenManager()->AddScreen(new PauseMenuScreen(this, playerIndex));
+		}
+
+		m_pLevel->HandleInput(pInput);
+	}
+
+
+	void GameplayScreen::Draw(SpriteBatch *pSpriteBatch)
+	{
+		if (!this->NeedsToBeRemoved()) m_pLevel->Draw(pSpriteBatch);
+	}
+
+
+	void GameplayScreen::Update(const GameTime *pGameTime)
+	{
+		if (!this->NeedsToBeRemoved())
+		{
+			m_pLevel->Update(pGameTime);
+		}
+	}
+
+	int GameplayScreen::GetNextLevelIndex() const
+	{
+		if (m_pLevel && m_pLevel->IsComplete())
+		{
+			return m_pLevel->GetNextLevelIndex();
+		}
+
+		return -1;
 	}
 }

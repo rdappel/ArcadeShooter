@@ -41,6 +41,8 @@ namespace Sample
 			@param pSpriteBatch The game's sprite batch, used for rendering. */
 		virtual void Draw(SpriteBatch *pSpriteBatch);
 
+		/** @brief Used to get information about the player's ships.
+			@return Returns an array of player data instances. */
 		virtual PlayerData *GetPlayerData() { return playerData; }
 
 

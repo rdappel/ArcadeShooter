@@ -69,6 +69,9 @@
     <ClInclude Include="CollisionType.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="PlayerData.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config">
