@@ -11,9 +11,6 @@
     <Filter Include="Source Files\Levels">
       <UniqueIdentifier>{5480f911-3055-4459-908d-2d02e3d27e68}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Packages">
-      <UniqueIdentifier>{8e2c8839-c515-477d-8330-1410d5325bed}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Game Objects">
       <UniqueIdentifier>{81610b07-fdd4-4a6e-8a63-6239378ba0d1}</UniqueIdentifier>
     </Filter>
@@ -74,8 +71,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config">
-      <Filter>Packages</Filter>
-    </None>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>

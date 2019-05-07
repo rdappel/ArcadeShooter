@@ -8,9 +8,6 @@
     <Filter Include="Source Files\Game Objects">
       <UniqueIdentifier>{7ac570fa-533d-4fe1-aa00-19cad70f9279}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Packages">
-      <UniqueIdentifier>{17e5c652-ed6c-453a-b3f2-ef56d10edaf7}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Weapons">
       <UniqueIdentifier>{ea866af5-e613-4173-b76a-069143622b58}</UniqueIdentifier>
     </Filter>
@@ -107,8 +104,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config">
-      <Filter>Packages</Filter>
-    </None>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>

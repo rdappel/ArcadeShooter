@@ -43,13 +43,12 @@
   
                  Guardian FZ © 2017 - Shuriken Studios LLC
   
-  PlayerShip.cpp
-  MainMenuScreen.cpp
-  Main.cpp
-  Level01.cpp
-  Level.cpp
   GameplayScreen.cpp
   Game.cpp
+  Level.cpp
+  Level01.cpp
+  Main.cpp
+  MainMenuScreen.cpp
+  PlayerShip.cpp
   Generating Code...
   GuardianFinalZero.vcxproj -> C:\Users\appel\Desktop\ArcadeShooter\x64\Debug\GuardianFinalZero\GuardianFinalZero.exe
-  GuardianFinalZero.vcxproj -> C:\Users\appel\Desktop\ArcadeShooter\x64\Debug\GuardianFinalZero\GuardianFinalZero.pdb (Partial PDB)

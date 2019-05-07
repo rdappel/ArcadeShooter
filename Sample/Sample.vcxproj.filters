@@ -143,9 +143,6 @@
     <Filter Include="SourceFiles">
       <UniqueIdentifier>{6624bcfd-2c35-4ee8-9927-2b3abf9be287}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Packages">
-      <UniqueIdentifier>{a233f1d2-4440-4dda-92dc-eea5169338b1}</UniqueIdentifier>
-    </Filter>
     <Filter Include="SourceFiles\Game Objects">
       <UniqueIdentifier>{bb3400a0-99b5-4fff-8784-d1d5b03543f6}</UniqueIdentifier>
     </Filter>
@@ -166,8 +163,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config">
-      <Filter>Packages</Filter>
-    </None>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>
