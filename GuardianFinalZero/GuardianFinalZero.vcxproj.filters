@@ -14,63 +14,45 @@
     <Filter Include="Source Files\Game Objects">
       <UniqueIdentifier>{81610b07-fdd4-4a6e-8a63-6239378ba0d1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Ships">
+      <UniqueIdentifier>{66122410-b686-462f-8c4a-0f74e27a8037}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game Objects\Weapons">
+      <UniqueIdentifier>{99463076-44f2-49b2-8f76-4cf61b717239}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Levels\Level Objects">
+      <UniqueIdentifier>{380e9bf9-e056-4f83-8f46-275b12ce139a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game Objects\Weapons\Projectiles">
+      <UniqueIdentifier>{a1cfb5d7-075c-4580-a46e-50535973e241}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="PlayerShip.cpp">
-      <Filter>Source Files\Game Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="Level.cpp">
-      <Filter>Source Files\Levels</Filter>
-    </ClCompile>
-    <ClCompile Include="Level01.cpp">
-      <Filter>Source Files\Levels</Filter>
-    </ClCompile>
-    <ClCompile Include="GameplayScreen.cpp">
-      <Filter>Source Files\Screens</Filter>
-    </ClCompile>
-    <ClCompile Include="MainMenuScreen.cpp">
-      <Filter>Source Files\Screens</Filter>
-    </ClCompile>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
     <ClCompile Include="GuardianFinalZero.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MainMenuScreen.cpp">
+      <Filter>Source Files\Screens</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="PlayerShip.h">
-      <Filter>Source Files\Game Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="Level.h">
-      <Filter>Source Files\Levels</Filter>
-    </ClInclude>
-    <ClInclude Include="Level01.h">
-      <Filter>Source Files\Levels</Filter>
-    </ClInclude>
-    <ClInclude Include="GameplayScreen.h">
-      <Filter>Source Files\Screens</Filter>
-    </ClInclude>
-    <ClInclude Include="MainMenuScreen.h">
-      <Filter>Source Files\Screens</Filter>
-    </ClInclude>
     <ClInclude Include="GuardianFinalZero.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="Game.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="CollisionType.h">
-      <Filter>Source Files</Filter>
+    <ClInclude Include="MainMenuScreen.h">
+      <Filter>Source Files\Screens</Filter>
     </ClInclude>
-    <ClInclude Include="PlayerData.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
 </Project>

@@ -22,4 +22,9 @@ namespace ShooterLibrary
 	const TriggerType TriggerType::SPECIAL		= TriggerType(1 << 2);
 	const TriggerType TriggerType::ALL			= TriggerType((uint32_t)-1);
 
+	TriggerType::TriggerType(uint32_t value)
+	{
+		m_value = value;
+	}
+
 }

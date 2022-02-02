@@ -126,7 +126,7 @@ namespace ShooterLibrary
 
 		CollisionManager *m_pCollisionManager = nullptr;
 
-		std::vector<GameObject *> *m_pSectors;
+		std::vector<GameObject *> *m_pSectors = nullptr;
 
 		Vector2 m_sectorCount;
 		Vector2 m_sectorSize;
@@ -136,12 +136,12 @@ namespace ShooterLibrary
 		std::vector<GameObject *> m_gameObjects;
 		std::vector<GameObject *>::iterator m_gameObjectIt;
 
-		ALLEGRO_SAMPLE *m_pSample;
+		ALLEGRO_SAMPLE *m_pSample = nullptr;
 		ALLEGRO_SAMPLE_ID m_sampleID;
 
 		std::vector<ProjectilePool *> m_pProjectilePools;
 		
-		Background *m_pBackground;
+		Background *m_pBackground = nullptr;
 
 		void CheckCollisions(std::vector<GameObject *> &sector);
 

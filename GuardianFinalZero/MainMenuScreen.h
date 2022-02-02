@@ -38,15 +38,15 @@ namespace GuardianFinalZero
 		Color m_selectedColor;
 		Color m_unselectedColor;
 
-		float m_selectedAlpha;
+		float m_selectedAlpha = 0;
 
-		Texture *m_pLogoTexture;
+		Texture *m_pLogoTexture = nullptr;
 
 		Vector2 m_position;
 		Vector2 m_targetPosition;
 
-		float m_menuFadeInTime;
-		float m_menuFadeValue;
-		float m_menuAlpha;
+		float m_menuFadeInTime = 0;
+		float m_menuFadeValue = 0;
+		float m_menuAlpha = 0;
 	};
 }

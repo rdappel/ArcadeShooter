@@ -185,13 +185,11 @@ namespace KatanaEngine
 		std::vector<Drawable *> m_inactiveDrawables;
 		std::vector<Drawable *>::iterator m_it;
 
-		unsigned short m_lastID;
+		SpriteSortMode m_sortMode = SpriteSortMode::DEFERRED;
 
-		SpriteSortMode m_sortMode;
+		BlendState m_blendState = BlendState::ALPHA;
 
-		BlendState m_blendState;
-
-		ALLEGRO_TRANSFORM *m_pTransformation;
+		ALLEGRO_TRANSFORM *m_pTransformation = nullptr;
 
 		bool m_isStarted;
 

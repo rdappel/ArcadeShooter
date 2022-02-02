@@ -84,16 +84,16 @@ namespace Sample
 
 		Vector2 m_velocity;
 
-		PowerUpType m_powerUpType;
+		PowerUpType m_powerUpType = PowerUpType::FireRate;
 
-		PlayerShip *m_pTarget;
-		int m_pMagnetDistance;
+		PlayerShip *m_pTarget = nullptr;
+		int m_pMagnetDistance = 0;
 
-		Level *m_pLevel;
+		Level *m_pLevel = nullptr;
 
-		int m_targetCheck;
+		int m_targetCheck = 0;
 
-		float m_alpha;
+		float m_alpha = 0;
 
 	};
 }

@@ -19,21 +19,18 @@
 
 namespace GuardianFinalZero
 {
-
-	/** @brief Callback function for when the main menu is removed from
-		the screen manager.
-		@param pScreen The screen that is about to be removed. */
+	// Menu Item Callback functions
 	void MainMenuScreenRemove(Screen *pScreen)
 	{
-		//pScreen->GetScreenManager()->AddScreen(new GameplayScreen(1));
+		//pScreen->GetScreenManager()->AddScreen(new GameplayScreen());
 	}
 
-	/** @brief Callback function for start item is selected.
-		@param pMenuScreen The menu screen that contains the menu item. */
 	void StartSelect(MenuScreen *pMenuScreen)
 	{
-		pMenuScreen->SetRemoveCallback(MainMenuScreenRemove);
-		pMenuScreen->Exit();
+		MainMenuScreen* pMainMenuScreen = dynamic_cast<MainMenuScreen*>(pMenuScreen);
+		if (pMainMenuScreen) pMainMenuScreen->Hide();
+		//pMenuScreen->SetRemoveCallback(MainMenuScreenRemove);
+		//pMenuScreen->Exit();
 	}
 
 	/** @brief Callback function for exit item is selected.
@@ -55,7 +52,7 @@ namespace GuardianFinalZero
 		m_pLogoTexture = nullptr;
 
 		SetTransitionInTime(3);
-		SetTransitionOutTime(0.5f);
+		SetTransitionOutTime(3);
 
 		m_menuFadeInTime = 1;
 		m_menuFadeValue = 0;
@@ -97,7 +94,7 @@ namespace GuardianFinalZero
 		m_targetPosition = Game::GetScreenCenter() - Vector2(0, 150);
 		m_position = m_targetPosition - Vector2(0, 400);
 
-		Screen::LoadContent(pResourceManager);
+		//Screen::LoadContent(pResourceManager);
 	}
 
 
@@ -134,11 +131,14 @@ namespace GuardianFinalZero
 			GetMenuItem(i)->SetAlpha(GetAlpha() * m_menuAlpha);
 		}
 
+		// begin the logo transitioning down
 		if (GetAlpha() > 0.4f)
 		{
 			m_position = Vector2::Lerp(m_position, m_targetPosition, 0.08f * GetAlpha());
 			m_position.X = m_targetPosition.X;
 		}
+
+		if (GetAlpha() == 0) Show();
 
 		MenuScreen::Update(pGameTime);
 	}

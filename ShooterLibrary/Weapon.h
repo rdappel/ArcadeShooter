@@ -25,7 +25,6 @@ namespace ShooterLibrary
 		Weapon(bool isActive = true)
 		{
 			m_isActive = isActive;
-			SetTriggerType(TriggerType::PRIMARY);
 		}
 
 		virtual ~Weapon() { }
@@ -52,7 +51,9 @@ namespace ShooterLibrary
 
 		/** @brief Sets how the weapon is triggered.
 			@param triggerType Specifies how the weapon is triggered. */
-		virtual void SetTriggerType(TriggerType triggerType) { m_triggerType = triggerType; }
+		virtual void SetTriggerType(TriggerType triggerType) { 
+			m_triggerType = triggerType;
+		}
 
 		/** @brief Sets the pool where the weapon gets it's projectiles.
 			@param pPool The pool to use. */
@@ -82,13 +83,13 @@ namespace ShooterLibrary
 
 	private:
 
-		bool m_isActive;
+		bool m_isActive = false;
 
-		GameObject *m_pGameObject;
+		GameObject *m_pGameObject = nullptr;
 
 		Vector2 m_offset;
 
-		TriggerType m_triggerType;
+		TriggerType m_triggerType = TriggerType::PRIMARY;
 
 	};
 }

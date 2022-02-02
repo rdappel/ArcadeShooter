@@ -33,12 +33,16 @@ namespace ShooterLibrary
 
 		static const TriggerType ALL;		/**< @brief Represents a combination of all weapon triggers. */
 
+
+		virtual uint32_t GetValue() { return m_value; }
+
 		
 		/** @brief Assigns the reference of a trigger type.
 			@param type The reference trigger type.
 			@return Returns the resulting trigger type. */
 		TriggerType &TriggerType::operator=(const TriggerType &type)
 		{
+			std::cout << type.m_value;
 			m_value = type.m_value;
 
 			return *this;
@@ -143,7 +147,7 @@ namespace ShooterLibrary
 
 		/** @brief Instantiates a new trigger type object.
 			@param value The underlaying value of the type. */
-		TriggerType(uint32_t value) { m_value = value; }
+		TriggerType(uint32_t value);
 
 
 	private:

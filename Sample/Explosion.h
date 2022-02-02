@@ -53,12 +53,12 @@ namespace Sample
 
 	private:
 
-		Animation *m_pAnimation;
+		Animation *m_pAnimation = nullptr;
 
 		Vector2 m_position;
 
-		float m_rotation;
-		float m_scale;
+		float m_rotation = 0;
+		float m_scale = 0;
 
 	};
 

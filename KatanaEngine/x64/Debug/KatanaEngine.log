@@ -1,7 +1,7 @@
 ﻿  KatanaEngine.cpp
-  
-  
-           ██╗  ██╗  █████╗  ████████╗  █████╗  ███╗   ██╗  █████╗ 
+  .
+  .
+           ██╗  ██╗  █████╗  ████████╗  █████╗  ███╗   ██╗  █████╗
            ██║ ██╔╝ ██╔══██╗ ╚══██╔══╝ ██╔══██╗ ████╗  ██║ ██╔══██╗
            █████╔╝  ███████║    ██║    ███████║ ██╔██╗ ██║ ███████║
            ██╔═██╗  ██╔══██║    ██║    ██╔══██║ ██║╚██╗██║ ██╔══██║
@@ -10,7 +10,7 @@
          /vvvvvvvvvvvvvvvvvvv \=======================================,
          `^^^^^^^^^^^^^^^^^^^ /-------------------------------------"
               Katana Engine \/ © 2012 - Shuriken Studios LLC
-  
+  .
   Animation.cpp
   Color.cpp
   Emitter.cpp
@@ -35,4 +35,4 @@
   Compiling...
   Vector2.cpp
   Generating Code...
-  KatanaEngine.vcxproj -> C:\Users\appel\Desktop\ArcadeShooter\x64\Debug\KatanaEngine.lib
+  KatanaEngine.vcxproj -> C:\Users\Ryan\Desktop\ArcadeShooter\x64\Debug\KatanaEngine.lib

@@ -3,8 +3,8 @@
 
 #include "ShooterLibrary.h"
 
-#pragma message("")
-#pragma message("")
+#pragma message(".")
+#pragma message(".")
 #pragma message("                  '888 88888888888 888888888',8888'")
 #pragma message("                    88 888888888888 8888888',8888'")
 #pragma message("                     8 8888             ,8',8888'")
@@ -16,18 +16,23 @@
 #pragma message("      ============== 8 8888 ===== ,8',8888' ===============")
 #pragma message("                    88 8888      ,8',8888888888888")
 #pragma message("                   ,88 8888     ,8',888888888888888,") 
-#pragma message("")
+#pragma message(".")
 #pragma message("				             ファイナル ゼロ")
-#pragma message("")
+#pragma message(".")
 #pragma message("               Guardian FZ © 2017 - Shuriken Studios LLC")
-#pragma message("")
+#pragma message(".")
 
 
-#include "PlayerData.h"
-#include "CollisionType.h"
-#include "PlayerShip.h"
-#include "GameplayScreen.h"
-#include "Level.h"
-#include "Level01.h"
+//#include "CollisionType.h"
+//#include "Coin.h"
+//#include "Explosion.h"
+//#include "Missile.h"
+//#include "Launcher.h"
+//#include "Blaster.h"
+//#include "PlayerShip.h"
+//#include "PlayerCollection.h"
+//#include "GameplayScreen.h"
+//#include "Level.h"
+//#include "Level01.h"
 #include "MainMenuScreen.h"
 #include "Game.h"

@@ -19,6 +19,8 @@
 
 namespace GuardianFinalZero
 {
+	//PlayerCollection* Game::s_pPlayers = new PlayerCollection;
+
 	Game::Game()
 	{
 		SetResourceDirectory("..\\GuardianFinalZero\\Content\\");
@@ -29,12 +31,30 @@ namespace GuardianFinalZero
 		SetFrameCounterFont(pFont);
 	}
 
-	void Game::LoadContent(ResourceManager *pResourceManager)
+	void Game::LoadContent(ResourceManager* pResourceManager)
 	{
-		GetScreenManager()->AddScreen(new MainMenuScreen());
+		/*
+		// load commonly used assets
+		std::string path;
+		Texture* pTexture = nullptr;
 
-		Texture *pTexture = nullptr;
-		pTexture = GetResourceManager()->Load<Texture>("Textures\\Projectile.png");
+		pTexture = pResourceManager->Load<Texture>("Textures\\Projectile.png");
 		ShooterLibrary::Projectile::SetTexture(pTexture);
+
+		// default textures for single player
+		PlayerShip* pShip = s_pPlayers->GetPlayerShip(0);
+
+		path = "Textures\\GameObjects\\Ships\\Player\\Player01.png";
+		pTexture = pResourceManager->Load<Texture>(path);
+		pShip->SetTexture(pTexture);
+
+		path = "Textures\\GameObjects\\Ships\\Player\\Player01Color.png";
+		pTexture = pResourceManager->Load<Texture>(path);
+		pShip->SetColorTexture(pTexture);
+	
+		/**/
+
+
+		GetScreenManager()->AddScreen(new MainMenuScreen());
 	}
 }

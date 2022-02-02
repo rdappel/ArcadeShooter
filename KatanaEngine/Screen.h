@@ -97,6 +97,9 @@ namespace KatanaEngine
 		/** @brief Tells the screen to transition in. */
 		virtual void Show();
 
+		/** @brief Tells the screen to transition out. */
+		virtual void Hide();
+
 		/** @brief Tells the screen to transition out. When the screen has completed
 			its transition, UnloadContent() will be called, and the ScreenManager
 			will remove it.

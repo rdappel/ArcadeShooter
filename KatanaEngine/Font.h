@@ -69,7 +69,7 @@ namespace KatanaEngine
 		static int s_rangeCount;
 		static int *s_ranges;
 
-		ALLEGRO_FONT *m_pFont;
+		ALLEGRO_FONT *m_pFont = nullptr;
 
 	};
 }

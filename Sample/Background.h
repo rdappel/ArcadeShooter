@@ -39,7 +39,7 @@ namespace Sample
 
 	private:
 
-		Texture *m_pTexture;
+		Texture *m_pTexture = nullptr;
 
 		Vector2 m_position;
 

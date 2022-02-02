@@ -44,7 +44,7 @@ namespace ShooterLibrary
 			@param triggerType Specifies how the weapon is triggered. */
 		virtual void Fire(TriggerType triggerType)
 		{
-			if (IsActive() && CanFire())
+			if (triggerType != TriggerType::NONE && IsActive() && CanFire())
 			{
 				if (triggerType.Contains(GetTriggerType()))
 				{
@@ -80,10 +80,10 @@ namespace ShooterLibrary
 
 	private:
 
-		ProjectilePool *m_pProjectilePool;
+		ProjectilePool *m_pProjectilePool = nullptr;
 
-		float m_cooldown;
-		float m_cooldownSeconds;
+		float m_cooldown = 0;
+		float m_cooldownSeconds = 0.5f;
 
 	};
 }

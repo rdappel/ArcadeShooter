@@ -21,6 +21,7 @@ namespace Sample
 
 		Font *pFont = GetResourceManager()->Load<Font>("Fonts\\Arialbd.ttf", false);
 		SetFrameCounterFont(pFont);
+
 	}
 
 	void Game::LoadContent(ResourceManager *pResourceManager)

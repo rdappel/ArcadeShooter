@@ -107,6 +107,8 @@ namespace ShooterLibrary
 
 		
 		SetDesiredDirection(direction);
+
+		GetWeapon(0)->SetTriggerType(TriggerType::SPECIAL);
 		FireWeapons(type);
 	}
 
