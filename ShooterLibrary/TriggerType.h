@@ -42,7 +42,6 @@ namespace ShooterLibrary
 			@return Returns the resulting trigger type. */
 		TriggerType &TriggerType::operator=(const TriggerType &type)
 		{
-			std::cout << type.m_value;
 			m_value = type.m_value;
 
 			return *this;
