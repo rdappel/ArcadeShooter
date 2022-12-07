@@ -172,7 +172,9 @@
     <ClInclude Include="Background.h" />
     <ClInclude Include="CollisionManager.h" />
     <ClInclude Include="CollisionType.h" />
+    <ClInclude Include="ComponentEnemyShip.h" />
     <ClInclude Include="EnemyShip.h" />
+    <ClInclude Include="EnemyShipComponent.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Gun.h" />
     <ClInclude Include="Level.h" />

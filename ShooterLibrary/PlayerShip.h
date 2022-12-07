@@ -93,11 +93,11 @@ namespace ShooterLibrary
 		Vector2 m_desiredDirection;
 		Vector2 m_velocity;
 
-		float m_responsiveness;
+		float m_responsiveness = 0;
 
-		bool m_isConfinedToScreen;
+		bool m_isConfinedToScreen = false;
 
-		uint8_t m_playerIndex;
+		uint8_t m_playerIndex = 0;
 
 	};
 }

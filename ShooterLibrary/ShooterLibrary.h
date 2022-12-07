@@ -29,6 +29,8 @@
 #include "Ship.h"
 #include "PlayerShip.h"
 #include "EnemyShip.h"
+#include "EnemyShipComponent.h"
+#include "ComponentEnemyShip.h"
 #include "CollisionManager.h"
 #include "Game.h"
 #include "Background.h"

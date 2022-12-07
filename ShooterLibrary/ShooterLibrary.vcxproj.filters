@@ -102,6 +102,12 @@
     <ClInclude Include="Background.h">
       <Filter>Source Files\Core</Filter>
     </ClInclude>
+    <ClInclude Include="EnemyShipComponent.h">
+      <Filter>Source Files\Game Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="ComponentEnemyShip.h">
+      <Filter>Source Files\Game Objects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
