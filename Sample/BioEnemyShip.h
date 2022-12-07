@@ -42,7 +42,7 @@ namespace Sample
 
 	private:
 
-		Animation *m_pAnimation;
+		Animation *m_pAnimation = nullptr;
 
 	};
 }

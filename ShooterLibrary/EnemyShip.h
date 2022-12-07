@@ -66,9 +66,9 @@ namespace ShooterLibrary
 
 	private:
 
-		double m_delaySeconds;
+		double m_delaySeconds = 0;
 
-		double m_activationSeconds;
+		double m_activationSeconds = 0;
 
 	};
 }

@@ -1,1 +1,38 @@
-﻿  KatanaEngine.vcxproj -> C:\Users\Ryan\Desktop\ArcadeShooter\x64\Debug\KatanaEngine.lib
+﻿  KatanaEngine.cpp
+  .
+  .
+           ██╗  ██╗  █████╗  ████████╗  █████╗  ███╗   ██╗  █████╗
+           ██║ ██╔╝ ██╔══██╗ ╚══██╔══╝ ██╔══██╗ ████╗  ██║ ██╔══██╗
+           █████╔╝  ███████║    ██║    ███████║ ██╔██╗ ██║ ███████║
+           ██╔═██╗  ██╔══██║    ██║    ██╔══██║ ██║╚██╗██║ ██╔══██║
+           ██║  ██╗ ██║  ██║    ██║    ██║  ██║ ██║ ╚████║ ██║  ██║
+           ╚═╝  ╚═╝ ╚═╝  ╚═╝/\  ╚═╝    ╚═╝  ╚═╝ ╚═╝  ╚═══╝ ╚═╝  ╚═╝
+         /vvvvvvvvvvvvvvvvvvv \=======================================,
+         `^^^^^^^^^^^^^^^^^^^ /-------------------------------------"
+              Katana Engine \/ © 2012 - Shuriken Studios LLC
+  .
+  Animation.cpp
+  Color.cpp
+  Emitter.cpp
+  Font.cpp
+  Game.cpp
+  GameTime.cpp
+  InputState.cpp
+  MathUtil.cpp
+  MenuItem.cpp
+  MenuScreen.cpp
+  Particle.cpp
+  ParticleManager.cpp
+  ParticleTemplate.cpp
+  Point.cpp
+  RenderTarget.cpp
+  Resource.cpp
+  Screen.cpp
+  ScreenManager.cpp
+  SpriteBatch.cpp
+  Texture.cpp
+  Generating Code...
+  Compiling...
+  Vector2.cpp
+  Generating Code...
+  KatanaEngine.vcxproj -> C:\Users\120493240\Desktop\ArcadeShooter\x64\Debug\KatanaEngine.lib

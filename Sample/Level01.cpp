@@ -39,6 +39,8 @@ namespace Sample
 		BioEnemyShip *pEnemyShip;
 
 		// Enemies
+		float waveDelay = 4.0;
+		float unitDelay = 0.45;
 		for (int i = 0; i < 5; i++)
 		{
 			pEnemyShip = new BioEnemyShip();
@@ -46,9 +48,13 @@ namespace Sample
 			pAnimation->SetTexture(pTexture);
 			pEnemyShip->SetAnimation(pAnimation);
 			AddGameObject(pEnemyShip);
-			pEnemyShip->Initialize(Vector2(600, -50), 4.0 + 0.45 * i);
+
+			float delay = waveDelay + (i * unitDelay);
+			pEnemyShip->Initialize(Vector2(600, -50), delay);
 		}
 
+		waveDelay = 10.0;
+		unitDelay = 0.45;
 		for (int i = 0; i < 5; i++)
 		{
 			pEnemyShip = new BioEnemyShip();
@@ -56,9 +62,13 @@ namespace Sample
 			pAnimation->SetTexture(pTexture);
 			pEnemyShip->SetAnimation(pAnimation);
 			AddGameObject(pEnemyShip);
-			pEnemyShip->Initialize(Vector2(1000, -50), 10.0 + 0.45 * i);
+
+			float delay = waveDelay + (i * unitDelay);
+			pEnemyShip->Initialize(Vector2(1000, -50), delay);
 		}
 
+		waveDelay = 16.0;
+		unitDelay = 0.65;
 		for (int i = 0; i < 7; i++)
 		{
 			pEnemyShip = new BioEnemyShip();
@@ -66,9 +76,13 @@ namespace Sample
 			pAnimation->SetTexture(pTexture);
 			pEnemyShip->SetAnimation(pAnimation);
 			AddGameObject(pEnemyShip);
-			pEnemyShip->Initialize(Vector2(400, -50), 16.0 + 0.65 * i);
+
+			float delay = waveDelay + (i * unitDelay);
+			pEnemyShip->Initialize(Vector2(400, -50), delay);
 		}
 
+		waveDelay = 22.0;
+		unitDelay = 0.65;
 		for (int i = 0; i < 7; i++)
 		{
 			pEnemyShip = new BioEnemyShip();
@@ -76,9 +90,13 @@ namespace Sample
 			pAnimation->SetTexture(pTexture);
 			pEnemyShip->SetAnimation(pAnimation);
 			AddGameObject(pEnemyShip);
-			pEnemyShip->Initialize(Vector2(1200, -50), 22.0 + 0.65 * i);
+
+			float delay = waveDelay + (i * unitDelay);
+			pEnemyShip->Initialize(Vector2(1200, -50), delay);
 		}
 
+		waveDelay = 28.0;
+		unitDelay = 0.54;
 		for (int i = 0; i < 3; i++)
 		{
 			pEnemyShip = new BioEnemyShip();
@@ -88,7 +106,9 @@ namespace Sample
 			pEnemyShip->SetSpeed(140);
 			pEnemyShip->SetMaxHitPoints(4);
 			AddGameObject(pEnemyShip);
-			pEnemyShip->Initialize(Vector2(800, -50), 28.0 + 0.54 * i);
+
+			float delay = waveDelay + (i * unitDelay);
+			pEnemyShip->Initialize(Vector2(800, -50), delay);
 		}
 
 		pEnemyShip->SetDeactivateCallback(Level01Completed);

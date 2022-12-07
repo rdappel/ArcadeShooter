@@ -30,7 +30,6 @@ namespace Sample
 			m_pAnimation->Update(pGameTime);
 
 			float x = sin(pGameTime->GetTotalTime() * Math::PI  + GetIndex()) * GetSpeed() / 60;
-			if (GetSpeed() < 200) x *= 1.6f; // todo: remove this
 			TranslatePosition(x, GetSpeed() * pGameTime->GetTimeElapsed() * 1.2f);
 
 			if (GetPosition().Y > Game::GetScreenHeight() + 50) Deactivate();
