@@ -28,13 +28,13 @@
   CollisionManager.cpp
   CollisionType.cpp
   EnemyShip.cpp
-  Game.cpp
   GameObject.cpp
   Level.cpp
   PlayerShip.cpp
   Projectile.cpp
   ProjectilePool.cpp
   Ship.cpp
+  Game.cpp
   TriggerType.cpp
   Generating Code...
   ShooterLibrary.vcxproj -> C:\Users\120493240\Desktop\ArcadeShooter\x64\Debug\ShooterLibrary.lib
