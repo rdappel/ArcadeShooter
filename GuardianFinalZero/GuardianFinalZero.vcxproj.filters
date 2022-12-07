@@ -28,9 +28,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="GuardianFinalZero.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -54,5 +51,8 @@
     <ClInclude Include="MainMenuScreen.h">
       <Filter>Source Files\Screens</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>
